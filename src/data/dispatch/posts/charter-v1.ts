@@ -1,83 +1,87 @@
 /**
  * charter-v1.ts
- * Dispatch post — Kodaxa Studios founding charter announcement.
+ * Dispatch post — Kodaxa Studios founding brief. KDXA-001.
  */
 
 import type { DispatchPost } from '@/types/dispatch';
 
 export const post: DispatchPost = {
   slug: 'kodaxa-charter-v1',
-  title: 'Kodaxa Studios: Founding Charter',
+  title: 'Founding Brief — What Is Kodaxa Studios?',
   category: 'charter',
-  published_at: '2026-04-10',
+  published_at: '2026-04-01',
   author: 'The Board',
-  eyebrow: 'Corporate // Charter v1',
+  eyebrow: 'Executive // Charter v1',
+  ref_id: 'KDXA-001',
+  tag: 'LORE',
   summary:
-    'Kodaxa Studios is a player-run conglomerate in Stars Reach. The charter defines who we are, what we build, and how associates coordinate across divisions.',
-  tags: ['charter', 'divisions', 'guild'],
+    'A formal introduction to Kodaxa Studios, its mandate, and why we exist in the frontier systems of Stars Reach.',
+  tags: ['charter', 'founding', 'lore', 'divisions'],
   content: [
     {
       kind: 'paragraph',
-      text:
-        'Kodaxa Studios was founded on the conviction that the best things in Stars Reach are made collaboratively — that a world of procedurally generated planets, craft economies, and shared infrastructure rewards groups who treat the game as a civilization, not a solo run. We are a player-run conglomerate. We organize like one.',
+      text: 'Every frontier needs infrastructure. Not the kind you can mine or fabricate — the kind that turns raw information into decisions, and decisions into outcomes.',
+    },
+    {
+      kind: 'paragraph',
+      text: "Kodaxa Studios was established in the pre-alpha window of Stars Reach's colonization era with a single mandate: build the data layer that settlers, crafters, and contractors actually need. The game's systems are deep. Its profession trees are layered. Its economies will be shaped by players who understand the numbers — and exploited by those who don't.",
+    },
+    {
+      kind: 'paragraph',
+      text: 'We exist to close that gap.',
     },
     {
       kind: 'heading',
       level: 2,
-      text: 'Six Divisions, One Call Sign',
+      text: 'Our Mandate',
     },
     {
       kind: 'paragraph',
-      text:
-        'Every associate picks a home division but is free to contribute to any of them. Division color codes stay consistent across our tools, our Discord, and our in-game coordination channels.',
+      text: 'Kodaxa operates across four divisions, each responsible for a distinct layer of the information stack:',
     },
     {
       kind: 'list',
       items: [
-        'Operations — logistics, homestead coordination, fleet movement.',
-        'Intelligence — terrain survey, creature census, biome mapping.',
-        'Commerce — directory, market prices, maker mark registry, crafting calc.',
-        'Workforce — skill planning, mentorship, onboarding.',
-        'Engineering — building, prefab libraries, infrastructure tests.',
-        'Dispatch — field comms, patch recaps, outward-facing press.',
+        'Operations — Workforce planning, build optimization, and loadout management. If you\'re deciding how to spend your skill points, Operations has the tooling.',
+        'Intelligence — Schematic archives, material dependencies, and resource mapping. Raw data, refined for use.',
+        'Commerce — Crafter registry, contract exchange, and pricing intelligence. The marketplace, organized.',
+        'Dispatch — Patch monitoring, system advisories, and community bulletins. The signal feed.',
       ],
+    },
+    {
+      kind: 'paragraph',
+      text: 'Together, these divisions form a unified platform — not a collection of fan tools, but an operating system for life in the Stars Reach galaxy.',
     },
     {
       kind: 'heading',
       level: 2,
-      text: 'What we build',
+      text: 'On the Pre-Alpha Constraint',
     },
     {
       kind: 'paragraph',
-      text:
-        'The Kodaxa stack is everything in the tool bar: the Data Terminal, Crafting Calc, Building Planner, Skill Planner, Creature Database, Biome Field Guide, Resource Atlas, Maker\'s Mark, Market Prices, and this Dispatch. All are free to use by any Stars Reach player. Associates get extra coordination surface: a private Discord, shared homesteads, bulk-order fulfillment, and the Kodaxa badge on their directory listing.',
+      text: 'We are building this in the dark. Stars Reach has no public API. No official item database. No exportable skill tree.',
+    },
+    {
+      kind: 'paragraph',
+      text: 'Our current data pipeline relies on manual extraction, community contribution, and an OCR system that parses in-game screenshots into structured records. Every schematic in our archive was placed there by hand. Every profession tree was verified against live footage.',
     },
     {
       kind: 'callout',
       tone: 'info',
-      text:
-        'Everything Kodaxa publishes is open-data by default. We take correction seriously — if a patch note contradicts an entry, we update the entry and re-publish.',
+      text: 'This is not a complaint. It is a context. When you use a Kodaxa tool, you are using something that was built under real constraints, by people who care about accuracy, and who will update it every time the game changes.',
     },
     {
       kind: 'heading',
       level: 2,
-      text: 'Associate Code',
+      text: 'What Comes Next',
     },
     {
-      kind: 'list',
-      ordered: true,
-      items: [
-        'Cite sources. Patch notes, dev streams, first-hand observation — all acceptable.',
-        'Label speculation. Community-extrapolated entries are always marked UNCONFIRMED.',
-        'No gatekeeping. Help newer associates the way you wish you had been helped.',
-        'Honor marks. When a maker signs a deliverable, it carries our reputation too.',
-      ],
+      kind: 'paragraph',
+      text: 'Building Planner. Crafter Directory. Contract Exchange. Live resource pricing. Planetary data feeds when the API arrives.',
     },
     {
-      kind: 'link_card',
-      href: '/corporation',
-      title: 'Visit Kodaxa Corporate',
-      description: 'Full division breakdown, recruitment tracks, and the associate code of conduct.',
+      kind: 'paragraph',
+      text: 'The roadmap exists. The systems are being laid. Log in, establish your uplink, and watch this space.',
     },
   ],
 };

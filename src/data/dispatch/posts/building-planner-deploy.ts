@@ -1,54 +1,74 @@
 /**
  * building-planner-deploy.ts
- * Dispatch post — Building Planner goes live.
+ * Dispatch post — Building Planner deployment notice. KDXA-002.
  */
 
 import type { DispatchPost } from '@/types/dispatch';
 
 export const post: DispatchPost = {
   slug: 'building-planner-deployed',
-  title: 'Building Planner: Live Deployment',
+  title: 'System Deployment — Building Planner Now Live',
   category: 'division_brief',
-  published_at: '2026-04-15',
+  published_at: '2026-04-10',
   author: 'Operations Division',
   eyebrow: 'Operations // Deployment Notice',
+  ref_id: 'KDXA-002',
+  tag: 'DEPLOYMENT',
   summary:
-    'The 3D homestead canvas is now live. Block placement, material BOM calculation, and structural hazard flagging are active in early access. Report anomalies via Discord relay.',
+    'The Kodaxa Building Planner enters early access. Plan your homestead in 3D, calculate material bills, and flag hazards before you break ground.',
   tags: ['building', 'operations', 'deployment', 'early-access'],
   content: [
     {
       kind: 'paragraph',
-      text: 'The Kodaxa Building Planner has cleared internal review and is now open for all operatives. The 3D canvas lets you design your Stars Reach homestead before committing a single material — place blocks, view per-layer breakdowns, and generate a full bill of materials before you break ground.',
+      text: 'After internal testing across multiple build configurations, the Kodaxa Building Planner has been cleared for early access deployment. The system is live at /building. No credentials required.',
     },
     {
       kind: 'heading',
       level: 2,
-      text: 'Active Systems',
+      text: "What's Deployed",
+    },
+    {
+      kind: 'paragraph',
+      text: 'The Building Planner gives you a canvas to design your Stars Reach homestead before committing a single material in-game. Current capabilities:',
     },
     {
       kind: 'list',
       items: [
-        'Block palette — all confirmed building materials with durability ratings.',
-        'BOM Calculator — full material cost for any canvas state, grouped by type.',
-        'Hazard Analyzer — flags unsupported overhangs and structural weak points.',
-        'Layer Controls — slice through floors to inspect interior structure.',
-        'Blueprint URL export — share a build via a single link.',
+        '3D block canvas — Place and arrange structure components on an isometric grid',
+        'Bill of Materials — Automatic calculation of raw material requirements based on your placed blocks',
+        'Skill dependency check — Flags any build components that require professions or skill nodes you haven\'t planned for',
+        'Save & load builds — Store multiple homestead configurations under your operative profile',
+        'Export summary — Generate a readable build sheet you can reference in-session',
       ],
+    },
+    {
+      kind: 'heading',
+      level: 2,
+      text: 'Known Limitations (Early Access)',
     },
     {
       kind: 'callout',
       tone: 'warn',
-      text: 'Stars Reach building mechanics are pre-alpha. Block IDs and durability values may change with future patches. Treat all BOM outputs as estimates until launch.',
+      text: 'This is a pre-alpha deployment. Schematic data may lag behind in-game updates by 24–72 hours. Block placement does not yet model terrain elevation. Furniture and interior fixtures are not yet catalogued. Mobile layout is functional but not optimized — full experience on desktop recommended.',
+    },
+    {
+      kind: 'heading',
+      level: 2,
+      text: 'Reporting Anomalies',
     },
     {
       kind: 'paragraph',
-      text: 'Submit bug reports and block correction requests in the #building-planner channel on Discord. If a material is missing or a cost looks wrong, flag it — the data pipeline updates within 24 hours of a confirmed patch.',
+      text: 'If a material count looks wrong, a block is miscategorized, or a dependency link is broken, file a report via the Discord relay in the #data-corrections channel. Include the build ref ID shown in your planner header.',
+    },
+    {
+      kind: 'paragraph',
+      text: 'Every correction improves the archive for all operatives.',
     },
     {
       kind: 'link_card',
       href: '/building',
       title: 'Open Building Planner',
-      description: '3D canvas · BOM calculator · Hazard flagging · Blueprint sharing.',
+      description: '3D canvas · BOM calculator · Hazard flagging · Blueprint sharing',
     },
   ],
 };

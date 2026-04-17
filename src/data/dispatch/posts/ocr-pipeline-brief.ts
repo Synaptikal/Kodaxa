@@ -1,59 +1,106 @@
 /**
  * ocr-pipeline-brief.ts
- * Dispatch post — OCR pipeline transparency report.
+ * Dispatch post — Data sourcing transparency report. KDXA-003.
  */
 
 import type { DispatchPost } from '@/types/dispatch';
 
 export const post: DispatchPost = {
   slug: 'ocr-pipeline-transparency',
-  title: 'Schematics Pipeline: Transparency Report',
+  title: 'Data Advisory — How Our Schematics Are Sourced',
   category: 'field_report',
-  published_at: '2026-04-11',
+  published_at: '2026-04-12',
   author: 'Intelligence Division',
   eyebrow: 'Intelligence // Data Provenance Report',
+  ref_id: 'KDXA-003',
+  tag: 'ADVISORY',
   summary:
-    'All schematic and skill data in the Kodaxa system is sourced from a custom OCR pipeline running against in-game screenshots. This post explains what that means for data accuracy and how corrections are filed.',
+    'A transparent account of how Kodaxa extracts, validates, and maintains schematic and skill data without an official game API.',
   tags: ['data', 'ocr', 'transparency', 'intelligence', 'schematics'],
   content: [
     {
       kind: 'paragraph',
-      text: 'The Stars Reach game client does not expose a public data API. Every recipe, skill node, item stat, and resource weight in the Kodaxa databases was extracted by processing in-game screenshots through a custom OCR pipeline. The pipeline parses text regions, normalizes field names, and writes the output to structured JSON files that feed this site.',
+      text: "Transparency is a core operating principle at Kodaxa. This dispatch explains exactly where our data comes from, how it is validated, and what our error tolerances look like. You deserve to know what you're working with.",
     },
     {
       kind: 'heading',
       level: 2,
-      text: 'Pipeline Architecture',
+      text: 'The Problem: No Official API',
+    },
+    {
+      kind: 'paragraph',
+      text: 'Stars Reach does not currently publish a public data API. There is no official item database, no exported skill tree, and no machine-readable schematic archive. This is standard for an in-development title.',
+    },
+    {
+      kind: 'paragraph',
+      text: 'It means that every structured record in the Kodaxa archive — every material, every skill node, every recipe dependency — was extracted by humans from in-game sources.',
+    },
+    {
+      kind: 'heading',
+      level: 2,
+      text: 'The Solution: The OCR Pipeline',
+    },
+    {
+      kind: 'paragraph',
+      text: 'Our primary data acquisition system is a Python-based OCR pipeline that processes in-game screenshots submitted by community contributors:',
     },
     {
       kind: 'list',
+      ordered: true,
       items: [
-        'Screenshots are captured manually from the pre-alpha client during play sessions.',
-        'A Python OCR pipeline segments UI panels and extracts text with layout context.',
-        'Parsed records are validated against known schema shapes before being committed.',
-        'Ambiguous or low-confidence reads are flagged UNCONFIRMED in the data layer.',
-        'Corrections submitted via Discord are reviewed and applied within 24 hours.',
+        'Ingests a screenshot of an in-game crafting panel, skill menu, or material readout',
+        'Segments the image into labeled regions using layout inference',
+        'Extracts text, numbers, and relationship data using optical character recognition',
+        'Normalizes the output into structured JSON matching our schema',
+        'Queues the record for human review before it enters the live archive',
       ],
     },
     {
       kind: 'callout',
-      tone: 'warn',
-      text: 'Pre-alpha data changes frequently. If a value looks wrong — a recipe cost, a stat modifier, a skill prerequisite — assume the patch hit after our last capture run and file a correction. We rely on the community to keep the pipeline accurate.',
+      tone: 'info',
+      text: 'No record enters the database without passing at least one manual verification step. High-confidence records are fast-tracked. Ambiguous records are held in a review queue until a second contributor confirms or corrects them.',
     },
     {
       kind: 'heading',
       level: 2,
-      text: 'Filing a Correction',
+      text: 'Current Data Coverage',
+    },
+    {
+      kind: 'list',
+      items: [
+        'Professions — 39 records · Confidence: HIGH (multiple source confirmations, cross-referenced against video and patch notes)',
+        'Skill Nodes — 198+ records · Confidence: HIGH',
+        'Schematics — 36 records · Confidence: MEDIUM (single confirmed source, plausible against known game mechanics)',
+        'Materials — In progress · Confidence: VARIABLE (partial extraction, pending additional contributor data)',
+        'Structures — In progress · Confidence: VARIABLE',
+      ],
+    },
+    {
+      kind: 'heading',
+      level: 2,
+      text: 'What Changes When the API Arrives',
     },
     {
       kind: 'paragraph',
-      text: 'The fastest correction path is the #data-corrections channel on the Kodaxa Discord. Include: the field name, the current value in the tool, the correct value you observed in-game, and the patch version if known. Screenshots welcome. We cross-reference against the OCR raw output and update the JSON source files directly.',
+      text: 'When Playable Worlds releases an official data API, this pipeline retires. All OCR-sourced records will be validated against the canonical feed and corrected automatically. Coverage will expand from dozens of records to thousands overnight.',
     },
     {
-      kind: 'link_card',
-      href: 'https://discord.gg/kodaxa',
-      title: 'Join the Discord',
-      description: 'File corrections in #data-corrections or ask questions in #general.',
+      kind: 'paragraph',
+      text: 'Until then, we maintain the pipeline, accept community submissions, and keep the accuracy advisory visible at the top of every tool.',
+    },
+    {
+      kind: 'heading',
+      level: 2,
+      text: 'How to Contribute',
+    },
+    {
+      kind: 'paragraph',
+      text: 'If you have in-game access and a few minutes, screenshot submissions are the most valuable contribution you can make to the archive right now. Instructions are pinned in #data-submissions on the Discord relay.',
+    },
+    {
+      kind: 'callout',
+      tone: 'success',
+      text: 'Every screenshot is a record. Every record is a better tool.',
     },
   ],
 };

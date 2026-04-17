@@ -15,6 +15,7 @@ import { post as scoutCall } from './posts/open-horizons-scout-call';
 import { post as buildingPlannerDeploy } from './posts/building-planner-deploy';
 import { post as crafterDirectoryLaunch } from './posts/crafter-directory-launch';
 import { post as ocrPipelineBrief } from './posts/ocr-pipeline-brief';
+import { post as preAlphaStatusQ1 } from './posts/pre-alpha-status-q1';
 
 const POSTS: DispatchPost[] = [
   charterV1,
@@ -23,6 +24,7 @@ const POSTS: DispatchPost[] = [
   buildingPlannerDeploy,
   crafterDirectoryLaunch,
   ocrPipelineBrief,
+  preAlphaStatusQ1,
 ];
 
 // Sort by published_at DESC once, reuse.

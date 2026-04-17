@@ -57,6 +57,10 @@ export interface DispatchPost {
   tags: string[];
   /** Hero eyebrow line (e.g. "Intelligence Division // Field Report #007") */
   eyebrow?: string;
+  /** Formal reference ID, e.g. KDXA-001 */
+  ref_id?: string;
+  /** Single display tag, e.g. LORE, DEPLOYMENT, ADVISORY, STATUS */
+  tag?: string;
   /** Main content, as a list of typed blocks */
   content: Block[];
 }
