@@ -65,6 +65,7 @@ export function professionToFlowNodes(
       special: node.special,
       unlocksTree: node.unlocksTree,
       implemented: node.implemented,
+      costs: node.costs,
     },
   }));
 }

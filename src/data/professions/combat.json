@@ -31,7 +31,7 @@
     {
       "id": "combat.cluster",
       "name": "Cluster",
-      "description": "COMBAT 600 KLAATU 600 A SINGLE: PROJECTILE GOES OUT AND DETONATES INTO A SERIES OF Ferre M18” FIAT AFFECT Fh1F ARCA",
+      "description": "A SINGLE: PROJECTILE GOES OUT AND DETONATES INTO A SERIES OF Ferre M18” FIAT AFFECT Fh1F ARCA",
       "professionId": "combat",
       "position": {
         "x": 80,
@@ -39,7 +39,11 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 600,
+        "klaatu": 600
+      }
     },
     {
       "id": "combat.cluster_damage_1",
@@ -70,7 +74,7 @@
     {
       "id": "combat.height_1",
       "name": "Height 1",
-      "description": "COMBAT 1,500 KLAATU 1,500 INCREASES THE HEIGHT THAT TARGETS ARE UPLIFTED BY 30%",
+      "description": "INCREASES THE HEIGHT THAT TARGETS ARE UPLIFTED BY 30%",
       "professionId": "combat",
       "position": {
         "x": 710,
@@ -78,12 +82,16 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 1500,
+        "klaatu": 1500
+      }
     },
     {
       "id": "combat.implosion_impact_1",
       "name": "Implosion Impact 1",
-      "description": "COMBAT 1,500 KLAATU 1,500 INCREASE THE RADIUS OF SINGULARITY BY 20%",
+      "description": "INCREASE THE RADIUS OF SINGULARITY BY 20%",
       "professionId": "combat",
       "position": {
         "x": 920,
@@ -91,12 +99,16 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 1500,
+        "klaatu": 1500
+      }
     },
     {
       "id": "combat.ranged",
       "name": "Ranged",
-      "description": "COMBAT 0 KLAATU 0 LEARN RANGED WEAPON SKILLS",
+      "description": "LEARN RANGED WEAPON SKILLS",
       "professionId": "combat",
       "position": {
         "x": 1130,
@@ -104,12 +116,16 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 0,
+        "klaatu": 0
+      }
     },
     {
       "id": "combat.repulsor",
       "name": "Repulsor",
-      "description": "COMBAT 600 KLAATU 600 CREATE.AN EXPLOSION THAT KNOCKS TARGETS AWAY FROM THE FT ed De et om Ee | ois fT met = |) ee ee",
+      "description": "CREATE.AN EXPLOSION THAT KNOCKS TARGETS AWAY FROM THE FT ed De et om Ee | ois fT met = |) ee ee",
       "professionId": "combat",
       "position": {
         "x": 80,
@@ -117,7 +133,11 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 600,
+        "klaatu": 600
+      }
     },
     {
       "id": "combat.repulsor_radius_1",
@@ -135,7 +155,7 @@
     {
       "id": "combat.singularity",
       "name": "Singularity",
-      "description": "KLAATU 1,200 CREATE.AN. IMPACT THAT DRAWS ALL TARGETS TOWARD THE CENTER Rr PF SCereees,",
+      "description": "CREATE.AN. IMPACT THAT DRAWS ALL TARGETS TOWARD THE CENTER Rr PF SCereees,",
       "professionId": "combat",
       "position": {
         "x": 500,
@@ -143,12 +163,16 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 1200,
+        "klaatu": 1200
+      }
     },
     {
       "id": "combat.uplift",
       "name": "Uplift",
-      "description": "COMBAT 1,500 KLAATU 1,500 THIS DETONATION CAUSES TARGETS INTHE AREA TO BE UPLIFTED AND wee, es Paes AI AMS eraaAIrm",
+      "description": "THIS DETONATION CAUSES TARGETS INTHE AREA TO BE UPLIFTED AND wee, es Paes AI AMS eraaAIrm",
       "professionId": "combat",
       "position": {
         "x": 710,
@@ -156,7 +180,11 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 1500,
+        "klaatu": 1500
+      }
     },
     {
       "id": "combat.cluster_damage_2",
@@ -176,7 +204,7 @@
     {
       "id": "combat.height_2",
       "name": "Height 2",
-      "description": "COMBAT 1,500 KLAATU 1,500 INCREASES THE HEIGHT THAT TARGETS ARE UPLIFTED BY AN RePITMrBIAR SAGs",
+      "description": "INCREASES THE HEIGHT THAT TARGETS ARE UPLIFTED BY AN RePITMrBIAR SAGs",
       "professionId": "combat",
       "position": {
         "x": 710,
@@ -186,12 +214,16 @@
         "combat.height_1"
       ],
       "tier": 2,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 1500,
+        "klaatu": 1500
+      }
     },
     {
       "id": "combat.implosion_impact_2",
       "name": "Implosion Impact 2",
-      "description": "COMBAT 1,800 KLAATU 1,800 INCREASE THE RADIUS OF SINGULARITY BY AN ADDITIONAL eseAns: —_",
+      "description": "INCREASE THE RADIUS OF SINGULARITY BY AN ADDITIONAL eseAns: —_",
       "professionId": "combat",
       "position": {
         "x": 920,
@@ -201,7 +233,11 @@
         "combat.implosion_impact_1"
       ],
       "tier": 2,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 1800,
+        "klaatu": 1800
+      }
     },
     {
       "id": "combat.repulsor_radius_2",
@@ -221,7 +257,7 @@
     {
       "id": "combat.cluster_damage_3",
       "name": "Cluster Damage 3",
-      "description": "COMBAT 1,200 KLAATU 1,200 INCREASES THE DAMAGE OF THE SECONDARY BOMBLETS BY AN RePITMrBRIAR 4407.",
+      "description": "INCREASES THE DAMAGE OF THE SECONDARY BOMBLETS BY AN RePITMrBRIAR 4407.",
       "professionId": "combat",
       "position": {
         "x": 290,
@@ -231,12 +267,16 @@
         "combat.cluster_damage_2"
       ],
       "tier": 3,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 1200,
+        "klaatu": 1200
+      }
     },
     {
       "id": "combat.height_3",
       "name": "Height 3",
-      "description": "COMBAT 1,500 KLAATU 1,500 INCREASES THE HEIGHT THAT TARGETS ARE UPLIFTED BY AN RePITMrBIAR SAGs",
+      "description": "INCREASES THE HEIGHT THAT TARGETS ARE UPLIFTED BY AN RePITMrBIAR SAGs",
       "professionId": "combat",
       "position": {
         "x": 710,
@@ -246,12 +286,16 @@
         "combat.height_2"
       ],
       "tier": 3,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 1500,
+        "klaatu": 1500
+      }
     },
     {
       "id": "combat.implosion_impact_3",
       "name": "Implosion Impact 3",
-      "description": "COMBAT 2,100 KLAATU 2,100 INCREASE THE RADIUS OF SINGULARITY BY AN ADDITIONAL eseAns: —_",
+      "description": "INCREASE THE RADIUS OF SINGULARITY BY AN ADDITIONAL eseAns: —_",
       "professionId": "combat",
       "position": {
         "x": 920,
@@ -261,12 +305,16 @@
         "combat.implosion_impact_2"
       ],
       "tier": 3,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 2100,
+        "klaatu": 2100
+      }
     },
     {
       "id": "combat.repulsor_radius_3",
       "name": "Repulsor Radius 3",
-      "description": "COMBAT 1,500 KLAATU 1,500 INCREASE THE AREA OF EFFECT FOR THE REPULSOR BY AN ADDITIONAL eseAns: —_",
+      "description": "INCREASE THE AREA OF EFFECT FOR THE REPULSOR BY AN ADDITIONAL eseAns: —_",
       "professionId": "combat",
       "position": {
         "x": 290,
@@ -276,7 +324,11 @@
         "combat.repulsor_radius_2"
       ],
       "tier": 3,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 1500,
+        "klaatu": 1500
+      }
     }
   ],
   "edges": [

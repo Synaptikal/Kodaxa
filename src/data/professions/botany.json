@@ -67,7 +67,7 @@
     {
       "id": "botany.growth_beam_1",
       "name": "Growth Beam 1",
-      "description": "BOTANY 300 KLAATU 300 UNLOCKS THE ABILITY TO USE THE X¥LOSLICER' TO QUICKLY MATURE Cl nt my mo md —_",
+      "description": "UNLOCKS THE ABILITY TO USE THE X¥LOSLICER' TO QUICKLY MATURE Cl nt my mo md —_",
       "professionId": "botany",
       "position": {
         "x": 710,
@@ -75,12 +75,16 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 300,
+        "klaatu": 300
+      }
     },
     {
       "id": "botany.pruning",
       "name": "Pruning",
-      "description": "BOTANY 600 KLAATU 600 UNLOCKS THE ABILITY TO USE THE XYLOSLICER'TO SHRINK TREES",
+      "description": "UNLOCKS THE ABILITY TO USE THE XYLOSLICER'TO SHRINK TREES",
       "professionId": "botany",
       "position": {
         "x": 920,
@@ -88,12 +92,16 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 600,
+        "klaatu": 600
+      }
     },
     {
       "id": "botany.seed_planting",
       "name": "Seed Planting",
-      "description": "BOTANY 600 KLAATU 600 UNLOCKS THE ABILITY TO USE THE TROWEL TO PLANT ALL THE TYPES Rk 2FEeRre AIT ASS FAM 27 VIS",
+      "description": "UNLOCKS THE ABILITY TO USE THE TROWEL TO PLANT ALL THE TYPES Rk 2FEeRre AIT ASS FAM 27 VIS",
       "professionId": "botany",
       "position": {
         "x": 1130,
@@ -101,12 +109,16 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 600,
+        "klaatu": 600
+      }
     },
     {
       "id": "botany.stunting",
       "name": "Stunting",
-      "description": "BOTANY 600 KLAATU 600 UNLOCKS THE ABILITY TO USE THE XYLOSLICER'TO STUNT TREE Paul ate T% os oe —_",
+      "description": "UNLOCKS THE ABILITY TO USE THE XYLOSLICER'TO STUNT TREE Paul ate T% os oe —_",
       "professionId": "botany",
       "position": {
         "x": 80,
@@ -114,12 +126,16 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 600,
+        "klaatu": 600
+      }
     },
     {
       "id": "botany.yield_1",
       "name": "Yield 1",
-      "description": "BOTANY 300 KLAATU 300 INCREASES THE YIELD RATE WHEN USING THE XYLOSLICER BY +20%",
+      "description": "INCREASES THE YIELD RATE WHEN USING THE XYLOSLICER BY +20%",
       "professionId": "botany",
       "position": {
         "x": 290,
@@ -127,12 +143,16 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 300,
+        "klaatu": 300
+      }
     },
     {
       "id": "botany.growth_beam_2",
       "name": "Growth Beam 2",
-      "description": "BOTANY 600 KLAATU 600 INCREASE THE GROWTH RATE OF THEXYLOSLICER GROWTH BEAM BY eAans —_",
+      "description": "INCREASE THE GROWTH RATE OF THEXYLOSLICER GROWTH BEAM BY eAans —_",
       "professionId": "botany",
       "position": {
         "x": 710,
@@ -142,12 +162,16 @@
         "botany.growth_beam_1"
       ],
       "tier": 2,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 600,
+        "klaatu": 600
+      }
     },
     {
       "id": "botany.yield_2",
       "name": "Yield 2",
-      "description": "BOTANY 600 KLAATU 600 INCREASES THE YIELD RATE WHEN USING THE XYLOSLICER BY +20%",
+      "description": "INCREASES THE YIELD RATE WHEN USING THE XYLOSLICER BY +20%",
       "professionId": "botany",
       "position": {
         "x": 290,
@@ -157,12 +181,16 @@
         "botany.yield_1"
       ],
       "tier": 2,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 600,
+        "klaatu": 600
+      }
     },
     {
       "id": "botany.growth_beam_3",
       "name": "Growth Beam 3",
-      "description": "BOTANY 900 KLAATU 900 INCREASE THE GROWTH RATE OF THEXYLOSLICER GROWTH BEAM BY eAans —_",
+      "description": "INCREASE THE GROWTH RATE OF THEXYLOSLICER GROWTH BEAM BY eAans —_",
       "professionId": "botany",
       "position": {
         "x": 710,
@@ -172,12 +200,16 @@
         "botany.growth_beam_2"
       ],
       "tier": 3,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 900,
+        "klaatu": 900
+      }
     },
     {
       "id": "botany.yield_3",
       "name": "Yield 3",
-      "description": "BOTANY 900 KLAATU 900 INCREASES THE YIELD RATE WHEN USING THE XYLOSLICER BY +20%",
+      "description": "INCREASES THE YIELD RATE WHEN USING THE XYLOSLICER BY +20%",
       "professionId": "botany",
       "position": {
         "x": 290,
@@ -187,12 +219,16 @@
         "botany.yield_2"
       ],
       "tier": 3,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 900,
+        "klaatu": 900
+      }
     },
     {
       "id": "botany.growth_beam_4",
       "name": "Growth Beam 4",
-      "description": "BOTANY 1,200 KLAATU 1,200 INCREASE THE GROWTH RATE OF THEXYLOSLICER GROWTH BEAM BY eAans —_",
+      "description": "INCREASE THE GROWTH RATE OF THEXYLOSLICER GROWTH BEAM BY eAans —_",
       "professionId": "botany",
       "position": {
         "x": 710,
@@ -202,7 +238,11 @@
         "botany.growth_beam_3"
       ],
       "tier": 4,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 1200,
+        "klaatu": 1200
+      }
     }
   ],
   "edges": [

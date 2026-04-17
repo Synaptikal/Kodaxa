@@ -32,7 +32,7 @@
     {
       "id": "crafting.additional_homestead",
       "name": "Additional Homestead",
-      "description": "CRAFTING 1,800 KLAATU 1,800 a ACQUIRE RIGHTS FOR A THIRD HOMESTEAD",
+      "description": "a ACQUIRE RIGHTS FOR A THIRD HOMESTEAD",
       "professionId": "crafting",
       "position": {
         "x": 80,
@@ -40,7 +40,11 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 1800,
+        "klaatu": 1800
+      }
     },
     {
       "id": "crafting.architect",
@@ -71,7 +75,7 @@
     {
       "id": "crafting.chronophaser",
       "name": "Chronophaser",
-      "description": "CRAFTING 450 KLAATU 450 LEARN TO CREATE THE CHRONOPHASER ALLOWING YOU TO Fear 02ers ARES AA",
+      "description": "LEARN TO CREATE THE CHRONOPHASER ALLOWING YOU TO Fear 02ers ARES AA",
       "professionId": "crafting",
       "position": {
         "x": 710,
@@ -79,7 +83,11 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 450,
+        "klaatu": 450
+      }
     },
     {
       "id": "crafting.civil_engineering",
@@ -110,7 +118,7 @@
     {
       "id": "crafting.curved_pieces",
       "name": "Curved Pieces",
-      "description": "CRAFTING 600 KLAATU 600 THIS SETUNLOCKED CURVED PIECES FOR CURVED WALLS, CEILINGS, AND e Aree. —_",
+      "description": "THIS SETUNLOCKED CURVED PIECES FOR CURVED WALLS, CEILINGS, AND e Aree. —_",
       "professionId": "crafting",
       "position": {
         "x": 80,
@@ -118,12 +126,16 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 600,
+        "klaatu": 600
+      }
     },
     {
       "id": "crafting.decorations",
       "name": "Decorations",
-      "description": "CRAFTING 400 KLAATU 400 FABRICATOR PIECES YOU USE TO DECORATE THE REST OF YOUR BUILD BEhe@s BORER L.A SRA LI eMMe Teka",
+      "description": "FABRICATOR PIECES YOU USE TO DECORATE THE REST OF YOUR BUILD BEhe@s BORER L.A SRA LI eMMe Teka",
       "professionId": "crafting",
       "position": {
         "x": 290,
@@ -131,7 +143,11 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 400,
+        "klaatu": 400
+      }
     },
     {
       "id": "crafting.depositor",
@@ -162,7 +178,7 @@
     {
       "id": "crafting.essentials",
       "name": "Essentials",
-      "description": "CRAFTING 350 KLAATU 350 ESSENTIAL FABRICATOR PIECES YOU NEED INCLUDING FLOOR, Tr ARSSIO APS AA iUtAl) FARAIChR",
+      "description": "ESSENTIAL FABRICATOR PIECES YOU NEED INCLUDING FLOOR, Tr ARSSIO APS AA iUtAl) FARAIChR",
       "professionId": "crafting",
       "position": {
         "x": 920,
@@ -170,7 +186,11 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 350,
+        "klaatu": 350
+      }
     },
     {
       "id": "crafting.fabricator",
@@ -188,7 +208,7 @@
     {
       "id": "crafting.fortress_shield",
       "name": "Fortress Shield",
-      "description": "CRAFTING 600 KLAATU 600 Ge LEARN TO BUILD THE FORTRESS me . SHIELD THAT SLOWS DOWN AND eras £48 is 8) ae Fie MARSA TRE VFI",
+      "description": "Ge LEARN TO BUILD THE FORTRESS me . SHIELD THAT SLOWS DOWN AND eras £48 is 8) ae Fie MARSA TRE VFI",
       "professionId": "crafting",
       "position": {
         "x": 80,
@@ -196,12 +216,16 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 600,
+        "klaatu": 600
+      }
     },
     {
       "id": "crafting.furniture",
       "name": "Furniture",
-      "description": "CRAFTING 275 KLAATU 275 CREATE FURNITURE ITEMS TO USE IN YOUR BUILDINGS: TABLES, CHAIRS, Pind | md | et dl ol a Oe mY | oe mer os el",
+      "description": "CREATE FURNITURE ITEMS TO USE IN YOUR BUILDINGS: TABLES, CHAIRS, Pind | md | et dl ol a Oe mY | oe mer os el",
       "professionId": "crafting",
       "position": {
         "x": 290,
@@ -209,7 +233,11 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 275,
+        "klaatu": 275
+      }
     },
     {
       "id": "crafting.grapple",
@@ -240,7 +268,7 @@
     {
       "id": "crafting.grenade_launchers",
       "name": "Grenade Launchers",
-      "description": "CRAFTING 600 KLAATU 600 me _ LAUNCHERS",
+      "description": "me _ LAUNCHERS",
       "professionId": "crafting",
       "position": {
         "x": 920,
@@ -248,7 +276,11 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 600,
+        "klaatu": 600
+      }
     },
     {
       "id": "crafting.harvester",
@@ -266,7 +298,7 @@
     {
       "id": "crafting.healix",
       "name": "Healix",
-      "description": "CRAFTING 600 KLAATU 600 Ga LEARN TO BUILD THE MEDICAL af . DEVICE, THE-MULTII-USE HEALIX",
+      "description": "Ga LEARN TO BUILD THE MEDICAL af . DEVICE, THE-MULTII-USE HEALIX",
       "professionId": "crafting",
       "position": {
         "x": 80,
@@ -274,12 +306,16 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 600,
+        "klaatu": 600
+      }
     },
     {
       "id": "crafting.initial_homestead",
       "name": "Initial Homestead",
-      "description": "CRAFTING 600 KLAATU 600 ACQUIRE: THE RIGHTS TO PLACE A HOMESTEAD.",
+      "description": "ACQUIRE: THE RIGHTS TO PLACE A HOMESTEAD.",
       "professionId": "crafting",
       "position": {
         "x": 290,
@@ -287,7 +323,11 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 600,
+        "klaatu": 600
+      }
     },
     {
       "id": "crafting.instaformer",
@@ -305,7 +345,7 @@
     {
       "id": "crafting.lathe_station",
       "name": "Lathe Station",
-      "description": "CRAFTING 450 KLAATU 450 FAMILIARIZE YOURSELF WITH THE LATHE,A CRAFTING STATION FOR BRane FRE (hie TA FAA RH Ms Meare",
+      "description": "FAMILIARIZE YOURSELF WITH THE LATHE,A CRAFTING STATION FOR BRane FRE (hie TA FAA RH Ms Meare",
       "professionId": "crafting",
       "position": {
         "x": 710,
@@ -313,12 +353,16 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 450,
+        "klaatu": 450
+      }
     },
     {
       "id": "crafting.lights",
       "name": "Lights",
-      "description": "CRAFTING 375 KLAATU 375 ALL THE-LIGHTS INCLUDING WHITE, RED, GREEN, BLUE, AND YELLOW meas tie eee AM ates) OA es PRL",
+      "description": "ALL THE-LIGHTS INCLUDING WHITE, RED, GREEN, BLUE, AND YELLOW meas tie eee AM ates) OA es PRL",
       "professionId": "crafting",
       "position": {
         "x": 920,
@@ -326,7 +370,11 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 375,
+        "klaatu": 375
+      }
     },
     {
       "id": "crafting.machinist",
@@ -344,7 +392,7 @@
     {
       "id": "crafting.manufactured_blocks",
       "name": "Manufactured Blocks",
-      "description": "CRAFTING 250 KLAATU 250 a MAKE BLOCK STYLES INCLUDING BLACK -BRICK, RED BRICK, GLASS, Brae!) RSE ARIE ee CARMA",
+      "description": "a MAKE BLOCK STYLES INCLUDING BLACK -BRICK, RED BRICK, GLASS, Brae!) RSE ARIE ee CARMA",
       "professionId": "crafting",
       "position": {
         "x": 80,
@@ -352,7 +400,11 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 250,
+        "klaatu": 250
+      }
     },
     {
       "id": "crafting.metal_blocks",
@@ -370,7 +422,7 @@
     {
       "id": "crafting.objects",
       "name": "Objects",
-      "description": "CRAFTING 425 KLAATU 425 MISCELLANEOUS OBJECTS LIKE CRATES, BARRELS, COMPUTER MmAatems ee ARIE BABIES T AE Ee Ale",
+      "description": "MISCELLANEOUS OBJECTS LIKE CRATES, BARRELS, COMPUTER MmAatems ee ARIE BABIES T AE Ee Ale",
       "professionId": "crafting",
       "position": {
         "x": 500,
@@ -378,7 +430,11 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 425,
+        "klaatu": 425
+      }
     },
     {
       "id": "crafting.pathfinder",
@@ -435,7 +491,7 @@
     {
       "id": "crafting.power_battery",
       "name": "Power Battery",
-      "description": "CRAFTING 300 KLAATU 300 Ge LEARN TO USE THE POWER BATTERY me . CONSUMABLE TO RECHARGE YOUR Bat ARSENE AIR eee",
+      "description": "Ge LEARN TO USE THE POWER BATTERY me . CONSUMABLE TO RECHARGE YOUR Bat ARSENE AIR eee",
       "professionId": "crafting",
       "position": {
         "x": 290,
@@ -443,12 +499,16 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 300,
+        "klaatu": 300
+      }
     },
     {
       "id": "crafting.pruning_shears",
       "name": "Pruning Shears",
-      "description": "CRAFTING 450 KLAATU 450 Ga LEARN TO MAKE THE PRUNING at . SHEARSSO YOU CAN FORCE GROW,",
+      "description": "Ga LEARN TO MAKE THE PRUNING at . SHEARSSO YOU CAN FORCE GROW,",
       "professionId": "crafting",
       "position": {
         "x": 500,
@@ -456,12 +516,16 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 450,
+        "klaatu": 450
+      }
     },
     {
       "id": "crafting.ramps",
       "name": "Ramps",
-      "description": "CRAFTING 300 KLAATU 300 ALL THE SLOPED PIECES INCLUDING WIDE AND NARROW STAIRS, WIDE REIT BIA Mme? eARARC A bat Ald",
+      "description": "ALL THE SLOPED PIECES INCLUDING WIDE AND NARROW STAIRS, WIDE REIT BIA Mme? eARARC A bat Ald",
       "professionId": "crafting",
       "position": {
         "x": 710,
@@ -469,12 +533,16 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 300,
+        "klaatu": 300
+      }
     },
     {
       "id": "crafting.refining_station",
       "name": "Refining Station",
-      "description": "CRAFTING 450 KLAATU 450 NN LEARN TO USE THE REFINERY STATION AND FIND WAYS TO Ahi BAA AA ATe RIAL @ 1mkhnrTm",
+      "description": "NN LEARN TO USE THE REFINERY STATION AND FIND WAYS TO Ahi BAA AA ATe RIAL @ 1mkhnrTm",
       "professionId": "crafting",
       "position": {
         "x": 920,
@@ -482,12 +550,16 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 450,
+        "klaatu": 450
+      }
     },
     {
       "id": "crafting.reflection_shield",
       "name": "Reflection Shield",
-      "description": "CRAFTING 600 KLAATU 600 Ge LEARN TO BUILD THE REFLECTION me . SHIELD SO YOU CAN SEND ref le) Freee BASE AT Um ImM",
+      "description": "Ge LEARN TO BUILD THE REFLECTION me . SHIELD SO YOU CAN SEND ref le) Freee BASE AT Um ImM",
       "professionId": "crafting",
       "position": {
         "x": 1130,
@@ -495,12 +567,16 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 600,
+        "klaatu": 600
+      }
     },
     {
       "id": "crafting.rugs_and_floors",
       "name": "Rugs And Floors",
-      "description": "CRAFTING 350 KLAATU 350 COLORED 1X1 RUG. SQUARES AND 2X2 COLORED FLOOR TILES",
+      "description": "COLORED 1X1 RUG. SQUARES AND 2X2 COLORED FLOOR TILES",
       "professionId": "crafting",
       "position": {
         "x": 80,
@@ -508,7 +584,11 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 350,
+        "klaatu": 350
+      }
     },
     {
       "id": "crafting.stone_blocks",
@@ -591,7 +671,7 @@
     {
       "id": "crafting.windows_walls",
       "name": "Windows Walls",
-      "description": "CRAFTING 550 KLAATU 550 THIS SET-UNLOCKS DOORWAY AND WINDOW PIECES INCLUDING WALLS Beri oRaA A) CR Aree Le rariare",
+      "description": "THIS SET-UNLOCKS DOORWAY AND WINDOW PIECES INCLUDING WALLS Beri oRaA A) CR Aree Le rariare",
       "professionId": "crafting",
       "position": {
         "x": 290,
@@ -599,12 +679,16 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 550,
+        "klaatu": 550
+      }
     },
     {
       "id": "crafting.xyloslicer",
       "name": "Xyloslicer",
-      "description": "CRAFTING 450 KLAATU 450 Ge LEARN TO BUILD THE XYLOSLICER, me . THE TOOL USED FOR CUTTING AND ra ARIAS Se eeee.",
+      "description": "Ge LEARN TO BUILD THE XYLOSLICER, me . THE TOOL USED FOR CUTTING AND ra ARIAS Se eeee.",
       "professionId": "crafting",
       "position": {
         "x": 500,
@@ -612,7 +696,11 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 450,
+        "klaatu": 450
+      }
     }
   ],
   "edges": [

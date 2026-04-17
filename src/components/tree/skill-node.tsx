@@ -62,6 +62,7 @@ function SkillNodeComponent({ data, id }: NodeProps<SkillFlowNode>) {
     special,
     unlocksTree,
     implemented,
+    costs,
   } = data;
 
   const stateClass = STATE_STYLES[state];
@@ -102,6 +103,13 @@ function SkillNodeComponent({ data, id }: NodeProps<SkillFlowNode>) {
 
       {/* Node name */}
       <p className="text-xs font-semibold leading-tight truncate">{label}</p>
+
+      {/* Cost row */}
+      {costs && (
+        <p className="text-[9px] font-mono text-slate-500 mt-0.5 tabular-nums">
+          {costs.exp.toLocaleString()} EXP · {costs.klaatu.toLocaleString()} KL
+        </p>
+      )}
 
       {/* Badges row */}
       <div className="flex gap-1 mt-1.5 flex-wrap">

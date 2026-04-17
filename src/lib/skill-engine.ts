@@ -104,14 +104,15 @@ function checkPrerequisites(
   allNodes: Map<string, SkillNode>,
   errors: BuildError[]
 ): void {
-  const activeSet = new Set(build.activeSkills);
+  // Atrophied skills still satisfy prerequisite requirements — they were learned
+  const knownSet = new Set([...build.activeSkills, ...build.atrophiedSkills]);
 
   for (const skillId of build.activeSkills) {
     const node = allNodes.get(skillId);
     if (!node) continue;
 
     for (const prereqId of node.prerequisites) {
-      if (!activeSet.has(prereqId)) {
+      if (!knownSet.has(prereqId)) {
         errors.push({
           type: 'missing_prerequisite',
           message: `"${node.name}" requires "${prereqId}" to be in practice.`,

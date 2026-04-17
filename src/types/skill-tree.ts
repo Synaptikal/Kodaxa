@@ -28,6 +28,12 @@ export type SkillNodeState =
   | 'out_of_practice'  // Previously learned, now atrophied
   | 'wip';             // Exists in game data but not yet implemented
 
+/** EXP and Klaatu costs to unlock a skill node */
+export interface SkillCosts {
+  exp: number;
+  klaatu: number;
+}
+
 /** A single node in a skill tree */
 export interface SkillNode {
   /** Unique ID across the entire planner (e.g., "ranger.camping.forward_base") */
@@ -59,6 +65,9 @@ export interface SkillNode {
 
   /** Tier/depth in the tree (0 = root, higher = deeper) */
   tier: number;
+
+  /** EXP and Klaatu costs extracted from OCR data — absent if not yet captured */
+  costs?: SkillCosts;
 }
 
 /** A Special ability that can be crafted into a tool */

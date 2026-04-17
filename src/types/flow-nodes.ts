@@ -10,7 +10,7 @@
  */
 
 import type { Node, Edge } from '@xyflow/react';
-import type { SkillNodeState, SkillSpecial } from '@/types/skill-tree';
+import type { SkillNodeState, SkillSpecial, SkillCosts } from '@/types/skill-tree';
 
 /** Data payload carried by each skill node in the React Flow graph */
 export interface SkillNodeData extends Record<string, unknown> {
@@ -40,6 +40,9 @@ export interface SkillNodeData extends Record<string, unknown> {
 
   /** Whether this node is currently selected (for click feedback) */
   selected?: boolean;
+
+  /** EXP and Klaatu costs — absent if not yet captured from OCR */
+  costs?: SkillCosts;
 }
 
 /** Typed React Flow node for skill trees */

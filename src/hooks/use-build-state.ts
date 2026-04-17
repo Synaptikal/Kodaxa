@@ -84,6 +84,9 @@ export function useBuildState(config: BuildStateConfig): BuildState {
       // Also select the node for the detail panel
       setSelectedNodeId(nodeId);
       setBuild((prev) => {
+        const node = nodeMap.get(nodeId);
+        if (!node) return prev;
+
         const isActive = prev.activeSkills.includes(nodeId);
         const isAtrophied = prev.atrophiedSkills.includes(nodeId);
 
@@ -105,6 +108,11 @@ export function useBuildState(config: BuildStateConfig): BuildState {
           };
         }
 
+        // Block activation if prerequisites are not met (locked node)
+        const knownSkills = new Set([...prev.activeSkills, ...prev.atrophiedSkills]);
+        const prereqsMet = node.prerequisites.every((id) => knownSkills.has(id));
+        if (!prereqsMet) return prev;
+
         return {
           ...prev,
           activeSkills: [...prev.activeSkills, nodeId],
@@ -112,7 +120,7 @@ export function useBuildState(config: BuildStateConfig): BuildState {
         };
       });
     },
-    [],
+    [nodeMap],
   );
 
   /** Select a node for the detail panel without toggling skill state */

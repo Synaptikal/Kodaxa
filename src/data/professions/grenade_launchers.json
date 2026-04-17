@@ -31,7 +31,7 @@
     {
       "id": "grenade_launchers.flight_speed_1",
       "name": "Flight Speed 1",
-      "description": "GRENADELAUNCHER 300 KLAATU 300 INCREASE THE PROJECTILE SPEED OF PRIMARY FIRE BY 10%",
+      "description": "INCREASE THE PROJECTILE SPEED OF PRIMARY FIRE BY 10%",
       "professionId": "grenade_launchers",
       "position": {
         "x": 80,
@@ -39,12 +39,16 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 300,
+        "klaatu": 300
+      }
     },
     {
       "id": "grenade_launchers.grenade_area_1",
       "name": "Grenade Area 1",
-      "description": "GRENADELAUNCHER 300 KLAATU 300 INCREASE THE GRENADE'S EXPLOSIVE RADIUS BY 20%",
+      "description": "INCREASE THE GRENADE'S EXPLOSIVE RADIUS BY 20%",
       "professionId": "grenade_launchers",
       "position": {
         "x": 290,
@@ -52,12 +56,16 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 300,
+        "klaatu": 300
+      }
     },
     {
       "id": "grenade_launchers.grenade_launcher",
       "name": "Grenade Launcher",
-      "description": "GRENADELAUNCHER 0 KLAATU 0 LEARN HOW TO USE THE GRENADE LAUNCHER",
+      "description": "LEARN HOW TO USE THE GRENADE LAUNCHER",
       "professionId": "grenade_launchers",
       "position": {
         "x": 500,
@@ -65,12 +73,16 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 0,
+        "klaatu": 0
+      }
     },
     {
       "id": "grenade_launchers.speed",
       "name": "Speed",
-      "description": "GRENADELAUNCHER 300 KLAATU 300 INCREASE YOUR GRENADE LAUNCHER'S PRIMARY RATE OF FIRE me ann —_",
+      "description": "INCREASE YOUR GRENADE LAUNCHER'S PRIMARY RATE OF FIRE me ann —_",
       "professionId": "grenade_launchers",
       "position": {
         "x": 710,
@@ -78,12 +90,16 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 300,
+        "klaatu": 300
+      }
     },
     {
       "id": "grenade_launchers.flight_speed_2",
       "name": "Flight Speed 2",
-      "description": "GRENADELAUNCHER 600 KLAATU 600 INCREASE THE PROJECTILE SPEED OF PRIMARY FIRE BY AN ADDITIONAL a“aeans- —_—",
+      "description": "INCREASE THE PROJECTILE SPEED OF PRIMARY FIRE BY AN ADDITIONAL a“aeans- —_—",
       "professionId": "grenade_launchers",
       "position": {
         "x": 80,
@@ -93,12 +109,16 @@
         "grenade_launchers.flight_speed_1"
       ],
       "tier": 2,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 600,
+        "klaatu": 600
+      }
     },
     {
       "id": "grenade_launchers.grenade_area_2",
       "name": "Grenade Area 2",
-      "description": "GRENADELAUNCHER 600 KLAATU 600 INCREASE THE GRENADE'S EXPLOSIVE RADIUS BY AN RPI AR SANs",
+      "description": "INCREASE THE GRENADE'S EXPLOSIVE RADIUS BY AN RPI AR SANs",
       "professionId": "grenade_launchers",
       "position": {
         "x": 290,
@@ -108,12 +128,16 @@
         "grenade_launchers.grenade_area_1"
       ],
       "tier": 2,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 600,
+        "klaatu": 600
+      }
     },
     {
       "id": "grenade_launchers.speed_2",
       "name": "Speed 2",
-      "description": "GRENADELAUNCHER 600 KLAATU 600 INCREASE YOUR GRENADE LAUNCHER'S PRIMARY RATE OF FIRE Rv ALL ARPT As amos",
+      "description": "INCREASE YOUR GRENADE LAUNCHER'S PRIMARY RATE OF FIRE Rv ALL ARPT As amos",
       "professionId": "grenade_launchers",
       "position": {
         "x": 710,
@@ -123,7 +147,11 @@
         "grenade_launchers.speed"
       ],
       "tier": 2,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 600,
+        "klaatu": 600
+      }
     },
     {
       "id": "grenade_launchers.flight_speed_3",

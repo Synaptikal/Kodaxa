@@ -53,6 +53,22 @@ export function SkillCounter({ build, allNodes }: SkillCounterProps) {
       .slice(0, 5);
   }, [build.activeSkills, allNodes]);
 
+  /** Total EXP and Klaatu cost across all active skills with cost data */
+  const totalCosts = useMemo(() => {
+    let exp = 0;
+    let klaatu = 0;
+    let covered = 0;
+    for (const skillId of build.activeSkills) {
+      const node = allNodes.get(skillId);
+      if (node?.costs) {
+        exp += node.costs.exp;
+        klaatu += node.costs.klaatu;
+        covered++;
+      }
+    }
+    return { exp, klaatu, covered };
+  }, [build.activeSkills, allNodes]);
+
   return (
     <div className="flex flex-col gap-2 p-3 rounded-lg bg-slate-800/50 border border-slate-700">
       <div className="flex items-baseline justify-between">
@@ -98,6 +114,23 @@ export function SkillCounter({ build, allNodes }: SkillCounterProps) {
               <span className="tabular-nums">{count}</span>
             </div>
           ))}
+        </div>
+      )}
+
+      {/* Cost totals — only shown when at least one costed skill is active */}
+      {totalCosts.covered > 0 && (
+        <div className="mt-2 pt-2 border-t border-slate-700/60 space-y-1">
+          <p className="text-[9px] font-mono uppercase tracking-[0.1em] text-slate-600">
+            Build Cost ({totalCosts.covered} costed)
+          </p>
+          <div className="flex justify-between text-[10px] font-mono text-slate-400">
+            <span>EXP</span>
+            <span className="tabular-nums">{totalCosts.exp.toLocaleString()}</span>
+          </div>
+          <div className="flex justify-between text-[10px] font-mono text-slate-400">
+            <span>Klaatu</span>
+            <span className="tabular-nums">{totalCosts.klaatu.toLocaleString()}</span>
+          </div>
         </div>
       )}
     </div>

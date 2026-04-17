@@ -30,7 +30,7 @@
     {
       "id": "medical.cureall",
       "name": "Cureall",
-      "description": "MEDICAL 100 KLAATU 100 REMOVES POISON STATUS",
+      "description": "REMOVES POISON STATUS",
       "professionId": "medical",
       "position": {
         "x": 80,
@@ -38,12 +38,16 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 100,
+        "klaatu": 100
+      }
     },
     {
       "id": "medical.cures",
       "name": "Cures",
-      "description": "MEDICAL 300 KLAATU 300 CREATE.CURES THAT REMOVE STATUS EFFECTS",
+      "description": "CREATE.CURES THAT REMOVE STATUS EFFECTS",
       "professionId": "medical",
       "position": {
         "x": 290,
@@ -51,12 +55,16 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 300,
+        "klaatu": 300
+      }
     },
     {
       "id": "medical.flame_out",
       "name": "Flame Out",
-      "description": "MEDICAL 100 KLAATU 100 REMOVES ONFIRE STATUS",
+      "description": "REMOVES ONFIRE STATUS",
       "professionId": "medical",
       "position": {
         "x": 500,
@@ -64,12 +72,16 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 100,
+        "klaatu": 100
+      }
     },
     {
       "id": "medical.focus_booster",
       "name": "Focus Booster",
-      "description": "MEDICAL 300 KLAATU 300 IMMEDIATE FOCUS RESTORATION",
+      "description": "IMMEDIATE FOCUS RESTORATION",
       "professionId": "medical",
       "position": {
         "x": 710,
@@ -77,12 +89,16 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 300,
+        "klaatu": 300
+      }
     },
     {
       "id": "medical.go_juice",
       "name": "Go Juice",
-      "description": "MEDICAL 100 KLAATU 100 IMMEDIATELY REMOVES THE STUNNED STATUS AND RESTORES rin of TYTIiLie.© —_",
+      "description": "IMMEDIATELY REMOVES THE STUNNED STATUS AND RESTORES rin of TYTIiLie.© —_",
       "professionId": "medical",
       "position": {
         "x": 920,
@@ -90,7 +106,11 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 100,
+        "klaatu": 100
+      }
     },
     {
       "id": "medical.healix_specials",
@@ -121,7 +141,7 @@
     {
       "id": "medical.mass_heal",
       "name": "Mass Heal",
-      "description": "MEDICAL 800 KLAATU 800 USE THIS: ABILITY TO LIGHTLY HEAL ALLALLIES IN AN AREA AROUND YOU",
+      "description": "USE THIS: ABILITY TO LIGHTLY HEAL ALLALLIES IN AN AREA AROUND YOU",
       "professionId": "medical",
       "position": {
         "x": 290,
@@ -129,7 +149,11 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 800,
+        "klaatu": 800
+      }
     },
     {
       "id": "medical.medicine",
@@ -160,7 +184,7 @@
     {
       "id": "medical.siphon",
       "name": "Siphon",
-      "description": "MEDICAL 800 KLAATU 800 UNLOCK: THE ABILITY TO USE SIPHON, A BEAM THAT DRAINS Ri AhO Fs! Fees TRI FPARerE FT ALIT",
+      "description": "UNLOCK: THE ABILITY TO USE SIPHON, A BEAM THAT DRAINS Ri AhO Fs! Fees TRI FPARerE FT ALIT",
       "professionId": "medical",
       "position": {
         "x": 920,
@@ -168,12 +192,16 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 800,
+        "klaatu": 800
+      }
     },
     {
       "id": "medical.stamina_booster",
       "name": "Stamina Booster",
-      "description": "MEDICAL 300 KLAATU 300 IMMEDIATE. STAMINA RESTORATION",
+      "description": "IMMEDIATE. STAMINA RESTORATION",
       "professionId": "medical",
       "position": {
         "x": 1130,
@@ -181,12 +209,16 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 300,
+        "klaatu": 300
+      }
     },
     {
       "id": "medical.surge",
       "name": "Surge",
-      "description": "MEDICAL 800 KLAATU 800 USE THIS: ABILITY TO REMOVE NEGATIVE STATUS:EFFECTS FROM ROR 181 ABE REAR AFP kr BPR",
+      "description": "USE THIS: ABILITY TO REMOVE NEGATIVE STATUS:EFFECTS FROM ROR 181 ABE REAR AFP kr BPR",
       "professionId": "medical",
       "position": {
         "x": 80,
@@ -194,12 +226,16 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 800,
+        "klaatu": 800
+      }
     },
     {
       "id": "medical.thaw_bones",
       "name": "Thaw Bones",
-      "description": "MEDICAL 100 KLAATU 100 REMOVES FROZEN STATUS",
+      "description": "REMOVES FROZEN STATUS",
       "professionId": "medical",
       "position": {
         "x": 290,
@@ -207,12 +243,16 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 100,
+        "klaatu": 100
+      }
     },
     {
       "id": "medical.watt_away",
       "name": "Watt Away",
-      "description": "MEDICAL 100 KLAATU 100 IMMEDIATELY REMOVES THE ELECTRIFIED STATUS AND RESTORES Y a em tm nl ml —_—",
+      "description": "IMMEDIATELY REMOVES THE ELECTRIFIED STATUS AND RESTORES Y a em tm nl ml —_—",
       "professionId": "medical",
       "position": {
         "x": 500,
@@ -220,7 +260,11 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 100,
+        "klaatu": 100
+      }
     }
   ],
   "edges": [
