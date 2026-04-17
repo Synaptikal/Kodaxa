@@ -12,8 +12,18 @@ import type { DispatchPost, DispatchCategory } from '@/types/dispatch';
 import { post as charterV1 } from './posts/charter-v1';
 import { post as twilightManifest } from './posts/twilight-creature-manifest';
 import { post as scoutCall } from './posts/open-horizons-scout-call';
+import { post as buildingPlannerDeploy } from './posts/building-planner-deploy';
+import { post as crafterDirectoryLaunch } from './posts/crafter-directory-launch';
+import { post as ocrPipelineBrief } from './posts/ocr-pipeline-brief';
 
-const POSTS: DispatchPost[] = [charterV1, twilightManifest, scoutCall];
+const POSTS: DispatchPost[] = [
+  charterV1,
+  twilightManifest,
+  scoutCall,
+  buildingPlannerDeploy,
+  crafterDirectoryLaunch,
+  ocrPipelineBrief,
+];
 
 // Sort by published_at DESC once, reuse.
 const SORTED: DispatchPost[] = [...POSTS].sort((a, b) =>

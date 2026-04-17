@@ -159,6 +159,67 @@
     radial-gradient(1px 1px at 85%  85%, rgba(200,230,255,0.6) 0%, transparent 100%);
 }
 
+/* ── Scanline overlay — body texture (glass-screen feel) ─────────── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    oklch(1 0 0 / 0.012) 2px,
+    oklch(1 0 0 / 0.012) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ── Status dot pulse — for ● LIVE / ● ONLINE badges ─────────────── */
+@keyframes dot-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 currentColor; opacity: 1; }
+  50%       { box-shadow: 0 0 6px 2px currentColor; opacity: 0.7; }
+}
+
+.status-dot-live {
+  display: inline-block;
+  border-radius: 50%;
+  animation: dot-pulse 2s ease-in-out infinite;
+}
+
+/* ── Relay ticker scroll ──────────────────────────────────────────── */
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.relay-ticker-track {
+  display: flex;
+  white-space: nowrap;
+  animation: ticker-scroll 40s linear infinite;
+}
+
+.relay-ticker-track:hover {
+  animation-play-state: paused;
+}
+
+/* ── Skeleton shimmer for data tables ────────────────────────────── */
+@keyframes shimmer {
+  from { background-position: -200% 0; }
+  to   { background-position:  200% 0; }
+}
+
+.skeleton-row {
+  background: linear-gradient(
+    90deg,
+    var(--color-sr-surface) 25%,
+    var(--color-sr-panel)   50%,
+    var(--color-sr-surface) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease infinite;
+}
+
 /* ── React Flow overrides ─────────────────────────────────────────── */
 @layer components {
   /* Dark theme adjustments for React Flow's built-in elements */
