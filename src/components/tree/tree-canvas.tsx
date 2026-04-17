@@ -12,7 +12,7 @@
 
 'use client';
 
-import { useCallback, useEffect, useMemo } from 'react';
+import { useCallback, useEffect, useMemo, useRef } from 'react';
 import {
   ReactFlow,
   Background,
@@ -20,6 +20,7 @@ import {
   MiniMap,
   useNodesState,
   useEdgesState,
+  useReactFlow,
 } from '@xyflow/react';
 import type { MouseEvent } from 'react';
 import '@xyflow/react/dist/style.css';
@@ -67,10 +68,24 @@ export function TreeCanvas({
 }: TreeCanvasProps) {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+  const { fitView } = useReactFlow();
+
+  // Track last known set of profession IDs to detect when a new tree is added
+  const prevProfIds = useRef<string>('');
 
   // Sync when parent recomputes the graph (profession toggle, skill click)
-  useEffect(() => { setNodes(initialNodes); }, [initialNodes, setNodes]);
-  useEffect(() => { setEdges(initialEdges); }, [initialEdges, setEdges]);
+  useEffect(() => {
+    setNodes(initialNodes);
+    setEdges(initialEdges);
+
+    // Re-fit only when the profession set changes (not on every skill click)
+    const profIds = Array.from(new Set(initialNodes.map((n) => n.data.professionId))).sort().join(',');
+    if (profIds !== prevProfIds.current) {
+      prevProfIds.current = profIds;
+      // Defer to let React Flow settle the new layout before fitting
+      requestAnimationFrame(() => fitView({ padding: 0.15, duration: 300 }));
+    }
+  }, [initialNodes, initialEdges, setNodes, setEdges, fitView]);
 
   const handleNodeClick = useCallback(
     (_event: MouseEvent, node: SkillFlowNode) => {

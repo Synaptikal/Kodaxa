@@ -224,6 +224,10 @@ export function PlannerShell() {
           professions={ALL_PROFESSIONS}
           onEquip={(idx, prof) => {
             state.equipTool(idx, prof);
+            // Auto-show this profession's tree on the canvas
+            if (!state.selectedProfessionIds.includes(prof.id)) {
+              state.toggleProfession(prof.id);
+            }
             setToolModalSlot(null);
           }}
           onClear={(idx) => {
