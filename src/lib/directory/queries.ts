@@ -104,8 +104,8 @@ export async function getCrafterProfile(
     .select(
       `
       *,
-      crafter_specializations (*),
-      crafter_reviews!reviewee_id (
+      specializations:crafter_specializations (*),
+      reviews:crafter_reviews!reviewee_id (
         *,
         reviewer:reviewer_id (id, display_name, in_game_name)
       )
@@ -139,8 +139,8 @@ export async function getOwnProfile(): Promise<CrafterProfileFull | null> {
     .select(
       `
       *,
-      crafter_specializations (*),
-      crafter_reviews!reviewee_id (
+      specializations:crafter_specializations (*),
+      reviews:crafter_reviews!reviewee_id (
         *,
         reviewer:reviewer_id (id, display_name, in_game_name)
       )
