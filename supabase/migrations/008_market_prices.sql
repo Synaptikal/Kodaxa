@@ -71,7 +71,9 @@ CREATE INDEX idx_market_submitter    ON market_price_reports(submitter_id);
 
 -- ── AGGREGATE VIEW ────────────────────────────────────────────────
 -- Last-30-day rollup per (item, planet, side).
-CREATE VIEW market_price_stats AS
+CREATE VIEW market_price_stats
+  WITH (security_invoker = true)
+AS
 SELECT
   item_name,
   item_category,

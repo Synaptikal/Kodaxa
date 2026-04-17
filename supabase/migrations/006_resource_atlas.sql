@@ -75,7 +75,9 @@ CREATE INDEX idx_readings_created_at ON resource_readings(created_at DESC);
 -- ── 2. AGGREGATE VIEW ─────────────────────────────────────────────
 -- Per (resource, planet) tuple: sample count + min/max/avg PQRV.
 -- Used by the Atlas browser for fast summary rendering.
-CREATE VIEW resource_stats AS
+CREATE VIEW resource_stats
+  WITH (security_invoker = true)
+AS
 SELECT
   resource_name,
   resource_category,
