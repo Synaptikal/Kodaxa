@@ -120,14 +120,12 @@ export default function CorporationPage() {
               ))}
             </div>
             <div className="pt-2 flex items-center gap-3">
-              <a
-                href="https://discord.gg/kodaxa"
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/corp/join"
                 className="px-4 py-2 rounded-lg bg-amber-800/30 border border-amber-700/40 text-amber-300 text-sm font-mono hover:bg-amber-800/50 transition-all"
               >
-                Apply via Discord →
-              </a>
+                Apply to Kodaxa →
+              </Link>
               <Link
                 href="/directory"
                 className="text-xs font-mono text-slate-500 hover:text-slate-300 transition-colors"

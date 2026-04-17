@@ -54,6 +54,8 @@ const DIVISION_CTX = [
   { prefix: '/market',      division: 'COMMERCE',     tool: 'MARKET PRICES',                  color: 'text-amber-700' },
   { prefix: '/patch-notes', division: 'DISPATCH',     tool: 'KODAXA DISPATCH',                color: 'text-violet-700' },
   { prefix: '/corporation', division: 'HQ',           tool: 'CORPORATION REGISTRY',           color: 'text-cyan-700' },
+  { prefix: '/corp/hq',    division: 'HQ',           tool: 'INTERNAL SYSTEMS',               color: 'text-amber-700' },
+  { prefix: '/corp/join',  division: 'PERSONNEL',    tool: 'RECRUITMENT',                    color: 'text-violet-700' },
   { prefix: '/terminal',    division: 'PERSONNEL',    tool: 'MY TERMINAL',                    color: 'text-slate-500' },
   { prefix: '/auth',        division: 'PERSONNEL',    tool: 'ACCOUNT SERVICES',               color: 'text-slate-500' },
 ] as const;
@@ -101,9 +103,17 @@ const NAV_GROUPS: NavGroup[] = [
     ],
   },
   {
+    label: 'Corp HQ',
+    items: [
+      { href: '/corp/hq',             label: 'Command Center',   status: 'new' as ItemStatus },
+      { href: '/corp/hq/commissions', label: 'Commission Board', status: 'new' as ItemStatus },
+      { href: '/corp/join',           label: 'Apply to Kodaxa'               },
+    ],
+  },
+  {
     label: 'My Terminal',
     items: [
-      { href: '/xp-timer',    label: 'XP & Atrophy Timer', status: 'new' },
+      { href: '/xp-timer',    label: 'XP & Atrophy Timer', status: 'new' as ItemStatus },
       { href: '/terminal',    label: 'My Profile' },
     ],
   },
