@@ -1,0 +1,103 @@
+{
+  "id": "business",
+  "name": "Business",
+  "description": "Run shops and trade with other players. Manage vendor kiosks, advertise goods, and handle logistics across the colony.",
+  "category": "social",
+  "tool": {
+    "name": "Trade Terminal",
+    "professionId": "business",
+    "icon": "trade-terminal"
+  },
+  "implemented": true,
+  "branchesTo": [],
+  "branchesFrom": [],
+  "nodes": [
+    {
+      "id": "business.business",
+      "name": "Business",
+      "description": "Run shops and trade with other players. Manage vendor kiosks, advertise goods, and handle logistics across the colony.",
+      "professionId": "business",
+      "position": {
+        "x": 400,
+        "y": 100
+      },
+      "prerequisites": [],
+      "tier": 0,
+      "implemented": true
+    },
+    {
+      "id": "business.advertising",
+      "name": "Advertising",
+      "description": "Under development.",
+      "professionId": "business",
+      "position": {
+        "x": 80,
+        "y": 280
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": false
+    },
+    {
+      "id": "business.logistics",
+      "name": "Logistics",
+      "description": "LEARN ABOUT LOGISTICS AND BUSINESS",
+      "professionId": "business",
+      "position": {
+        "x": 290,
+        "y": 280
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": false
+    },
+    {
+      "id": "business.management",
+      "name": "Management",
+      "description": "Under development.",
+      "professionId": "business",
+      "position": {
+        "x": 500,
+        "y": 280
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": false
+    },
+    {
+      "id": "business.vendor_kiosk",
+      "name": "Vendor Kiosk",
+      "description": "LEARN TO BUILD THE VENDOR KIOSK SOYOUCAN-PLACE IT ON YOUR RIMmhAFrEe Ter Ar ALIS TART A",
+      "professionId": "business",
+      "position": {
+        "x": 710,
+        "y": 280
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    }
+  ],
+  "edges": [
+    {
+      "source": "business.business",
+      "target": "business.advertising",
+      "crossTree": false
+    },
+    {
+      "source": "business.business",
+      "target": "business.logistics",
+      "crossTree": false
+    },
+    {
+      "source": "business.business",
+      "target": "business.management",
+      "crossTree": false
+    },
+    {
+      "source": "business.business",
+      "target": "business.vendor_kiosk",
+      "crossTree": false
+    }
+  ]
+}

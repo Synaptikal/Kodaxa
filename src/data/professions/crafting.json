@@ -1,0 +1,845 @@
+{
+  "id": "crafting",
+  "name": "Crafting",
+  "description": "Build structures, homesteads, and equipment. The core crafting tree unlocks weapon and medical professions.",
+  "category": "crafting",
+  "tool": {
+    "name": "Crafting Bench",
+    "professionId": "crafting",
+    "icon": "crafting-bench"
+  },
+  "implemented": true,
+  "branchesTo": [
+    "pistol",
+    "grenade_launchers",
+    "medical"
+  ],
+  "branchesFrom": [],
+  "nodes": [
+    {
+      "id": "crafting.crafting",
+      "name": "Crafting",
+      "description": "Build structures, homesteads, and equipment. The core crafting tree unlocks weapon and medical professions.",
+      "professionId": "crafting",
+      "position": {
+        "x": 400,
+        "y": 100
+      },
+      "prerequisites": [],
+      "tier": 0,
+      "implemented": true
+    },
+    {
+      "id": "crafting.additional_homestead",
+      "name": "Additional Homestead",
+      "description": "CRAFTING 1,800 KLAATU 1,800 a ACQUIRE RIGHTS FOR A THIRD HOMESTEAD",
+      "professionId": "crafting",
+      "position": {
+        "x": 80,
+        "y": 280
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "crafting.architect",
+      "name": "Architect",
+      "description": "LEARN TO USE THE FABRICATOR AND INSTAFORMER.",
+      "professionId": "crafting",
+      "position": {
+        "x": 290,
+        "y": 280
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "crafting.bioscanner",
+      "name": "Bioscanner",
+      "description": "CRAFTING 450 ee KLAATU 450 LEARN TO CRAFT THE BIOSCANNER, ATOOLFOR CATALOGING LIVING Reem aARIIMALe —",
+      "professionId": "crafting",
+      "position": {
+        "x": 500,
+        "y": 280
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "crafting.chronophaser",
+      "name": "Chronophaser",
+      "description": "CRAFTING 450 KLAATU 450 LEARN TO CREATE THE CHRONOPHASER ALLOWING YOU TO Fear 02ers ARES AA",
+      "professionId": "crafting",
+      "position": {
+        "x": 710,
+        "y": 280
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "crafting.civil_engineering",
+      "name": "Civil Engineering",
+      "description": "ee LEARN CIVIL ENGINEERING SKILLS.",
+      "professionId": "crafting",
+      "position": {
+        "x": 920,
+        "y": 280
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "crafting.cooking_station",
+      "name": "Cooking Station",
+      "description": "CRAFTING 450 ee KLAATU 450 LEARN TO BUILD THE STOVE, A STATION FOR COOKING",
+      "professionId": "crafting",
+      "position": {
+        "x": 1130,
+        "y": 280
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "crafting.curved_pieces",
+      "name": "Curved Pieces",
+      "description": "CRAFTING 600 KLAATU 600 THIS SETUNLOCKED CURVED PIECES FOR CURVED WALLS, CEILINGS, AND e Aree. —_",
+      "professionId": "crafting",
+      "position": {
+        "x": 80,
+        "y": 730
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "crafting.decorations",
+      "name": "Decorations",
+      "description": "CRAFTING 400 KLAATU 400 FABRICATOR PIECES YOU USE TO DECORATE THE REST OF YOUR BUILD BEhe@s BORER L.A SRA LI eMMe Teka",
+      "professionId": "crafting",
+      "position": {
+        "x": 290,
+        "y": 730
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "crafting.depositor",
+      "name": "Depositor",
+      "description": "CRAFTING 450 ee KLAATU 450 LEARN TO MAKE THE DEPOSITER TO DEPOSIT RAW RESOURCES INTO THE Rees es. —_",
+      "professionId": "crafting",
+      "position": {
+        "x": 500,
+        "y": 730
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "crafting.engineer",
+      "name": "Engineer",
+      "description": "LEARN ENGINEERING SKILLS",
+      "professionId": "crafting",
+      "position": {
+        "x": 710,
+        "y": 730
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": false
+    },
+    {
+      "id": "crafting.essentials",
+      "name": "Essentials",
+      "description": "CRAFTING 350 KLAATU 350 ESSENTIAL FABRICATOR PIECES YOU NEED INCLUDING FLOOR, Tr ARSSIO APS AA iUtAl) FARAIChR",
+      "professionId": "crafting",
+      "position": {
+        "x": 920,
+        "y": 730
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "crafting.fabricator",
+      "name": "Fabricator",
+      "description": "CRAFTING 450 ee KLAATU 450 LEARN TO BUILD THE FABRICATOR BUILDING TOOL",
+      "professionId": "crafting",
+      "position": {
+        "x": 1130,
+        "y": 730
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "crafting.fortress_shield",
+      "name": "Fortress Shield",
+      "description": "CRAFTING 600 KLAATU 600 Ge LEARN TO BUILD THE FORTRESS me . SHIELD THAT SLOWS DOWN AND eras £48 is 8) ae Fie MARSA TRE VFI",
+      "professionId": "crafting",
+      "position": {
+        "x": 80,
+        "y": 1180
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "crafting.furniture",
+      "name": "Furniture",
+      "description": "CRAFTING 275 KLAATU 275 CREATE FURNITURE ITEMS TO USE IN YOUR BUILDINGS: TABLES, CHAIRS, Pind | md | et dl ol a Oe mY | oe mer os el",
+      "professionId": "crafting",
+      "position": {
+        "x": 290,
+        "y": 1180
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "crafting.grapple",
+      "name": "Grapple",
+      "description": "CRAFTING 450 ee KLAATU 450 MASTER THE ABILITY TO CRAFT A GRAPPLE",
+      "professionId": "crafting",
+      "position": {
+        "x": 500,
+        "y": 1180
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "crafting.gravity_mesh",
+      "name": "Gravity Mesh",
+      "description": "CRAFTING 450 ee KLAATU 450 LEARN THE DETAILS OF DEFEATING GRAVITY AND BUILD THE GRAVITY Barmera —_",
+      "professionId": "crafting",
+      "position": {
+        "x": 710,
+        "y": 1180
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "crafting.grenade_launchers",
+      "name": "Grenade Launchers",
+      "description": "CRAFTING 600 KLAATU 600 me _ LAUNCHERS",
+      "professionId": "crafting",
+      "position": {
+        "x": 920,
+        "y": 1180
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "crafting.harvester",
+      "name": "Harvester",
+      "description": "CRAFTING 450 ee KLAATU 450 BUILD THE HARVESTER FOR GATHERING BUSHES AND FLOWERS",
+      "professionId": "crafting",
+      "position": {
+        "x": 1130,
+        "y": 1180
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "crafting.healix",
+      "name": "Healix",
+      "description": "CRAFTING 600 KLAATU 600 Ga LEARN TO BUILD THE MEDICAL af . DEVICE, THE-MULTII-USE HEALIX",
+      "professionId": "crafting",
+      "position": {
+        "x": 80,
+        "y": 1630
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "crafting.initial_homestead",
+      "name": "Initial Homestead",
+      "description": "CRAFTING 600 KLAATU 600 ACQUIRE: THE RIGHTS TO PLACE A HOMESTEAD.",
+      "professionId": "crafting",
+      "position": {
+        "x": 290,
+        "y": 1630
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "crafting.instaformer",
+      "name": "Instaformer",
+      "description": "CRAFTING 450 ee KLAATU 450 LEARN TO BUILD THE INSTAFORMER, ADEVICE FOR CONVERTING Ree eee eee 8) Fie 1 Aree",
+      "professionId": "crafting",
+      "position": {
+        "x": 500,
+        "y": 1630
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "crafting.lathe_station",
+      "name": "Lathe Station",
+      "description": "CRAFTING 450 KLAATU 450 FAMILIARIZE YOURSELF WITH THE LATHE,A CRAFTING STATION FOR BRane FRE (hie TA FAA RH Ms Meare",
+      "professionId": "crafting",
+      "position": {
+        "x": 710,
+        "y": 1630
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "crafting.lights",
+      "name": "Lights",
+      "description": "CRAFTING 375 KLAATU 375 ALL THE-LIGHTS INCLUDING WHITE, RED, GREEN, BLUE, AND YELLOW meas tie eee AM ates) OA es PRL",
+      "professionId": "crafting",
+      "position": {
+        "x": 920,
+        "y": 1630
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "crafting.machinist",
+      "name": "Machinist",
+      "description": "ee LEARN TO CRAFT MECHANICAL AND ELECTRICAL DEVICES",
+      "professionId": "crafting",
+      "position": {
+        "x": 1130,
+        "y": 1630
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "crafting.manufactured_blocks",
+      "name": "Manufactured Blocks",
+      "description": "CRAFTING 250 KLAATU 250 a MAKE BLOCK STYLES INCLUDING BLACK -BRICK, RED BRICK, GLASS, Brae!) RSE ARIE ee CARMA",
+      "professionId": "crafting",
+      "position": {
+        "x": 80,
+        "y": 2080
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "crafting.metal_blocks",
+      "name": "Metal Blocks",
+      "description": "CRAFTING 550 ee KLAATU 550 UNLOCK. THESE BLOCK STYLES: ALUMINUM, ANTI-GRAVIUM, BRASS, Pease Mesesaaiisns Creer rma AA",
+      "professionId": "crafting",
+      "position": {
+        "x": 290,
+        "y": 2080
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "crafting.objects",
+      "name": "Objects",
+      "description": "CRAFTING 425 KLAATU 425 MISCELLANEOUS OBJECTS LIKE CRATES, BARRELS, COMPUTER MmAatems ee ARIE BABIES T AE Ee Ale",
+      "professionId": "crafting",
+      "position": {
+        "x": 500,
+        "y": 2080
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "crafting.pathfinder",
+      "name": "Pathfinder",
+      "description": "CRAFTING 450 ee KLAATU 450 LEARN TO USE THE PATHFINDER FOR COMPLETING PLANETARY SURVEY BIMmme ascaarme —",
+      "professionId": "crafting",
+      "position": {
+        "x": 710,
+        "y": 2080
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "crafting.paver",
+      "name": "Paver",
+      "description": "CRAFTING 450 ee KLAATU 450 LEARN TO MAKE THE PAVER, USED FOR PAVING ROADS AND ears ees Aree.",
+      "professionId": "crafting",
+      "position": {
+        "x": 920,
+        "y": 2080
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "crafting.paver_flagstones",
+      "name": "Paver Flagstones",
+      "description": "CRAFTING 350 ee KLAATU 350 UNLOCKS THESE FLAGSTONE TILES FOR THE PAVER: BRECCIA, marae wees ATE SCAM ee FRI Iee",
+      "professionId": "crafting",
+      "position": {
+        "x": 1130,
+        "y": 2080
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "crafting.pistols",
+      "name": "Pistols",
+      "description": "Ga LEARN TO MAKE PISTOLS",
+      "professionId": "crafting",
+      "position": {
+        "x": 80,
+        "y": 2530
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "crafting.power_battery",
+      "name": "Power Battery",
+      "description": "CRAFTING 300 KLAATU 300 Ge LEARN TO USE THE POWER BATTERY me . CONSUMABLE TO RECHARGE YOUR Bat ARSENE AIR eee",
+      "professionId": "crafting",
+      "position": {
+        "x": 290,
+        "y": 2530
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "crafting.pruning_shears",
+      "name": "Pruning Shears",
+      "description": "CRAFTING 450 KLAATU 450 Ga LEARN TO MAKE THE PRUNING at . SHEARSSO YOU CAN FORCE GROW,",
+      "professionId": "crafting",
+      "position": {
+        "x": 500,
+        "y": 2530
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "crafting.ramps",
+      "name": "Ramps",
+      "description": "CRAFTING 300 KLAATU 300 ALL THE SLOPED PIECES INCLUDING WIDE AND NARROW STAIRS, WIDE REIT BIA Mme? eARARC A bat Ald",
+      "professionId": "crafting",
+      "position": {
+        "x": 710,
+        "y": 2530
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "crafting.refining_station",
+      "name": "Refining Station",
+      "description": "CRAFTING 450 KLAATU 450 NN LEARN TO USE THE REFINERY STATION AND FIND WAYS TO Ahi BAA AA ATe RIAL @ 1mkhnrTm",
+      "professionId": "crafting",
+      "position": {
+        "x": 920,
+        "y": 2530
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "crafting.reflection_shield",
+      "name": "Reflection Shield",
+      "description": "CRAFTING 600 KLAATU 600 Ge LEARN TO BUILD THE REFLECTION me . SHIELD SO YOU CAN SEND ref le) Freee BASE AT Um ImM",
+      "professionId": "crafting",
+      "position": {
+        "x": 1130,
+        "y": 2530
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "crafting.rugs_and_floors",
+      "name": "Rugs And Floors",
+      "description": "CRAFTING 350 KLAATU 350 COLORED 1X1 RUG. SQUARES AND 2X2 COLORED FLOOR TILES",
+      "professionId": "crafting",
+      "position": {
+        "x": 80,
+        "y": 2980
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "crafting.stone_blocks",
+      "name": "Stone Blocks",
+      "description": "CRAFTING 500 ee KLAATU 500 UNLOCK.STONE BLOCK STYLES INCLUDING BRECCIA, MAA) Mase AaATrTes RMP sTe CrARMrAhhM",
+      "professionId": "crafting",
+      "position": {
+        "x": 290,
+        "y": 2980
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "crafting.terraformer",
+      "name": "Terraformer",
+      "description": "CRAFTING 450 ee KLAATU 450 LEARN TO BUILD THE TERRAFORMER, THE ULTIMATE DEVICE FOR DIGGING, ReAaAerrintim® PR ALICZAMmMAZIAG ALI",
+      "professionId": "crafting",
+      "position": {
+        "x": 500,
+        "y": 2980
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "crafting.toolmaker",
+      "name": "Toolmaker",
+      "description": "ee LEARN RECIPES TO MAKE TOOLS",
+      "professionId": "crafting",
+      "position": {
+        "x": 710,
+        "y": 2980
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "crafting.toolmaking_station",
+      "name": "Toolmaking Station",
+      "description": "CRAFTING 450 ee KLAATU 450 MASTER THE USE OF THE TOOLMAKER AND BECOME ABLE TO Pere Tree @- FA APs es.",
+      "professionId": "crafting",
+      "position": {
+        "x": 920,
+        "y": 2980
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "crafting.trailblazer",
+      "name": "Trailblazer",
+      "description": "CRAFTING 450 ee KLAATU 450 BUILD THE TRAILBLAZER, THE PRIMARY RANGER DEVICE FOR Pera rm Iii PARZAROE @s FARIA",
+      "professionId": "crafting",
+      "position": {
+        "x": 1130,
+        "y": 2980
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "crafting.weaponsmith",
+      "name": "Weaponsmith",
+      "description": "Ge LEARN RECIPES TO MAKE WEAPONS",
+      "professionId": "crafting",
+      "position": {
+        "x": 80,
+        "y": 3430
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "crafting.windows_walls",
+      "name": "Windows Walls",
+      "description": "CRAFTING 550 KLAATU 550 THIS SET-UNLOCKS DOORWAY AND WINDOW PIECES INCLUDING WALLS Beri oRaA A) CR Aree Le rariare",
+      "professionId": "crafting",
+      "position": {
+        "x": 290,
+        "y": 3430
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "crafting.xyloslicer",
+      "name": "Xyloslicer",
+      "description": "CRAFTING 450 KLAATU 450 Ge LEARN TO BUILD THE XYLOSLICER, me . THE TOOL USED FOR CUTTING AND ra ARIAS Se eeee.",
+      "professionId": "crafting",
+      "position": {
+        "x": 500,
+        "y": 3430
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    }
+  ],
+  "edges": [
+    {
+      "source": "crafting.crafting",
+      "target": "crafting.additional_homestead",
+      "crossTree": false
+    },
+    {
+      "source": "crafting.crafting",
+      "target": "crafting.architect",
+      "crossTree": false
+    },
+    {
+      "source": "crafting.crafting",
+      "target": "crafting.bioscanner",
+      "crossTree": false
+    },
+    {
+      "source": "crafting.crafting",
+      "target": "crafting.chronophaser",
+      "crossTree": false
+    },
+    {
+      "source": "crafting.crafting",
+      "target": "crafting.civil_engineering",
+      "crossTree": false
+    },
+    {
+      "source": "crafting.crafting",
+      "target": "crafting.cooking_station",
+      "crossTree": false
+    },
+    {
+      "source": "crafting.crafting",
+      "target": "crafting.curved_pieces",
+      "crossTree": false
+    },
+    {
+      "source": "crafting.crafting",
+      "target": "crafting.decorations",
+      "crossTree": false
+    },
+    {
+      "source": "crafting.crafting",
+      "target": "crafting.depositor",
+      "crossTree": false
+    },
+    {
+      "source": "crafting.crafting",
+      "target": "crafting.engineer",
+      "crossTree": false
+    },
+    {
+      "source": "crafting.crafting",
+      "target": "crafting.essentials",
+      "crossTree": false
+    },
+    {
+      "source": "crafting.crafting",
+      "target": "crafting.fabricator",
+      "crossTree": false
+    },
+    {
+      "source": "crafting.crafting",
+      "target": "crafting.fortress_shield",
+      "crossTree": false
+    },
+    {
+      "source": "crafting.crafting",
+      "target": "crafting.furniture",
+      "crossTree": false
+    },
+    {
+      "source": "crafting.crafting",
+      "target": "crafting.grapple",
+      "crossTree": false
+    },
+    {
+      "source": "crafting.crafting",
+      "target": "crafting.gravity_mesh",
+      "crossTree": false
+    },
+    {
+      "source": "crafting.crafting",
+      "target": "crafting.grenade_launchers",
+      "crossTree": false
+    },
+    {
+      "source": "crafting.crafting",
+      "target": "crafting.harvester",
+      "crossTree": false
+    },
+    {
+      "source": "crafting.crafting",
+      "target": "crafting.healix",
+      "crossTree": false
+    },
+    {
+      "source": "crafting.crafting",
+      "target": "crafting.initial_homestead",
+      "crossTree": false
+    },
+    {
+      "source": "crafting.crafting",
+      "target": "crafting.instaformer",
+      "crossTree": false
+    },
+    {
+      "source": "crafting.crafting",
+      "target": "crafting.lathe_station",
+      "crossTree": false
+    },
+    {
+      "source": "crafting.crafting",
+      "target": "crafting.lights",
+      "crossTree": false
+    },
+    {
+      "source": "crafting.crafting",
+      "target": "crafting.machinist",
+      "crossTree": false
+    },
+    {
+      "source": "crafting.crafting",
+      "target": "crafting.manufactured_blocks",
+      "crossTree": false
+    },
+    {
+      "source": "crafting.crafting",
+      "target": "crafting.metal_blocks",
+      "crossTree": false
+    },
+    {
+      "source": "crafting.crafting",
+      "target": "crafting.objects",
+      "crossTree": false
+    },
+    {
+      "source": "crafting.crafting",
+      "target": "crafting.pathfinder",
+      "crossTree": false
+    },
+    {
+      "source": "crafting.crafting",
+      "target": "crafting.paver",
+      "crossTree": false
+    },
+    {
+      "source": "crafting.crafting",
+      "target": "crafting.paver_flagstones",
+      "crossTree": false
+    },
+    {
+      "source": "crafting.crafting",
+      "target": "crafting.pistols",
+      "crossTree": false
+    },
+    {
+      "source": "crafting.crafting",
+      "target": "crafting.power_battery",
+      "crossTree": false
+    },
+    {
+      "source": "crafting.crafting",
+      "target": "crafting.pruning_shears",
+      "crossTree": false
+    },
+    {
+      "source": "crafting.crafting",
+      "target": "crafting.ramps",
+      "crossTree": false
+    },
+    {
+      "source": "crafting.crafting",
+      "target": "crafting.refining_station",
+      "crossTree": false
+    },
+    {
+      "source": "crafting.crafting",
+      "target": "crafting.reflection_shield",
+      "crossTree": false
+    },
+    {
+      "source": "crafting.crafting",
+      "target": "crafting.rugs_and_floors",
+      "crossTree": false
+    },
+    {
+      "source": "crafting.crafting",
+      "target": "crafting.stone_blocks",
+      "crossTree": false
+    },
+    {
+      "source": "crafting.crafting",
+      "target": "crafting.terraformer",
+      "crossTree": false
+    },
+    {
+      "source": "crafting.crafting",
+      "target": "crafting.toolmaker",
+      "crossTree": false
+    },
+    {
+      "source": "crafting.crafting",
+      "target": "crafting.toolmaking_station",
+      "crossTree": false
+    },
+    {
+      "source": "crafting.crafting",
+      "target": "crafting.trailblazer",
+      "crossTree": false
+    },
+    {
+      "source": "crafting.crafting",
+      "target": "crafting.weaponsmith",
+      "crossTree": false
+    },
+    {
+      "source": "crafting.crafting",
+      "target": "crafting.windows_walls",
+      "crossTree": false
+    },
+    {
+      "source": "crafting.crafting",
+      "target": "crafting.xyloslicer",
+      "crossTree": false
+    }
+  ]
+}

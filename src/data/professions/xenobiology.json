@@ -1,0 +1,30 @@
+{
+  "id": "xenobiology",
+  "name": "Xenobiology",
+  "description": "Study and interact with alien creatures. Xenolinguistics, xenoarchaeology, animal husbandry, and creature training.",
+  "category": "science",
+  "tool": {
+    "name": "Bio Scanner",
+    "professionId": "xenobiology",
+    "icon": "bio-scanner"
+  },
+  "implemented": true,
+  "branchesTo": [],
+  "branchesFrom": [],
+  "nodes": [
+    {
+      "id": "xenobiology.xenobiology",
+      "name": "Xenobiology",
+      "description": "Study and interact with alien creatures. Xenolinguistics, xenoarchaeology, animal husbandry, and creature training.",
+      "professionId": "xenobiology",
+      "position": {
+        "x": 400,
+        "y": 100
+      },
+      "prerequisites": [],
+      "tier": 0,
+      "implemented": true
+    }
+  ],
+  "edges": []
+}

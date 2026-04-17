@@ -1,0 +1,341 @@
+{
+  "id": "mineralogy",
+  "name": "Mineralogy",
+  "description": "Mine and refine minerals, gems, and gases. Advanced assay, temperature resistance, and ore yield improvements.",
+  "category": "harvesting",
+  "tool": {
+    "name": "Extractor",
+    "professionId": "mineralogy",
+    "icon": "extractor"
+  },
+  "implemented": true,
+  "branchesTo": [],
+  "branchesFrom": [],
+  "nodes": [
+    {
+      "id": "mineralogy.mineralogy",
+      "name": "Mineralogy",
+      "description": "Mine and refine minerals, gems, and gases. Advanced assay, temperature resistance, and ore yield improvements.",
+      "professionId": "mineralogy",
+      "position": {
+        "x": 400,
+        "y": 100
+      },
+      "prerequisites": [],
+      "tier": 0,
+      "implemented": true
+    },
+    {
+      "id": "mineralogy.advanced_assay",
+      "name": "Advanced Assay",
+      "description": "MINERALOGY 750 KLAATU 750 DISPLAYS CONVERSION AND QUANTITY DATA (IN CHAT) FOR ANY ame Ime e VU ALE ALS",
+      "professionId": "mineralogy",
+      "position": {
+        "x": 80,
+        "y": 280
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "mineralogy.alloy",
+      "name": "Alloy",
+      "description": "MINERALOGY 475 KLAATU 475 CREATE:FHE FOLLOWING ALLOYS: ANTI-GRAVIUM, BRASS, BRONZE, roe eo TIP Y 1) 4 ol Bl mlTe?l YLT) YY Bs me |",
+      "professionId": "mineralogy",
+      "position": {
+        "x": 290,
+        "y": 280
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "mineralogy.assay_adhesion_and_temp",
+      "name": "Assay Adhesion And Temp",
+      "description": "MINERALOGY 600 KLAATU 600 DISPLAYS ADHESION AND TEMPERATURE DATA (IN CHAT) FOR REO ress Sere VF Ae AY",
+      "professionId": "mineralogy",
+      "position": {
+        "x": 500,
+        "y": 280
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "mineralogy.chronophasing",
+      "name": "Chronophasing",
+      "description": "MINERALOGY 600 KLAATU 600 LEARN TO USE CHRONOPHASING TO ADVANCE OR ROLL BACK THE PES EPE AE CAEP 181 82a re ic",
+      "professionId": "mineralogy",
+      "position": {
+        "x": 710,
+        "y": 280
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "mineralogy.depositing",
+      "name": "Depositing",
+      "description": "MINERALOGY 600 KLAATU 600 LEARN TO USE THE DEPOSITOR TOOL",
+      "professionId": "mineralogy",
+      "position": {
+        "x": 920,
+        "y": 280
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "mineralogy.heat_1",
+      "name": "Heat 1",
+      "description": "MINERALOGY 900 KLAATU 900 INCREASE THE SPEED THAT MATERIALS ARE MELTED BY +25%",
+      "professionId": "mineralogy",
+      "position": {
+        "x": 1130,
+        "y": 280
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "mineralogy.hopper_size_1",
+      "name": "Hopper Size 1",
+      "description": "MINERALOGY 300 KLAATU 300 INCREASE HOPPER CAPACITY BY",
+      "professionId": "mineralogy",
+      "position": {
+        "x": 80,
+        "y": 880
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "mineralogy.igneous",
+      "name": "Igneous",
+      "description": "MINERALOGY 675 KLAATU 675 mom REFINE IGNEOUS ROCK INTO AGATE, af AMETHYST, AQUAMARINE, Pare AMAT Mm. Irere",
+      "professionId": "mineralogy",
+      "position": {
+        "x": 290,
+        "y": 880
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "mineralogy.metamorphic",
+      "name": "Metamorphic",
+      "description": "MINERALOGY 450 KLAATU 450 mom REFINE METAMORPHIC ROCK INTO af ARGENTITE, CHALCOPYRITE, PRJZeFRAELR £2. MmeRmaAr Ff: .IMmmisie",
+      "professionId": "mineralogy",
+      "position": {
+        "x": 500,
+        "y": 880
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "mineralogy.mining",
+      "name": "Mining",
+      "description": "SKILLS TO MAXIMIZE THE EFFECTS OF THE TERRAFORMER",
+      "professionId": "mineralogy",
+      "position": {
+        "x": 710,
+        "y": 880
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "mineralogy.other",
+      "name": "Other",
+      "description": "MINERALOGY 1,025 KLAATU 1,025 mom MANY INTERIM RESOURCES CAN BE af CONVERTED INTO MORE USEFUL PAF Bae Brn Piece.",
+      "professionId": "mineralogy",
+      "position": {
+        "x": 920,
+        "y": 880
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "mineralogy.prospecting",
+      "name": "Prospecting",
+      "description": "LEARN TO USE PROSPECTING TO FIND MATERIALS AND THEIR reArReea Tec —",
+      "professionId": "mineralogy",
+      "position": {
+        "x": 1130,
+        "y": 880
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "mineralogy.refining",
+      "name": "Refining",
+      "description": "mom LEARN TO REFINE. MATERIALS INTO af OTHER ‘MATERIALS",
+      "professionId": "mineralogy",
+      "position": {
+        "x": 80,
+        "y": 1480
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "mineralogy.sedimentary",
+      "name": "Sedimentary",
+      "description": "MINERALOGY 1175 KLAATU 1175 mom REFINE SEDIMENTARY ROCK INTO af AGATE; AMETHYST, AZURITE, MPa RP.IMTITS 72m A ReRr",
+      "professionId": "mineralogy",
+      "position": {
+        "x": 290,
+        "y": 1480
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "mineralogy.soils",
+      "name": "Soils",
+      "description": "MINERALOGY 175 KLAATU 178 mom REFINE SOILS INTO CERAMIC, CHALK af BLOCK; CLAY, PENTLANDITE, OR Piiecgna hme —",
+      "professionId": "mineralogy",
+      "position": {
+        "x": 500,
+        "y": 1480
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "mineralogy.heat_3",
+      "name": "Heat 3",
+      "description": "MINERALOGY 1,500 KLAATU 1,500 INCREASE THE SPEED THAT MATERIALS ARE MELTED BY +25%",
+      "professionId": "mineralogy",
+      "position": {
+        "x": 1130,
+        "y": 430
+      },
+      "prerequisites": [
+        "mineralogy.heat_1"
+      ],
+      "tier": 3,
+      "implemented": true
+    },
+    {
+      "id": "mineralogy.hopper_size_3",
+      "name": "Hopper Size 3",
+      "description": "MINERALOGY 600 KLAATU 600 INCREASE HOPPER CAPACITY BY",
+      "professionId": "mineralogy",
+      "position": {
+        "x": 80,
+        "y": 1030
+      },
+      "prerequisites": [
+        "mineralogy.hopper_size_1"
+      ],
+      "tier": 3,
+      "implemented": true
+    }
+  ],
+  "edges": [
+    {
+      "source": "mineralogy.heat_1",
+      "target": "mineralogy.heat_3",
+      "crossTree": false
+    },
+    {
+      "source": "mineralogy.hopper_size_1",
+      "target": "mineralogy.hopper_size_3",
+      "crossTree": false
+    },
+    {
+      "source": "mineralogy.mineralogy",
+      "target": "mineralogy.advanced_assay",
+      "crossTree": false
+    },
+    {
+      "source": "mineralogy.mineralogy",
+      "target": "mineralogy.alloy",
+      "crossTree": false
+    },
+    {
+      "source": "mineralogy.mineralogy",
+      "target": "mineralogy.assay_adhesion_and_temp",
+      "crossTree": false
+    },
+    {
+      "source": "mineralogy.mineralogy",
+      "target": "mineralogy.chronophasing",
+      "crossTree": false
+    },
+    {
+      "source": "mineralogy.mineralogy",
+      "target": "mineralogy.depositing",
+      "crossTree": false
+    },
+    {
+      "source": "mineralogy.mineralogy",
+      "target": "mineralogy.heat_1",
+      "crossTree": false
+    },
+    {
+      "source": "mineralogy.mineralogy",
+      "target": "mineralogy.hopper_size_1",
+      "crossTree": false
+    },
+    {
+      "source": "mineralogy.mineralogy",
+      "target": "mineralogy.igneous",
+      "crossTree": false
+    },
+    {
+      "source": "mineralogy.mineralogy",
+      "target": "mineralogy.metamorphic",
+      "crossTree": false
+    },
+    {
+      "source": "mineralogy.mineralogy",
+      "target": "mineralogy.mining",
+      "crossTree": false
+    },
+    {
+      "source": "mineralogy.mineralogy",
+      "target": "mineralogy.other",
+      "crossTree": false
+    },
+    {
+      "source": "mineralogy.mineralogy",
+      "target": "mineralogy.prospecting",
+      "crossTree": false
+    },
+    {
+      "source": "mineralogy.mineralogy",
+      "target": "mineralogy.refining",
+      "crossTree": false
+    },
+    {
+      "source": "mineralogy.mineralogy",
+      "target": "mineralogy.sedimentary",
+      "crossTree": false
+    },
+    {
+      "source": "mineralogy.mineralogy",
+      "target": "mineralogy.soils",
+      "crossTree": false
+    }
+  ]
+}

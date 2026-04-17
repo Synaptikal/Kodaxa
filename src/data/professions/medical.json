@@ -1,0 +1,303 @@
+{
+  "id": "medical",
+  "name": "Medical",
+  "description": "Heal, cure, and support allies with the Healix medical weapon. Includes Go Juice, Stamina Booster, Cureall, and Siphon.",
+  "category": "science",
+  "tool": {
+    "name": "Healix",
+    "professionId": "medical",
+    "icon": "healix"
+  },
+  "implemented": true,
+  "branchesTo": [],
+  "branchesFrom": [
+    "crafting"
+  ],
+  "nodes": [
+    {
+      "id": "medical.medical",
+      "name": "Medical",
+      "description": "Heal, cure, and support allies with the Healix medical weapon. Includes Go Juice, Stamina Booster, Cureall, and Siphon.",
+      "professionId": "medical",
+      "position": {
+        "x": 400,
+        "y": 100
+      },
+      "prerequisites": [],
+      "tier": 0,
+      "implemented": true
+    },
+    {
+      "id": "medical.cureall",
+      "name": "Cureall",
+      "description": "MEDICAL 100 KLAATU 100 REMOVES POISON STATUS",
+      "professionId": "medical",
+      "position": {
+        "x": 80,
+        "y": 280
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "medical.cures",
+      "name": "Cures",
+      "description": "MEDICAL 300 KLAATU 300 CREATE.CURES THAT REMOVE STATUS EFFECTS",
+      "professionId": "medical",
+      "position": {
+        "x": 290,
+        "y": 280
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "medical.flame_out",
+      "name": "Flame Out",
+      "description": "MEDICAL 100 KLAATU 100 REMOVES ONFIRE STATUS",
+      "professionId": "medical",
+      "position": {
+        "x": 500,
+        "y": 280
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "medical.focus_booster",
+      "name": "Focus Booster",
+      "description": "MEDICAL 300 KLAATU 300 IMMEDIATE FOCUS RESTORATION",
+      "professionId": "medical",
+      "position": {
+        "x": 710,
+        "y": 280
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "medical.go_juice",
+      "name": "Go Juice",
+      "description": "MEDICAL 100 KLAATU 100 IMMEDIATELY REMOVES THE STUNNED STATUS AND RESTORES rin of TYTIiLie.© —_",
+      "professionId": "medical",
+      "position": {
+        "x": 920,
+        "y": 280
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "medical.healix_specials",
+      "name": "Healix Specials",
+      "description": "LEARN TO USE SPECIALS FOR THE HEALIX",
+      "professionId": "medical",
+      "position": {
+        "x": 1130,
+        "y": 280
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "medical.health_booster",
+      "name": "Health Booster",
+      "description": "IMMEDIATE.HEALTH RESTORATION",
+      "professionId": "medical",
+      "position": {
+        "x": 80,
+        "y": 730
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "medical.mass_heal",
+      "name": "Mass Heal",
+      "description": "MEDICAL 800 KLAATU 800 USE THIS: ABILITY TO LIGHTLY HEAL ALLALLIES IN AN AREA AROUND YOU",
+      "professionId": "medical",
+      "position": {
+        "x": 290,
+        "y": 730
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "medical.medicine",
+      "name": "Medicine",
+      "description": "CREATE MEDICINES TO INSTANTLY RESTORE STAMINA, FOCUS OR",
+      "professionId": "medical",
+      "position": {
+        "x": 500,
+        "y": 730
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "medical.pharmacology",
+      "name": "Pharmacology",
+      "description": "LEARN TO MAKE MEDICINES",
+      "professionId": "medical",
+      "position": {
+        "x": 710,
+        "y": 730
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "medical.siphon",
+      "name": "Siphon",
+      "description": "MEDICAL 800 KLAATU 800 UNLOCK: THE ABILITY TO USE SIPHON, A BEAM THAT DRAINS Ri AhO Fs! Fees TRI FPARerE FT ALIT",
+      "professionId": "medical",
+      "position": {
+        "x": 920,
+        "y": 730
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "medical.stamina_booster",
+      "name": "Stamina Booster",
+      "description": "MEDICAL 300 KLAATU 300 IMMEDIATE. STAMINA RESTORATION",
+      "professionId": "medical",
+      "position": {
+        "x": 1130,
+        "y": 730
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "medical.surge",
+      "name": "Surge",
+      "description": "MEDICAL 800 KLAATU 800 USE THIS: ABILITY TO REMOVE NEGATIVE STATUS:EFFECTS FROM ROR 181 ABE REAR AFP kr BPR",
+      "professionId": "medical",
+      "position": {
+        "x": 80,
+        "y": 1180
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "medical.thaw_bones",
+      "name": "Thaw Bones",
+      "description": "MEDICAL 100 KLAATU 100 REMOVES FROZEN STATUS",
+      "professionId": "medical",
+      "position": {
+        "x": 290,
+        "y": 1180
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "medical.watt_away",
+      "name": "Watt Away",
+      "description": "MEDICAL 100 KLAATU 100 IMMEDIATELY REMOVES THE ELECTRIFIED STATUS AND RESTORES Y a em tm nl ml —_—",
+      "professionId": "medical",
+      "position": {
+        "x": 500,
+        "y": 1180
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    }
+  ],
+  "edges": [
+    {
+      "source": "medical.medical",
+      "target": "medical.cureall",
+      "crossTree": false
+    },
+    {
+      "source": "medical.medical",
+      "target": "medical.cures",
+      "crossTree": false
+    },
+    {
+      "source": "medical.medical",
+      "target": "medical.flame_out",
+      "crossTree": false
+    },
+    {
+      "source": "medical.medical",
+      "target": "medical.focus_booster",
+      "crossTree": false
+    },
+    {
+      "source": "medical.medical",
+      "target": "medical.go_juice",
+      "crossTree": false
+    },
+    {
+      "source": "medical.medical",
+      "target": "medical.healix_specials",
+      "crossTree": false
+    },
+    {
+      "source": "medical.medical",
+      "target": "medical.health_booster",
+      "crossTree": false
+    },
+    {
+      "source": "medical.medical",
+      "target": "medical.mass_heal",
+      "crossTree": false
+    },
+    {
+      "source": "medical.medical",
+      "target": "medical.medicine",
+      "crossTree": false
+    },
+    {
+      "source": "medical.medical",
+      "target": "medical.pharmacology",
+      "crossTree": false
+    },
+    {
+      "source": "medical.medical",
+      "target": "medical.siphon",
+      "crossTree": false
+    },
+    {
+      "source": "medical.medical",
+      "target": "medical.stamina_booster",
+      "crossTree": false
+    },
+    {
+      "source": "medical.medical",
+      "target": "medical.surge",
+      "crossTree": false
+    },
+    {
+      "source": "medical.medical",
+      "target": "medical.thaw_bones",
+      "crossTree": false
+    },
+    {
+      "source": "medical.medical",
+      "target": "medical.watt_away",
+      "crossTree": false
+    }
+  ]
+}

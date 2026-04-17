@@ -1,0 +1,275 @@
+{
+  "id": "botany",
+  "name": "Botany",
+  "description": "Cultivate and harvest plant life. Grow crops, forage resources, and manage forests. Unlock advanced farming, genetics, and growth beam abilities.",
+  "category": "harvesting",
+  "tool": {
+    "name": "Harvesting Tool",
+    "professionId": "botany",
+    "icon": "harvesting-tool"
+  },
+  "implemented": true,
+  "branchesTo": [],
+  "branchesFrom": [],
+  "nodes": [
+    {
+      "id": "botany.botany",
+      "name": "Botany",
+      "description": "Cultivate and harvest plant life. Grow crops, forage resources, and manage forests. Unlock advanced farming, genetics, and growth beam abilities.",
+      "professionId": "botany",
+      "position": {
+        "x": 400,
+        "y": 100
+      },
+      "prerequisites": [],
+      "tier": 0,
+      "implemented": true
+    },
+    {
+      "id": "botany.farming",
+      "name": "Farming",
+      "description": "UNLOCKS THE FARMING SKILL TREE",
+      "professionId": "botany",
+      "position": {
+        "x": 80,
+        "y": 280
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "botany.foraging",
+      "name": "Foraging",
+      "description": "Under development.",
+      "professionId": "botany",
+      "position": {
+        "x": 290,
+        "y": 280
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": false
+    },
+    {
+      "id": "botany.forestry",
+      "name": "Forestry",
+      "description": "BOTANY 300 ie. KLAATU 300 on UNLOCKS THE ABILITY TO USE THE XYLOSLICER'TO CHOP DOWN TREES.",
+      "professionId": "botany",
+      "position": {
+        "x": 500,
+        "y": 280
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "botany.growth_beam_1",
+      "name": "Growth Beam 1",
+      "description": "BOTANY 300 KLAATU 300 UNLOCKS THE ABILITY TO USE THE X¥LOSLICER' TO QUICKLY MATURE Cl nt my mo md —_",
+      "professionId": "botany",
+      "position": {
+        "x": 710,
+        "y": 280
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "botany.pruning",
+      "name": "Pruning",
+      "description": "BOTANY 600 KLAATU 600 UNLOCKS THE ABILITY TO USE THE XYLOSLICER'TO SHRINK TREES",
+      "professionId": "botany",
+      "position": {
+        "x": 920,
+        "y": 280
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "botany.seed_planting",
+      "name": "Seed Planting",
+      "description": "BOTANY 600 KLAATU 600 UNLOCKS THE ABILITY TO USE THE TROWEL TO PLANT ALL THE TYPES Rk 2FEeRre AIT ASS FAM 27 VIS",
+      "professionId": "botany",
+      "position": {
+        "x": 1130,
+        "y": 280
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "botany.stunting",
+      "name": "Stunting",
+      "description": "BOTANY 600 KLAATU 600 UNLOCKS THE ABILITY TO USE THE XYLOSLICER'TO STUNT TREE Paul ate T% os oe —_",
+      "professionId": "botany",
+      "position": {
+        "x": 80,
+        "y": 1180
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "botany.yield_1",
+      "name": "Yield 1",
+      "description": "BOTANY 300 KLAATU 300 INCREASES THE YIELD RATE WHEN USING THE XYLOSLICER BY +20%",
+      "professionId": "botany",
+      "position": {
+        "x": 290,
+        "y": 1180
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "botany.growth_beam_2",
+      "name": "Growth Beam 2",
+      "description": "BOTANY 600 KLAATU 600 INCREASE THE GROWTH RATE OF THEXYLOSLICER GROWTH BEAM BY eAans —_",
+      "professionId": "botany",
+      "position": {
+        "x": 710,
+        "y": 430
+      },
+      "prerequisites": [
+        "botany.growth_beam_1"
+      ],
+      "tier": 2,
+      "implemented": true
+    },
+    {
+      "id": "botany.yield_2",
+      "name": "Yield 2",
+      "description": "BOTANY 600 KLAATU 600 INCREASES THE YIELD RATE WHEN USING THE XYLOSLICER BY +20%",
+      "professionId": "botany",
+      "position": {
+        "x": 290,
+        "y": 1330
+      },
+      "prerequisites": [
+        "botany.yield_1"
+      ],
+      "tier": 2,
+      "implemented": true
+    },
+    {
+      "id": "botany.growth_beam_3",
+      "name": "Growth Beam 3",
+      "description": "BOTANY 900 KLAATU 900 INCREASE THE GROWTH RATE OF THEXYLOSLICER GROWTH BEAM BY eAans —_",
+      "professionId": "botany",
+      "position": {
+        "x": 710,
+        "y": 580
+      },
+      "prerequisites": [
+        "botany.growth_beam_2"
+      ],
+      "tier": 3,
+      "implemented": true
+    },
+    {
+      "id": "botany.yield_3",
+      "name": "Yield 3",
+      "description": "BOTANY 900 KLAATU 900 INCREASES THE YIELD RATE WHEN USING THE XYLOSLICER BY +20%",
+      "professionId": "botany",
+      "position": {
+        "x": 290,
+        "y": 1480
+      },
+      "prerequisites": [
+        "botany.yield_2"
+      ],
+      "tier": 3,
+      "implemented": true
+    },
+    {
+      "id": "botany.growth_beam_4",
+      "name": "Growth Beam 4",
+      "description": "BOTANY 1,200 KLAATU 1,200 INCREASE THE GROWTH RATE OF THEXYLOSLICER GROWTH BEAM BY eAans —_",
+      "professionId": "botany",
+      "position": {
+        "x": 710,
+        "y": 730
+      },
+      "prerequisites": [
+        "botany.growth_beam_3"
+      ],
+      "tier": 4,
+      "implemented": true
+    }
+  ],
+  "edges": [
+    {
+      "source": "botany.growth_beam_1",
+      "target": "botany.growth_beam_2",
+      "crossTree": false
+    },
+    {
+      "source": "botany.growth_beam_2",
+      "target": "botany.growth_beam_3",
+      "crossTree": false
+    },
+    {
+      "source": "botany.growth_beam_3",
+      "target": "botany.growth_beam_4",
+      "crossTree": false
+    },
+    {
+      "source": "botany.yield_1",
+      "target": "botany.yield_2",
+      "crossTree": false
+    },
+    {
+      "source": "botany.yield_2",
+      "target": "botany.yield_3",
+      "crossTree": false
+    },
+    {
+      "source": "botany.botany",
+      "target": "botany.farming",
+      "crossTree": false
+    },
+    {
+      "source": "botany.botany",
+      "target": "botany.foraging",
+      "crossTree": false
+    },
+    {
+      "source": "botany.botany",
+      "target": "botany.forestry",
+      "crossTree": false
+    },
+    {
+      "source": "botany.botany",
+      "target": "botany.growth_beam_1",
+      "crossTree": false
+    },
+    {
+      "source": "botany.botany",
+      "target": "botany.pruning",
+      "crossTree": false
+    },
+    {
+      "source": "botany.botany",
+      "target": "botany.seed_planting",
+      "crossTree": false
+    },
+    {
+      "source": "botany.botany",
+      "target": "botany.stunting",
+      "crossTree": false
+    },
+    {
+      "source": "botany.botany",
+      "target": "botany.yield_1",
+      "crossTree": false
+    }
+  ]
+}

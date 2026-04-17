@@ -1,0 +1,96 @@
+{
+  "id": "artisan_woodworking",
+  "name": "Woodworking",
+  "description": "Craft wooden structures, furniture, and components from harvested timber. Woodworkers produce building pieces, tool handles, and the versatile Wood Slurry intermediate used in advanced construction.",
+  "category": "crafting",
+  "tool": {
+    "name": "Xyloslicer",
+    "professionId": "artisan_woodworking",
+    "icon": "xyloslicer"
+  },
+  "implemented": true,
+  "branchesTo": [],
+  "branchesFrom": ["crafting"],
+  "nodes": [
+    {
+      "id": "artisan_woodworking.base",
+      "name": "Woodworking",
+      "description": "Foundation of the Woodworking profession. Grants access to basic wood crafting recipes. Use the Xyloslicer to harvest timber from trees across all biomes.",
+      "professionId": "artisan_woodworking",
+      "position": { "x": 400, "y": 100 },
+      "prerequisites": [],
+      "tier": 0,
+      "implemented": true
+    },
+    {
+      "id": "artisan_woodworking.wood_slurry",
+      "name": "Wood Slurry",
+      "description": "Craft Wood Slurry — a processed pulp intermediate made from raw wood. Used in advanced building recipes and as a binding agent in composite construction materials.",
+      "professionId": "artisan_woodworking",
+      "position": { "x": 80, "y": 280 },
+      "prerequisites": ["artisan_woodworking.base"],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "artisan_woodworking.structural_lumber",
+      "name": "Structural Lumber",
+      "description": "Mill harvested wood into dimensional lumber suitable for load-bearing structures. Unlocks hardwood and softwood building pieces at the Lathe.",
+      "professionId": "artisan_woodworking",
+      "position": { "x": 290, "y": 280 },
+      "prerequisites": ["artisan_woodworking.base"],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "artisan_woodworking.bamboo_craft",
+      "name": "Bamboo Craft",
+      "description": "Work with Bamboo — a fast-growing grass that yields lightweight structural components. Bamboo pieces have high versatility stats compared to other wood types.",
+      "professionId": "artisan_woodworking",
+      "position": { "x": 500, "y": 280 },
+      "prerequisites": ["artisan_woodworking.base"],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "artisan_woodworking.furniture",
+      "name": "Furniture",
+      "description": "Craft decorative and functional furniture pieces for homesteads. Precise furniture recipes are under active development.",
+      "professionId": "artisan_woodworking",
+      "position": { "x": 710, "y": 280 },
+      "prerequisites": ["artisan_woodworking.base"],
+      "tier": 1,
+      "implemented": false
+    },
+    {
+      "id": "artisan_woodworking.fine_woodcraft",
+      "name": "Fine Woodcraft",
+      "description": "Master woodworking techniques using Dark Hard Wood and Light Hard Wood. Produces high-PQRV wooden components with superior quality and resilience stats.",
+      "professionId": "artisan_woodworking",
+      "position": { "x": 185, "y": 460 },
+      "prerequisites": ["artisan_woodworking.wood_slurry", "artisan_woodworking.structural_lumber"],
+      "tier": 2,
+      "implemented": false
+    },
+    {
+      "id": "artisan_woodworking.composite_materials",
+      "name": "Composite Materials",
+      "description": "Combine Wood Slurry with metals or stone to produce composite building materials. Unlocks hybrid building piece recipes with improved structural properties.",
+      "professionId": "artisan_woodworking",
+      "position": { "x": 395, "y": 460 },
+      "prerequisites": ["artisan_woodworking.wood_slurry", "artisan_woodworking.bamboo_craft"],
+      "tier": 2,
+      "implemented": false
+    }
+  ],
+  "edges": [
+    { "source": "artisan_woodworking.base",             "target": "artisan_woodworking.wood_slurry",       "crossTree": false },
+    { "source": "artisan_woodworking.base",             "target": "artisan_woodworking.structural_lumber", "crossTree": false },
+    { "source": "artisan_woodworking.base",             "target": "artisan_woodworking.bamboo_craft",      "crossTree": false },
+    { "source": "artisan_woodworking.base",             "target": "artisan_woodworking.furniture",         "crossTree": false },
+    { "source": "artisan_woodworking.wood_slurry",      "target": "artisan_woodworking.fine_woodcraft",    "crossTree": false },
+    { "source": "artisan_woodworking.structural_lumber","target": "artisan_woodworking.fine_woodcraft",    "crossTree": false },
+    { "source": "artisan_woodworking.wood_slurry",      "target": "artisan_woodworking.composite_materials","crossTree": false },
+    { "source": "artisan_woodworking.bamboo_craft",     "target": "artisan_woodworking.composite_materials","crossTree": false }
+  ]
+}

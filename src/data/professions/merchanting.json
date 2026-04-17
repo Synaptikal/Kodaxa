@@ -1,0 +1,96 @@
+{
+  "id": "merchanting",
+  "name": "Merchanting",
+  "description": "Run a player-driven commerce operation across the galaxy. Craft Vendor Kiosks, manage homestead shops, and master the logistics of a fully player-run economy where every item is crafted and every price is negotiated.",
+  "category": "infrastructure",
+  "tool": {
+    "name": "Trade Terminal",
+    "professionId": "merchanting",
+    "icon": "trade-terminal"
+  },
+  "implemented": true,
+  "branchesTo": [],
+  "branchesFrom": [],
+  "nodes": [
+    {
+      "id": "merchanting.base",
+      "name": "Merchanting",
+      "description": "Foundation of the Merchanting profession. Introduces commerce mechanics in Stars Reach's fully player-driven economy — no NPC vendors, no auction house. Every sale is player-to-player.",
+      "professionId": "merchanting",
+      "position": { "x": 400, "y": 100 },
+      "prerequisites": [],
+      "tier": 0,
+      "implemented": true
+    },
+    {
+      "id": "merchanting.vendor_kiosk",
+      "name": "Vendor Kiosk",
+      "description": "Craft and place a Vendor Kiosk on your homestead. Kiosks are crafted at the Lathe and placed via the Fabricator. Only homestead editors can list items for sale; any player can browse. One kiosk per homestead (current limit). Currency: Klaatu.",
+      "professionId": "merchanting",
+      "position": { "x": 80, "y": 280 },
+      "prerequisites": ["merchanting.base"],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "merchanting.pricing_strategy",
+      "name": "Pricing Strategy",
+      "description": "Understand regional price variance in Stars Reach. Goods have different values per location — no global market means regional arbitrage is a legitimate playstyle. Learn to track demand across homesteads.",
+      "professionId": "merchanting",
+      "position": { "x": 290, "y": 280 },
+      "prerequisites": ["merchanting.base"],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "merchanting.bulk_trade",
+      "name": "Bulk Trade",
+      "description": "Negotiate and execute bulk material purchases across the colony. Move large quantities of refined metals, building materials, or consumables between sellers and buyers efficiently.",
+      "professionId": "merchanting",
+      "position": { "x": 500, "y": 280 },
+      "prerequisites": ["merchanting.base"],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "merchanting.transport_logistics",
+      "name": "Transport Logistics",
+      "description": "Manage multi-hop supply chains across planets and space stations. Coordinate resource flows from miners to refiners to crafters to sellers. Advanced logistics skills are under development.",
+      "professionId": "merchanting",
+      "position": { "x": 710, "y": 280 },
+      "prerequisites": ["merchanting.base"],
+      "tier": 1,
+      "implemented": false
+    },
+    {
+      "id": "merchanting.market_analysis",
+      "name": "Market Analysis",
+      "description": "Track supply, demand, and price trends across the player-run economy. Identify underserved markets and material shortages before competitors do. Price discovery is entirely manual in Stars Reach.",
+      "professionId": "merchanting",
+      "position": { "x": 185, "y": 460 },
+      "prerequisites": ["merchanting.vendor_kiosk", "merchanting.pricing_strategy"],
+      "tier": 2,
+      "implemented": false
+    },
+    {
+      "id": "merchanting.shop_management",
+      "name": "Shop Management",
+      "description": "Advanced vendor kiosk operations. Manage inventory rotation, set minimum Klaatu pricing thresholds, and coordinate with homestead co-editors to keep your kiosk stocked.",
+      "professionId": "merchanting",
+      "position": { "x": 395, "y": 460 },
+      "prerequisites": ["merchanting.vendor_kiosk", "merchanting.bulk_trade"],
+      "tier": 2,
+      "implemented": false
+    }
+  ],
+  "edges": [
+    { "source": "merchanting.base",           "target": "merchanting.vendor_kiosk",       "crossTree": false },
+    { "source": "merchanting.base",           "target": "merchanting.pricing_strategy",   "crossTree": false },
+    { "source": "merchanting.base",           "target": "merchanting.bulk_trade",         "crossTree": false },
+    { "source": "merchanting.base",           "target": "merchanting.transport_logistics","crossTree": false },
+    { "source": "merchanting.vendor_kiosk",   "target": "merchanting.market_analysis",    "crossTree": false },
+    { "source": "merchanting.pricing_strategy","target": "merchanting.market_analysis",   "crossTree": false },
+    { "source": "merchanting.vendor_kiosk",   "target": "merchanting.shop_management",    "crossTree": false },
+    { "source": "merchanting.bulk_trade",     "target": "merchanting.shop_management",    "crossTree": false }
+  ]
+}

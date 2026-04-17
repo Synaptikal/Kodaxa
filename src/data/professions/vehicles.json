@@ -1,0 +1,67 @@
+{
+  "id": "vehicles",
+  "name": "Vehicles",
+  "description": "Operate ground vehicles and starships. Speed, handling, and combat capabilities for motorised travel across planets.",
+  "category": "scouting",
+  "tool": {
+    "name": "Vehicle",
+    "professionId": "vehicles",
+    "icon": "vehicle"
+  },
+  "implemented": false,
+  "branchesTo": [],
+  "branchesFrom": [],
+  "nodes": [
+    {
+      "id": "vehicles.vehicles",
+      "name": "Vehicles",
+      "description": "Operate ground vehicles and starships. Speed, handling, and combat capabilities for motorised travel across planets.",
+      "professionId": "vehicles",
+      "position": {
+        "x": 400,
+        "y": 100
+      },
+      "prerequisites": [],
+      "tier": 0,
+      "implemented": false
+    },
+    {
+      "id": "vehicles.ground_vehicles",
+      "name": "Ground Vehicles",
+      "description": "Under development.",
+      "professionId": "vehicles",
+      "position": {
+        "x": 80,
+        "y": 280
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": false
+    },
+    {
+      "id": "vehicles.starships",
+      "name": "Starships",
+      "description": "Under development.",
+      "professionId": "vehicles",
+      "position": {
+        "x": 290,
+        "y": 280
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": false
+    }
+  ],
+  "edges": [
+    {
+      "source": "vehicles.vehicles",
+      "target": "vehicles.ground_vehicles",
+      "crossTree": false
+    },
+    {
+      "source": "vehicles.vehicles",
+      "target": "vehicles.starships",
+      "crossTree": false
+    }
+  ]
+}

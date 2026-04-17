@@ -1,0 +1,109 @@
+{
+  "id": "ranger",
+  "name": "Ranger",
+  "description": "Wilderness exploration, stealth, forward bases, and navigation. The Ranger tree branches into four specializations and one advanced profession.",
+  "category": "scouting",
+  "tool": {
+    "name": "Ranger Kit",
+    "professionId": "ranger",
+    "icon": "ranger-kit"
+  },
+  "implemented": true,
+  "branchesTo": ["camping", "concealment", "orienteering", "cartography"],
+  "branchesFrom": [],
+  "nodes": [
+    {
+      "id": "ranger.base",
+      "name": "Ranger Basics",
+      "description": "Foundation scouting skills. Unlocks the Ranger Kit tool and basic wilderness traversal.",
+      "professionId": "ranger",
+      "position": { "x": 400, "y": 0 },
+      "prerequisites": [],
+      "tier": 0,
+      "implemented": true
+    },
+    {
+      "id": "ranger.tracking",
+      "name": "Tracking",
+      "description": "Detect creature trails and recent player activity in the area.",
+      "professionId": "ranger",
+      "position": { "x": 400, "y": 120 },
+      "prerequisites": ["ranger.base"],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "ranger.pathfinding",
+      "name": "Pathfinding",
+      "description": "Move faster through rough terrain. Reduced stamina cost while hiking.",
+      "professionId": "ranger",
+      "position": { "x": 250, "y": 240 },
+      "prerequisites": ["ranger.tracking"],
+      "tier": 2,
+      "implemented": true
+    },
+    {
+      "id": "ranger.scent_masking",
+      "name": "Scent Masking",
+      "description": "Reduce your detection radius from creatures while crouching.",
+      "professionId": "ranger",
+      "position": { "x": 550, "y": 240 },
+      "prerequisites": ["ranger.tracking"],
+      "tier": 2,
+      "implemented": true
+    },
+    {
+      "id": "ranger.unlock_camping",
+      "name": "Camping Fundamentals",
+      "description": "Root node: unlocks the Camping specialization tree.",
+      "professionId": "ranger",
+      "position": { "x": 100, "y": 380 },
+      "prerequisites": ["ranger.pathfinding"],
+      "unlocksTree": "camping",
+      "tier": 3,
+      "implemented": true
+    },
+    {
+      "id": "ranger.unlock_concealment",
+      "name": "Concealment Fundamentals",
+      "description": "Root node: unlocks the Concealment specialization tree.",
+      "professionId": "ranger",
+      "position": { "x": 700, "y": 380 },
+      "prerequisites": ["ranger.scent_masking"],
+      "unlocksTree": "concealment",
+      "tier": 3,
+      "implemented": true
+    },
+    {
+      "id": "ranger.unlock_orienteering",
+      "name": "Orienteering Fundamentals",
+      "description": "Root node: unlocks the Orienteering specialization tree.",
+      "professionId": "ranger",
+      "position": { "x": 250, "y": 380 },
+      "prerequisites": ["ranger.pathfinding"],
+      "unlocksTree": "orienteering",
+      "tier": 3,
+      "implemented": true
+    },
+    {
+      "id": "ranger.unlock_cartography",
+      "name": "Cartography Fundamentals",
+      "description": "Root node: unlocks the Cartography specialization tree.",
+      "professionId": "ranger",
+      "position": { "x": 550, "y": 380 },
+      "prerequisites": ["ranger.scent_masking"],
+      "unlocksTree": "cartography",
+      "tier": 3,
+      "implemented": true
+    }
+  ],
+  "edges": [
+    { "source": "ranger.base", "target": "ranger.tracking", "crossTree": false },
+    { "source": "ranger.tracking", "target": "ranger.pathfinding", "crossTree": false },
+    { "source": "ranger.tracking", "target": "ranger.scent_masking", "crossTree": false },
+    { "source": "ranger.pathfinding", "target": "ranger.unlock_camping", "crossTree": false },
+    { "source": "ranger.pathfinding", "target": "ranger.unlock_orienteering", "crossTree": false },
+    { "source": "ranger.scent_masking", "target": "ranger.unlock_concealment", "crossTree": false },
+    { "source": "ranger.scent_masking", "target": "ranger.unlock_cartography", "crossTree": false }
+  ]
+}

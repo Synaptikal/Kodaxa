@@ -1,0 +1,67 @@
+{
+  "id": "concealment",
+  "name": "Concealment",
+  "description": "Mask your scent from creatures, hide, sneak, and execute sneak attacks for bonus damage regardless of weapon type.",
+  "category": "scouting",
+  "tool": {
+    "name": "Ranger Kit",
+    "professionId": "concealment",
+    "icon": "ranger-kit"
+  },
+  "implemented": true,
+  "branchesTo": ["wilderness_survival"],
+  "branchesFrom": ["ranger"],
+  "nodes": [
+    {
+      "id": "concealment.base",
+      "name": "Basic Stealth",
+      "description": "Crouch to enter stealth. Move slower but reduce creature aggro range.",
+      "professionId": "concealment",
+      "position": { "x": 700, "y": 500 },
+      "prerequisites": ["ranger.unlock_concealment"],
+      "tier": 0,
+      "implemented": true
+    },
+    {
+      "id": "concealment.scent_mastery",
+      "name": "Advanced Scent Masking",
+      "description": "Further reduces detection radius. Creatures must be very close to spot you.",
+      "professionId": "concealment",
+      "position": { "x": 620, "y": 620 },
+      "prerequisites": ["concealment.base"],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "concealment.sneak_attack",
+      "name": "Sneak Attack",
+      "description": "Attacks from stealth deal bonus damage with any weapon type.",
+      "professionId": "concealment",
+      "position": { "x": 780, "y": 620 },
+      "prerequisites": ["concealment.base"],
+      "special": {
+        "name": "Ambush Strike",
+        "description": "First attack from stealth deals 2x damage and briefly stuns the target.",
+        "toolType": "Ranger Kit"
+      },
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "concealment.hide_others",
+      "name": "Group Camouflage",
+      "description": "Extend your stealth field to nearby party members for a short duration.",
+      "professionId": "concealment",
+      "position": { "x": 700, "y": 740 },
+      "prerequisites": ["concealment.scent_mastery", "concealment.sneak_attack"],
+      "tier": 2,
+      "implemented": true
+    }
+  ],
+  "edges": [
+    { "source": "concealment.base", "target": "concealment.scent_mastery", "crossTree": false },
+    { "source": "concealment.base", "target": "concealment.sneak_attack", "crossTree": false },
+    { "source": "concealment.scent_mastery", "target": "concealment.hide_others", "crossTree": false },
+    { "source": "concealment.sneak_attack", "target": "concealment.hide_others", "crossTree": false }
+  ]
+}

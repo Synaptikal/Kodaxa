@@ -1,0 +1,354 @@
+{
+  "id": "pistol",
+  "name": "Pistol",
+  "description": "Specialist pistol combat. Double Tap, Ricochet, Unload, Pistol Whip, Evasive Reload, and Double Time abilities.",
+  "category": "combat",
+  "tool": {
+    "name": "Pistol",
+    "professionId": "pistol",
+    "icon": "pistol"
+  },
+  "implemented": true,
+  "branchesTo": [],
+  "branchesFrom": [
+    "combat",
+    "crafting"
+  ],
+  "nodes": [
+    {
+      "id": "pistol.pistol",
+      "name": "Pistol",
+      "description": "Specialist pistol combat. Double Tap, Ricochet, Unload, Pistol Whip, Evasive Reload, and Double Time abilities.",
+      "professionId": "pistol",
+      "position": {
+        "x": 400,
+        "y": 100
+      },
+      "prerequisites": [],
+      "tier": 0,
+      "implemented": true
+    },
+    {
+      "id": "pistol.damage_1",
+      "name": "Damage 1",
+      "description": "PISTOL 600 KLAATU 600 INCREASES. DAMAGE OF RICOCHET BY10%",
+      "professionId": "pistol",
+      "position": {
+        "x": 80,
+        "y": 280
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "pistol.double_tap",
+      "name": "Double Tap",
+      "description": "PISTOL 120 KLAATU 120 FIRES A SALVO OF TWO QUICK SHOTS:",
+      "professionId": "pistol",
+      "position": {
+        "x": 290,
+        "y": 280
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "pistol.double_time",
+      "name": "Double Time",
+      "description": "PISTOL 1,200 KLAATU 1,200 TEMPORARILY DOUBLES THE SIZE OF YOUR BATTERY.",
+      "professionId": "pistol",
+      "position": {
+        "x": 500,
+        "y": 280
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "pistol.evasive_reload",
+      "name": "Evasive Reload",
+      "description": "PISTOL 1,200 KLAATU 1,200 RELOAD.1 BATTERY EACH TIME YOU SUCCESSFULLY DODGE A Ree eer. FF ilies) A Rie Pres AL Us",
+      "professionId": "pistol",
+      "position": {
+        "x": 710,
+        "y": 280
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "pistol.pistol_damage_1",
+      "name": "Pistol Damage 1",
+      "description": "PISTOL 300 KLAATU 300 INCREASE THE DAMAGE OF PRIMARY FIREBY5%",
+      "professionId": "pistol",
+      "position": {
+        "x": 920,
+        "y": 280
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "pistol.pistol_speed_1",
+      "name": "Pistol Speed 1",
+      "description": "PISTOL 300 KLAATU 300 INCREASE YOUR PRIMARY RATE OF FIRE WITH PISTOLS BY 10%",
+      "professionId": "pistol",
+      "position": {
+        "x": 1130,
+        "y": 280
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "pistol.pistol_whip",
+      "name": "Pistol Whip",
+      "description": "PISTOL 400 KLAATU 400 STUN AN-ENEMY IN FRONT IF YOU.",
+      "professionId": "pistol",
+      "position": {
+        "x": 80,
+        "y": 1030
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "pistol.ricochet",
+      "name": "Ricochet",
+      "description": "PISTOL 600 KLAATU 600 FIRE A PROJECTILE THAT BOUNCES BETWEEN NEARBY.TARGETS.",
+      "professionId": "pistol",
+      "position": {
+        "x": 290,
+        "y": 1030
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "pistol.unload",
+      "name": "Unload",
+      "description": "PISTOL 600 KLAATU 600 FAN THE HAMMER AND REPEATEDLY PULL THE TRIGGER TO FIRE AS MANY AM 4se58-1 SA eee baFll 8",
+      "professionId": "pistol",
+      "position": {
+        "x": 500,
+        "y": 1030
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "pistol.unload_damage_1",
+      "name": "Unload Damage 1",
+      "description": "PISTOL 600 KLAATU 600 INCREASES THE DAMAGE OF UNLOAD BY10%",
+      "professionId": "pistol",
+      "position": {
+        "x": 710,
+        "y": 1030
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "pistol.damage_2",
+      "name": "Damage 2",
+      "description": "PISTOL 600 KLAATU 600 INCREASES THE DAMAGE OF RICOCHET BY AN ADDITIONAL 10%",
+      "professionId": "pistol",
+      "position": {
+        "x": 80,
+        "y": 430
+      },
+      "prerequisites": [
+        "pistol.damage_1"
+      ],
+      "tier": 2,
+      "implemented": true
+    },
+    {
+      "id": "pistol.pistol_damage_2",
+      "name": "Pistol Damage 2",
+      "description": "PISTOL 600 KLAATU 600 INCREASE THE DAMAGE OF PRIMARY FIRE BY A FURTHER 5%",
+      "professionId": "pistol",
+      "position": {
+        "x": 920,
+        "y": 430
+      },
+      "prerequisites": [
+        "pistol.pistol_damage_1"
+      ],
+      "tier": 2,
+      "implemented": true
+    },
+    {
+      "id": "pistol.pistol_speed_2",
+      "name": "Pistol Speed 2",
+      "description": "PISTOL 600 KLAATU 600 INCREASE YOUR PRIMARY RATE OF FIRE WITH PISTOLS BY AN RPITMFBIAR 4407.",
+      "professionId": "pistol",
+      "position": {
+        "x": 1130,
+        "y": 430
+      },
+      "prerequisites": [
+        "pistol.pistol_speed_1"
+      ],
+      "tier": 2,
+      "implemented": true
+    },
+    {
+      "id": "pistol.unload_damage_2",
+      "name": "Unload Damage 2",
+      "description": "PISTOL 600 KLAATU 600 INCREASES THE DAMAGE OF UNLOAD BY AN ADDITIONAL 10%",
+      "professionId": "pistol",
+      "position": {
+        "x": 710,
+        "y": 1180
+      },
+      "prerequisites": [
+        "pistol.unload_damage_1"
+      ],
+      "tier": 2,
+      "implemented": true
+    },
+    {
+      "id": "pistol.pistol_damage_3",
+      "name": "Pistol Damage 3",
+      "description": "PISTOL 900 KLAATU 900 INCREASE THE DAMAGE OF PRIMARY FIRE BY A FURTHER 10%",
+      "professionId": "pistol",
+      "position": {
+        "x": 920,
+        "y": 580
+      },
+      "prerequisites": [
+        "pistol.pistol_damage_2"
+      ],
+      "tier": 3,
+      "implemented": true
+    },
+    {
+      "id": "pistol.pistol_speed_3",
+      "name": "Pistol Speed 3",
+      "description": "PISTOL 900 KLAATU 900 INCREASE YOUR PRIMARY RATE OF FIRE WITH PISTOLS BY AN RPITMFBIAR 4407.",
+      "professionId": "pistol",
+      "position": {
+        "x": 1130,
+        "y": 580
+      },
+      "prerequisites": [
+        "pistol.pistol_speed_2"
+      ],
+      "tier": 3,
+      "implemented": true
+    },
+    {
+      "id": "pistol.unload_damage_3",
+      "name": "Unload Damage 3",
+      "description": "PISTOL 600 KLAATU 600 INCREASES THE DAMAGE OF UNLOAD BY AN ADDITIONAL 15%",
+      "professionId": "pistol",
+      "position": {
+        "x": 710,
+        "y": 1330
+      },
+      "prerequisites": [
+        "pistol.unload_damage_2"
+      ],
+      "tier": 3,
+      "implemented": true
+    }
+  ],
+  "edges": [
+    {
+      "source": "pistol.damage_1",
+      "target": "pistol.damage_2",
+      "crossTree": false
+    },
+    {
+      "source": "pistol.pistol_damage_1",
+      "target": "pistol.pistol_damage_2",
+      "crossTree": false
+    },
+    {
+      "source": "pistol.pistol_damage_2",
+      "target": "pistol.pistol_damage_3",
+      "crossTree": false
+    },
+    {
+      "source": "pistol.pistol_speed_1",
+      "target": "pistol.pistol_speed_2",
+      "crossTree": false
+    },
+    {
+      "source": "pistol.pistol_speed_2",
+      "target": "pistol.pistol_speed_3",
+      "crossTree": false
+    },
+    {
+      "source": "pistol.unload_damage_1",
+      "target": "pistol.unload_damage_2",
+      "crossTree": false
+    },
+    {
+      "source": "pistol.unload_damage_2",
+      "target": "pistol.unload_damage_3",
+      "crossTree": false
+    },
+    {
+      "source": "pistol.pistol",
+      "target": "pistol.damage_1",
+      "crossTree": false
+    },
+    {
+      "source": "pistol.pistol",
+      "target": "pistol.double_tap",
+      "crossTree": false
+    },
+    {
+      "source": "pistol.pistol",
+      "target": "pistol.double_time",
+      "crossTree": false
+    },
+    {
+      "source": "pistol.pistol",
+      "target": "pistol.evasive_reload",
+      "crossTree": false
+    },
+    {
+      "source": "pistol.pistol",
+      "target": "pistol.pistol_damage_1",
+      "crossTree": false
+    },
+    {
+      "source": "pistol.pistol",
+      "target": "pistol.pistol_speed_1",
+      "crossTree": false
+    },
+    {
+      "source": "pistol.pistol",
+      "target": "pistol.pistol_whip",
+      "crossTree": false
+    },
+    {
+      "source": "pistol.pistol",
+      "target": "pistol.ricochet",
+      "crossTree": false
+    },
+    {
+      "source": "pistol.pistol",
+      "target": "pistol.unload",
+      "crossTree": false
+    },
+    {
+      "source": "pistol.pistol",
+      "target": "pistol.unload_damage_1",
+      "crossTree": false
+    }
+  ]
+}

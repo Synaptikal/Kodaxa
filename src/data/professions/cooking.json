@@ -1,0 +1,96 @@
+{
+  "id": "cooking",
+  "name": "Cooking",
+  "description": "Prepare food and consumables at the Stove station. Cooked foods raise your maximum health, focus, and stamina beyond base values, giving crafters and explorers a lasting edge.",
+  "category": "crafting",
+  "tool": {
+    "name": "Stove",
+    "professionId": "cooking",
+    "icon": "stove"
+  },
+  "implemented": true,
+  "branchesTo": [],
+  "branchesFrom": [],
+  "nodes": [
+    {
+      "id": "cooking.cooking",
+      "name": "Cooking",
+      "description": "Foundation of the Cooking profession. Unlocks access to the Stove station and grants basic food recipes.",
+      "professionId": "cooking",
+      "position": { "x": 400, "y": 100 },
+      "prerequisites": [],
+      "tier": 0,
+      "implemented": true
+    },
+    {
+      "id": "cooking.foods",
+      "name": "Foods",
+      "description": "Learn to prepare foods that extend your maximum health, stamina, and focus beyond base limits. Cooked food buffs persist until you eat again.",
+      "professionId": "cooking",
+      "position": { "x": 80, "y": 280 },
+      "prerequisites": ["cooking.cooking"],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "cooking.fruitjam",
+      "name": "Fruit Jam",
+      "description": "Craft Fruit Jam from 10 units of any fruit. When eaten, boosts your maximum Focus — letting you sustain more active skills simultaneously.",
+      "professionId": "cooking",
+      "position": { "x": 290, "y": 280 },
+      "prerequisites": ["cooking.cooking"],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "cooking.meat_kabob",
+      "name": "Meat Kabob",
+      "description": "Craft Meat Kabob from 10 units of any meat. When eaten, boosts your maximum Health — increasing how much damage you can sustain.",
+      "professionId": "cooking",
+      "position": { "x": 500, "y": 280 },
+      "prerequisites": ["cooking.cooking"],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "cooking.mushroom_patty",
+      "name": "Mushroom Patty",
+      "description": "Craft Mushroom Patty from 10 units of any fungus. When eaten, boosts your maximum Stamina — extending how long you can sprint and exert yourself.",
+      "professionId": "cooking",
+      "position": { "x": 710, "y": 280 },
+      "prerequisites": ["cooking.cooking"],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "cooking.preservation",
+      "name": "Preservation",
+      "description": "Advanced food preservation techniques. Extends the duration of food buffs and allows stacking cooked goods for long expeditions.",
+      "professionId": "cooking",
+      "position": { "x": 920, "y": 280 },
+      "prerequisites": ["cooking.cooking"],
+      "tier": 1,
+      "implemented": false
+    },
+    {
+      "id": "cooking.fine_cuisine",
+      "name": "Fine Cuisine",
+      "description": "Master-level cooking. Produces higher-quality food with stronger and longer-lasting buffs. Requires access to rare ingredients.",
+      "professionId": "cooking",
+      "position": { "x": 400, "y": 460 },
+      "prerequisites": ["cooking.fruitjam", "cooking.meat_kabob", "cooking.mushroom_patty"],
+      "tier": 2,
+      "implemented": false
+    }
+  ],
+  "edges": [
+    { "source": "cooking.cooking",     "target": "cooking.foods",          "crossTree": false },
+    { "source": "cooking.cooking",     "target": "cooking.fruitjam",       "crossTree": false },
+    { "source": "cooking.cooking",     "target": "cooking.meat_kabob",     "crossTree": false },
+    { "source": "cooking.cooking",     "target": "cooking.mushroom_patty", "crossTree": false },
+    { "source": "cooking.cooking",     "target": "cooking.preservation",   "crossTree": false },
+    { "source": "cooking.fruitjam",    "target": "cooking.fine_cuisine",   "crossTree": false },
+    { "source": "cooking.meat_kabob",  "target": "cooking.fine_cuisine",   "crossTree": false },
+    { "source": "cooking.mushroom_patty", "target": "cooking.fine_cuisine","crossTree": false }
+  ]
+}

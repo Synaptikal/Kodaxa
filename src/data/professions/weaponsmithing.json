@@ -1,0 +1,107 @@
+{
+  "id": "artisan_weaponsmith",
+  "name": "Weaponsmithing",
+  "description": "Craft blasters, melee weapons, and specialist armaments at the Toolmaker station. Weaponsmiths produce the five confirmed handgun frames — each with distinct stat profiles and combat roles.",
+  "category": "crafting",
+  "tool": {
+    "name": "Toolmaker",
+    "professionId": "artisan_weaponsmith",
+    "icon": "toolmaker"
+  },
+  "implemented": true,
+  "branchesTo": [],
+  "branchesFrom": ["crafting"],
+  "nodes": [
+    {
+      "id": "artisan_weaponsmith.base",
+      "name": "Weaponsmithing",
+      "description": "Foundation of the Weaponsmithing profession. Grants access to weapon crafting recipes at the Toolmaker station. Requires progress in the Crafting tree.",
+      "professionId": "artisan_weaponsmith",
+      "position": { "x": 400, "y": 100 },
+      "prerequisites": [],
+      "tier": 0,
+      "implemented": true
+    },
+    {
+      "id": "artisan_weaponsmith.cryostar",
+      "name": "Cryostar",
+      "description": "Craft the Cryostar handgun. A cryo-element pistol that applies cold and freeze status effects. Pairs well with Thaw Bones medicine in your loadout.",
+      "professionId": "artisan_weaponsmith",
+      "position": { "x": 80, "y": 280 },
+      "prerequisites": ["artisan_weaponsmith.base"],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "artisan_weaponsmith.atomizer",
+      "name": "Atomizer",
+      "description": "Craft the Atomizer handgun. A high-rate energy pistol that excels at sustained fire. Quality stat affects damage output.",
+      "professionId": "artisan_weaponsmith",
+      "position": { "x": 290, "y": 280 },
+      "prerequisites": ["artisan_weaponsmith.base"],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "artisan_weaponsmith.pulsar",
+      "name": "Pulsar",
+      "description": "Craft the Pulsar handgun. A burst-fire pistol that delivers high damage in short pulses. Effective at medium range.",
+      "professionId": "artisan_weaponsmith",
+      "position": { "x": 500, "y": 280 },
+      "prerequisites": ["artisan_weaponsmith.base"],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "artisan_weaponsmith.spitfire",
+      "name": "Spitfire",
+      "description": "Craft the Spitfire handgun. A rapid-fire pistol with high potential stat requirements. Trades accuracy for volume of fire.",
+      "professionId": "artisan_weaponsmith",
+      "position": { "x": 710, "y": 280 },
+      "prerequisites": ["artisan_weaponsmith.base"],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "artisan_weaponsmith.voltstar",
+      "name": "Voltstar",
+      "description": "Craft the Voltstar handgun. An electric-element pistol that applies the electric status. Watt Away medicine counters its effect on allies.",
+      "professionId": "artisan_weaponsmith",
+      "position": { "x": 920, "y": 280 },
+      "prerequisites": ["artisan_weaponsmith.base"],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "artisan_weaponsmith.melee_weapons",
+      "name": "Melee Weapons",
+      "description": "Craft close-quarters melee weapons. Precise recipes and weapon types are under development as the combat system expands.",
+      "professionId": "artisan_weaponsmith",
+      "position": { "x": 290, "y": 460 },
+      "prerequisites": ["artisan_weaponsmith.atomizer", "artisan_weaponsmith.pulsar"],
+      "tier": 2,
+      "implemented": false
+    },
+    {
+      "id": "artisan_weaponsmith.masterwork",
+      "name": "Masterwork Weapons",
+      "description": "Produce high-PQRV weapons with superior stat ceilings. Requires rare materials and advanced crafting skill.",
+      "professionId": "artisan_weaponsmith",
+      "position": { "x": 710, "y": 460 },
+      "prerequisites": ["artisan_weaponsmith.spitfire", "artisan_weaponsmith.voltstar"],
+      "tier": 2,
+      "implemented": false
+    }
+  ],
+  "edges": [
+    { "source": "artisan_weaponsmith.base",     "target": "artisan_weaponsmith.cryostar",      "crossTree": false },
+    { "source": "artisan_weaponsmith.base",     "target": "artisan_weaponsmith.atomizer",      "crossTree": false },
+    { "source": "artisan_weaponsmith.base",     "target": "artisan_weaponsmith.pulsar",        "crossTree": false },
+    { "source": "artisan_weaponsmith.base",     "target": "artisan_weaponsmith.spitfire",      "crossTree": false },
+    { "source": "artisan_weaponsmith.base",     "target": "artisan_weaponsmith.voltstar",      "crossTree": false },
+    { "source": "artisan_weaponsmith.atomizer", "target": "artisan_weaponsmith.melee_weapons", "crossTree": false },
+    { "source": "artisan_weaponsmith.pulsar",   "target": "artisan_weaponsmith.melee_weapons", "crossTree": false },
+    { "source": "artisan_weaponsmith.spitfire", "target": "artisan_weaponsmith.masterwork",    "crossTree": false },
+    { "source": "artisan_weaponsmith.voltstar", "target": "artisan_weaponsmith.masterwork",    "crossTree": false }
+  ]
+}

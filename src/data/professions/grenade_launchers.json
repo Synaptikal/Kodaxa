@@ -1,0 +1,226 @@
+{
+  "id": "grenade_launchers",
+  "name": "Grenade Launchers",
+  "description": "Master grenade launchers with Cluster, Repulsor, Implosion, and Uplift abilities. Specialist area-damage combat tree.",
+  "category": "combat",
+  "tool": {
+    "name": "Grenade Launcher",
+    "professionId": "grenade_launchers",
+    "icon": "grenade-launcher"
+  },
+  "implemented": true,
+  "branchesTo": [],
+  "branchesFrom": [
+    "combat",
+    "crafting"
+  ],
+  "nodes": [
+    {
+      "id": "grenade_launchers.grenade_launchers",
+      "name": "Grenade Launchers",
+      "description": "Master grenade launchers with Cluster, Repulsor, Implosion, and Uplift abilities. Specialist area-damage combat tree.",
+      "professionId": "grenade_launchers",
+      "position": {
+        "x": 400,
+        "y": 100
+      },
+      "prerequisites": [],
+      "tier": 0,
+      "implemented": true
+    },
+    {
+      "id": "grenade_launchers.flight_speed_1",
+      "name": "Flight Speed 1",
+      "description": "GRENADELAUNCHER 300 KLAATU 300 INCREASE THE PROJECTILE SPEED OF PRIMARY FIRE BY 10%",
+      "professionId": "grenade_launchers",
+      "position": {
+        "x": 80,
+        "y": 280
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "grenade_launchers.grenade_area_1",
+      "name": "Grenade Area 1",
+      "description": "GRENADELAUNCHER 300 KLAATU 300 INCREASE THE GRENADE'S EXPLOSIVE RADIUS BY 20%",
+      "professionId": "grenade_launchers",
+      "position": {
+        "x": 290,
+        "y": 280
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "grenade_launchers.grenade_launcher",
+      "name": "Grenade Launcher",
+      "description": "GRENADELAUNCHER 0 KLAATU 0 LEARN HOW TO USE THE GRENADE LAUNCHER",
+      "professionId": "grenade_launchers",
+      "position": {
+        "x": 500,
+        "y": 280
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "grenade_launchers.speed",
+      "name": "Speed",
+      "description": "GRENADELAUNCHER 300 KLAATU 300 INCREASE YOUR GRENADE LAUNCHER'S PRIMARY RATE OF FIRE me ann —_",
+      "professionId": "grenade_launchers",
+      "position": {
+        "x": 710,
+        "y": 580
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "grenade_launchers.flight_speed_2",
+      "name": "Flight Speed 2",
+      "description": "GRENADELAUNCHER 600 KLAATU 600 INCREASE THE PROJECTILE SPEED OF PRIMARY FIRE BY AN ADDITIONAL a“aeans- —_—",
+      "professionId": "grenade_launchers",
+      "position": {
+        "x": 80,
+        "y": 430
+      },
+      "prerequisites": [
+        "grenade_launchers.flight_speed_1"
+      ],
+      "tier": 2,
+      "implemented": true
+    },
+    {
+      "id": "grenade_launchers.grenade_area_2",
+      "name": "Grenade Area 2",
+      "description": "GRENADELAUNCHER 600 KLAATU 600 INCREASE THE GRENADE'S EXPLOSIVE RADIUS BY AN RPI AR SANs",
+      "professionId": "grenade_launchers",
+      "position": {
+        "x": 290,
+        "y": 430
+      },
+      "prerequisites": [
+        "grenade_launchers.grenade_area_1"
+      ],
+      "tier": 2,
+      "implemented": true
+    },
+    {
+      "id": "grenade_launchers.speed_2",
+      "name": "Speed 2",
+      "description": "GRENADELAUNCHER 600 KLAATU 600 INCREASE YOUR GRENADE LAUNCHER'S PRIMARY RATE OF FIRE Rv ALL ARPT As amos",
+      "professionId": "grenade_launchers",
+      "position": {
+        "x": 710,
+        "y": 280
+      },
+      "prerequisites": [
+        "grenade_launchers.speed"
+      ],
+      "tier": 2,
+      "implemented": true
+    },
+    {
+      "id": "grenade_launchers.flight_speed_3",
+      "name": "Flight Speed 3",
+      "description": "Macher , GRENADELAUNCHER 900 KLAATU 900 INCREASE THE PROJECTILE SPEED OF PRIMARY FIRE BY AN ADDITIONAL a“aeans- —_—",
+      "professionId": "grenade_launchers",
+      "position": {
+        "x": 80,
+        "y": 580
+      },
+      "prerequisites": [
+        "grenade_launchers.flight_speed_2"
+      ],
+      "tier": 3,
+      "implemented": true
+    },
+    {
+      "id": "grenade_launchers.grenade_area_3",
+      "name": "Grenade Area 3",
+      "description": "Macher , GRENADELAUNCHER 900 KLAATU 900 INCREASE THE GRENADE'S EXPLOSIVE RADIUS BY AN RPI AR SANs",
+      "professionId": "grenade_launchers",
+      "position": {
+        "x": 290,
+        "y": 580
+      },
+      "prerequisites": [
+        "grenade_launchers.grenade_area_2"
+      ],
+      "tier": 3,
+      "implemented": true
+    },
+    {
+      "id": "grenade_launchers.speed_3",
+      "name": "Speed 3",
+      "description": "uacher , GRENADELAUNCHER 900 KLAATU 900 INCREASE YOUR GRENADE LAUNCHER'S PRIMARY RATE OF FIRE By ALL ARMMIPTIMAI AL Antz",
+      "professionId": "grenade_launchers",
+      "position": {
+        "x": 710,
+        "y": 430
+      },
+      "prerequisites": [
+        "grenade_launchers.speed_2"
+      ],
+      "tier": 3,
+      "implemented": true
+    }
+  ],
+  "edges": [
+    {
+      "source": "grenade_launchers.flight_speed_1",
+      "target": "grenade_launchers.flight_speed_2",
+      "crossTree": false
+    },
+    {
+      "source": "grenade_launchers.flight_speed_2",
+      "target": "grenade_launchers.flight_speed_3",
+      "crossTree": false
+    },
+    {
+      "source": "grenade_launchers.grenade_area_1",
+      "target": "grenade_launchers.grenade_area_2",
+      "crossTree": false
+    },
+    {
+      "source": "grenade_launchers.grenade_area_2",
+      "target": "grenade_launchers.grenade_area_3",
+      "crossTree": false
+    },
+    {
+      "source": "grenade_launchers.speed",
+      "target": "grenade_launchers.speed_2",
+      "crossTree": false
+    },
+    {
+      "source": "grenade_launchers.speed_2",
+      "target": "grenade_launchers.speed_3",
+      "crossTree": false
+    },
+    {
+      "source": "grenade_launchers.grenade_launchers",
+      "target": "grenade_launchers.flight_speed_1",
+      "crossTree": false
+    },
+    {
+      "source": "grenade_launchers.grenade_launchers",
+      "target": "grenade_launchers.grenade_area_1",
+      "crossTree": false
+    },
+    {
+      "source": "grenade_launchers.grenade_launchers",
+      "target": "grenade_launchers.grenade_launcher",
+      "crossTree": false
+    },
+    {
+      "source": "grenade_launchers.grenade_launchers",
+      "target": "grenade_launchers.speed",
+      "crossTree": false
+    }
+  ]
+}

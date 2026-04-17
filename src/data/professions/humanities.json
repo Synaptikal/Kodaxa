@@ -1,0 +1,121 @@
+{
+  "id": "humanities",
+  "name": "Humanities",
+  "description": "Arts, music, writing, and journalism. Earn XP when your performances and content benefit other players in the colony.",
+  "category": "social",
+  "tool": {
+    "name": "Performance Kit",
+    "professionId": "humanities",
+    "icon": "performance-kit"
+  },
+  "implemented": true,
+  "branchesTo": [],
+  "branchesFrom": [],
+  "nodes": [
+    {
+      "id": "humanities.humanities",
+      "name": "Humanities",
+      "description": "Arts, music, writing, and journalism. Earn XP when your performances and content benefit other players in the colony.",
+      "professionId": "humanities",
+      "position": {
+        "x": 400,
+        "y": 100
+      },
+      "prerequisites": [],
+      "tier": 0,
+      "implemented": true
+    },
+    {
+      "id": "humanities.acting",
+      "name": "Acting",
+      "description": "Under development.",
+      "professionId": "humanities",
+      "position": {
+        "x": 80,
+        "y": 280
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": false
+    },
+    {
+      "id": "humanities.dance",
+      "name": "Dance",
+      "description": "Under development.",
+      "professionId": "humanities",
+      "position": {
+        "x": 290,
+        "y": 280
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": false
+    },
+    {
+      "id": "humanities.journalism",
+      "name": "Journalism",
+      "description": "PUBLISH A BLOG AND MAKE PEOPLE FAMOUS",
+      "professionId": "humanities",
+      "position": {
+        "x": 500,
+        "y": 280
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": false
+    },
+    {
+      "id": "humanities.music",
+      "name": "Music",
+      "description": "Under development.",
+      "professionId": "humanities",
+      "position": {
+        "x": 710,
+        "y": 280
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": false
+    },
+    {
+      "id": "humanities.writing",
+      "name": "Writing",
+      "description": "LEARN TO HONE YOUR WRITING SKILLS",
+      "professionId": "humanities",
+      "position": {
+        "x": 920,
+        "y": 280
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": false
+    }
+  ],
+  "edges": [
+    {
+      "source": "humanities.humanities",
+      "target": "humanities.acting",
+      "crossTree": false
+    },
+    {
+      "source": "humanities.humanities",
+      "target": "humanities.dance",
+      "crossTree": false
+    },
+    {
+      "source": "humanities.humanities",
+      "target": "humanities.journalism",
+      "crossTree": false
+    },
+    {
+      "source": "humanities.humanities",
+      "target": "humanities.music",
+      "crossTree": false
+    },
+    {
+      "source": "humanities.humanities",
+      "target": "humanities.writing",
+      "crossTree": false
+    }
+  ]
+}

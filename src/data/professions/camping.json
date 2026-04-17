@@ -1,0 +1,67 @@
+{
+  "id": "camping",
+  "name": "Camping",
+  "description": "Create forward bases that serve as respawn points, crafting stations, safe areas for healing, and defenses. Camps benefit other players, earning you XP.",
+  "category": "scouting",
+  "tool": {
+    "name": "Ranger Kit",
+    "professionId": "camping",
+    "icon": "ranger-kit"
+  },
+  "implemented": true,
+  "branchesTo": ["wilderness_survival"],
+  "branchesFrom": ["ranger"],
+  "nodes": [
+    {
+      "id": "camping.base",
+      "name": "Basic Campsite",
+      "description": "Deploy a simple camp with a bedroll (respawn point). Limited duration.",
+      "professionId": "camping",
+      "position": { "x": 100, "y": 500 },
+      "prerequisites": ["ranger.unlock_camping"],
+      "tier": 0,
+      "implemented": true
+    },
+    {
+      "id": "camping.crafting_station",
+      "name": "Field Crafting Station",
+      "description": "Add a basic crafting bench to your camp. Other players can use it.",
+      "professionId": "camping",
+      "position": { "x": 0, "y": 620 },
+      "prerequisites": ["camping.base"],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "camping.defenses",
+      "name": "Camp Defenses",
+      "description": "Place defensive structures around your camp. Deters creatures.",
+      "professionId": "camping",
+      "position": { "x": 200, "y": 620 },
+      "prerequisites": ["camping.base"],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "camping.safe_zone",
+      "name": "Safe Zone Projection",
+      "description": "Your camp radiates a safe area where wounds can heal and entertainment skills function.",
+      "professionId": "camping",
+      "position": { "x": 100, "y": 740 },
+      "prerequisites": ["camping.crafting_station", "camping.defenses"],
+      "special": {
+        "name": "Fortified Camp",
+        "description": "Doubles camp duration and defense radius.",
+        "toolType": "Ranger Kit"
+      },
+      "tier": 2,
+      "implemented": true
+    }
+  ],
+  "edges": [
+    { "source": "camping.base", "target": "camping.crafting_station", "crossTree": false },
+    { "source": "camping.base", "target": "camping.defenses", "crossTree": false },
+    { "source": "camping.crafting_station", "target": "camping.safe_zone", "crossTree": false },
+    { "source": "camping.defenses", "target": "camping.safe_zone", "crossTree": false }
+  ]
+}

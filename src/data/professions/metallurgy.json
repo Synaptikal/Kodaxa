@@ -1,0 +1,119 @@
+{
+  "id": "artisan_metallurgy",
+  "name": "Metallurgy",
+  "description": "Refine ores into metals, alloys, and industrial materials at the Refinery station. A metallurgist's skill — and the resource origin planet — directly affects the PQRV stats of every output ingot.",
+  "category": "crafting",
+  "tool": {
+    "name": "Refinery",
+    "professionId": "artisan_metallurgy",
+    "icon": "refinery"
+  },
+  "implemented": true,
+  "branchesTo": [],
+  "branchesFrom": ["crafting"],
+  "nodes": [
+    {
+      "id": "artisan_metallurgy.base",
+      "name": "Metallurgy",
+      "description": "Foundation of the Metallurgy profession. Grants access to the Refinery station and basic ore-to-metal smelting recipes. Resource origin planet affects the PQRV stats of refined outputs.",
+      "professionId": "artisan_metallurgy",
+      "position": { "x": 400, "y": 100 },
+      "prerequisites": [],
+      "tier": 0,
+      "implemented": true
+    },
+    {
+      "id": "artisan_metallurgy.basic_smelting",
+      "name": "Basic Smelting",
+      "description": "Smelt Tier 1 and Tier 2 ores into refined metals. Covers Iron, Copper, Aluminum, Zinc, Chromium, Nickel, Manganese, and Magnetized Iron production chains.",
+      "professionId": "artisan_metallurgy",
+      "position": { "x": 80, "y": 280 },
+      "prerequisites": ["artisan_metallurgy.base"],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "artisan_metallurgy.alloy_crafting",
+      "name": "Alloy Crafting",
+      "description": "Produce metal alloys at the Refinery. Unlocks Brass (Copper+Zinc), Bronze (Copper+Tin), Steel (Coke+Iron+Magnetized Iron), Stainless Steel, Chromium Steel, and Manganese Steel.",
+      "professionId": "artisan_metallurgy",
+      "position": { "x": 290, "y": 280 },
+      "prerequisites": ["artisan_metallurgy.base"],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "artisan_metallurgy.industrial_processing",
+      "name": "Industrial Processing",
+      "description": "Produce industrial materials at the Refinery. Covers Glass (from Silica Ore or Feldspar), Plastic (from Oil), Coke (from Coal), Ceramic (from Clay), and Cement.",
+      "professionId": "artisan_metallurgy",
+      "position": { "x": 500, "y": 280 },
+      "prerequisites": ["artisan_metallurgy.base"],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "artisan_metallurgy.rare_metals",
+      "name": "Rare Metal Refining",
+      "description": "Smelt Tier 3–4 ores into rare metals. Covers Cobalt (from Cobaltite), Lead (from Galena), Tin (from Cassiterite), Silver (from Argentite), Mercury (from Cinnabar), Lithium (from Spodumene), and Uranium (from Pitchblende or Carnotite).",
+      "professionId": "artisan_metallurgy",
+      "position": { "x": 710, "y": 280 },
+      "prerequisites": ["artisan_metallurgy.basic_smelting"],
+      "tier": 2,
+      "implemented": true
+    },
+    {
+      "id": "artisan_metallurgy.advanced_alloys",
+      "name": "Advanced Alloys",
+      "description": "Produce high-tier alloys requiring rare metals. Unlocks Cobalt Steel (Carbon+Cobalt+Tungsten), Electrum (Silver+Gold), Pewter (Lead+Tin), Nickel Silver, and Tungsten Carbide.",
+      "professionId": "artisan_metallurgy",
+      "position": { "x": 185, "y": 460 },
+      "prerequisites": ["artisan_metallurgy.alloy_crafting", "artisan_metallurgy.rare_metals"],
+      "tier": 2,
+      "implemented": true
+    },
+    {
+      "id": "artisan_metallurgy.exotic_alloys",
+      "name": "Exotic Alloys",
+      "description": "Produce Tier 5 and exotic alloys: U-Al (Uranium+Aluminum), Uralex, Cadmiumin, Lithalum, Palladiance, Stellite, and Triadite. Requires Scarce-tier source materials.",
+      "professionId": "artisan_metallurgy",
+      "position": { "x": 500, "y": 460 },
+      "prerequisites": ["artisan_metallurgy.rare_metals", "artisan_metallurgy.advanced_alloys"],
+      "tier": 3,
+      "implemented": true
+    },
+    {
+      "id": "artisan_metallurgy.gemstone_refining",
+      "name": "Gemstone Refining",
+      "description": "Extract and process gemstones from host rocks. Covers the full refining chain from raw rock through intermediate mineral to finished gem. Uncommon, Rare, and Exotic gems require high-Q Chronophaser to extract.",
+      "professionId": "artisan_metallurgy",
+      "position": { "x": 920, "y": 280 },
+      "prerequisites": ["artisan_metallurgy.base"],
+      "tier": 1,
+      "implemented": true
+    },
+    {
+      "id": "artisan_metallurgy.gas_processing",
+      "name": "Gas Processing",
+      "description": "Refine gases from ore processing byproducts. Covers Radon (from Pitchblende/Carnotite), Methane (from Coal/Shale), and Fluorine (from Limestone). Note: these gases are also mining hazards.",
+      "professionId": "artisan_metallurgy",
+      "position": { "x": 920, "y": 460 },
+      "prerequisites": ["artisan_metallurgy.gemstone_refining", "artisan_metallurgy.rare_metals"],
+      "tier": 2,
+      "implemented": true
+    }
+  ],
+  "edges": [
+    { "source": "artisan_metallurgy.base",               "target": "artisan_metallurgy.basic_smelting",       "crossTree": false },
+    { "source": "artisan_metallurgy.base",               "target": "artisan_metallurgy.alloy_crafting",       "crossTree": false },
+    { "source": "artisan_metallurgy.base",               "target": "artisan_metallurgy.industrial_processing","crossTree": false },
+    { "source": "artisan_metallurgy.base",               "target": "artisan_metallurgy.gemstone_refining",    "crossTree": false },
+    { "source": "artisan_metallurgy.basic_smelting",     "target": "artisan_metallurgy.rare_metals",          "crossTree": false },
+    { "source": "artisan_metallurgy.alloy_crafting",     "target": "artisan_metallurgy.advanced_alloys",      "crossTree": false },
+    { "source": "artisan_metallurgy.rare_metals",        "target": "artisan_metallurgy.advanced_alloys",      "crossTree": false },
+    { "source": "artisan_metallurgy.rare_metals",        "target": "artisan_metallurgy.exotic_alloys",        "crossTree": false },
+    { "source": "artisan_metallurgy.advanced_alloys",    "target": "artisan_metallurgy.exotic_alloys",        "crossTree": false },
+    { "source": "artisan_metallurgy.gemstone_refining",  "target": "artisan_metallurgy.gas_processing",       "crossTree": false },
+    { "source": "artisan_metallurgy.rare_metals",        "target": "artisan_metallurgy.gas_processing",       "crossTree": false }
+  ]
+}

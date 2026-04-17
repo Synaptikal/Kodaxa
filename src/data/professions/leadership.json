@@ -1,0 +1,103 @@
+{
+  "id": "leadership",
+  "name": "Leadership",
+  "description": "Coordinate and inspire your allies. Group tactics, political influence, and colony management skills.",
+  "category": "social",
+  "tool": {
+    "name": "Rally Banner",
+    "professionId": "leadership",
+    "icon": "rally-banner"
+  },
+  "implemented": true,
+  "branchesTo": [],
+  "branchesFrom": [],
+  "nodes": [
+    {
+      "id": "leadership.leadership",
+      "name": "Leadership",
+      "description": "Coordinate and inspire your allies. Group tactics, political influence, and colony management skills.",
+      "professionId": "leadership",
+      "position": {
+        "x": 400,
+        "y": 100
+      },
+      "prerequisites": [],
+      "tier": 0,
+      "implemented": true
+    },
+    {
+      "id": "leadership.coordination",
+      "name": "Coordination",
+      "description": "LEARN HOW TO COORDINATE THE EFFORTS OF YOUR:ALLIES",
+      "professionId": "leadership",
+      "position": {
+        "x": 80,
+        "y": 280
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": false
+    },
+    {
+      "id": "leadership.group_tactics",
+      "name": "Group Tactics",
+      "description": "LEARN TO ORCHESTRATE THE EFFORTS OF YOUR GROUP",
+      "professionId": "leadership",
+      "position": {
+        "x": 290,
+        "y": 280
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": false
+    },
+    {
+      "id": "leadership.inspiration",
+      "name": "Inspiration",
+      "description": "BECOME:ABLE TO INSPIRE YOUR FRIENDS TO GREATER EFFORTS",
+      "professionId": "leadership",
+      "position": {
+        "x": 500,
+        "y": 280
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": false
+    },
+    {
+      "id": "leadership.politics",
+      "name": "Politics",
+      "description": "LEARN SKILLS TO RUN A PLANETARY COLONY AND COORDINATE ITS Fy le we my | ml —_",
+      "professionId": "leadership",
+      "position": {
+        "x": 710,
+        "y": 280
+      },
+      "prerequisites": [],
+      "tier": 1,
+      "implemented": false
+    }
+  ],
+  "edges": [
+    {
+      "source": "leadership.leadership",
+      "target": "leadership.coordination",
+      "crossTree": false
+    },
+    {
+      "source": "leadership.leadership",
+      "target": "leadership.group_tactics",
+      "crossTree": false
+    },
+    {
+      "source": "leadership.leadership",
+      "target": "leadership.inspiration",
+      "crossTree": false
+    },
+    {
+      "source": "leadership.leadership",
+      "target": "leadership.politics",
+      "crossTree": false
+    }
+  ]
+}
