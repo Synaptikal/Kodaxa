@@ -1,16 +1,16 @@
 /**
- * proxy.ts (root)
- * Next.js 16 proxy — replaces deprecated middleware.ts.
- * One concern: intercept requests to refresh Supabase auth tokens.
+ * middleware.ts (root)
+ * Next.js middleware — intercepts every request to refresh Supabase auth tokens.
+ * One concern: keeping the session cookie alive across server-rendered pages.
  *
- * Runs on Node.js runtime (not Edge) per Next.js 16 design.
+ * Runs on the Edge runtime per Next.js middleware design.
  * Delegates all Supabase cookie logic to lib/supabase/proxy.ts.
  */
 
 import { type NextRequest } from 'next/server';
 import { updateSession } from '@/lib/supabase/proxy';
 
-export default async function proxy(request: NextRequest) {
+export default async function middleware(request: NextRequest) {
   return await updateSession(request);
 }
 
