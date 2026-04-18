@@ -94,9 +94,12 @@ export function HQLayout({ children, userRole, displayName, inGameName }: HQLayo
           </nav>
 
           {/* Footer */}
-          <div className="p-3 border-t border-sr-border">
-            <Link href="/directory/me" className="text-xs font-mono text-sr-muted hover:text-slate-400 transition-colors">
+          <div className="p-3 border-t border-sr-border space-y-2">
+            <Link href="/directory/me" className="block text-xs font-mono text-sr-muted hover:text-slate-400 transition-colors">
               ← My Commerce Profile
+            </Link>
+            <Link href="/dispatch" className="block text-xs font-mono text-sr-muted hover:text-slate-400 transition-colors">
+              ← Public Dispatch
             </Link>
           </div>
         </aside>

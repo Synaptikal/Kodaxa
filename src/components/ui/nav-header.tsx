@@ -101,15 +101,17 @@ const NAV_GROUPS: NavGroup[] = [
   {
     label: 'Dispatch',
     items: [
-      { href: '/patch-notes', label: 'Patch Notes', status: 'new' },
+      { href: '/dispatch',    label: 'Transmissions',  status: 'live' as ItemStatus },
+      { href: '/patch-notes', label: 'Patch Notes',    status: 'new'  as ItemStatus },
     ],
   },
   {
     label: 'Corp HQ',
     items: [
-      { href: '/corp/hq',             label: 'Command Center',   status: 'new' as ItemStatus },
-      { href: '/corp/hq/commissions', label: 'Commission Board', status: 'new' as ItemStatus },
-      { href: '/corp/join',           label: 'Apply to Kodaxa'               },
+      { href: '/corp/hq',             label: 'Command Center',    status: 'new' as ItemStatus },
+      { href: '/corp/hq/dispatch',    label: 'Dispatch Editor',   status: 'new' as ItemStatus },
+      { href: '/corp/hq/commissions', label: 'Commission Board',  status: 'new' as ItemStatus },
+      { href: '/corp/join',           label: 'Apply to Kodaxa'                },
     ],
   },
   {
