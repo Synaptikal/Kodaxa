@@ -11,6 +11,9 @@ import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import { BootSequence } from '@/components/ui/boot-sequence';
 import { CommandConsole } from '@/components/ui/command-console';
+import { DeviceProvider } from '@/components/providers/device-provider';
+import { getDeviceType } from '@/lib/device';
+import { SkipNav } from '@/components/ui/skip-nav';
 
 export const metadata: Metadata = {
   title: {
@@ -49,17 +52,24 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const deviceType = await getDeviceType();
+
   return (
     <html lang="en" className="dark">
       <body className="min-h-dvh bg-sr-bg text-sr-text antialiased">
-        <BootSequence />
-        <CommandConsole />
-        {children}
+        <DeviceProvider initialDevice={deviceType}>
+          <SkipNav />
+          <BootSequence />
+          <CommandConsole />
+          <main id="main-content">
+            {children}
+          </main>
+        </DeviceProvider>
       </body>
     </html>
   );

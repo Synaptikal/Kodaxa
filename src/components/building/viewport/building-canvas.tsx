@@ -145,7 +145,7 @@ export function BuildingCanvas({
   // ── Render ────────────────────────────────────────────────────────
 
   return (
-    <div className="w-full h-full absolute inset-0 cursor-crosshair bg-sr-bg">
+    <div className="w-full h-full absolute inset-0 cursor-crosshair bg-sr-bg touch-canvas">
 
       {/* ── Measure HUD ────────────────────────────────────────────── */}
       {state.mode === 'measure' && (
@@ -227,6 +227,7 @@ export function BuildingCanvas({
       <Canvas
         shadows={SHADOW_CONFIG as any}
         camera={{ position: [15, 12, 15], fov: 40 }}
+        dpr={[1, 2]}
       >
         <ambientLight intensity={0.5} />
         <directionalLight

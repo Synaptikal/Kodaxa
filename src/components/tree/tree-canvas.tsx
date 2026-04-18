@@ -27,6 +27,7 @@ import '@xyflow/react/dist/style.css';
 
 import { skillNodeTypes } from '@/components/tree/skill-node';
 import { TreeControls } from '@/components/tree/tree-controls';
+import { useDevice } from '@/components/providers/device-provider';
 import type { SkillFlowNode, SkillFlowEdge } from '@/types/flow-nodes';
 
 export interface TreeCanvasProps {
@@ -66,6 +67,7 @@ export function TreeCanvas({
   onSkillClick,
   onSkillSelect,
 }: TreeCanvasProps) {
+  const { isMobile } = useDevice();
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   const { fitView } = useReactFlow();
@@ -127,6 +129,10 @@ export function TreeCanvas({
           type: 'smoothstep',
           style: { stroke: '#64748b', strokeWidth: 1.5 },
         }}
+        panOnDrag={true}
+        zoomOnPinch={true}
+        selectionOnDrag={!isMobile}
+        panOnScroll={isMobile}
       >
         <Background
           variant={BackgroundVariant.Dots}
@@ -134,13 +140,15 @@ export function TreeCanvas({
           size={1}
           color="#334155"
         />
-        <MiniMap
-          nodeColor={(n) => miniMapNodeColor(n as SkillFlowNode)}
-          maskColor="rgba(15, 23, 42, 0.7)"
-          className="!bg-slate-900 !border-slate-700"
-          pannable
-          zoomable
-        />
+        {!isMobile && (
+          <MiniMap
+            nodeColor={(n) => miniMapNodeColor(n as SkillFlowNode)}
+            maskColor="rgba(15, 23, 42, 0.7)"
+            className="!bg-slate-900 !border-slate-700"
+            pannable
+            zoomable
+          />
+        )}
         <TreeControls />
       </ReactFlow>
     </div>

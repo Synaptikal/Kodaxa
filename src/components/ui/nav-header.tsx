@@ -19,6 +19,8 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState, useRef, useEffect, useCallback } from 'react';
+import { Menu } from 'lucide-react';
+import { MobileNav } from '@/components/ui/mobile-nav';
 
 // ── Types ────────────────────────────────────────────────────────────
 
@@ -155,8 +157,14 @@ function DropdownGroup({ group, pathname }: { group: NavGroup; pathname: string 
   }, []);
 
   useEffect(() => {
-    if (open) document.addEventListener('mousedown', handleOutside);
-    return () => document.removeEventListener('mousedown', handleOutside);
+    if (!open) return;
+    document.addEventListener('mousedown', handleOutside);
+    function onKey(e: KeyboardEvent) { if (e.key === 'Escape') setOpen(false); }
+    document.addEventListener('keydown', onKey);
+    return () => {
+      document.removeEventListener('mousedown', handleOutside);
+      document.removeEventListener('keydown', onKey);
+    };
   }, [open, handleOutside]);
 
   if (group.href) {
@@ -176,6 +184,8 @@ function DropdownGroup({ group, pathname }: { group: NavGroup; pathname: string 
     <div ref={ref} className="relative">
       <button
         onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        aria-haspopup="true"
         className={`flex items-center gap-1 px-3 py-1 rounded-md text-xs font-medium transition-colors ${
           isActive ? 'bg-cyan-800/40 text-cyan-200' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800'
         }`}
@@ -184,6 +194,7 @@ function DropdownGroup({ group, pathname }: { group: NavGroup; pathname: string 
         <svg
           className={`w-2.5 h-2.5 transition-transform duration-150 ${open ? 'rotate-180' : ''}`}
           fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}
+          aria-hidden="true"
         >
           <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
         </svg>
@@ -217,6 +228,7 @@ function DropdownGroup({ group, pathname }: { group: NavGroup; pathname: string 
 export function NavHeader() {
   const pathname = usePathname();
   const divCtx = getDivisionCtx(pathname);
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 flex flex-col bg-sr-surface border-b border-sr-border shrink-0">
@@ -234,20 +246,33 @@ export function NavHeader() {
           </span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-0.5">
+        <nav aria-label="Main navigation" className="hidden md:flex items-center gap-0.5">
           {NAV_GROUPS.map((group) => (
             <DropdownGroup key={group.label} group={group} pathname={pathname} />
           ))}
         </nav>
 
-        <a
-          href="https://discord.gg/kodaxa"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="shrink-0 px-3 py-1 text-[10px] font-mono font-semibold bg-amber-800/30 border border-amber-700/40 text-amber-300 hover:bg-amber-800/50 hover:border-amber-600/60 transition-all tracking-wide uppercase"
-        >
-          Open Comms
-        </a>
+        <div className="flex items-center gap-2">
+          <a
+            href="https://discord.gg/kodaxa"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="shrink-0 px-3 py-1 text-[10px] font-mono font-semibold bg-amber-800/30 border border-amber-700/40 text-amber-300 hover:bg-amber-800/50 hover:border-amber-600/60 transition-all tracking-wide uppercase hidden sm:inline-flex items-center"
+          >
+            Open Comms
+          </a>
+
+          {/* Hamburger — mobile only */}
+          <button
+            aria-label="Open navigation menu"
+            aria-expanded={mobileNavOpen}
+            aria-controls="mobile-nav-drawer"
+            onClick={() => setMobileNavOpen(true)}
+            className="md:hidden flex items-center justify-center w-11 h-11 rounded-md text-slate-400 hover:text-slate-100 hover:bg-slate-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-state-available transition-colors"
+          >
+            <Menu className="w-5 h-5" aria-hidden="true" />
+          </button>
+        </div>
       </div>
 
       {/* Division identity line */}
@@ -266,6 +291,12 @@ export function NavHeader() {
           </span>
         </div>
       )}
+
+      <MobileNav
+        open={mobileNavOpen}
+        onClose={() => setMobileNavOpen(false)}
+        pathname={pathname}
+      />
     </header>
   );
 }

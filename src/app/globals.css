@@ -59,6 +59,19 @@
     overflow-x: hidden;
   }
 
+  /* WCAG 2.2 — visible focus indicator for keyboard navigation.
+     Replaces browser default outline with brand-consistent ring. */
+  :focus-visible {
+    outline: 2px solid var(--color-state-available);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* Remove focus ring for pointer interactions only */
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+
   /* Scrollbar styling for sidebar panels */
   ::-webkit-scrollbar {
     width: 6px;
@@ -218,6 +231,11 @@ body::before {
   );
   background-size: 200% 100%;
   animation: shimmer 1.4s ease infinite;
+}
+
+/* ── Touch canvas utility — prevents browser scroll hijack on touch ── */
+.touch-canvas {
+  touch-action: none;
 }
 
 /* ── React Flow overrides ─────────────────────────────────────────── */
