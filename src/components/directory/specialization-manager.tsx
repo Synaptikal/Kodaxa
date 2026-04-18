@@ -32,7 +32,7 @@ const CATEGORY_CHIP: Record<string, string> = {
 };
 
 const selectClass =
-  'bg-slate-900 border border-slate-600 rounded-md px-2 py-1.5 text-xs text-slate-300 focus:border-cyan-400 focus:outline-none';
+  'bg-slate-900 border border-slate-600 px-2 py-1.5 text-xs text-slate-300 focus:border-cyan-400 focus:outline-none';
 
 const SKILL_LEVELS: SkillLevel[] = ['beginner', 'intermediate', 'expert'];
 
@@ -148,13 +148,13 @@ export function SpecializationManager({
               onChange={(e) => setNotes(e.target.value)}
               placeholder="e.g. specializes in T3 only"
               maxLength={120}
-              className="w-full bg-slate-900 border border-slate-600 rounded-md px-2 py-1.5 text-xs text-slate-300 placeholder:text-slate-500 focus:border-cyan-400 focus:outline-none"
+              className="w-full bg-slate-900 border border-slate-600 px-2 py-1.5 text-xs text-slate-300 placeholder:text-slate-500 focus:border-cyan-400 focus:outline-none"
             />
           </div>
           <button
             onClick={handleAdd}
             disabled={isPending || !selectedId}
-            className="px-3 py-1.5 rounded-md bg-slate-700 text-slate-200 text-xs font-medium hover:bg-slate-600 disabled:opacity-40 transition-colors"
+            className="px-3 py-1.5 bg-slate-700 text-slate-200 text-xs font-medium hover:bg-slate-600 disabled:opacity-40 transition-colors"
           >
             + Add
           </button>

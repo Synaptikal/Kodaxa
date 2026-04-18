@@ -12,6 +12,9 @@
 
 @import "tailwindcss";
 
+/* Force-include arbitrary grid class — comma in value prevents content scanner pickup */
+@source inline("lg:grid-cols-[2fr,1.2fr]");
+
 /* ── Custom theme tokens ──────────────────────────────────────────── */
 @theme {
   /* Kodaxa brand palette — canonical values from design token spec */

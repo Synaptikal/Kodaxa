@@ -55,9 +55,9 @@ export function ReviewForm({ revieweeId, professionId }: ReviewFormProps) {
 
   return (
     <div className="border border-sr-border bg-sr-surface/40 p-3 space-y-3">
-      <h4 className="text-[8px] font-mono text-slate-500 uppercase tracking-[0.25em]">
-        File a Review
-      </h4>
+      <p className="text-[10px] font-mono text-sr-muted uppercase tracking-[0.25em]">
+        File Field Report
+      </p>
 
       {/* Star selector */}
       <div>
@@ -76,7 +76,7 @@ export function ReviewForm({ revieweeId, professionId }: ReviewFormProps) {
         placeholder="Describe your experience (optional)..."
         rows={3}
         maxLength={500}
-        className="w-full bg-slate-900 border border-slate-600 rounded-md px-3 py-2 text-xs text-slate-200 placeholder:text-slate-500 focus:border-cyan-400 focus:outline-none resize-none"
+        className="w-full bg-slate-900 border border-slate-600 px-3 py-2 text-xs text-slate-200 placeholder:text-slate-500 focus:border-cyan-400 focus:outline-none resize-none"
       />
 
       {error && (

@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * star-rating.tsx
  * Star rating display component.

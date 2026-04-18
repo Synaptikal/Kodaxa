@@ -52,25 +52,30 @@ export default async function ProfileEditorPage() {
       <NavHeader />
 
       <main className="mx-auto max-w-2xl px-4 py-8 space-y-8">
-        <div>
-          <h1 className="text-xl font-bold text-slate-100">
-            {profile ? 'Edit Profile' : 'Create Your Profile'}
+        <div className="border-b border-sr-border pb-5">
+          <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-sr-muted mb-1">
+            Commerce Registry · Personnel File
+          </p>
+          <h1 className="text-xl font-bold font-mono text-slate-100">
+            {profile ? 'Amend Dossier' : 'File Dossier'}
           </h1>
-          <p className="text-xs text-slate-500 mt-0.5">
-            Your profile is listed in the Crafter Directory so other players can find you.
+          <p className="text-xs font-mono text-sr-muted mt-1 leading-relaxed">
+            {profile
+              ? 'Update your operative record. Changes are reflected in the Commerce Registry immediately.'
+              : 'Register your operative record in the Commerce Registry so contract issuers can locate you.'}
           </p>
         </div>
 
         {/* Profile fields */}
-        <Section title="Profile Details">
+        <Section title="Operative Record">
           <ProfileEditForm existing={profile} />
         </Section>
 
         {/* Specializations — only show once profile exists */}
         {profile && (
-          <Section title="Specializations">
-            <p className="text-xs text-slate-500 mb-3">
-              Add the professions you offer services for. Players can filter the directory by these.
+          <Section title="Active Professions">
+            <p className="text-xs font-mono text-sr-muted mb-3">
+              Register the professions you offer services for. Contract issuers filter by these when searching.
             </p>
             <SpecializationManager
               specializations={profile.specializations}
@@ -81,7 +86,7 @@ export default async function ProfileEditorPage() {
 
         {/* Visibility toggle */}
         {profile && (
-          <Section title="Visibility">
+          <Section title="Registry Listing">
             <VisibilityToggle
               isVisible={profile.is_visible}
               onToggle={setProfileVisibility}
@@ -91,12 +96,12 @@ export default async function ProfileEditorPage() {
 
         {/* View public profile link */}
         {profile && (
-          <div className="text-center">
+          <div className="text-center border-t border-sr-border pt-5">
             <a
               href={`/directory/${encodeURIComponent(profile.in_game_name)}`}
-              className="text-xs text-cyan-500 hover:text-cyan-400 transition-colors"
+              className="text-[10px] font-mono uppercase tracking-[0.2em] text-cyan-500 hover:text-cyan-400 transition-colors"
             >
-              View your public profile →
+              View Public Dossier →
             </a>
           </div>
         )}
@@ -107,8 +112,8 @@ export default async function ProfileEditorPage() {
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <section className="border border-slate-700 bg-slate-800/20 p-5 space-y-3">
-      <h2 className="text-xs font-semibold text-slate-400 uppercase tracking-wider">{title}</h2>
+    <section className="border border-sr-border bg-sr-surface/20 p-5 space-y-3">
+      <p className="text-[10px] font-mono text-sr-muted uppercase tracking-[0.25em]">{title}</p>
       {children}
     </section>
   );

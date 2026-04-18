@@ -14,8 +14,8 @@ export interface ReviewListProps {
 export function ReviewList({ reviews }: ReviewListProps) {
   if (reviews.length === 0) {
     return (
-      <p className="text-sm text-slate-500 text-center py-6">
-        No reviews yet. Be the first to leave feedback.
+      <p className="text-xs font-mono text-sr-muted text-center py-6 tracking-wide">
+        No field reports on record for this operative.
       </p>
     );
   }

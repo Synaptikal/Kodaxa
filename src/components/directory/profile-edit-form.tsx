@@ -22,7 +22,7 @@ const SPECIES_OPTIONS: Species[] = ['terran', 'elioni', 'skwatchi', 'gertan', 'h
 const inputClass =
   'w-full bg-sr-bg border border-sr-border px-3 py-2 text-xs font-mono text-slate-200 placeholder:text-slate-700 focus:border-cyan-700 focus:outline-none transition-colors';
 
-const labelClass = 'block text-[8px] font-mono text-slate-600 uppercase tracking-[0.25em] mb-1';
+const labelClass = 'block text-[10px] font-mono text-sr-muted uppercase tracking-[0.25em] mb-1';
 
 export function ProfileEditForm({ existing }: ProfileEditFormProps) {
   const router = useRouter();
@@ -138,7 +138,7 @@ export function ProfileEditForm({ existing }: ProfileEditFormProps) {
       </div>
 
       <div>
-        <label className={labelClass}>Operative Brief <span className="normal-case text-slate-700">({fields.bio.length}/500)</span></label>
+        <label className={labelClass}>Operative Brief <span className="normal-case text-sr-subtle">({fields.bio.length}/500)</span></label>
         <textarea
           value={fields.bio}
           onChange={set('bio')}
