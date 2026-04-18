@@ -27,7 +27,7 @@ export async function getMakersDirectory(): Promise<MakerWithPortfolio[]> {
       `
       id, display_name, in_game_name, bio, home_planet, maker_mark,
       commission_status, average_rating, total_reviews,
-      is_kodaxa_member,
+      is_kodaxa_member, species, role,
       crafter_specializations (
         profession_id, profession_name, category, skill_level
       ),
@@ -73,6 +73,8 @@ export async function getMakersDirectory(): Promise<MakerWithPortfolio[]> {
         average_rating: row.average_rating,
         total_reviews: row.total_reviews,
         is_kodaxa_member: row.is_kodaxa_member,
+        species: row.species ?? null,
+        role: row.role ?? 'client',
         specializations: row.crafter_specializations ?? [],
         maker_mark: row.maker_mark as string,
         featured_items: showcase,
