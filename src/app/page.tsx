@@ -189,22 +189,28 @@ export default function LandingPage() {
             <RelayTicker messages={TICKER_MESSAGES} />
           </section>
 
+          {/* ── RP context line ───────────────────────────────── */}
+          <p className="text-[10px] font-mono text-slate-600 leading-relaxed border-l-2 border-l-slate-700 pl-3">
+            Kodaxa is an in-universe ops console for Stars Reach roleplayers and crafters —
+            plan builds, log your operatives, and coordinate your fabrication network.
+          </p>
+
           {/* ── Divisions Grid ────────────────────────────────── */}
           <section className="space-y-4">
             <div className="flex items-baseline justify-between">
               <SectionLabel text="Divisions" sub="League-aligned operational branches" />
             </div>
             <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-4">
-              {DIVISIONS.map(({ label, name, href, div, tools, accentBorder, labelColor }) => (
+              {DIVISIONS.map(({ label, name, href, tools, accentBorder, labelColor }) => (
                 <Link key={label} href={href}
                   className={`group block border border-sr-border border-l-2 border-l-sr-border bg-sr-surface/30 px-4 py-3 hover:bg-sr-surface/60 transition-all ${accentBorder}`}>
-                  <p className={`text-[9px] font-mono font-semibold uppercase tracking-[0.2em] ${labelColor}`}>
-                    {label}
-                  </p>
-                  <div className="mt-1.5 flex items-center justify-between gap-2">
-                    <span className="text-sm font-bold font-mono text-slate-100">{name}</span>
-                    <Badge variant={div} className="opacity-50 group-hover:opacity-100 transition-opacity shrink-0" />
+                  <div className="flex items-start justify-between gap-2">
+                    <p className={`text-[9px] font-mono font-semibold uppercase tracking-[0.2em] ${labelColor}`}>
+                      {label}
+                    </p>
+                    <span className={`text-xs font-mono opacity-0 group-hover:opacity-100 transition-opacity ${labelColor}`}>→</span>
                   </div>
+                  <p className="mt-1.5 text-sm font-bold font-mono text-slate-100">{name}</p>
                   <ul className="mt-2 space-y-0.5">
                     {tools.map((t) => (
                       <li key={t} className="text-[9px] font-mono text-slate-600 pl-2 border-l border-sr-border/40">{t}</li>
