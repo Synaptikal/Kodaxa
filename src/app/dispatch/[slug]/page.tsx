@@ -9,27 +9,27 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { NavHeader } from '@/components/ui/nav-header';
 import { PostRenderer } from '@/components/dispatch/post-renderer';
+import { getAllPosts } from '@/data/dispatch';
 import {
-  getPostBySlug,
-  getAllPosts,
-  getAdjacentPosts,
-} from '@/data/dispatch';
+  getPostBySlugMerged,
+  getAdjacentPostsMerged,
+} from '@/data/dispatch/merged';
 import { CATEGORY_COLORS, CATEGORY_LABELS } from '@/types/dispatch';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-// Enable static rendering for all known posts
+// Static params for flat-file posts; DB posts resolve dynamically
+export const dynamicParams = true;
+
 export function generateStaticParams() {
   return getAllPosts().map((p) => ({ slug: p.slug }));
 }
 
-export async function generateMetadata(
-  { params }: PageProps,
-): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const post = getPostBySlug(slug);
+  const post = await getPostBySlugMerged(slug);
   if (!post) return { title: 'Dispatch — Kodaxa Studios' };
   return {
     title: `${post.title} — Dispatch — Kodaxa Studios`,
@@ -39,10 +39,10 @@ export async function generateMetadata(
 
 export default async function DispatchPostPage({ params }: PageProps) {
   const { slug } = await params;
-  const post = getPostBySlug(slug);
+  const post = await getPostBySlugMerged(slug);
   if (!post) notFound();
 
-  const { prev, next } = getAdjacentPosts(slug);
+  const { prev, next } = await getAdjacentPostsMerged(slug);
 
   return (
     <div className="flex flex-col min-h-dvh">
@@ -122,7 +122,7 @@ export default async function DispatchPostPage({ params }: PageProps) {
           {next ? (
             <Link
               href={`/dispatch/${next.slug}`}
-              className="flex-1 rounded-lg border border-slate-800 bg-slate-900/40 p-3 hover:border-cyan-800/50 transition-colors text-right"
+              className="flex-1 border border-slate-800 bg-slate-900/40 p-3 hover:border-cyan-800/50 transition-colors text-right"
             >
               <p className="text-xs font-mono uppercase tracking-wider text-slate-500">
                 Next →

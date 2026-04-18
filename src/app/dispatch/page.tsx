@@ -7,7 +7,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { NavHeader } from '@/components/ui/nav-header';
-import { getAllPosts, getDispatchStats } from '@/data/dispatch';
+import { getAllPostsMerged, getMergedDispatchStats } from '@/data/dispatch/merged';
 import {
   CATEGORY_COLORS,
   CATEGORY_LABELS,
@@ -19,9 +19,13 @@ export const metadata: Metadata = {
     'The Kodaxa Studios newsroom. Field reports, patch recaps, charter announcements, and recruitment dispatches across the Stars Reach corporation.',
 };
 
-export default function DispatchIndexPage() {
-  const posts = getAllPosts();
-  const stats = getDispatchStats();
+export const dynamic = 'force-dynamic';
+
+export default async function DispatchIndexPage() {
+  const [posts, stats] = await Promise.all([
+    getAllPostsMerged(),
+    getMergedDispatchStats(),
+  ]);
 
   return (
     <div className="flex flex-col min-h-dvh">

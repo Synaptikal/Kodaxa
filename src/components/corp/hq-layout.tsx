@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import { NavHeader } from '@/components/ui/nav-header';
 import { RoleBadge } from '@/components/corp/role-badge';
 import type { CorpRole } from '@/types/corp';
-import { canManageRoster, canAdminister } from '@/types/corp';
+import { canManageRoster, canAdminister, canPostDispatch } from '@/types/corp';
 
 interface HQLayoutProps {
   children: React.ReactNode;
@@ -32,6 +32,9 @@ export function HQLayout({ children, userRole, displayName, inGameName }: HQLayo
     ] : []),
     ...(canAdminister(userRole) ? [
       { href: '/corp/hq/admin',      label: 'ADMIN CONTROL',   sublabel: 'Applications & roles',   glyph: '⬡' },
+    ] : []),
+    ...(canPostDispatch(userRole) ? [
+      { href: '/corp/hq/dispatch',   label: 'DISPATCH',         sublabel: 'Transmissions & drafts', glyph: '◉' },
     ] : []),
   ];
 

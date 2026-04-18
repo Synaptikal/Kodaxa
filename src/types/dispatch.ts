@@ -63,4 +63,8 @@ export interface DispatchPost {
   tag?: string;
   /** Main content, as a list of typed blocks */
   content: Block[];
+  /** Present on DB-backed posts only. Flat-file posts are always treated as published. */
+  status?: 'draft' | 'published';
+  created_at?: string;
+  updated_at?: string;
 }
