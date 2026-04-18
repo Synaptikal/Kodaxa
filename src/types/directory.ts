@@ -3,7 +3,7 @@
  * TypeScript types for the Crafter Directory.
  * One concern: defining the shape of crafter profiles, specializations, reviews.
  *
- * These mirror the Supabase schema in supabase/migrations/002_crafter_directory_tables.sql.
+ * These mirror the Supabase schema in supabase/migrations/*.sql.
  * Kept in sync manually until an API is available to generate types automatically.
  */
 
@@ -31,6 +31,20 @@ export type CraftingBranch =
 
 export type SkillLevel = 'beginner' | 'intermediate' | 'expert';
 
+/** Official Stars Reach playable species (all 8 confirmed at Alpha launch) */
+export type Species =
+  | 'terran'
+  | 'elioni'
+  | 'skwatchi'
+  | 'gertan'
+  | 'hansian'
+  | 'hyugon'
+  | 'fae'
+  | 'stokadi';
+
+/** Corp role — set by CEO/officers, not editable by the operative */
+export type CrafterRole = 'ceo' | 'officer' | 'associate' | 'contractor' | 'client';
+
 // ── Database row types ──────────────────────────────────────────────
 
 /** crafter_profiles row */
@@ -45,6 +59,8 @@ export interface CrafterProfile {
   homestead_coords: string | null;
   commission_status: CommissionStatus;
   contact_method: string | null;
+  species: Species | null;
+  role: CrafterRole;
   average_rating: number;
   total_reviews: number;
   is_visible: boolean;
@@ -99,6 +115,8 @@ export interface CrafterSummary {
   bio: string | null;
   home_planet: string | null;
   commission_status: CommissionStatus;
+  species: Species | null;
+  role: CrafterRole;
   average_rating: number;
   total_reviews: number;
   is_kodaxa_member: boolean;
@@ -118,6 +136,7 @@ export interface UpsertProfileInput {
   homestead_coords?: string;
   commission_status: CommissionStatus;
   contact_method?: string;
+  species?: Species;
 }
 
 /** Fields for adding a specialization */
@@ -153,21 +172,49 @@ export interface DirectoryFilters {
 // ── UI constants ────────────────────────────────────────────────────
 
 export const COMMISSION_LABELS: Record<CommissionStatus, string> = {
-  open: 'Open',
+  open:    'Open',
   limited: 'Limited',
-  closed: 'Closed',
+  closed:  'Closed',
   unknown: 'Not set',
 };
 
 export const COMMISSION_COLORS: Record<CommissionStatus, string> = {
-  open: 'text-emerald-400 bg-emerald-900/30 border-emerald-700/40',
+  open:    'text-emerald-400 bg-emerald-900/30 border-emerald-700/40',
   limited: 'text-amber-400 bg-amber-900/30 border-amber-700/40',
-  closed: 'text-red-400 bg-red-900/30 border-red-700/40',
+  closed:  'text-red-400 bg-red-900/30 border-red-700/40',
   unknown: 'text-slate-400 bg-slate-800/30 border-slate-700/40',
 };
 
 export const SKILL_LEVEL_LABELS: Record<SkillLevel, string> = {
-  beginner: 'Beginner',
+  beginner:     'Beginner',
   intermediate: 'Intermediate',
-  expert: 'Expert',
+  expert:       'Expert',
+};
+
+export const SPECIES_LABELS: Record<Species, string> = {
+  terran:   'Terran',
+  elioni:   'Elioni',
+  skwatchi: 'Skwatchi',
+  gertan:   'Gertan',
+  hansian:  'Hansian',
+  hyugon:   'Hyugon',
+  fae:      'Fae',
+  stokadi:  'Stokadi',
+};
+
+/** Corp role labels — client is suppressed in UI (default/no rank) */
+export const ROLE_LABELS: Record<CrafterRole, string> = {
+  ceo:        'Chief Executive',
+  officer:    'Division Officer',
+  associate:  'Kodaxa Associate',
+  contractor: 'Contracted Operative',
+  client:     'Registered Operative',
+};
+
+/** Roles that warrant a visible badge on the dossier (exclude default 'client') */
+export const ROLE_COLORS: Partial<Record<CrafterRole, string>> = {
+  ceo:        'text-amber-300 border-amber-600/50 bg-amber-900/20',
+  officer:    'text-cyan-300 border-cyan-700/50 bg-cyan-900/20',
+  associate:  'text-teal-300 border-teal-700/50 bg-teal-900/20',
+  contractor: 'text-slate-300 border-slate-600/50 bg-slate-800/20',
 };

@@ -8,7 +8,10 @@
 
 import Link from 'next/link';
 import type { CrafterProfileFull } from '@/types/directory';
-import { COMMISSION_LABELS, COMMISSION_COLORS, SKILL_LEVEL_LABELS } from '@/types/directory';
+import {
+  COMMISSION_LABELS, COMMISSION_COLORS, SKILL_LEVEL_LABELS,
+  SPECIES_LABELS, ROLE_LABELS, ROLE_COLORS,
+} from '@/types/directory';
 import { StarRating } from '@/components/directory/star-rating';
 
 export interface ProfileHeaderProps {
@@ -49,7 +52,12 @@ export function ProfileHeader({ profile, isOwn }: ProfileHeaderProps) {
           <span className={`text-[9px] font-mono uppercase tracking-[0.15em] px-2 py-0.5 border ${COMMISSION_COLORS[profile.commission_status]}`}>
             {COMMISSION_LABELS[profile.commission_status]}
           </span>
-          {profile.is_kodaxa_member && (
+          {profile.role !== 'client' && ROLE_COLORS[profile.role] && (
+            <span className={`text-[9px] font-mono uppercase tracking-[0.15em] px-2 py-0.5 border ${ROLE_COLORS[profile.role]}`}>
+              ● {ROLE_LABELS[profile.role]}
+            </span>
+          )}
+          {profile.is_kodaxa_member && profile.role === 'client' && (
             <span className="text-[9px] font-mono uppercase tracking-[0.15em] px-2 py-0.5 border border-amber-700/50 bg-amber-900/20 text-amber-400">
               ● Kodaxa Member
             </span>
@@ -74,6 +82,11 @@ export function ProfileHeader({ profile, isOwn }: ProfileHeaderProps) {
           </h1>
           <p className="text-[10px] font-mono text-slate-500 tracking-[0.15em]">
             @{profile.in_game_name}
+            {profile.species && (
+              <span className="ml-2 text-slate-600">
+                · {SPECIES_LABELS[profile.species]}
+              </span>
+            )}
           </p>
         </div>
         <div className="flex flex-col items-start sm:items-end gap-2">

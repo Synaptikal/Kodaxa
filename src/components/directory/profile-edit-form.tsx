@@ -8,8 +8,8 @@
 
 import { useState, useTransition } from 'react';
 import { useRouter } from 'next/navigation';
-import type { CrafterProfile, CommissionStatus } from '@/types/directory';
-import { COMMISSION_LABELS } from '@/types/directory';
+import type { CrafterProfile, CommissionStatus, Species } from '@/types/directory';
+import { COMMISSION_LABELS, SPECIES_LABELS } from '@/types/directory';
 import { upsertCrafterProfile } from '@/lib/directory/actions';
 
 export interface ProfileEditFormProps {
@@ -17,6 +17,7 @@ export interface ProfileEditFormProps {
 }
 
 const COMMISSION_OPTIONS: CommissionStatus[] = ['open', 'limited', 'closed', 'unknown'];
+const SPECIES_OPTIONS: Species[] = ['terran', 'elioni', 'skwatchi', 'gertan', 'hansian', 'hyugon', 'fae', 'stokadi'];
 
 const inputClass =
   'w-full bg-sr-bg border border-sr-border px-3 py-2 text-xs font-mono text-slate-200 placeholder:text-slate-700 focus:border-cyan-700 focus:outline-none transition-colors';
@@ -39,6 +40,7 @@ export function ProfileEditForm({ existing }: ProfileEditFormProps) {
     homestead_coords: existing?.homestead_coords ?? '',
     commission_status: existing?.commission_status ?? 'unknown' as CommissionStatus,
     contact_method: existing?.contact_method ?? '',
+    species: existing?.species ?? '' as Species | '',
   });
 
   const set = (key: keyof typeof fields) => (
@@ -63,6 +65,7 @@ export function ProfileEditForm({ existing }: ProfileEditFormProps) {
         home_sector: fields.home_sector.trim() || undefined,
         homestead_coords: fields.homestead_coords.trim() || undefined,
         contact_method: fields.contact_method.trim() || undefined,
+        species: (fields.species as Species) || undefined,
       });
 
       if (result.success) {
@@ -100,6 +103,15 @@ export function ProfileEditForm({ existing }: ProfileEditFormProps) {
           <select value={fields.commission_status} onChange={set('commission_status')} className={inputClass}>
             {COMMISSION_OPTIONS.map((s) => (
               <option key={s} value={s}>{COMMISSION_LABELS[s]}</option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label className={labelClass}>Species</label>
+          <select value={fields.species} onChange={set('species')} className={inputClass}>
+            <option value="">— Not specified —</option>
+            {SPECIES_OPTIONS.map((s) => (
+              <option key={s} value={s}>{SPECIES_LABELS[s]}</option>
             ))}
           </select>
         </div>
