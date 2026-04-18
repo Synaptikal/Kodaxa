@@ -62,7 +62,7 @@
     {
       "id": "crafting.bioscanner",
       "name": "Bioscanner",
-      "description": "CRAFTING 450 ee KLAATU 450 LEARN TO CRAFT THE BIOSCANNER, ATOOLFOR CATALOGING LIVING Reem aARIIMALe —",
+      "description": "LEARN TO CRAFT THE BIOSCANNER, ATOOLFOR CATALOGING LIVING Reem aARIIMALe —",
       "professionId": "crafting",
       "position": {
         "x": 500,
@@ -70,7 +70,11 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 450,
+        "klaatu": 450
+      }
     },
     {
       "id": "crafting.chronophaser",
@@ -105,7 +109,7 @@
     {
       "id": "crafting.cooking_station",
       "name": "Cooking Station",
-      "description": "CRAFTING 450 ee KLAATU 450 LEARN TO BUILD THE STOVE, A STATION FOR COOKING",
+      "description": "LEARN TO BUILD THE STOVE, A STATION FOR COOKING",
       "professionId": "crafting",
       "position": {
         "x": 1130,
@@ -113,7 +117,11 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 450,
+        "klaatu": 450
+      }
     },
     {
       "id": "crafting.curved_pieces",
@@ -152,7 +160,7 @@
     {
       "id": "crafting.depositor",
       "name": "Depositor",
-      "description": "CRAFTING 450 ee KLAATU 450 LEARN TO MAKE THE DEPOSITER TO DEPOSIT RAW RESOURCES INTO THE Rees es. —_",
+      "description": "LEARN TO MAKE THE DEPOSITER TO DEPOSIT RAW RESOURCES INTO THE Rees es. —_",
       "professionId": "crafting",
       "position": {
         "x": 500,
@@ -160,7 +168,11 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 450,
+        "klaatu": 450
+      }
     },
     {
       "id": "crafting.engineer",
@@ -195,7 +207,7 @@
     {
       "id": "crafting.fabricator",
       "name": "Fabricator",
-      "description": "CRAFTING 450 ee KLAATU 450 LEARN TO BUILD THE FABRICATOR BUILDING TOOL",
+      "description": "LEARN TO BUILD THE FABRICATOR BUILDING TOOL",
       "professionId": "crafting",
       "position": {
         "x": 1130,
@@ -203,7 +215,11 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 450,
+        "klaatu": 450
+      }
     },
     {
       "id": "crafting.fortress_shield",
@@ -242,7 +258,7 @@
     {
       "id": "crafting.grapple",
       "name": "Grapple",
-      "description": "CRAFTING 450 ee KLAATU 450 MASTER THE ABILITY TO CRAFT A GRAPPLE",
+      "description": "MASTER THE ABILITY TO CRAFT A GRAPPLE",
       "professionId": "crafting",
       "position": {
         "x": 500,
@@ -250,12 +266,16 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 450,
+        "klaatu": 450
+      }
     },
     {
       "id": "crafting.gravity_mesh",
       "name": "Gravity Mesh",
-      "description": "CRAFTING 450 ee KLAATU 450 LEARN THE DETAILS OF DEFEATING GRAVITY AND BUILD THE GRAVITY Barmera —_",
+      "description": "LEARN THE DETAILS OF DEFEATING GRAVITY AND BUILD THE GRAVITY Barmera —_",
       "professionId": "crafting",
       "position": {
         "x": 710,
@@ -263,7 +283,11 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 450,
+        "klaatu": 450
+      }
     },
     {
       "id": "crafting.grenade_launchers",
@@ -285,7 +309,7 @@
     {
       "id": "crafting.harvester",
       "name": "Harvester",
-      "description": "CRAFTING 450 ee KLAATU 450 BUILD THE HARVESTER FOR GATHERING BUSHES AND FLOWERS",
+      "description": "BUILD THE HARVESTER FOR GATHERING BUSHES AND FLOWERS",
       "professionId": "crafting",
       "position": {
         "x": 1130,
@@ -293,7 +317,11 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 450,
+        "klaatu": 450
+      }
     },
     {
       "id": "crafting.healix",
@@ -332,7 +360,7 @@
     {
       "id": "crafting.instaformer",
       "name": "Instaformer",
-      "description": "CRAFTING 450 ee KLAATU 450 LEARN TO BUILD THE INSTAFORMER, ADEVICE FOR CONVERTING Ree eee eee 8) Fie 1 Aree",
+      "description": "LEARN TO BUILD THE INSTAFORMER, ADEVICE FOR CONVERTING Ree eee eee 8) Fie 1 Aree",
       "professionId": "crafting",
       "position": {
         "x": 500,
@@ -340,7 +368,11 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 450,
+        "klaatu": 450
+      }
     },
     {
       "id": "crafting.lathe_station",
@@ -409,7 +441,7 @@
     {
       "id": "crafting.metal_blocks",
       "name": "Metal Blocks",
-      "description": "CRAFTING 550 ee KLAATU 550 UNLOCK. THESE BLOCK STYLES: ALUMINUM, ANTI-GRAVIUM, BRASS, Pease Mesesaaiisns Creer rma AA",
+      "description": "UNLOCK. THESE BLOCK STYLES: ALUMINUM, ANTI-GRAVIUM, BRASS, Pease Mesesaaiisns Creer rma AA",
       "professionId": "crafting",
       "position": {
         "x": 290,
@@ -417,7 +449,11 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 550,
+        "klaatu": 550
+      }
     },
     {
       "id": "crafting.objects",
@@ -439,7 +475,7 @@
     {
       "id": "crafting.pathfinder",
       "name": "Pathfinder",
-      "description": "CRAFTING 450 ee KLAATU 450 LEARN TO USE THE PATHFINDER FOR COMPLETING PLANETARY SURVEY BIMmme ascaarme —",
+      "description": "LEARN TO USE THE PATHFINDER FOR COMPLETING PLANETARY SURVEY BIMmme ascaarme —",
       "professionId": "crafting",
       "position": {
         "x": 710,
@@ -447,12 +483,16 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 450,
+        "klaatu": 450
+      }
     },
     {
       "id": "crafting.paver",
       "name": "Paver",
-      "description": "CRAFTING 450 ee KLAATU 450 LEARN TO MAKE THE PAVER, USED FOR PAVING ROADS AND ears ees Aree.",
+      "description": "LEARN TO MAKE THE PAVER, USED FOR PAVING ROADS AND ears ees Aree.",
       "professionId": "crafting",
       "position": {
         "x": 920,
@@ -460,12 +500,16 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 450,
+        "klaatu": 450
+      }
     },
     {
       "id": "crafting.paver_flagstones",
       "name": "Paver Flagstones",
-      "description": "CRAFTING 350 ee KLAATU 350 UNLOCKS THESE FLAGSTONE TILES FOR THE PAVER: BRECCIA, marae wees ATE SCAM ee FRI Iee",
+      "description": "UNLOCKS THESE FLAGSTONE TILES FOR THE PAVER: BRECCIA, marae wees ATE SCAM ee FRI Iee",
       "professionId": "crafting",
       "position": {
         "x": 1130,
@@ -473,7 +517,11 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 350,
+        "klaatu": 350
+      }
     },
     {
       "id": "crafting.pistols",
@@ -593,7 +641,7 @@
     {
       "id": "crafting.stone_blocks",
       "name": "Stone Blocks",
-      "description": "CRAFTING 500 ee KLAATU 500 UNLOCK.STONE BLOCK STYLES INCLUDING BRECCIA, MAA) Mase AaATrTes RMP sTe CrARMrAhhM",
+      "description": "UNLOCK.STONE BLOCK STYLES INCLUDING BRECCIA, MAA) Mase AaATrTes RMP sTe CrARMrAhhM",
       "professionId": "crafting",
       "position": {
         "x": 290,
@@ -601,12 +649,16 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 500,
+        "klaatu": 500
+      }
     },
     {
       "id": "crafting.terraformer",
       "name": "Terraformer",
-      "description": "CRAFTING 450 ee KLAATU 450 LEARN TO BUILD THE TERRAFORMER, THE ULTIMATE DEVICE FOR DIGGING, ReAaAerrintim® PR ALICZAMmMAZIAG ALI",
+      "description": "LEARN TO BUILD THE TERRAFORMER, THE ULTIMATE DEVICE FOR DIGGING, ReAaAerrintim® PR ALICZAMmMAZIAG ALI",
       "professionId": "crafting",
       "position": {
         "x": 500,
@@ -614,7 +666,11 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 450,
+        "klaatu": 450
+      }
     },
     {
       "id": "crafting.toolmaker",
@@ -632,7 +688,7 @@
     {
       "id": "crafting.toolmaking_station",
       "name": "Toolmaking Station",
-      "description": "CRAFTING 450 ee KLAATU 450 MASTER THE USE OF THE TOOLMAKER AND BECOME ABLE TO Pere Tree @- FA APs es.",
+      "description": "MASTER THE USE OF THE TOOLMAKER AND BECOME ABLE TO Pere Tree @- FA APs es.",
       "professionId": "crafting",
       "position": {
         "x": 920,
@@ -640,12 +696,16 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 450,
+        "klaatu": 450
+      }
     },
     {
       "id": "crafting.trailblazer",
       "name": "Trailblazer",
-      "description": "CRAFTING 450 ee KLAATU 450 BUILD THE TRAILBLAZER, THE PRIMARY RANGER DEVICE FOR Pera rm Iii PARZAROE @s FARIA",
+      "description": "BUILD THE TRAILBLAZER, THE PRIMARY RANGER DEVICE FOR Pera rm Iii PARZAROE @s FARIA",
       "professionId": "crafting",
       "position": {
         "x": 1130,
@@ -653,7 +713,11 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 450,
+        "klaatu": 450
+      }
     },
     {
       "id": "crafting.weaponsmith",

@@ -34,7 +34,7 @@ const STUB_DEFINITIONS: StubDef[] = [
   // Combat
   { id: 'assault_rifle', name: 'Assault Rifle', category: 'combat', description: 'Primary ranged combat weapon tree.', toolName: 'Assault Rifle', implemented: true },
   { id: 'pistol', name: 'Pistol', category: 'combat', description: 'Skills: Double Tap, Ricochet, Unload, Double Time, Pistol Whip.', toolName: 'Pistol', implemented: true },
-  { id: 'grenade_launcher', name: 'Grenade Launcher', category: 'combat', description: 'Skills: Cluster, Repulsor, Implosion, Uplift.', toolName: 'Grenade Launcher', implemented: true },
+  // grenade_launcher covered by grenade_launchers.json (OCR id differs — stub removed)
   { id: 'laserwhip', name: 'Laserwhip', category: 'combat', description: 'Melee/ranged hybrid. Lasso, Laserstrike, Entangle (Bola).', toolName: 'Laserwhip', implemented: true },
   { id: 'healix', name: 'Healix', category: 'combat', description: 'Healing weapon. Includes Siphon (beam-based health drain).', toolName: 'Healix', implemented: true },
   { id: 'combat_engineering', name: 'Combat Engineering', category: 'combat', description: 'Traps, turrets, and defensive structures for combat zones.', toolName: 'Engineering Kit', implemented: false },
@@ -47,8 +47,8 @@ const STUB_DEFINITIONS: StubDef[] = [
   { id: 'machining', name: 'Machining', category: 'crafting', description: 'Precision crafting for mechanical components and advanced gear.', toolName: 'Lathe', implemented: false },
 
   // Harvesting
-  { id: 'mineralogist', name: 'Mineralogist', category: 'harvesting', description: 'Prospecting, mining minerals/gems/gases. Uses Extractor tool.', toolName: 'Extractor', implemented: true },
-  { id: 'botanist', name: 'Botanist', category: 'harvesting', description: 'Plant life, forestry, farming, herbalism.', toolName: 'Harvesting Tool', implemented: true },
+  // mineralogist covered by mineralogy.json (OCR id differs — stub removed)
+  // botanist covered by botany.json (OCR id differs — stub removed)
   { id: 'farming', name: 'Farming', category: 'harvesting', description: 'Plant seeds, manage crops, harvest food ingredients.', toolName: 'Trowel', implemented: false },
 
   // Social

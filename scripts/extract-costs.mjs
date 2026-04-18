@@ -16,9 +16,9 @@ import { fileURLToPath } from 'url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PROFESSIONS_DIR = join(__dirname, '../src/data/professions');
 
-// Matches: [WORD] [NUMBER] KLAATU [NUMBER] [rest...]
-// Handles comma-formatted numbers like 1,500
-const COST_PREFIX = /^[A-Z_]+\s+([\d,]+)\s+KLAATU\s+([\d,]+)\s*/i;
+// Matches: [WORD] [NUMBER] [optional OCR noise] KLAATU [NUMBER] [rest...]
+// Handles comma-formatted numbers (1,500) and OCR noise words like "ee", "ie." between fields
+const COST_PREFIX = /^[A-Z_]+\s+([\d,]+)\s+(?:[a-z]{1,4}\.?\s+)?KLAATU\s+([\d,]+)\s*/i;
 
 // Matches: KLAATU [NUMBER] [rest...] (EXP value missing from OCR)
 const KLAATU_ONLY = /^KLAATU\s+([\d,]+)\s*/i;

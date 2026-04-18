@@ -43,21 +43,21 @@ const PROFESSION_MAP = getProfessionMap();
 const NODE_MAP = getNodeMap();
 const SUMMARIES = getProfessionSummaries();
 
-/** Derive node visual state from build */
+/** Derive node visual state from build — mirrors flow-converter.ts resolveNodeState */
 function resolveNodeState(
   nodeId: string,
   activeSkills: string[],
   atrophiedSkills: string[],
 ): SkillNodeState {
-  if (activeSkills.includes(nodeId)) return 'in_practice';
-  if (atrophiedSkills.includes(nodeId)) return 'out_of_practice';
   const node = NODE_MAP.get(nodeId);
   if (!node) return 'locked';
   if (!node.implemented) return 'wip';
+  if (activeSkills.includes(nodeId)) return 'in_practice';
+  if (atrophiedSkills.includes(nodeId)) return 'out_of_practice';
+  if (node.prerequisites.length === 0) return 'available';
   const prereqsMet = node.prerequisites.every(
     (pid) => activeSkills.includes(pid) || atrophiedSkills.includes(pid),
   );
-  if (node.prerequisites.length === 0) return 'available';
   return prereqsMet ? 'available' : 'locked';
 }
 
@@ -67,7 +67,14 @@ export function PlannerShell() {
   // Decode shared build from URL params if present
   const initialBuild = useMemo(() => {
     if (searchParams.has('s') || searchParams.has('n')) {
-      return decodeBuild(searchParams);
+      const decoded = decodeBuild(searchParams);
+      // Encoder only stores professionId — resolve actual tool names from profession map
+      decoded.toolSlots = decoded.toolSlots.map((slot) => {
+        if (!slot.professionId) return slot;
+        const prof = PROFESSION_MAP.get(slot.professionId);
+        return prof ? { ...slot, toolName: prof.tool.name } : slot;
+      });
+      return decoded;
     }
     return undefined;
   }, []); // Only decode once on mount — intentional empty deps

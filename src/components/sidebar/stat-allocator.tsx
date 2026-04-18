@@ -59,7 +59,6 @@ export function StatAllocator({ stats, onStatsChange }: StatAllocatorProps) {
   const handleChange = useCallback(
     (key: keyof StatAllocation, rawValue: number) => {
       // Clamp value between MIN and what's available
-      const others = TOTAL - stats[key];
       const maxForOthers = (Object.keys(stats) as (keyof StatAllocation)[])
         .filter((k) => k !== key)
         .reduce((sum, k) => sum + MIN_STAT, 0);

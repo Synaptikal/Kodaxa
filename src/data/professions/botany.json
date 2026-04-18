@@ -54,7 +54,7 @@
     {
       "id": "botany.forestry",
       "name": "Forestry",
-      "description": "BOTANY 300 ie. KLAATU 300 on UNLOCKS THE ABILITY TO USE THE XYLOSLICER'TO CHOP DOWN TREES.",
+      "description": "on UNLOCKS THE ABILITY TO USE THE XYLOSLICER'TO CHOP DOWN TREES.",
       "professionId": "botany",
       "position": {
         "x": 500,
@@ -62,7 +62,11 @@
       },
       "prerequisites": [],
       "tier": 1,
-      "implemented": true
+      "implemented": true,
+      "costs": {
+        "exp": 300,
+        "klaatu": 300
+      }
     },
     {
       "id": "botany.growth_beam_1",

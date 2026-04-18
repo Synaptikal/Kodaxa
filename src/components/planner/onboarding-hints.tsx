@@ -15,8 +15,8 @@ const STORAGE_KEY = 'sr-planner-hints-dismissed';
 
 const HINTS = [
   {
-    icon: '🌿',
-    text: 'Pick a profession from the list below to load its skill tree on the canvas.',
+    icon: '🎒',
+    text: 'Equip tools via the Tool Loadout — each tool you add instantly loads that profession\'s skill tree on the canvas.',
   },
   {
     icon: '✅',
@@ -24,11 +24,11 @@ const HINTS = [
   },
   {
     icon: '🔁',
-    text: 'Click an active skill again to mark it atrophied (you\'ve learned it but rarely use it).',
+    text: 'Click an active skill again to mark it atrophied — you\'ve learned it but rarely use it.',
   },
   {
-    icon: '🎒',
-    text: 'Equip up to 5 tools via the Tool Loadout. Each tool can hold 2 Specials.',
+    icon: '🌿',
+    text: 'You can also browse and toggle profession trees directly from the Professions list below.',
   },
   {
     icon: '📊',

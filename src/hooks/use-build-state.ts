@@ -55,6 +55,14 @@ export function useBuildState(config: BuildStateConfig): BuildState {
   // Which professions are visible in the canvas
   const [selectedProfessionIds, setSelectedProfessionIds] = useState<string[]>(
     () => {
+      // If restoring a shared/saved build, show its professions
+      const initial = config.initialBuild;
+      if (initial) {
+        const fromSkills = initial.activeSkills.map((id) => id.split('.')[0]);
+        const fromTools  = initial.toolSlots.filter((s) => s.professionId).map((s) => s.professionId);
+        const ids = Array.from(new Set([...fromSkills, ...fromTools])).filter(Boolean);
+        if (ids.length > 0) return ids;
+      }
       // Default: show the first detailed profession (ranger)
       const detailed = professions.filter((p) => p.nodes.length > 1);
       return detailed.length > 0 ? [detailed[0].id] : [];
@@ -168,10 +176,10 @@ export function useBuildState(config: BuildStateConfig): BuildState {
   const loadBuild = useCallback((newBuild: Build) => {
     setBuild(newBuild);
     setSelectedNodeId(null);
-    // Show the professions that are in the loaded build
-    const profIds = Array.from(
-      new Set(newBuild.activeSkills.map((id) => id.split('.')[0]).filter(Boolean)),
-    );
+    // Show professions from both active skills and equipped tool slots
+    const fromSkills = newBuild.activeSkills.map((id) => id.split('.')[0]);
+    const fromTools  = newBuild.toolSlots.filter((s) => s.professionId).map((s) => s.professionId);
+    const profIds = Array.from(new Set([...fromSkills, ...fromTools])).filter(Boolean);
     if (profIds.length > 0) setSelectedProfessionIds(profIds);
   }, []);
 

@@ -70,8 +70,8 @@ export function SkillDetailPanel({
   const stateLabel  = STATE_LABEL[nodeState];
   const actionLabel = ACTION_LABEL[nodeState];
 
-  const xpCost    = (node as any).xp_cost    ?? 0;
-  const klaatu    = (node as any).klaatu_cost ?? 0;
+  const xpCost = node.costs?.exp    ?? 0;
+  const klaatu = node.costs?.klaatu ?? 0;
 
   return (
     <div
