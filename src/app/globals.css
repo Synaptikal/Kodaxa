@@ -14,14 +14,20 @@
 
 /* ── Custom theme tokens ──────────────────────────────────────────── */
 @theme {
-  /* Kodaxa brand palette — dark enterprise sci-fi */
-  --color-sr-bg: #0a0e14;
-  --color-sr-surface: #111720;
-  --color-sr-panel: #1a2030;
-  --color-sr-border: #1e2d40;
-  --color-sr-text: #e8edf5;
-  --color-sr-muted: #8393a8;
-  --color-sr-subtle: #5a6880;
+  /* Kodaxa brand palette — canonical values from design token spec */
+  --color-sr-bg:      #0a0e1a;   /* deep space — primary background */
+  --color-sr-surface: #111827;   /* slate-900 — card surfaces */
+  --color-sr-panel:   #1a2030;   /* mid-elevation — between surface and bg */
+  --color-sr-border:  #1e2d3d;   /* subtle panel borders */
+  --color-sr-text:    #e8edf5;   /* primary readable text */
+  --color-sr-muted:   #8393a8;   /* deviation from #64748b — WCAG AA requires ≥4.5:1 */
+  --color-sr-subtle:  #334155;   /* decorative/disabled only — not for readable copy */
+
+  /* Brand accent tokens — singular values, no shade mixing */
+  --color-brand-amber:   #f59e0b;  /* league gold — primary accent */
+  --color-brand-cyan:    #22d3ee;  /* scanner blue — data accent */
+  --color-brand-emerald: #34d399;  /* live systems — status online */
+  --color-brand-fuchsia: #e879f9;  /* dispatch / comms accent */
 
   /* Skill state accent colors */
   --color-state-locked: #475569;
