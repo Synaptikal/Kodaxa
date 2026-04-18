@@ -1,16 +1,17 @@
 /**
  * terminal-panels.tsx
- * Subcomponents for /terminal — stat cards, profile panel, quick actions.
+ * Subcomponents for /terminal — stat cards, profile panel, contributions, quick actions.
  * One concern: extract panel UI so terminal/page.tsx stays under the line limit.
  *
  * Server-safe — pure components, no client state.
+ * Hard-edge terminal aesthetic — no rounded borders.
  */
 
 import Link from 'next/link';
 import type { CrafterProfileFull } from '@/types/directory';
 import { COMMISSION_COLORS, COMMISSION_LABELS } from '@/types/directory';
 
-// ── Stat card ────────────────────────────────────────────────────────
+// ── Stat card ─────────────────────────────────────────────────────────
 
 export interface StatCardProps {
   label: string;
@@ -28,20 +29,16 @@ export function StatCard({ label, value, hint, href, accent }: StatCardProps) {
     cyan:    'text-cyan-400',
   };
   return (
-    <Link
-      href={href}
-      className="rounded-xl border border-slate-800 bg-slate-900/40 p-4 hover:border-slate-700 transition-colors group"
-    >
-      <p className="text-[10px] font-mono uppercase tracking-wider text-slate-500">
-        {label}
-      </p>
-      <p className={`text-2xl font-bold font-mono ${tone[accent]}`}>{value}</p>
-      <p className="text-[10px] text-slate-600 mt-1">{hint}</p>
+    <Link href={href}
+      className="border border-sr-border bg-sr-surface/30 p-4 hover:border-slate-600 hover:bg-sr-surface/60 transition-colors group">
+      <p className="text-[9px] font-mono uppercase tracking-[0.2em] text-slate-600">{label}</p>
+      <p className={`text-2xl font-black font-mono mt-1 ${tone[accent]}`}>{value}</p>
+      <p className="text-[9px] font-mono text-slate-700 mt-1">{hint}</p>
     </Link>
   );
 }
 
-// ── Profile panel ────────────────────────────────────────────────────
+// ── Profile panel ─────────────────────────────────────────────────────
 
 export interface ProfilePanelProps {
   profile: CrafterProfileFull | null;
@@ -51,84 +48,81 @@ export interface ProfilePanelProps {
 export function ProfilePanel({ profile, email }: ProfilePanelProps) {
   if (!profile) {
     return (
-      <section className="rounded-xl border border-amber-800/50 bg-amber-900/10 p-5 space-y-3">
-        <h2 className="text-sm font-bold text-amber-200">Profile not set up</h2>
-        <p className="text-xs text-amber-100/70 leading-relaxed">
-          You&apos;re signed in as <span className="font-mono">{email ?? 'unknown'}</span>,
-          but haven&apos;t claimed a Directory profile yet. Do it now to register
-          a maker mark, set your home planet, and start contributing to the
-          open data feeds.
+      <section className="border border-amber-800/40 bg-amber-900/10 p-5 space-y-3">
+        <p className="text-[9px] font-mono uppercase tracking-[0.2em] text-amber-400">
+          ● No Operative Profile
         </p>
-        <Link
-          href="/directory/me"
-          className="inline-block text-xs px-3 py-1.5 rounded-md bg-amber-800/40 text-amber-200 border border-amber-700/50 hover:bg-amber-800/60 transition-colors"
-        >
-          Set up my profile →
+        <p className="text-xs font-mono text-amber-100/70 leading-relaxed">
+          Signed in as <span className="font-bold">{email ?? 'unknown'}</span> but no
+          directory profile is linked. Register to claim a maker mark, set your home
+          planet, and start contributing to the open data feeds.
+        </p>
+        <Link href="/directory/me"
+          className="inline-block text-[9px] font-mono uppercase tracking-[0.15em] px-3 py-1.5 border border-amber-700/50 bg-amber-800/30 text-amber-200 hover:bg-amber-800/50 transition-colors">
+          Register Operative →
         </Link>
       </section>
     );
   }
 
   return (
-    <section className="rounded-xl border border-slate-800 bg-slate-900/40 p-5 space-y-3">
-      <header className="flex items-start justify-between gap-2">
+    <section className="border border-sr-border bg-sr-surface/30">
+      {/* Header bar */}
+      <div className="border-b border-sr-border/50 px-4 py-2.5 flex items-center justify-between">
         <div>
-          <h2 className="text-sm font-bold text-slate-100">Profile</h2>
-          <p className="text-[10px] font-mono text-slate-500">
-            @{profile.in_game_name}
-          </p>
+          <p className="text-[9px] font-mono uppercase tracking-[0.2em] text-slate-600">Operative Profile</p>
+          <p className="text-[10px] font-mono text-slate-500 mt-0.5">@{profile.in_game_name}</p>
         </div>
-        <span
-          className={`text-[9px] font-mono uppercase tracking-wider px-1.5 py-0.5 rounded border ${COMMISSION_COLORS[profile.commission_status]}`}
-        >
+        <span className={`text-[9px] font-mono uppercase tracking-[0.15em] px-2 py-0.5 border ${COMMISSION_COLORS[profile.commission_status]}`}>
           {COMMISSION_LABELS[profile.commission_status]}
         </span>
-      </header>
+      </div>
 
-      {profile.maker_mark && (
-        <p className="text-[11px]">
-          <span className="text-slate-600 font-mono uppercase tracking-wider">Mark:</span>{' '}
-          <span className="text-amber-400 font-mono">{profile.maker_mark}</span>
-        </p>
-      )}
-
-      {profile.home_planet && (
-        <p className="text-[11px] font-mono text-slate-400">
-          {profile.home_planet}
-          {profile.home_sector && <> · {profile.home_sector}</>}
-        </p>
-      )}
-
-      {profile.bio && (
-        <p className="text-xs text-slate-400 leading-relaxed line-clamp-3">
-          {profile.bio}
-        </p>
-      )}
-
-      {profile.specializations.length > 0 && (
-        <div className="flex flex-wrap gap-1 pt-1">
-          {profile.specializations.slice(0, 6).map((s) => (
-            <span
-              key={s.profession_id}
-              className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-slate-800 text-slate-300"
-            >
-              {s.profession_name}
-            </span>
-          ))}
-        </div>
-      )}
-
-      <Link
-        href="/directory/me"
-        className="inline-block text-[10px] font-mono uppercase tracking-wider text-cyan-400 hover:text-cyan-300 pt-1"
-      >
-        Edit profile →
-      </Link>
+      <div className="px-4 py-4 space-y-3">
+        {profile.maker_mark && (
+          <div>
+            <p className="text-[8px] font-mono uppercase tracking-[0.2em] text-slate-600">Maker's Mark</p>
+            <p className="text-xs font-mono text-amber-400 mt-0.5">{profile.maker_mark}</p>
+          </div>
+        )}
+        {profile.home_planet && (
+          <div>
+            <p className="text-[8px] font-mono uppercase tracking-[0.2em] text-slate-600">Home Planet</p>
+            <p className="text-xs font-mono text-slate-300 mt-0.5">
+              {profile.home_planet}{profile.home_sector && ` · ${profile.home_sector}`}
+            </p>
+          </div>
+        )}
+        {profile.bio && (
+          <p className="text-[10px] font-mono text-slate-500 leading-relaxed line-clamp-3">
+            {profile.bio}
+          </p>
+        )}
+        {profile.specializations.length > 0 && (
+          <div className="flex flex-wrap gap-1 pt-1">
+            {profile.specializations.slice(0, 8).map((s) => (
+              <span key={s.profession_id}
+                className="text-[9px] font-mono px-1.5 py-0.5 border border-sr-border bg-sr-surface text-slate-400">
+                {s.profession_name}
+              </span>
+            ))}
+            {profile.specializations.length > 8 && (
+              <span className="text-[9px] font-mono text-slate-600">
+                +{profile.specializations.length - 8} more
+              </span>
+            )}
+          </div>
+        )}
+        <Link href="/directory/me"
+          className="inline-block text-[9px] font-mono uppercase tracking-[0.15em] text-cyan-500 hover:text-cyan-300 transition-colors pt-1">
+          Edit Dossier →
+        </Link>
+      </div>
     </section>
   );
 }
 
-// ── Contributions panel ──────────────────────────────────────────────
+// ── Contributions panel ───────────────────────────────────────────────
 
 export interface ContributionRow {
   id: string;
@@ -147,40 +141,27 @@ export interface ContributionsPanelProps {
 }
 
 export function ContributionsPanel({
-  title,
-  items,
-  emptyLabel,
-  emptyHref,
-  emptyHrefLabel,
-  accent,
+  title, items, emptyLabel, emptyHref, emptyHrefLabel, accent,
 }: ContributionsPanelProps) {
   return (
-    <div className="rounded-xl border border-slate-800 bg-slate-900/40 p-5 space-y-2">
-      <h3 className={`text-sm font-bold ${accent}`}>{title}</h3>
+    <div className="border border-sr-border bg-sr-surface/30 p-4 space-y-3">
+      <p className={`text-[9px] font-mono uppercase tracking-[0.2em] ${accent}`}>{title}</p>
       {items.length === 0 ? (
-        <div className="text-xs text-slate-500 space-y-1">
-          <p>{emptyLabel}</p>
-          <Link
-            href={emptyHref}
-            className="text-cyan-400 hover:text-cyan-300 transition-colors"
-          >
+        <div className="space-y-1">
+          <p className="text-[10px] font-mono text-slate-600">{emptyLabel}</p>
+          <Link href={emptyHref} className="text-[10px] font-mono text-cyan-500 hover:text-cyan-300 transition-colors">
             {emptyHrefLabel}
           </Link>
         </div>
       ) : (
-        <ul className="space-y-1.5">
+        <ul className="space-y-2">
           {items.map((item) => (
-            <li
-              key={item.id}
-              className="flex items-baseline justify-between gap-2 text-xs"
-            >
+            <li key={item.id} className="flex items-baseline justify-between gap-2">
               <div className="min-w-0 flex-1">
-                <p className="text-slate-200 truncate">{item.primary}</p>
-                <p className="text-[10px] font-mono text-slate-500">
-                  {item.secondary}
-                </p>
+                <p className="text-xs font-mono text-slate-300 truncate">{item.primary}</p>
+                <p className="text-[9px] font-mono text-slate-600 mt-0.5">{item.secondary}</p>
               </div>
-              <span className="text-[10px] font-mono text-slate-600 shrink-0">
+              <span className="text-[9px] font-mono text-slate-700 shrink-0">
                 {item.timestamp.slice(0, 10)}
               </span>
             </li>
@@ -191,46 +172,38 @@ export function ContributionsPanel({
   );
 }
 
-// ── Quick actions ────────────────────────────────────────────────────
+// ── Quick actions ─────────────────────────────────────────────────────
 
 export function QuickActions({ hasProfile }: { hasProfile: boolean }) {
   return (
-    <aside className="rounded-xl border border-slate-800 bg-slate-900/40 p-5 space-y-2">
-      <h2 className="text-sm font-bold text-slate-100">Quick Actions</h2>
-      <ActionLink href="/atlas" label="File Atlas reading" tone="amber" />
-      <ActionLink href="/market" label="Report market price" tone="violet" />
-      <ActionLink href="/makers" label="Edit maker portfolio" tone="emerald" />
-      <ActionLink href="/directory" label="Browse directory" tone="slate" />
+    <aside className="border border-sr-border bg-sr-surface/30 p-4 space-y-2">
+      <p className="text-[9px] font-mono uppercase tracking-[0.2em] text-slate-600 border-b border-sr-border/40 pb-2 mb-3">
+        Quick Actions
+      </p>
+      <ActionLink href="/atlas"        label="File Atlas reading"     tone="amber"   />
+      <ActionLink href="/market"       label="Report market price"    tone="violet"  />
+      <ActionLink href="/makers"       label="Edit maker portfolio"   tone="emerald" />
+      <ActionLink href="/directory"    label="Browse directory"       tone="slate"   />
       {!hasProfile && (
-        <ActionLink href="/directory/me" label="Set up my profile" tone="amber-cta" />
+        <ActionLink href="/directory/me" label="Register operative profile" tone="cta" />
       )}
     </aside>
   );
 }
 
-type ActionTone = 'amber' | 'violet' | 'emerald' | 'slate' | 'amber-cta';
+type ActionTone = 'amber' | 'violet' | 'emerald' | 'slate' | 'cta';
 
-function ActionLink({
-  href,
-  label,
-  tone,
-}: {
-  href: string;
-  label: string;
-  tone: ActionTone;
-}) {
-  const toneCls: Record<ActionTone, string> = {
-    amber:       'text-amber-300 hover:bg-amber-900/30',
-    violet:      'text-violet-300 hover:bg-violet-900/30',
-    emerald:     'text-emerald-300 hover:bg-emerald-900/30',
-    slate:       'text-slate-300 hover:bg-slate-800/60',
-    'amber-cta': 'text-amber-100 bg-amber-800/40 border border-amber-700/50 hover:bg-amber-800/60',
+function ActionLink({ href, label, tone }: { href: string; label: string; tone: ActionTone }) {
+  const cls: Record<ActionTone, string> = {
+    amber:   'text-amber-400 hover:bg-amber-900/20',
+    violet:  'text-violet-400 hover:bg-violet-900/20',
+    emerald: 'text-emerald-400 hover:bg-emerald-900/20',
+    slate:   'text-slate-400 hover:bg-sr-surface/60',
+    cta:     'text-amber-200 border border-amber-700/50 bg-amber-900/20 hover:bg-amber-900/40',
   };
   return (
-    <Link
-      href={href}
-      className={`block text-xs px-2.5 py-1.5 rounded transition-colors font-mono ${toneCls[tone]}`}
-    >
+    <Link href={href}
+      className={`block text-[10px] font-mono px-2.5 py-1.5 transition-colors ${cls[tone]}`}>
       → {label}
     </Link>
   );
