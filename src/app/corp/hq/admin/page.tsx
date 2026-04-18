@@ -9,6 +9,7 @@ export const metadata: Metadata = { title: 'Admin Control — Kodaxa HQ' };
 
 export default async function AdminPage() {
   const profile = await getCurrentUserProfile();
+  if (!profile) redirect('/');
 
   const role = profile.role as CorpRole;
   if (!canAdminister(role)) redirect('/corp/hq');
