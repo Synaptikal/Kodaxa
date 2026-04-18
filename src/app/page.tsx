@@ -10,6 +10,7 @@
 
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { Crosshair, Database, Scale, Radio } from 'lucide-react';
 import { SKILL_CAP, TOOL_CAP } from '@/lib/skill-engine';
 import { getProfessionSummaries, getNodeMap } from '@/data/professions/index';
 import { getCraftingStats } from '@/data/crafting/index';
@@ -60,30 +61,48 @@ const TICKER_MESSAGES = [
 
 const DIVISIONS = [
   {
-    label: 'Operations',    name: 'Workforce Intelligence',
-    href: '/planner',       div: 'operations'   as const,
+    label: 'Operations',   name: 'Workforce Intelligence',
+    href: '/planner',      div: 'operations'   as const,
     tools: ['Skill Planner', 'Building Planner', 'XP Timer'],
-    accentBorder: 'hover:border-l-teal-500', labelColor: 'text-teal-500',
+    borderColor: 'border-l-teal-600',
+    hoverStyle: 'hover:bg-teal-950/30 hover:border-teal-800/60',
+    labelColor: 'text-teal-400',
+    Icon: Crosshair,
   },
   {
-    label: 'Intelligence',  name: 'Data Terminal',
-    href: '/items',         div: 'intelligence' as const,
+    label: 'Intelligence', name: 'Data Terminal',
+    href: '/items',        div: 'intelligence' as const,
     tools: ['Material Registry', 'Schematics Archive', 'Resource Atlas'],
-    accentBorder: 'hover:border-l-cyan-500', labelColor: 'text-cyan-500',
+    borderColor: 'border-l-cyan-600',
+    hoverStyle: 'hover:bg-cyan-950/30 hover:border-cyan-800/60',
+    labelColor: 'text-cyan-400',
+    Icon: Database,
   },
   {
-    label: 'Commerce',      name: 'Market & Registry',
-    href: '/directory',     div: 'commerce'     as const,
+    label: 'Commerce',     name: 'Market & Registry',
+    href: '/directory',    div: 'commerce'     as const,
     tools: ['Commerce Registry', 'Material Analytics', "Maker's Mark"],
-    accentBorder: 'hover:border-l-amber-500', labelColor: 'text-amber-500',
+    borderColor: 'border-l-amber-600',
+    hoverStyle: 'hover:bg-amber-950/30 hover:border-amber-800/60',
+    labelColor: 'text-amber-400',
+    Icon: Scale,
   },
   {
-    label: 'Dispatch',      name: 'Field Reports',
-    href: '/patch-notes',   div: 'dispatch'     as const,
+    label: 'Dispatch',     name: 'Field Reports',
+    href: '/patch-notes',  div: 'dispatch'     as const,
     tools: ['Patch Notes', 'Division Briefs', 'Recruitment Calls'],
-    accentBorder: 'hover:border-l-violet-500', labelColor: 'text-violet-500',
+    borderColor: 'border-l-violet-600',
+    hoverStyle: 'hover:bg-violet-950/30 hover:border-violet-800/60',
+    labelColor: 'text-violet-400',
+    Icon: Radio,
   },
-] as const;
+];
+
+const PHASE_COLORS: Record<string, string> = {
+  'IN BUILD':  'text-amber-400 border-amber-700/60',
+  'IN DESIGN': 'text-violet-400 border-violet-700/60',
+  'IN TEST':   'text-cyan-400 border-cyan-700/60',
+};
 
 // ── Page ───────────────────────────────────────────────────────────────
 export default function LandingPage() {
@@ -189,11 +208,15 @@ export default function LandingPage() {
             <RelayTicker messages={TICKER_MESSAGES} />
           </section>
 
-          {/* ── RP context line ───────────────────────────────── */}
-          <p className="text-xs font-mono text-sr-muted leading-relaxed border-l-2 border-l-slate-700 pl-3">
-            Kodaxa is an in-universe ops console for Stars Reach roleplayers and crafters —
-            plan builds, log your operatives, and coordinate your fabrication network.
-          </p>
+          {/* ── System announcement band ─────────────────────── */}
+          <div className="border-y border-sr-border/40 bg-sr-surface/20 px-4 py-2 flex items-center gap-3 flex-wrap">
+            <span className="text-xs font-mono text-teal-600 tracking-[0.15em] uppercase shrink-0">SYSTEM NOTE</span>
+            <span className="text-sr-border" aria-hidden="true">·</span>
+            <p className="text-xs font-mono text-sr-muted leading-relaxed">
+              Kodaxa is an in-universe ops console for Stars Reach roleplayers and crafters —
+              plan builds, log your operatives, and coordinate your fabrication network.
+            </p>
+          </div>
 
           {/* ── Divisions Grid ────────────────────────────────── */}
           <section className="space-y-4">
@@ -201,15 +224,14 @@ export default function LandingPage() {
               <SectionLabel text="Divisions" sub="League-aligned operational branches" />
             </div>
             <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-4">
-              {DIVISIONS.map(({ label, name, href, tools, accentBorder, labelColor }) => (
+              {DIVISIONS.map(({ label, name, href, tools, borderColor, hoverStyle, labelColor, Icon }) => (
                 <Link key={label} href={href}
-                  className={`group block border border-sr-border border-l-2 border-l-sr-border bg-sr-surface/30 px-4 py-3 hover:bg-sr-surface/60 transition-all ${accentBorder}`}>
-                  <div className="flex items-start justify-between gap-2">
-                    <p className={`text-xs font-mono font-semibold uppercase tracking-[0.2em] ${labelColor}`}>
-                      {label}
-                    </p>
+                  className={`group block border border-sr-border border-l-2 ${borderColor} bg-sr-surface/30 px-4 py-3 transition-all ${hoverStyle}`}>
+                  <div className="flex items-center justify-between gap-2 mb-3">
+                    <Icon className={`w-4 h-4 ${labelColor} opacity-50 group-hover:opacity-100 transition-opacity`} aria-hidden="true" />
                     <span className={`text-xs font-mono opacity-0 group-hover:opacity-100 transition-opacity ${labelColor}`}>→</span>
                   </div>
+                  <p className={`text-xs font-mono font-semibold uppercase tracking-[0.2em] ${labelColor}`}>{label}</p>
                   <p className="mt-1.5 text-sm font-bold font-mono text-slate-100">{name}</p>
                   <ul className="mt-2 space-y-0.5">
                     {tools.map((t) => (
@@ -259,8 +281,13 @@ export default function LandingPage() {
             <SectionLabel text="Pending Deployment" sub="Systems in active development" />
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
               {SOON.map((s) => (
-                <div key={s.href} className="border border-sr-border/50 bg-sr-surface/20 p-3 space-y-1.5 opacity-55">
-                  <Badge variant="soon" label="PENDING" />
+                <div key={s.href} className="border border-sr-border/50 bg-sr-surface/20 p-3 space-y-1.5 opacity-60">
+                  <div className="flex items-center justify-between gap-2">
+                    <Badge variant="soon" label="PENDING" />
+                    <span className={`text-[10px] font-mono font-bold border px-1.5 py-0.5 tracking-wide ${PHASE_COLORS[s.phase]}`}>
+                      {s.phase}
+                    </span>
+                  </div>
                   <p className="text-xs font-bold font-mono text-slate-400">{s.label}</p>
                   <p className="text-xs font-mono text-sr-muted leading-relaxed">{s.sub}</p>
                 </div>
@@ -309,7 +336,7 @@ function FeaturedTransmission({ post }: { post: DispatchPost }) {
           <span className="text-xs font-mono text-sr-subtle uppercase">Division: {post.author}</span>
           <span className="text-xs font-mono text-sr-subtle">Classification: Public</span>
           {post.tag && (
-            <span className="text-[8px] font-mono text-cyan-700 border border-cyan-900/40 px-1.5 py-0.5 uppercase">{post.tag}</span>
+            <span className="text-[10px] font-mono text-cyan-600 bg-cyan-950/40 px-1.5 py-0.5 uppercase tracking-wide">● {post.tag}</span>
           )}
         </div>
       </div>

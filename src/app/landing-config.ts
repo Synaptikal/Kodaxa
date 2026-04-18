@@ -30,10 +30,10 @@ export const NAV_LINKS = [
 ] as const;
 
 export const SOON = [
-  { href: '/atlas',     label: 'Resource Atlas',        sub: 'Crowdsourced P/Q/R/V mineral data by sector' },
-  { href: '/market',    label: 'Market Price Index',    sub: 'Community price relay across operational sectors' },
-  { href: '/makers',    label: "Maker's Mark Registry", sub: 'Artisan reputation and portfolio system' },
-  { href: '/creatures', label: 'Fauna Database',        sub: 'Drop tables and biome distribution mapping' },
+  { href: '/atlas',     label: 'Resource Atlas',        sub: 'Crowdsourced P/Q/R/V mineral data by sector',     phase: 'IN BUILD'  },
+  { href: '/market',    label: 'Market Price Index',    sub: 'Community price relay across operational sectors', phase: 'IN BUILD'  },
+  { href: '/makers',    label: "Maker's Mark Registry", sub: 'Artisan reputation and portfolio system',          phase: 'IN DESIGN' },
+  { href: '/creatures', label: 'Fauna Database',        sub: 'Drop tables and biome distribution mapping',       phase: 'IN DESIGN' },
 ] as const;
 
 /** Build tool card definitions with runtime stats injected from page.tsx */
