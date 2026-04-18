@@ -2,6 +2,10 @@
  * market-browser.tsx
  * Client-side Market Prices browser — filter + table over aggregated stats.
  * One concern: filter state + table render.
+ *
+ * TODO: virtualize with react-virtuoso <TableVirtuoso> when price report volume
+ * exceeds ~200 rows. The virtualizer must own vertical scroll while the existing
+ * overflow-x-auto wrapper handles horizontal scroll on the table.
  */
 
 'use client';
