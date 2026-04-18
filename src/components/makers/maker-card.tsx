@@ -108,8 +108,8 @@ export function MakerCard({ maker }: MakerCardProps) {
           </ul>
         </div>
       ) : (
-        <p className="text-xs text-sr-muted italic mt-auto pt-2 border-t border-slate-800/60">
-          No portfolio yet — maker-mark registered, works coming soon.
+        <p className="text-xs font-mono text-sr-subtle mt-auto pt-2 border-t border-sr-border/60">
+          Mark registered. No fabrication samples on file yet.
         </p>
       )}
 

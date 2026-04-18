@@ -121,8 +121,9 @@ export function BiomesBrowser({ biomes }: BiomesBrowserProps) {
 
       {/* Grid */}
       {filtered.length === 0 ? (
-        <div className="border border-slate-800 bg-slate-900/30 p-10 text-center">
-          <p className="text-sm text-slate-500">No biomes match your filters.</p>
+        <div className="border border-sr-border bg-sr-surface/30 p-10 text-center space-y-1">
+          <p className="text-sm font-mono text-sr-muted">No biome records match the current filter configuration.</p>
+          <p className="text-xs font-mono text-sr-subtle">Adjust filters to broaden the planetary survey scope.</p>
         </div>
       ) : (
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">

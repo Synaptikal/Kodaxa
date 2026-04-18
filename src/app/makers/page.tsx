@@ -143,12 +143,12 @@ function EmptyState() {
       <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-amber-500">
         Registry Empty
       </p>
-      <p className="text-sm text-slate-300 font-medium">
-        No maker marks registered yet.
+      <p className="text-sm font-mono text-sr-muted font-medium">
+        No maker marks registered in the Commerce Registry.
       </p>
-      <p className="text-xs text-slate-500 max-w-md mx-auto leading-relaxed">
-        Be the first to stake a brand. Set a maker mark on your profile and
-        showcase your signature works here.
+      <p className="text-xs font-mono text-sr-subtle max-w-md mx-auto leading-relaxed">
+        Stake the first brand. Set a maker mark on your operative profile
+        and claim your fabrication identity here.
       </p>
       <Link
         href="/directory/me"

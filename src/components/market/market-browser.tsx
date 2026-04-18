@@ -122,7 +122,7 @@ export function MarketBrowser({ stats }: MarketBrowserProps) {
       </div>
 
       <div className="border border-slate-800 bg-slate-900/30 overflow-x-auto">
-        <table className="w-full text-xs">
+        <table role="grid" className="w-full text-xs">
           <thead>
             <tr className="border-b border-slate-800 bg-slate-900/60">
               <Header>Item</Header>
@@ -185,6 +185,7 @@ function Row({ stat }: { stat: MarketPriceStat }) {
 function Header(props: { children: React.ReactNode; align?: 'left' | 'right' }) {
   return (
     <th
+      scope="col"
       className={`py-2 px-3 font-mono text-[10px] uppercase tracking-wider text-slate-500 ${
         props.align === 'right' ? 'text-right' : 'text-left'
       }`}
@@ -197,10 +198,10 @@ function Header(props: { children: React.ReactNode; align?: 'left' | 'right' }) 
 function EmptyMarket() {
   return (
     <div className="border border-slate-800 bg-slate-900/30 p-8 text-center space-y-2">
-      <p className="text-sm text-slate-300 font-medium">No price reports yet</p>
-      <p className="text-xs text-slate-500 max-w-md mx-auto leading-relaxed">
-        File the first observation to seed the 30-day rolling market view.
-        Every report is retained for 30 days, then rolls out of the aggregate.
+      <p className="text-sm font-mono text-sr-muted font-medium">No market data logged for this sector.</p>
+      <p className="text-xs font-mono text-sr-subtle max-w-md mx-auto leading-relaxed">
+        File the first price observation to seed the 30-day rolling view.
+        Reports are retained for 30 days, then cycle out of the aggregate.
       </p>
     </div>
   );

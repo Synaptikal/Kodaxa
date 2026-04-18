@@ -119,7 +119,7 @@ export function AtlasBrowser({ stats }: AtlasBrowserProps) {
 
       {/* Table */}
       <div className="border border-slate-800 bg-slate-900/30 overflow-x-auto">
-        <table className="w-full text-xs">
+        <table role="grid" className="w-full text-xs">
           <thead>
             <tr className="border-b border-slate-800 bg-slate-900/60">
               <HeaderCell>Resource</HeaderCell>
@@ -191,6 +191,7 @@ function HeaderCell(props: {
 }) {
   return (
     <th
+      scope="col"
       className={`py-2 px-3 font-mono text-[10px] uppercase tracking-wider text-slate-500 ${
         props.align === 'right' ? 'text-right' : 'text-left'
       }`}
@@ -205,10 +206,10 @@ function HeaderCell(props: {
 function EmptyAtlas() {
   return (
     <div className="border border-slate-800 bg-slate-900/30 p-8 text-center space-y-2">
-      <p className="text-sm text-slate-300 font-medium">No readings yet</p>
-      <p className="text-xs text-slate-500 max-w-md mx-auto leading-relaxed">
-        Be the first scout to file a PQRV reading. Every contribution
-        improves the Atlas for everyone. Fill out the form to the right.
+      <p className="text-sm font-mono text-sr-muted font-medium">No resource readings on file for this sector.</p>
+      <p className="text-xs font-mono text-sr-subtle max-w-md mx-auto leading-relaxed">
+        File the first PQRV survey to seed the atlas. Every operative
+        contribution improves planetary resource intelligence.
       </p>
     </div>
   );

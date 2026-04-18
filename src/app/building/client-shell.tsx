@@ -1,7 +1,6 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import { Loader2 } from 'lucide-react';
 
 // R3F requires client-side rendering because it references window/document
 // In Next.js 16+, next/dynamic with ssr: false MUST be placed inside a Client Component.
@@ -22,13 +21,10 @@ export function BuildingShellSkeleton() {
         <div className="ml-4 w-48 h-5 rounded bg-stone-800 animate-pulse" />
       </div>
       
-      <div className="flex-1 flex items-center justify-center">
-        <div className="text-center flex flex-col items-center">
-          <Loader2 className="w-10 h-10 text-cyan-500 animate-spin mb-4" />
-          <p className="text-stone-400 animate-pulse uppercase tracking-widest text-sm">
-            Initializing Editor...
-          </p>
-        </div>
+      <div className="flex-1 bg-stone-950 flex items-center justify-center">
+        <p className="text-stone-600 text-xs font-mono uppercase tracking-widest animate-pulse">
+          Initializing render context…
+        </p>
       </div>
     </div>
   );

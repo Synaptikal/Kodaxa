@@ -155,8 +155,9 @@ export function ItemsBrowser({ items }: ItemsBrowserProps) {
       {/* Item grid */}
       <div className="flex-1 overflow-y-auto p-4">
         {filtered.length === 0 ? (
-          <div className="flex items-center justify-center h-32 text-sr-muted text-sm">
-            No items match your filters.
+          <div className="flex flex-col items-center justify-center h-32 gap-1">
+            <p className="text-sm font-mono text-sr-muted">No materials match the current filter parameters.</p>
+            <p className="text-xs font-mono text-sr-subtle">Adjust filters or clear selection to broaden the query.</p>
           </div>
         ) : (
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">

@@ -87,15 +87,16 @@ export default function BiomeGuidePage() {
           </p>
 
           <div className="overflow-x-auto">
-            <table className="w-full text-xs border-collapse">
+            <table role="grid" className="w-full text-xs border-collapse">
               <thead>
                 <tr>
-                  <th className="w-24 py-2 text-left font-mono text-xs uppercase tracking-wider text-sr-muted">
+                  <th scope="col" className="w-24 py-2 text-left font-mono text-xs uppercase tracking-wider text-sr-muted">
                     Temp ↓ / Moist →
                   </th>
                   {MOISTURES.map((m) => (
                     <th
                       key={m}
+                      scope="col"
                       className={`py-2 px-3 text-left font-mono text-xs uppercase tracking-wider border-b border-slate-800 ${MOISTURE_COLORS[m]}`}
                     >
                       {m}

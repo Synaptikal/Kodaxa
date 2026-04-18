@@ -104,8 +104,9 @@ export function CreaturesBrowser({ creatures }: CreaturesBrowserProps) {
 
       {/* Grid */}
       {filtered.length === 0 ? (
-        <div className="border border-slate-800 bg-slate-900/30 p-10 text-center">
-          <p className="text-sm text-slate-500">No creatures match your filters.</p>
+        <div className="border border-sr-border bg-sr-surface/30 p-10 text-center space-y-1">
+          <p className="text-sm font-mono text-sr-muted">No creature records match the current filter parameters.</p>
+          <p className="text-xs font-mono text-sr-subtle">Adjust filters to expand the fauna database query.</p>
         </div>
       ) : (
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
