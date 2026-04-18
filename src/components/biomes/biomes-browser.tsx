@@ -121,7 +121,7 @@ export function BiomesBrowser({ biomes }: BiomesBrowserProps) {
 
       {/* Grid */}
       {filtered.length === 0 ? (
-        <div className="rounded-xl border border-slate-800 bg-slate-900/30 p-10 text-center">
+        <div className="border border-slate-800 bg-slate-900/30 p-10 text-center">
           <p className="text-sm text-slate-500">No biomes match your filters.</p>
         </div>
       ) : (
@@ -143,7 +143,7 @@ function BiomeCard({ biome }: { biome: Biome }) {
   const hazardClass = HAZARD_COLORS[biome.hazard];
 
   return (
-    <article className="flex flex-col gap-2.5 p-4 rounded-xl border border-slate-800 bg-sr-surface/60 hover:border-slate-700 transition-colors">
+    <article className="flex flex-col gap-2.5 p-4 border border-slate-800 bg-sr-surface/60 hover:border-slate-700 transition-colors">
       {/* Header */}
       <div className="flex items-start justify-between gap-2">
         <div className="flex-1 min-w-0">

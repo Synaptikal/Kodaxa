@@ -68,7 +68,7 @@ function BlockView({ block }: { block: Block }) {
       const tone = CALLOUT_TONES[block.tone];
       return (
         <aside
-          className={`rounded-lg border p-3 text-xs leading-relaxed ${tone}`}
+          className={`border p-3 text-xs leading-relaxed ${tone}`}
         >
           {block.text}
         </aside>
@@ -79,7 +79,7 @@ function BlockView({ block }: { block: Block }) {
       return (
         <Link
           href={block.href}
-          className="block rounded-lg border border-slate-700 bg-slate-900/60 p-3 hover:border-amber-700/50 transition-colors group"
+          className="block border border-slate-700 bg-slate-900/60 p-3 hover:border-amber-700/50 transition-colors group"
         >
           <p className="text-sm font-bold text-slate-100 group-hover:text-amber-300 transition-colors">
             {block.title} →

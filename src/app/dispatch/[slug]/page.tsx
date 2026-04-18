@@ -109,7 +109,7 @@ export default async function DispatchPostPage({ params }: PageProps) {
           {prev ? (
             <Link
               href={`/dispatch/${prev.slug}`}
-              className="flex-1 rounded-lg border border-slate-800 bg-slate-900/40 p-3 hover:border-cyan-800/50 transition-colors"
+              className="flex-1 border border-slate-800 bg-slate-900/40 p-3 hover:border-cyan-800/50 transition-colors"
             >
               <p className="text-xs font-mono uppercase tracking-wider text-slate-500">
                 ← Previous

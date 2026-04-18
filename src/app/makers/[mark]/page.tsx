@@ -168,7 +168,7 @@ function PortfolioSection({
 
 function PortfolioItemCard({ item }: { item: MakerPortfolioItem }) {
   return (
-    <article className="rounded-xl border border-slate-800 bg-slate-900/40 overflow-hidden hover:border-amber-800/50 transition-colors">
+    <article className="border border-slate-800 bg-slate-900/40 overflow-hidden hover:border-amber-800/50 transition-colors">
       {item.image_url && (
         // eslint-disable-next-line @next/next/no-img-element
         <img
@@ -207,7 +207,7 @@ function PortfolioItemCard({ item }: { item: MakerPortfolioItem }) {
 
 function EmptyPortfolio() {
   return (
-    <div className="rounded-xl border border-slate-800 bg-slate-900/30 p-8 text-center space-y-2">
+    <div className="border border-slate-800 bg-slate-900/30 p-8 text-center space-y-2">
       <p className="text-sm text-slate-300 font-medium">Portfolio empty</p>
       <p className="text-xs text-slate-500 max-w-md mx-auto leading-relaxed">
         This maker has registered their mark but hasn&apos;t posted any

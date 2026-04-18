@@ -29,13 +29,13 @@ export default function PatchNotesPage() {
 
         <div className="space-y-6">
           {PATCH_NOTES.map((note) => (
-            <article key={note.id} className="rounded-xl border border-slate-700 bg-slate-800/30 overflow-hidden">
+            <article key={note.id} className="border border-slate-700 bg-slate-800/30 overflow-hidden">
               {/* Header */}
               <div className="flex items-start justify-between gap-4 px-5 py-4 border-b border-slate-700/50">
                 <div>
                   <div className="flex items-center gap-2 mb-1">
                     <span
-                      className={`text-[10px] px-2 py-0.5 rounded-full font-semibold uppercase tracking-wide ${
+                      className={`text-[10px] px-2 py-0.5 font-semibold uppercase tracking-wide ${
                         note.type === 'major'
                           ? 'bg-cyan-800/60 text-cyan-300'
                           : note.type === 'balance'

@@ -118,7 +118,7 @@ export function AtlasBrowser({ stats }: AtlasBrowserProps) {
       </div>
 
       {/* Table */}
-      <div className="rounded-xl border border-slate-800 bg-slate-900/30 overflow-x-auto">
+      <div className="border border-slate-800 bg-slate-900/30 overflow-x-auto">
         <table className="w-full text-xs">
           <thead>
             <tr className="border-b border-slate-800 bg-slate-900/60">
@@ -204,7 +204,7 @@ function HeaderCell(props: {
 
 function EmptyAtlas() {
   return (
-    <div className="rounded-xl border border-slate-800 bg-slate-900/30 p-8 text-center space-y-2">
+    <div className="border border-slate-800 bg-slate-900/30 p-8 text-center space-y-2">
       <p className="text-sm text-slate-300 font-medium">No readings yet</p>
       <p className="text-xs text-slate-500 max-w-md mx-auto leading-relaxed">
         Be the first scout to file a PQRV reading. Every contribution

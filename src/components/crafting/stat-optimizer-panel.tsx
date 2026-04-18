@@ -171,7 +171,7 @@ function ResultDisplay({
   result: ReturnType<typeof calculateOutputStats>;
 }) {
   return (
-    <div className="rounded-lg border border-teal-800/40 bg-teal-950/20 p-3">
+    <div className="border border-teal-800/40 bg-teal-950/20 p-3">
       <h4 className="text-xs font-semibold text-teal-300 uppercase tracking-wider mb-2">
         Predicted Output
       </h4>

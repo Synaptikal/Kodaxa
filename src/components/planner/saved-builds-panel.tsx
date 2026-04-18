@@ -72,7 +72,7 @@ export function SavedBuildsPanel({
   };
 
   return (
-    <div className="rounded-lg bg-slate-800/50 border border-slate-700 overflow-hidden">
+    <div className="bg-slate-800/50 border border-slate-700 overflow-hidden">
       {/* Header row */}
       <div className="flex items-center justify-between px-3 py-2">
         <button

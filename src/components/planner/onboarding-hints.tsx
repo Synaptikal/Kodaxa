@@ -60,7 +60,7 @@ export function OnboardingHints() {
   if (dismissed) return null;
 
   return (
-    <div className="rounded-lg border border-cyan-800/50 bg-cyan-950/30 p-3 flex flex-col gap-2">
+    <div className="border border-cyan-800/50 bg-cyan-950/30 p-3 flex flex-col gap-2">
       {/* Header */}
       <div className="flex items-center justify-between">
         <button

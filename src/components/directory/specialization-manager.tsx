@@ -91,7 +91,7 @@ export function SpecializationManager({
           {specializations.map((s) => (
             <div
               key={s.id}
-              className={`flex items-center gap-2 rounded-full border px-3 py-1 text-xs ${
+              className={`flex items-center gap-2 border px-3 py-1 text-xs ${
                 CATEGORY_CHIP[s.category] ?? 'bg-slate-700 text-slate-300 border-slate-600'
               }`}
             >

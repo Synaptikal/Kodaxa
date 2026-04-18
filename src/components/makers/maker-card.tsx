@@ -16,7 +16,7 @@ export function MakerCard({ maker }: MakerCardProps) {
   const markSlug = encodeURIComponent(maker.maker_mark.toLowerCase());
 
   return (
-    <article className="flex flex-col gap-3 p-4 rounded-xl border border-slate-800 bg-slate-900/40 hover:border-amber-800/50 transition-colors">
+    <article className="flex flex-col gap-3 p-4 border border-slate-800 bg-slate-900/40 hover:border-amber-800/50 transition-colors">
       {/* Header */}
       <header className="flex items-start justify-between gap-2">
         <div className="min-w-0 flex-1">

@@ -174,7 +174,7 @@ function RecipeCard({ recipe }: { recipe: Recipe }) {
   };
 
   return (
-    <div className="flex flex-col gap-2 p-3 rounded-lg border border-slate-700 bg-slate-800/30 hover:bg-slate-800/50 transition-colors">
+    <div className="flex flex-col gap-2 p-3 border border-slate-700 bg-slate-800/30 hover:bg-slate-800/50 transition-colors">
       {/* Header */}
       <div className="flex items-start justify-between gap-2">
         <div className="flex-1 min-w-0">

@@ -103,7 +103,7 @@ export function ToolSelectModal({
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm"
       onClick={handleBackdropClick}
     >
-      <div className="relative w-full max-w-md max-h-[80vh] flex flex-col rounded-xl border border-slate-600 bg-slate-900 shadow-2xl overflow-hidden">
+      <div className="relative w-full max-w-md max-h-[80vh] flex flex-col border border-slate-600 bg-slate-900 shadow-2xl overflow-hidden">
         {/* Header */}
         <div className="flex items-center justify-between px-5 py-3.5 border-b border-slate-700">
           <div>
@@ -138,7 +138,7 @@ export function ToolSelectModal({
                           onClick={() => !inOtherSlot && onEquip(slotIndex, prof)}
                           disabled={inOtherSlot}
                           className={`
-                            w-full text-left px-3 py-2 rounded-lg text-xs
+                            w-full text-left px-3 py-2 text-xs
                             flex items-center justify-between gap-2
                             transition-colors duration-150
                             ${isCurrent

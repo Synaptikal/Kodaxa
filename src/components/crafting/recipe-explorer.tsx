@@ -70,7 +70,7 @@ export function RecipeExplorer({
 
   const chipClass = useCallback(
     (value: string, current: string) =>
-      `px-2 py-1 rounded-full text-[10px] font-medium transition-colors cursor-pointer ${
+      `px-2 py-1 text-[10px] font-medium transition-colors cursor-pointer ${
         value === current
           ? 'bg-cyan-800/60 text-cyan-200'
           : 'bg-slate-800 text-slate-400 hover:bg-slate-700'

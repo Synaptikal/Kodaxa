@@ -100,13 +100,12 @@ export function BomPanel({ cells }: BomPanelProps) {
         </div>
 
         {hasCraftingHandoff && (
-          <Link 
+          <Link
             href={handoffUrl}
-            className="mt-4 flex items-center justify-center gap-2 w-full py-2.5 bg-gradient-to-r from-cyan-900/40 to-blue-900/40 hover:from-cyan-800/60 hover:to-blue-800/60 text-cyan-100 hover:text-white rounded-lg text-xs font-bold uppercase tracking-widest transition-all duration-300 border border-cyan-500/30 hover:border-cyan-400/60 shadow-[0_0_15px_rgba(6,182,212,0.1)] hover:shadow-[0_0_25px_rgba(6,182,212,0.25)] relative overflow-hidden group"
+            className="mt-4 flex items-center justify-center gap-2 w-full py-2.5 bg-cyan-600/10 hover:bg-cyan-600/20 text-cyan-400 hover:text-cyan-300 text-xs font-bold uppercase tracking-widest transition-colors border border-cyan-700/50 hover:border-cyan-600/70"
           >
-            <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-[100%] group-hover:animate-[shimmer_1.5s_infinite]" />
-            <span className="relative z-10 drop-shadow-sm">Open in Crafting Calc</span>
-            <ArrowRightIcon className="w-3 h-3 relative z-10 transition-transform duration-300 group-hover:translate-x-1" />
+            <span>Open in Crafting Calc</span>
+            <ArrowRightIcon className="w-3 h-3" />
           </Link>
         )}
       </div>

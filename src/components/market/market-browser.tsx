@@ -121,7 +121,7 @@ export function MarketBrowser({ stats }: MarketBrowserProps) {
         </span>
       </div>
 
-      <div className="rounded-xl border border-slate-800 bg-slate-900/30 overflow-x-auto">
+      <div className="border border-slate-800 bg-slate-900/30 overflow-x-auto">
         <table className="w-full text-xs">
           <thead>
             <tr className="border-b border-slate-800 bg-slate-900/60">
@@ -196,7 +196,7 @@ function Header(props: { children: React.ReactNode; align?: 'left' | 'right' }) 
 
 function EmptyMarket() {
   return (
-    <div className="rounded-xl border border-slate-800 bg-slate-900/30 p-8 text-center space-y-2">
+    <div className="border border-slate-800 bg-slate-900/30 p-8 text-center space-y-2">
       <p className="text-sm text-slate-300 font-medium">No price reports yet</p>
       <p className="text-xs text-slate-500 max-w-md mx-auto leading-relaxed">
         File the first observation to seed the 30-day rolling market view.

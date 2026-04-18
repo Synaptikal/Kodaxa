@@ -81,7 +81,7 @@ export default function CorporationPage() {
               headquarters structure serving as our base of operations, meeting location, and
               vendor hub.
             </p>
-            <div className="rounded-lg border border-slate-800 bg-slate-900/40 p-4 space-y-3">
+            <div className="border border-slate-800 bg-slate-900/40 p-4 space-y-3">
               <div className="grid sm:grid-cols-2 gap-4">
                 <PresenceItem label="Homestead Type" value="Corporate HQ + Vendor Hub" />
                 <PresenceItem label="Location" value="Coordinates published at launch" />
@@ -110,7 +110,7 @@ export default function CorporationPage() {
             </p>
             <div className="grid sm:grid-cols-3 gap-3">
               {RECRUITMENT_TRACKS.map((track) => (
-                <div key={track.title} className={`rounded-lg border p-4 space-y-1.5 ${track.border}`}>
+                <div key={track.title} className={`border p-4 space-y-1.5 ${track.border}`}>
                   <p className={`text-[9px] font-mono uppercase tracking-widest font-semibold ${track.color}`}>
                     {track.division}
                   </p>
@@ -122,7 +122,7 @@ export default function CorporationPage() {
             <div className="pt-2 flex items-center gap-3">
               <Link
                 href="/corp/join"
-                className="px-4 py-2 rounded-lg bg-amber-800/30 border border-amber-700/40 text-amber-300 text-sm font-mono hover:bg-amber-800/50 transition-all"
+                className="px-4 py-2 bg-amber-800/30 border border-amber-700/40 text-amber-300 text-sm font-mono hover:bg-amber-800/50 transition-all"
               >
                 Apply to Kodaxa →
               </Link>
@@ -265,7 +265,7 @@ function DivisionCard({
   name: string; color: string; border: string; bg: string; description: string; tools: string[];
 }) {
   return (
-    <div className={`rounded-xl border p-4 space-y-2.5 ${border} ${bg}`}>
+    <div className={`border p-4 space-y-2.5 ${border} ${bg}`}>
       <h3 className={`text-xs font-mono font-bold uppercase tracking-wider ${color}`}>{name}</h3>
       <p className="text-xs text-sr-muted leading-relaxed">{description}</p>
       <div className="flex flex-wrap gap-1">

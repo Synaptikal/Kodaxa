@@ -31,7 +31,7 @@ export function CrafterCard({ crafter }: CrafterCardProps) {
   return (
     <Link
       href={`/directory/${encodeURIComponent(crafter.in_game_name)}`}
-      className="group flex flex-col gap-3 p-4 rounded-xl border border-slate-700 bg-slate-800/30 hover:bg-slate-800/60 hover:border-slate-600 transition-all"
+      className="group flex flex-col gap-3 p-4 border border-slate-700 bg-slate-800/30 hover:bg-slate-800/60 hover:border-slate-600 transition-all"
     >
       {/* Header */}
       <div className="flex items-start justify-between gap-2">
@@ -49,7 +49,7 @@ export function CrafterCard({ crafter }: CrafterCardProps) {
           <p className="text-[10px] text-slate-500 font-mono">{crafter.in_game_name}</p>
         </div>
         <span
-          className={`shrink-0 rounded-full px-2 py-0.5 text-[9px] font-medium border ${commissionColor}`}
+          className={`shrink-0 px-2 py-0.5 text-[9px] font-medium border ${commissionColor}`}
         >
           {commissionLabel}
         </span>
@@ -68,7 +68,7 @@ export function CrafterCard({ crafter }: CrafterCardProps) {
           {crafter.specializations.slice(0, 4).map((s) => (
             <span
               key={s.profession_id}
-              className={`rounded-full px-2 py-0.5 text-[9px] font-medium ${
+              className={`px-2 py-0.5 text-[9px] font-medium ${
                 CATEGORY_CHIP[s.category] ?? 'bg-slate-700 text-slate-300'
               }`}
             >

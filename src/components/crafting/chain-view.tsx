@@ -122,7 +122,7 @@ function CraftingSteps({
             key={step.recipeId}
             className="flex items-start gap-2 text-xs rounded-md bg-slate-800/40 px-2 py-1.5"
           >
-            <span className="shrink-0 w-5 h-5 flex items-center justify-center rounded-full bg-slate-700 text-[10px] font-mono text-slate-300">
+            <span className="shrink-0 w-5 h-5 flex items-center justify-center bg-slate-700 text-[10px] font-mono text-slate-300">
               {step.order + 1}
             </span>
             <div className="flex-1 min-w-0">

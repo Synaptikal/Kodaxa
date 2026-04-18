@@ -107,7 +107,7 @@ export default async function ProfileEditorPage() {
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <section className="rounded-xl border border-slate-700 bg-slate-800/20 p-5 space-y-3">
+    <section className="border border-slate-700 bg-slate-800/20 p-5 space-y-3">
       <h2 className="text-xs font-semibold text-slate-400 uppercase tracking-wider">{title}</h2>
       {children}
     </section>

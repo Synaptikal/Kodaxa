@@ -77,7 +77,7 @@ export function SkillDetailPanel({
     <div
       className={`
         absolute bottom-4 right-4 z-10
-        w-72 rounded-xl border bg-slate-900/95 backdrop-blur-sm shadow-2xl
+        w-72 border bg-slate-900/95 backdrop-blur-sm shadow-2xl
         ${stateColor}
         transition-all duration-200 ease-out
         animate-in fade-in slide-in-from-bottom-2
@@ -104,7 +104,7 @@ export function SkillDetailPanel({
 
       {/* State badge */}
       <div className="px-4 pt-2.5 pb-1">
-        <span className={`inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5 text-xs font-medium ${stateColor}`}>
+        <span className={`inline-flex items-center gap-1.5 border px-2 py-0.5 text-xs font-medium ${stateColor}`}>
           <span className="w-1.5 h-1.5 rounded-full bg-current opacity-80" />
           {stateLabel}
         </span>

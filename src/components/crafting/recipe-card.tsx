@@ -50,7 +50,7 @@ export function RecipeCard({
     <button
       onClick={() => onSelect?.(recipe.id)}
       className={`
-        w-full text-left rounded-lg border p-3 transition-all duration-150
+        w-full text-left border p-3 transition-all duration-150
         ${stationColor}
         ${isSelected ? 'ring-1 ring-cyan-400/50 shadow-lg shadow-cyan-900/20' : 'hover:brightness-110'}
       `}
@@ -60,7 +60,7 @@ export function RecipeCard({
         <h3 className="text-sm font-semibold text-slate-100 leading-tight">
           {recipe.name}
         </h3>
-        <span className={`shrink-0 rounded-full px-1.5 py-0.5 text-[9px] font-medium ${badgeColor}`}>
+        <span className={`shrink-0 px-1.5 py-0.5 text-[9px] font-medium ${badgeColor}`}>
           {recipe.output.category}
         </span>
       </div>

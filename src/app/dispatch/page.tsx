@@ -52,7 +52,7 @@ export default function DispatchIndexPage() {
               <li key={post.slug}>
                 <Link
                   href={`/dispatch/${post.slug}`}
-                  className="block rounded-xl border border-slate-800 bg-slate-900/40 p-5 hover:border-cyan-800/50 transition-colors group"
+                  className="block border border-slate-800 bg-slate-900/40 p-5 hover:border-cyan-800/50 transition-colors group"
                 >
                   <div className="flex items-start justify-between gap-3 mb-1">
                     <div className="flex items-center gap-2 flex-wrap">

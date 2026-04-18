@@ -37,7 +37,7 @@ function ReviewCard({ review }: { review: CrafterReviewWithReviewer }) {
   });
 
   return (
-    <div className="rounded-lg border border-slate-700 bg-slate-800/30 p-3">
+    <div className="border border-slate-700 bg-slate-800/30 p-3">
       <div className="flex items-start justify-between gap-2 mb-2">
         <div>
           <p className="text-xs font-medium text-slate-200">

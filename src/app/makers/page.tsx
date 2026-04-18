@@ -139,7 +139,7 @@ function Section({
 
 function EmptyState() {
   return (
-    <div className="rounded-xl border border-slate-800 bg-slate-900/30 p-10 text-center space-y-3">
+    <div className="border border-slate-800 bg-slate-900/30 p-10 text-center space-y-3">
       <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-amber-500">
         Registry Empty
       </p>

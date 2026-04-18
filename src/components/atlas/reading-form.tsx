@@ -58,7 +58,7 @@ export function ReadingForm({ isAuthenticated, biomes }: ReadingFormProps) {
 
   if (!isAuthenticated) {
     return (
-      <div className="rounded-xl border border-slate-800 bg-slate-900/40 p-6 space-y-3">
+      <div className="border border-slate-800 bg-slate-900/40 p-6 space-y-3">
         <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-amber-500">
           Scout Contribution
         </p>
@@ -114,7 +114,7 @@ export function ReadingForm({ isAuthenticated, biomes }: ReadingFormProps) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="rounded-xl border border-slate-800 bg-slate-900/40 p-5 space-y-4"
+      className="border border-slate-800 bg-slate-900/40 p-5 space-y-4"
     >
       <header className="space-y-1">
         <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-amber-500">
