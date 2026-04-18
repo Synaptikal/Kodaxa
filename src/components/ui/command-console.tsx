@@ -196,14 +196,14 @@ export function CommandConsole() {
       {/* Header bar */}
       <div className="flex items-center justify-between px-4 py-1.5 border-b border-sr-border bg-sr-surface">
         <div className="flex items-center gap-3">
-          <span className="text-[8px] font-mono text-slate-600 uppercase tracking-[0.35em]">
+          <span className="text-xs font-mono text-slate-600 uppercase tracking-[0.35em]">
             Kodaxa Relay Console
           </span>
-          <span className="text-[8px] font-mono text-teal-600">● CONNECTED</span>
+          <span className="text-xs font-mono text-teal-600">● CONNECTED</span>
         </div>
         <button
           onClick={() => setOpen(false)}
-          className="text-[9px] font-mono text-slate-700 hover:text-slate-400 transition-colors uppercase tracking-wider"
+          className="text-xs font-mono text-slate-700 hover:text-slate-400 transition-colors uppercase tracking-wider"
         >
           [Esc] Close
         </button>

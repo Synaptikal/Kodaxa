@@ -96,10 +96,10 @@ export function BootSequence() {
     >
       {/* Top classification bar */}
       <div className="absolute top-0 left-0 right-0 flex items-center justify-between px-6 py-2 border-b border-sr-border">
-        <span className="text-[8px] font-mono text-slate-700 uppercase tracking-[0.35em]">
+        <span className="text-xs font-mono text-slate-700 uppercase tracking-[0.35em]">
           Kodaxa OS · Boot Sequence
         </span>
-        <span className="text-[8px] font-mono text-slate-700 uppercase tracking-[0.25em]">
+        <span className="text-xs font-mono text-slate-700 uppercase tracking-[0.25em]">
           Press any key to skip
         </span>
       </div>
@@ -109,7 +109,7 @@ export function BootSequence() {
         <p className="text-3xl font-black font-mono text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-400 tracking-tight">
           KODAXA
         </p>
-        <p className="text-[9px] font-mono text-slate-600 uppercase tracking-[0.4em] mt-0.5">
+        <p className="text-xs font-mono text-slate-600 uppercase tracking-[0.4em] mt-0.5">
           Multi-Planetary Data &amp; Software Systems
         </p>
       </div>
@@ -140,10 +140,10 @@ export function BootSequence() {
 
       {/* Bottom bar */}
       <div className="absolute bottom-0 left-0 right-0 flex items-center justify-between px-6 py-2 border-t border-sr-border">
-        <span className="text-[8px] font-mono text-slate-700 uppercase tracking-[0.25em]">
+        <span className="text-xs font-mono text-slate-700 uppercase tracking-[0.25em]">
           © Kodaxa Studios · Unofficial Fan Project
         </span>
-        <span className="text-[8px] font-mono text-slate-800 tabular-nums">
+        <span className="text-xs font-mono text-slate-800 tabular-nums">
           {new Date().toISOString().slice(0, 10)}
         </span>
       </div>

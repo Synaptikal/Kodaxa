@@ -51,7 +51,7 @@ export function PriceReportForm({ isAuthenticated }: PriceReportFormProps) {
   if (!isAuthenticated) {
     return (
       <div className="rounded-xl border border-slate-800 bg-slate-900/40 p-6 space-y-3">
-        <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-violet-500">
+        <p className="text-xs font-mono uppercase tracking-[0.2em] text-violet-500">
           Trader Contribution
         </p>
         <h2 className="text-base font-bold font-mono text-slate-100">Transmit Price Observation</h2>
@@ -113,11 +113,11 @@ export function PriceReportForm({ isAuthenticated }: PriceReportFormProps) {
       className="rounded-xl border border-slate-800 bg-slate-900/40 p-5 space-y-4"
     >
       <header className="space-y-1">
-        <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-violet-500">
+        <p className="text-xs font-mono uppercase tracking-[0.2em] text-violet-500">
           Trader Contribution
         </p>
         <h2 className="text-base font-bold text-slate-100">Report a price observation</h2>
-        <p className="text-[11px] text-slate-500">
+        <p className="text-xs text-slate-500">
           Snapshots build the 30-day rolling market view. Back-date the observation if needed.
         </p>
       </header>
@@ -216,7 +216,7 @@ export function PriceReportForm({ isAuthenticated }: PriceReportFormProps) {
       </div>
 
       {unitPrice > 0 && (
-        <p className="text-[11px] font-mono text-slate-500">
+        <p className="text-xs font-mono text-slate-500">
           Unit price →{' '}
           <span className="text-violet-300">
             {unitPrice.toLocaleString(undefined, { maximumFractionDigits: 2 })} cr
@@ -268,7 +268,7 @@ const INPUT_CLS =
 function Field(props: { label: string; required?: boolean; children: React.ReactNode }) {
   return (
     <label className="flex flex-col gap-1">
-      <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500">
+      <span className="text-xs font-mono uppercase tracking-wider text-slate-500">
         {props.label}
         {props.required && <span className="text-violet-500"> *</span>}
       </span>

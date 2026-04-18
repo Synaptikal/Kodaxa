@@ -40,7 +40,7 @@ export function RosterPanel({ members, currentUserId, currentUserRole }: RosterP
   return (
     <div className="p-6 space-y-6 max-w-4xl">
       <div className="space-y-1">
-        <p className="text-[9px] font-mono text-slate-600 uppercase tracking-[0.3em]">Corp HQ // Roster Manifest</p>
+        <p className="text-xs font-mono text-sr-muted uppercase tracking-[0.3em]">Corp HQ // Roster Manifest</p>
         <h1 className="text-xl font-bold font-mono text-slate-100">Roster Manifest</h1>
         <p className="text-xs text-slate-500">{members.length} personnel on record</p>
       </div>
@@ -59,7 +59,7 @@ export function RosterPanel({ members, currentUserId, currentUserRole }: RosterP
           <div key={role} className="space-y-2">
             <div className="flex items-center gap-3">
               <RoleBadge role={role} size="xs" />
-              <span className="text-[8px] font-mono text-slate-600">({group.length})</span>
+              <span className="text-xs font-mono text-sr-muted">({group.length})</span>
               <div className="h-px flex-1 bg-sr-border" />
             </div>
             <div className="space-y-1">
@@ -77,7 +77,7 @@ export function RosterPanel({ members, currentUserId, currentUserRole }: RosterP
       })}
 
       {filtered.length === 0 && (
-        <p className="text-xs text-slate-600 font-mono text-center py-8 border border-sr-border">
+        <p className="text-xs text-sr-muted font-mono text-center py-8 border border-sr-border">
           No personnel matching search
         </p>
       )}
@@ -111,14 +111,14 @@ function RosterRow({
       <div className="flex-1 min-w-0">
         <p className="text-xs font-mono text-slate-200 truncate">
           {member.display_name}
-          {isSelf && <span className="text-[8px] text-slate-600 ml-1.5">(you)</span>}
+          {isSelf && <span className="text-xs text-sr-muted ml-1.5">(you)</span>}
         </p>
-        <p className="text-[9px] font-mono text-slate-600">{member.in_game_name}</p>
+        <p className="text-xs font-mono text-sr-muted">{member.in_game_name}</p>
       </div>
       {member.home_planet && (
-        <span className="text-[9px] font-mono text-slate-600 hidden sm:inline shrink-0">{member.home_planet}</span>
+        <span className="text-xs font-mono text-sr-muted hidden sm:inline shrink-0">{member.home_planet}</span>
       )}
-      <span className="text-[8px] font-mono text-slate-700 shrink-0">
+      <span className="text-xs font-mono text-sr-subtle shrink-0">
         {new Date(member.created_at).toLocaleDateString()}
       </span>
       {canChangeRole && (
@@ -126,7 +126,7 @@ function RosterRow({
           <button
             onClick={() => setShowRoleMenu((v) => !v)}
             disabled={isPending}
-            className="text-[8px] font-mono text-slate-600 hover:text-slate-400 border border-slate-700 px-2 py-0.5 transition-colors disabled:opacity-40"
+            className="text-xs font-mono text-sr-muted hover:text-slate-400 border border-slate-700 px-2 py-0.5 transition-colors disabled:opacity-40"
           >
             {isPending ? '...' : 'REASSIGN'}
           </button>
@@ -136,7 +136,7 @@ function RosterRow({
                 <button
                   key={r}
                   onClick={() => assignRole(r)}
-                  className="w-full text-left px-3 py-1.5 text-[9px] font-mono text-slate-300 hover:bg-slate-800 hover:text-slate-100 transition-colors"
+                  className="w-full text-left px-3 py-1.5 text-xs font-mono text-slate-300 hover:bg-slate-800 hover:text-slate-100 transition-colors"
                 >
                   {ROLE_LABELS[r]}
                 </button>

@@ -147,7 +147,7 @@ export function PlannerShell() {
             />
             <button
               onClick={handleShare}
-              className={`shrink-0 text-[10px] px-2 py-1 rounded transition-colors ${
+              className={`shrink-0 text-xs px-2 py-1 rounded transition-colors ${
                 shareCopied
                   ? 'bg-teal-700/50 text-teal-300'
                   : 'bg-cyan-800/40 text-cyan-300 hover:bg-cyan-800/60'

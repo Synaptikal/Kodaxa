@@ -141,7 +141,7 @@ function StatusDot({ status }: { status?: ItemStatus }) {
     soon: '○ SOON',
   };
   return (
-    <span className={`text-[8px] font-mono font-bold ${styles[status]} shrink-0 tracking-wide`}>
+    <span className={`text-[10px] font-mono font-bold ${styles[status]} shrink-0 tracking-wide`}>
       {labels[status]}
     </span>
   );
@@ -278,15 +278,15 @@ export function NavHeader() {
       {/* Division identity line */}
       {divCtx && (
         <div className="border-t border-sr-border/40 px-4 py-0.5 flex items-center gap-1.5">
-          <span className="text-[8px] font-mono text-slate-700 tracking-widest uppercase">
+          <span className="text-[10px] font-mono text-sr-subtle tracking-widest uppercase">
             Kodaxa Studios
           </span>
-          <span className="text-[8px] font-mono text-slate-800">·</span>
-          <span className={`text-[8px] font-mono tracking-widest uppercase font-semibold ${divCtx.color}`}>
+          <span className="text-[10px] font-mono text-sr-subtle">·</span>
+          <span className={`text-[10px] font-mono tracking-widest uppercase font-semibold ${divCtx.color}`}>
             {divCtx.division}
           </span>
-          <span className="text-[8px] font-mono text-slate-800">·</span>
-          <span className="text-[8px] font-mono text-slate-700 tracking-widest uppercase">
+          <span className="text-[10px] font-mono text-sr-subtle">·</span>
+          <span className="text-[10px] font-mono text-sr-muted tracking-widest uppercase">
             {divCtx.tool}
           </span>
         </div>

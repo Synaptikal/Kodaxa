@@ -22,7 +22,7 @@ export function AdminPanel({ applications }: AdminPanelProps) {
   return (
     <div className="p-6 space-y-6 max-w-4xl">
       <div className="space-y-1">
-        <p className="text-[9px] font-mono text-slate-600 uppercase tracking-[0.3em]">Corp HQ // Admin Control</p>
+        <p className="text-xs font-mono text-sr-muted uppercase tracking-[0.3em]">Corp HQ // Admin Control</p>
         <h1 className="text-xl font-bold font-mono text-slate-100">Admin Control</h1>
         <p className="text-xs text-slate-500">Director access — recruitment applications</p>
       </div>
@@ -40,7 +40,7 @@ export function AdminPanel({ applications }: AdminPanelProps) {
             <button
               key={s}
               onClick={() => setFilter(s)}
-              className={`px-3 py-1.5 text-[9px] font-mono font-semibold uppercase tracking-wider border-b-2 -mb-px transition-colors ${colors[s]}`}
+              className={`px-3 py-1.5 text-xs font-mono font-semibold uppercase tracking-wider border-b-2 -mb-px transition-colors ${colors[s]}`}
             >
               {labels[s]} ({counts[s]})
             </button>
@@ -49,7 +49,7 @@ export function AdminPanel({ applications }: AdminPanelProps) {
       </div>
 
       {filtered.length === 0 ? (
-        <p className="text-xs text-slate-600 font-mono text-center py-8 border border-sr-border">
+        <p className="text-xs text-sr-muted font-mono text-center py-8 border border-sr-border">
           No applications in this category
         </p>
       ) : (
@@ -87,17 +87,17 @@ function ApplicationCard({ application: app }: { application: CorpApplication })
         onClick={() => setExpanded((v) => !v)}
         className="w-full flex items-center gap-3 px-3 py-2.5 hover:bg-slate-800/30 transition-colors text-left"
       >
-        <span className={`text-[8px] font-mono font-bold px-1.5 py-0.5 border shrink-0 ${statusColors[app.status]}`}>
+        <span className={`text-xs font-mono font-bold px-1.5 py-0.5 border shrink-0 ${statusColors[app.status]}`}>
           {statusLabels[app.status]}
         </span>
         <span className="text-xs font-mono text-slate-200 flex-1 truncate">{app.in_game_name}</span>
-        <span className="text-[9px] font-mono text-slate-500 shrink-0">
+        <span className="text-xs font-mono text-slate-500 shrink-0">
           {TRACK_LABELS[app.track] ?? app.track}
         </span>
-        <span className="text-[8px] font-mono text-slate-700 shrink-0">
+        <span className="text-xs font-mono text-sr-subtle shrink-0">
           {new Date(app.created_at).toLocaleDateString()}
         </span>
-        <span className={`text-[9px] text-slate-600 shrink-0 ${expanded ? 'rotate-180' : ''} transition-transform`}>▾</span>
+        <span className={`text-xs text-sr-muted shrink-0 ${expanded ? 'rotate-180' : ''} transition-transform`}>▾</span>
       </button>
 
       {expanded && (
@@ -111,23 +111,23 @@ function ApplicationCard({ application: app }: { application: CorpApplication })
 
           {app.professions && app.professions.length > 0 && (
             <div>
-              <p className="text-[8px] font-mono text-slate-600 uppercase tracking-widest mb-1.5">Professions</p>
+              <p className="text-xs font-mono text-sr-muted uppercase tracking-widest mb-1.5">Professions</p>
               <div className="flex flex-wrap gap-1">
                 {app.professions.map((p) => (
-                  <span key={p} className="text-[9px] font-mono px-1.5 py-0.5 border border-slate-700 bg-slate-800 text-slate-400">{p}</span>
+                  <span key={p} className="text-xs font-mono px-1.5 py-0.5 border border-slate-700 bg-slate-800 text-slate-400">{p}</span>
                 ))}
               </div>
             </div>
           )}
 
           <div>
-            <p className="text-[8px] font-mono text-slate-600 uppercase tracking-widest mb-1">Motivation</p>
+            <p className="text-xs font-mono text-sr-muted uppercase tracking-widest mb-1">Motivation</p>
             <p className="text-xs text-slate-300 leading-relaxed">{app.motivation}</p>
           </div>
 
           {app.review_notes && (
             <div>
-              <p className="text-[8px] font-mono text-slate-600 uppercase tracking-widest mb-1">Review Notes</p>
+              <p className="text-xs font-mono text-sr-muted uppercase tracking-widest mb-1">Review Notes</p>
               <p className="text-xs text-slate-400">{app.review_notes}</p>
             </div>
           )}
@@ -144,14 +144,14 @@ function ApplicationCard({ application: app }: { application: CorpApplication })
                 <button
                   onClick={() => handle('approved')}
                   disabled={isPending}
-                  className="px-4 py-1.5 text-[9px] font-mono font-bold uppercase tracking-wider border border-teal-700/50 text-teal-400 hover:bg-teal-900/20 transition-colors disabled:opacity-40"
+                  className="px-4 py-1.5 text-xs font-mono font-bold uppercase tracking-wider border border-teal-700/50 text-teal-400 hover:bg-teal-900/20 transition-colors disabled:opacity-40"
                 >
                   APPROVE
                 </button>
                 <button
                   onClick={() => handle('rejected')}
                   disabled={isPending}
-                  className="px-4 py-1.5 text-[9px] font-mono font-bold uppercase tracking-wider border border-red-700/50 text-red-400 hover:bg-red-900/20 transition-colors disabled:opacity-40"
+                  className="px-4 py-1.5 text-xs font-mono font-bold uppercase tracking-wider border border-red-700/50 text-red-400 hover:bg-red-900/20 transition-colors disabled:opacity-40"
                 >
                   REJECT
                 </button>
@@ -167,7 +167,7 @@ function ApplicationCard({ application: app }: { application: CorpApplication })
 function Field({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <p className="text-[8px] font-mono text-slate-600 uppercase tracking-widest">{label}</p>
+      <p className="text-xs font-mono text-sr-muted uppercase tracking-widest">{label}</p>
       <p className="text-xs text-slate-300 mt-0.5">{value}</p>
     </div>
   );

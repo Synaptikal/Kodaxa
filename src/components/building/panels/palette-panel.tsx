@@ -116,7 +116,7 @@ export function PalettePanel({ selectedTileId, onSelectTile }: PalettePanelProps
     <div className="flex flex-col shrink-0 basis-[48%] border-b border-sr-border bg-sr-bg">
       {/* ── Header ──────────────────────────────────────────────────── */}
       <div className="px-3 pt-3 pb-2 border-b border-sr-border">
-        <p className="text-[8px] font-mono uppercase tracking-[0.3em] text-slate-600 mb-1">
+        <p className="text-xs font-mono uppercase tracking-[0.3em] text-sr-muted mb-1">
           Building Palette
         </p>
 
@@ -126,7 +126,7 @@ export function PalettePanel({ selectedTileId, onSelectTile }: PalettePanelProps
             <button
               key={tab.id}
               onClick={() => { setActiveTab(tab.id); setFilter('all'); setSearch(''); }}
-              className={`flex-1 py-1 text-[9px] font-mono font-bold uppercase tracking-widest transition-colors border ${
+              className={`flex-1 py-1 text-xs font-mono font-bold uppercase tracking-widest transition-colors border ${
                 activeTab === tab.id
                   ? 'bg-cyan-600/20 border-cyan-700/60 text-cyan-300'
                   : 'bg-sr-surface border-sr-border text-slate-500 hover:text-slate-300 hover:border-slate-600'
@@ -144,7 +144,7 @@ export function PalettePanel({ selectedTileId, onSelectTile }: PalettePanelProps
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search pieces…"
-            className="w-full bg-sr-surface border border-sr-border pl-6 pr-6 py-1.5 text-[10px] font-mono text-slate-300 placeholder:text-slate-700 focus:border-cyan-700 focus:outline-none"
+            className="w-full bg-sr-surface border border-sr-border pl-6 pr-6 py-1.5 text-xs font-mono text-slate-300 placeholder:text-slate-700 focus:border-cyan-700 focus:outline-none"
           />
           {search && (
             <button
@@ -162,17 +162,17 @@ export function PalettePanel({ selectedTileId, onSelectTile }: PalettePanelProps
             <button
               key={f.id}
               onClick={() => setFilter(f.id)}
-              className={`px-2 py-0.5 text-[8px] font-mono uppercase tracking-widest border transition-colors ${
+              className={`px-2 py-0.5 text-xs font-mono uppercase tracking-widest border transition-colors ${
                 filter === f.id
                   ? 'bg-cyan-600/20 border-cyan-700/60 text-cyan-300'
-                  : 'bg-sr-surface border-sr-border text-slate-600 hover:text-slate-400'
+                  : 'bg-sr-surface border-sr-border text-sr-muted hover:text-slate-400'
               }`}
             >
               {f.label}
             </button>
           ))}
           {totalVisible > 0 && (
-            <span className="ml-auto text-[8px] font-mono text-slate-700 self-center">
+            <span className="ml-auto text-xs font-mono text-slate-700 self-center">
               {totalVisible} piece{totalVisible !== 1 ? 's' : ''}
             </span>
           )}
@@ -183,20 +183,20 @@ export function PalettePanel({ selectedTileId, onSelectTile }: PalettePanelProps
       <div className="flex-1 overflow-y-auto">
         {groupedTiles.size === 0 ? (
           <div className="p-4 text-center">
-            <p className="text-[10px] font-mono text-slate-700">No pieces match.</p>
+            <p className="text-xs font-mono text-slate-700">No pieces match.</p>
           </div>
         ) : (
           Array.from(groupedTiles.entries()).map(([sub, tiles]) => (
             <div key={sub}>
               {/* Group header */}
               <div className="px-3 py-1.5 bg-sr-surface border-b border-sr-border flex items-center gap-2">
-                <span className="text-[8px] font-mono font-bold text-slate-500 bg-sr-bg border border-sr-border px-1.5 py-0.5 tracking-widest">
+                <span className="text-xs font-mono font-bold text-slate-500 bg-sr-bg border border-sr-border px-1.5 py-0.5 tracking-widest">
                   {SHAPE_CODE[sub]}
                 </span>
-                <span className="text-[9px] font-mono uppercase tracking-[0.2em] text-slate-600">
+                <span className="text-xs font-mono uppercase tracking-[0.2em] text-sr-muted">
                   {SUBCATEGORY_LABELS[sub]}
                 </span>
-                <span className="ml-auto text-[8px] font-mono text-slate-700">{tiles.length}</span>
+                <span className="ml-auto text-xs font-mono text-slate-700">{tiles.length}</span>
               </div>
 
               {/* Tile rows */}
@@ -227,13 +227,13 @@ export function PalettePanel({ selectedTileId, onSelectTile }: PalettePanelProps
 
                     {/* Name + badges */}
                     <div className="flex-1 min-w-0">
-                      <p className={`text-[10px] font-mono leading-tight truncate ${
+                      <p className={`text-xs font-mono leading-tight truncate ${
                         isSelected ? 'text-cyan-300' : 'text-slate-300 group-hover:text-slate-100'
                       }`}>
                         {tile.name}
                       </p>
                       {tile.description && (
-                        <p className="text-[8px] font-mono text-slate-700 truncate leading-tight mt-0.5">
+                        <p className="text-xs font-mono text-slate-700 truncate leading-tight mt-0.5">
                           {tile.description}
                         </p>
                       )}
@@ -242,7 +242,7 @@ export function PalettePanel({ selectedTileId, onSelectTile }: PalettePanelProps
                     {/* Badges */}
                     <div className="flex items-center gap-1 shrink-0">
                       {!tile.costsConfirmed && (
-                        <span className="text-[7px] font-mono text-amber-600 border border-amber-800/50 px-1 py-0.5 uppercase tracking-widest">
+                        <span className="text-xs font-mono text-amber-600 border border-amber-800/50 px-1 py-0.5 uppercase tracking-widest">
                           ~est
                         </span>
                       )}

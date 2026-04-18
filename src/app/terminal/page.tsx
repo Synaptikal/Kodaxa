@@ -56,7 +56,7 @@ export default async function TerminalPage() {
       {/* Terminal header */}
       <div className="border-b border-sr-border bg-sr-surface/40">
         <div className="max-w-6xl mx-auto px-6 py-5 space-y-1">
-          <p className="text-[9px] font-mono uppercase tracking-[0.3em] text-slate-600">
+          <p className="text-xs font-mono uppercase tracking-[0.3em] text-sr-muted">
             Personnel · My Terminal · {new Date().toISOString().slice(0, 10)}
           </p>
           <div className="flex items-baseline gap-3 flex-wrap">
@@ -69,7 +69,7 @@ export default async function TerminalPage() {
               </span>
             )}
           </div>
-          <p className="text-[10px] font-mono text-slate-600">
+          <p className="text-xs font-mono text-sr-muted">
             {profile
               ? `@${profile.in_game_name}${profile.home_planet ? ` · ${profile.home_planet}` : ''}${profile.maker_mark ? ` · Mark: ${profile.maker_mark}` : ''}`
               : 'No operative profile linked — set one up to register your maker mark and home planet.'}
@@ -141,11 +141,11 @@ export default async function TerminalPage() {
                 <li key={p.slug}>
                   <Link href={`/dispatch/${p.slug}`}
                     className="block px-2 py-2 hover:bg-sr-surface/60 transition-colors">
-                    <p className="text-[9px] font-mono text-slate-600 uppercase tracking-[0.1em]">
+                    <p className="text-xs font-mono text-sr-muted uppercase tracking-[0.1em]">
                       {p.published_at} · {p.author}
                     </p>
                     <p className="text-sm font-bold font-mono text-slate-200 mt-0.5">{p.title}</p>
-                    <p className="text-[10px] font-mono text-sr-muted line-clamp-2 mt-0.5 leading-relaxed">{p.summary}</p>
+                    <p className="text-xs font-mono text-sr-muted line-clamp-2 mt-0.5 leading-relaxed">{p.summary}</p>
                   </Link>
                 </li>
               ))}
@@ -168,7 +168,7 @@ function SignInView() {
       <NavHeader />
       <main className="flex-1 flex items-center justify-center px-4 py-10">
         <div className="max-w-md w-full border border-sr-border bg-sr-surface/40 p-8 text-center space-y-4">
-          <p className="text-[9px] font-mono uppercase tracking-[0.35em] text-slate-600">
+          <p className="text-xs font-mono uppercase tracking-[0.35em] text-sr-muted">
             Personnel · My Terminal
           </p>
           <h1 className="text-xl font-black font-mono text-slate-100">Uplink Required</h1>
@@ -180,7 +180,7 @@ function SignInView() {
             className="inline-block text-xs px-5 py-2.5 bg-cyan-600/20 border border-cyan-700/60 text-cyan-300 font-mono font-semibold uppercase tracking-wide hover:bg-cyan-600/30 hover:border-cyan-600 transition-all">
             Establish Uplink →
           </Link>
-          <p className="text-[10px] font-mono text-slate-600 pt-2">
+          <p className="text-xs font-mono text-sr-muted pt-2">
             No personnel file?{' '}
             <Link href="/auth/sign-up" className="text-cyan-500 hover:text-cyan-400">
               Request Access

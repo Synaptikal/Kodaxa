@@ -41,13 +41,13 @@ export function HQLayout({ children, userRole, displayName, inGameName }: HQLayo
 
       {/* HQ identity strip */}
       <div className="border-b border-sr-border bg-sr-surface/60 px-4 py-1.5 flex items-center gap-3">
-        <span className="text-[8px] font-mono text-slate-700 tracking-[0.3em] uppercase">Kodaxa Studios</span>
-        <span className="text-[8px] text-slate-800">·</span>
-        <span className="text-[8px] font-mono text-cyan-800 tracking-[0.3em] uppercase font-semibold">Internal Systems</span>
-        <span className="text-[8px] text-slate-800">·</span>
-        <span className="text-[8px] font-mono text-slate-700 tracking-[0.3em] uppercase">Corp HQ</span>
+        <span className="text-xs font-mono text-sr-subtle tracking-[0.3em] uppercase">Kodaxa Studios</span>
+        <span className="text-xs text-sr-subtle">·</span>
+        <span className="text-xs font-mono text-cyan-800 tracking-[0.3em] uppercase font-semibold">Internal Systems</span>
+        <span className="text-xs text-sr-subtle">·</span>
+        <span className="text-xs font-mono text-sr-subtle tracking-[0.3em] uppercase">Corp HQ</span>
         <div className="flex-1" />
-        <span className="text-[8px] font-mono text-slate-600">{inGameName}</span>
+        <span className="text-xs font-mono text-sr-muted">{inGameName}</span>
       </div>
 
       <div className="flex flex-1 overflow-hidden">
@@ -57,7 +57,7 @@ export function HQLayout({ children, userRole, displayName, inGameName }: HQLayo
 
           {/* Operative card */}
           <div className="p-4 border-b border-sr-border space-y-1.5">
-            <p className="text-[8px] font-mono text-slate-600 uppercase tracking-widest">Clearance Level</p>
+            <p className="text-xs font-mono text-sr-muted uppercase tracking-widest">Clearance Level</p>
             <RoleBadge role={userRole} />
             <p className="text-xs text-slate-300 font-mono truncate">{displayName}</p>
           </div>
@@ -80,10 +80,10 @@ export function HQLayout({ children, userRole, displayName, inGameName }: HQLayo
                     {entry.glyph}
                   </span>
                   <div>
-                    <p className={`text-[9px] font-mono font-bold tracking-widest ${isActive ? 'text-cyan-300' : 'text-slate-400 group-hover:text-slate-200'}`}>
+                    <p className={`text-xs font-mono font-bold tracking-widest ${isActive ? 'text-cyan-300' : 'text-slate-400 group-hover:text-slate-200'}`}>
                       {entry.label}
                     </p>
-                    <p className="text-[8px] font-mono text-slate-600 mt-0.5">{entry.sublabel}</p>
+                    <p className="text-xs font-mono text-sr-muted mt-0.5">{entry.sublabel}</p>
                   </div>
                 </Link>
               );
@@ -92,7 +92,7 @@ export function HQLayout({ children, userRole, displayName, inGameName }: HQLayo
 
           {/* Footer */}
           <div className="p-3 border-t border-sr-border">
-            <Link href="/directory/me" className="text-[8px] font-mono text-slate-600 hover:text-slate-400 transition-colors">
+            <Link href="/directory/me" className="text-xs font-mono text-sr-muted hover:text-slate-400 transition-colors">
               ← My Commerce Profile
             </Link>
           </div>

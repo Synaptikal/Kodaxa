@@ -95,12 +95,12 @@ export function RecipesBrowser({ recipes, stations }: RecipesBrowserProps) {
             placeholder="Search recipes…"
             className="flex-1 max-w-xs"
           />
-          <span className="text-xs text-slate-600 font-mono shrink-0">
+          <span className="text-xs text-sr-muted font-mono shrink-0">
             {filtered.length} / {recipes.length}
           </span>
           <Link
             href="/crafting"
-            className="ml-auto shrink-0 text-[10px] px-2.5 py-1 rounded bg-orange-800/30 text-orange-300 border border-orange-800/40 hover:bg-orange-800/50 transition-colors"
+            className="ml-auto shrink-0 text-xs px-2.5 py-1 rounded bg-orange-800/30 text-orange-300 border border-orange-800/40 hover:bg-orange-800/50 transition-colors"
           >
             Crafting Calc →
           </Link>
@@ -108,7 +108,7 @@ export function RecipesBrowser({ recipes, stations }: RecipesBrowserProps) {
 
         {/* Station filter */}
         <div className="space-y-1.5">
-          <p className="text-[10px] text-slate-600 uppercase tracking-wider">Station</p>
+          <p className="text-xs text-sr-muted uppercase tracking-wider">Station</p>
           <FilterPillGroup
             options={stationOptions}
             selected={selectedStation}
@@ -124,7 +124,7 @@ export function RecipesBrowser({ recipes, stations }: RecipesBrowserProps) {
 
         {/* Category filter */}
         <div className="space-y-1.5">
-          <p className="text-[10px] text-slate-600 uppercase tracking-wider">Output Type</p>
+          <p className="text-xs text-sr-muted uppercase tracking-wider">Output Type</p>
           <FilterPillGroup
             options={categoryOptions}
             selected={selectedCategory}
@@ -142,7 +142,7 @@ export function RecipesBrowser({ recipes, stations }: RecipesBrowserProps) {
       {/* Recipe grid */}
       <div className="flex-1 overflow-y-auto p-4">
         {filtered.length === 0 ? (
-          <div className="flex items-center justify-center h-32 text-slate-600 text-sm">
+          <div className="flex items-center justify-center h-32 text-sr-muted text-sm">
             No recipes match your filters.
           </div>
         ) : (
@@ -179,23 +179,23 @@ function RecipeCard({ recipe }: { recipe: Recipe }) {
       <div className="flex items-start justify-between gap-2">
         <div className="flex-1 min-w-0">
           <p className="text-xs font-semibold text-slate-100 truncate">{recipe.name}</p>
-          <p className={`text-[10px] font-mono ${stationColors[recipe.stationId] ?? 'text-slate-500'}`}>
+          <p className={`text-xs font-mono ${stationColors[recipe.stationId] ?? 'text-slate-500'}`}>
             {stationNames[recipe.stationId] ?? recipe.stationId}
           </p>
         </div>
-        <span className="shrink-0 text-[9px] px-1.5 py-0.5 rounded bg-slate-700 text-slate-400 uppercase tracking-wide">
+        <span className="shrink-0 text-xs px-1.5 py-0.5 rounded bg-slate-700 text-slate-400 uppercase tracking-wide">
           {CATEGORY_LABELS[recipe.output.category] ?? recipe.output.category}
         </span>
       </div>
 
       {/* Output */}
       <div className="flex items-center gap-1.5">
-        <span className="text-[10px] text-slate-500">Produces</span>
-        <span className="text-[10px] font-medium text-teal-400">
+        <span className="text-xs text-slate-500">Produces</span>
+        <span className="text-xs font-medium text-teal-400">
           {recipe.output.quantity > 1 ? `${recipe.output.quantity}× ` : ''}{recipe.output.name}
         </span>
         {!recipe.confirmed && (
-          <span className="text-[8px] px-1 py-0.5 rounded bg-amber-900/40 text-amber-500 border border-amber-800/30">
+          <span className="text-xs px-1 py-0.5 rounded bg-amber-900/40 text-amber-500 border border-amber-800/30">
             unconfirmed
           </span>
         )}
@@ -204,7 +204,7 @@ function RecipeCard({ recipe }: { recipe: Recipe }) {
       {/* Ingredients */}
       <div className="space-y-0.5">
         {recipe.ingredients.map((ing, i) => (
-          <div key={i} className="flex items-center gap-1.5 text-[10px]">
+          <div key={i} className="flex items-center gap-1.5 text-xs">
             <span className="font-mono text-slate-400 w-6 text-right shrink-0">{ing.quantity}×</span>
             <span className="text-slate-300 truncate">{ing.resourceId.replace(/_/g, ' ')}</span>
           </div>
@@ -213,11 +213,11 @@ function RecipeCard({ recipe }: { recipe: Recipe }) {
 
       {/* Branch tag */}
       <div className="mt-auto pt-1.5 border-t border-slate-700/50">
-        <span className="text-[9px] text-slate-600 uppercase tracking-wider">
+        <span className="text-xs text-sr-muted uppercase tracking-wider">
           {BRANCH_LABELS[recipe.branch] ?? recipe.branch}
         </span>
         {recipe.isIntermediate && (
-          <span className="ml-2 text-[9px] text-violet-500">component</span>
+          <span className="ml-2 text-xs text-violet-500">component</span>
         )}
       </div>
     </div>

@@ -16,8 +16,8 @@ interface SectionLabelProps {
 export function SectionLabel({ text, sub, className = '' }: SectionLabelProps) {
   return (
     <div className={className}>
-      <p className="text-[9px] font-mono uppercase tracking-[0.3em] text-slate-600">{text}</p>
-      {sub && <p className="text-[10px] font-mono text-slate-700 mt-0.5">{sub}</p>}
+      <p className="text-[10px] font-mono uppercase tracking-[0.25em] text-sr-muted">{text}</p>
+      {sub && <p className="text-[11px] font-mono text-sr-muted mt-0.5">{sub}</p>}
     </div>
   );
 }

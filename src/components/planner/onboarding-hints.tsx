@@ -67,14 +67,14 @@ export function OnboardingHints() {
           onClick={() => setOpen((o) => !o)}
           className="flex items-center gap-1.5 text-xs font-semibold text-cyan-300 hover:text-cyan-200 transition-colors"
         >
-          <span className={`transition-transform duration-150 text-[10px] ${open ? 'rotate-90' : ''}`}>
+          <span className={`transition-transform duration-150 text-xs ${open ? 'rotate-90' : ''}`}>
             ▶
           </span>
           How to use this planner
         </button>
         <button
           onClick={dismiss}
-          className="text-[10px] text-slate-500 hover:text-slate-300 transition-colors"
+          className="text-xs text-slate-500 hover:text-slate-300 transition-colors"
           title="Dismiss forever"
         >
           ✕
@@ -85,7 +85,7 @@ export function OnboardingHints() {
       {open && (
         <ul className="space-y-1.5 mt-0.5">
           {HINTS.map((hint, i) => (
-            <li key={i} className="flex gap-2 text-[11px] text-slate-300 leading-snug">
+            <li key={i} className="flex gap-2 text-xs text-slate-300 leading-snug">
               <span className="shrink-0">{hint.icon}</span>
               <span>{hint.text}</span>
             </li>
@@ -97,7 +97,7 @@ export function OnboardingHints() {
       {open && (
         <button
           onClick={dismiss}
-          className="self-end text-[10px] text-slate-500 hover:text-slate-300 transition-colors mt-0.5"
+          className="self-end text-xs text-slate-500 hover:text-slate-300 transition-colors mt-0.5"
         >
           Got it, don't show again
         </button>

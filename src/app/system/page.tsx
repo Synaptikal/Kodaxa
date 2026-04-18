@@ -38,8 +38,8 @@ function Swatch({ bg, label, hex }: { bg: string; label: string; hex: string }) 
   return (
     <div className="flex flex-col gap-1">
       <div className={`h-8 w-full border border-sr-border/40 ${bg}`} />
-      <p className="text-[8px] font-mono text-slate-500 uppercase tracking-wide">{label}</p>
-      <p className="text-[8px] font-mono text-slate-700">{hex}</p>
+      <p className="text-xs font-mono text-slate-500 uppercase tracking-wide">{label}</p>
+      <p className="text-xs font-mono text-sr-subtle">{hex}</p>
     </div>
   );
 }
@@ -52,11 +52,11 @@ function ContractRow({ id, item, qty, reward, state, claimer }: {
 }) {
   return (
     <div className="flex items-center gap-4 px-4 py-2.5 border-b border-sr-border/40 hover:bg-sr-surface/60 transition-colors group">
-      <span className="text-[9px] font-mono text-slate-600 shrink-0 w-28 tracking-wider">{id}</span>
+      <span className="text-xs font-mono text-sr-muted shrink-0 w-28 tracking-wider">{id}</span>
       <span className="text-xs font-mono text-slate-300 flex-1">{item}</span>
-      <span className="text-[10px] font-mono text-slate-500 w-8 text-right shrink-0">×{qty}</span>
+      <span className="text-xs font-mono text-slate-500 w-8 text-right shrink-0">×{qty}</span>
       <span className="text-[10px] font-mono text-amber-500 w-20 text-right shrink-0">{reward}</span>
-      <span className="text-[9px] font-mono text-slate-600 w-24 shrink-0">{claimer ?? '—'}</span>
+      <span className="text-xs font-mono text-sr-muted w-24 shrink-0">{claimer ?? '—'}</span>
       <Badge variant={state} className="shrink-0 w-32 justify-center" />
     </div>
   );
@@ -65,10 +65,10 @@ function ContractRow({ id, item, qty, reward, state, claimer }: {
 // ── Vocabulary row ─────────────────────────────────────────────────────
 function VocabRow({ generic, inWorld, context }: { generic: string; inWorld: string; context: string }) {
   return (
-    <div className="grid grid-cols-[1fr_1fr_1.5fr] gap-4 px-4 py-2 border-b border-sr-border/30 text-[10px] font-mono">
+    <div className="grid grid-cols-[1fr_1fr_1.5fr] gap-4 px-4 py-2 border-b border-sr-border/30 text-xs font-mono">
       <span className="text-slate-500">{generic}</span>
       <span className="text-cyan-400">{inWorld}</span>
-      <span className="text-slate-700">{context}</span>
+      <span className="text-sr-subtle">{context}</span>
     </div>
   );
 }
@@ -83,7 +83,7 @@ export default function SystemPage() {
 
         {/* ── Sidebar nav ──────────────────────────────────────────── */}
         <aside className="hidden lg:flex flex-col gap-1 w-44 shrink-0 sticky top-24 self-start">
-          <p className="text-[8px] font-mono uppercase tracking-[0.3em] text-slate-700 mb-2">Sections</p>
+          <p className="text-xs font-mono uppercase tracking-[0.3em] text-sr-subtle mb-2">Sections</p>
           {[
             ['colors',    'Color Tokens'],
             ['type',      'Typography'],
@@ -97,7 +97,7 @@ export default function SystemPage() {
             ['vocab',     'Vocabulary'],
           ].map(([id, label]) => (
             <a key={id} href={`#${id}`}
-              className="text-[10px] font-mono text-slate-600 hover:text-slate-300 transition-colors py-0.5 border-l border-sr-border/40 pl-2 hover:border-cyan-700">
+              className="text-xs font-mono text-sr-muted hover:text-slate-300 transition-colors py-0.5 border-l border-sr-border/40 pl-2 hover:border-cyan-700">
               {label}
             </a>
           ))}
@@ -108,13 +108,13 @@ export default function SystemPage() {
 
           {/* Page header */}
           <div className="space-y-1">
-            <p className="text-[8px] font-mono uppercase tracking-[0.4em] text-slate-700">
+            <p className="text-xs font-mono uppercase tracking-[0.4em] text-sr-subtle">
               Kodaxa OS · Internal Reference · Not for Distribution
             </p>
             <h1 className="text-2xl font-black font-mono text-slate-200 tracking-tight">
-              Design System <span className="text-slate-700">v0.1-α</span>
+              Design System <span className="text-sr-subtle">v0.1-α</span>
             </h1>
-            <p className="text-xs font-mono text-slate-600 max-w-xl">
+            <p className="text-xs font-mono text-sr-muted max-w-xl">
               Canonical tokens, components, interaction patterns, and in-world vocabulary.
               All UI decisions defer to this document. Build from here, not from memory.
             </p>
@@ -123,7 +123,7 @@ export default function SystemPage() {
           {/* ── 01: Color Tokens ─────────────────────────────────── */}
           <Section id="colors" label="01 — Color Tokens" sub="All palette values defined in globals.css @theme">
             <div className="space-y-4">
-              <p className="text-[9px] font-mono text-slate-600 uppercase tracking-wider">Base surfaces</p>
+              <p className="text-xs font-mono text-sr-muted uppercase tracking-wider">Base surfaces</p>
               <div className="grid grid-cols-6 gap-3">
                 <Swatch bg="bg-sr-bg"      label="sr-bg"      hex="#0a0e14" />
                 <Swatch bg="bg-sr-surface" label="sr-surface" hex="#111720" />
@@ -132,7 +132,7 @@ export default function SystemPage() {
                 <Swatch bg="bg-sr-muted"   label="sr-muted"   hex="#6b7a90" />
                 <Swatch bg="bg-sr-text"    label="sr-text"    hex="#e8edf5" />
               </div>
-              <p className="text-[9px] font-mono text-slate-600 uppercase tracking-wider pt-2">Accent — primary actions, Intelligence division</p>
+              <p className="text-xs font-mono text-sr-muted uppercase tracking-wider pt-2">Accent — primary actions, Intelligence division</p>
               <div className="grid grid-cols-6 gap-3">
                 <Swatch bg="bg-cyan-950"  label="cyan-950"  hex="#083344" />
                 <Swatch bg="bg-cyan-800"  label="cyan-800"  hex="#155e75" />
@@ -141,7 +141,7 @@ export default function SystemPage() {
                 <Swatch bg="bg-teal-600"  label="teal-600"  hex="#0d9488" />
                 <Swatch bg="bg-teal-400"  label="teal-400"  hex="#2dd4bf" />
               </div>
-              <p className="text-[9px] font-mono text-slate-600 uppercase tracking-wider pt-2">State colors — warnings, contracts, categories</p>
+              <p className="text-xs font-mono text-sr-muted uppercase tracking-wider pt-2">State colors — warnings, contracts, categories</p>
               <div className="grid grid-cols-6 gap-3">
                 <Swatch bg="bg-amber-500"   label="amber — warn"    hex="#f59e0b" />
                 <Swatch bg="bg-red-500"     label="red — flagged"   hex="#ef4444" />
@@ -157,7 +157,7 @@ export default function SystemPage() {
           <Section id="type" label="02 — Typography" sub="2 fonts max. Sans for body, mono for all data, IDs, labels, and UI chrome.">
             <Panel variant="elevated" className="p-5 space-y-4">
               <div className="space-y-3">
-                <p className="text-[8px] font-mono text-slate-600 uppercase tracking-wider">Mono — JetBrains Mono · UI chrome, data, labels, IDs</p>
+                <p className="text-xs font-mono text-sr-muted uppercase tracking-wider">Mono — JetBrains Mono · UI chrome, data, labels, IDs</p>
                 <div className="space-y-2 border-l-2 border-sr-border pl-4">
                   <p className="text-[8px]  font-mono text-slate-400">text-[8px]  — STATUS DOTS · BADGE LABELS · METADATA</p>
                   <p className="text-[9px]  font-mono text-slate-400">text-[9px]  — Section labels · Division context · Timestamps</p>
@@ -167,14 +167,14 @@ export default function SystemPage() {
                 </div>
               </div>
               <div className="space-y-3 pt-2 border-t border-sr-border/40">
-                <p className="text-[8px] font-mono text-slate-600 uppercase tracking-wider">Sans — Inter · Body copy only</p>
+                <p className="text-xs font-mono text-sr-muted uppercase tracking-wider">Sans — Inter · Body copy only</p>
                 <div className="space-y-2 border-l-2 border-sr-border pl-4">
                   <p className="text-[11px] text-slate-400">text-[11px] — Descriptions, help text, card body copy</p>
                   <p className="text-xs     text-slate-400">text-xs (12px) — Secondary body, footnotes</p>
                   <p className="text-sm     text-slate-400">text-sm (14px) — Primary body copy, paragraph text</p>
                 </div>
               </div>
-              <p className="text-[9px] font-mono text-slate-700 pt-2 border-t border-sr-border/40">
+              <p className="text-xs font-mono text-sr-subtle pt-2 border-t border-sr-border/40">
                 Rule: if it is a number, ID, label, status, or UI element → mono. If it is a sentence → sans.
               </p>
             </Panel>
@@ -192,7 +192,7 @@ export default function SystemPage() {
               ]).map(({ variant, color, tools }) => (
                 <Panel key={variant} variant="elevated" className={`p-4 space-y-2 border-t-2 ${color}`}>
                   <Badge variant={variant} />
-                  <p className="text-[9px] font-mono text-slate-600 leading-relaxed">{tools}</p>
+                  <p className="text-xs font-mono text-sr-muted leading-relaxed">{tools}</p>
                 </Panel>
               ))}
             </div>
@@ -209,11 +209,11 @@ export default function SystemPage() {
                 <Badge variant="wip" />
               </div>
               <div className="mt-4 pt-4 border-t border-sr-border/40 space-y-1">
-                <p className="text-[9px] font-mono text-slate-600">live — tool is fully operational and in production</p>
-                <p className="text-[9px] font-mono text-slate-600">new — launched recently, may have rough edges</p>
-                <p className="text-[9px] font-mono text-slate-600">soon — scheduled; not yet accessible</p>
-                <p className="text-[9px] font-mono text-slate-600">beta — functional but behind an access gate</p>
-                <p className="text-[9px] font-mono text-slate-600">wip — visible in dev builds only</p>
+                <p className="text-xs font-mono text-sr-muted">live — tool is fully operational and in production</p>
+                <p className="text-xs font-mono text-sr-muted">new — launched recently, may have rough edges</p>
+                <p className="text-xs font-mono text-sr-muted">soon — scheduled; not yet accessible</p>
+                <p className="text-xs font-mono text-sr-muted">beta — functional but behind an access gate</p>
+                <p className="text-xs font-mono text-sr-muted">wip — visible in dev builds only</p>
               </div>
             </Panel>
           </Section>
@@ -221,26 +221,26 @@ export default function SystemPage() {
           {/* ── 05: Contract Lifecycle ────────────────────────────── */}
           <Section id="contracts" label="05 — Contract Lifecycle States" sub="Every Artisan Exchange contract moves through exactly these states.">
             {/* State pipeline diagram */}
-            <div className="flex flex-wrap items-center gap-1 text-[8px] font-mono text-slate-600 mb-4">
+            <div className="flex flex-wrap items-center gap-1 text-xs font-mono text-sr-muted mb-4">
               {(['queued','under-review','claimed','in-fabrication','awaiting-transit','fulfilled'] as const).map((s, i, arr) => (
                 <span key={s} className="flex items-center gap-1">
                   <Badge variant={s} />
-                  {i < arr.length - 1 && <span className="text-slate-700">→</span>}
+                  {i < arr.length - 1 && <span className="text-sr-subtle">→</span>}
                 </span>
               ))}
-              <span className="ml-2 text-slate-700">·</span>
+              <span className="ml-2 text-sr-subtle">·</span>
               <Badge variant="flagged" className="ml-2" />
-              <span className="text-slate-700 ml-1">(any stage)</span>
+              <span className="text-sr-subtle ml-1">(any stage)</span>
             </div>
             {/* Sample contract table */}
             <Panel variant="surface" className="overflow-hidden">
               <div className="grid grid-cols-[7rem_1fr_2rem_5rem_6rem_8rem] gap-4 px-4 py-2 border-b border-sr-border bg-sr-panel">
-                <span className="text-[8px] font-mono text-slate-600 uppercase tracking-wider">Contract ID</span>
-                <span className="text-[8px] font-mono text-slate-600 uppercase tracking-wider">Item</span>
-                <span className="text-[8px] font-mono text-slate-600 uppercase tracking-wider text-right">Qty</span>
-                <span className="text-[8px] font-mono text-slate-600 uppercase tracking-wider text-right">Reward</span>
-                <span className="text-[8px] font-mono text-slate-600 uppercase tracking-wider">Claimer</span>
-                <span className="text-[8px] font-mono text-slate-600 uppercase tracking-wider">State</span>
+                <span className="text-xs font-mono text-sr-muted uppercase tracking-wider">Contract ID</span>
+                <span className="text-xs font-mono text-sr-muted uppercase tracking-wider">Item</span>
+                <span className="text-xs font-mono text-sr-muted uppercase tracking-wider text-right">Qty</span>
+                <span className="text-xs font-mono text-sr-muted uppercase tracking-wider text-right">Reward</span>
+                <span className="text-xs font-mono text-sr-muted uppercase tracking-wider">Claimer</span>
+                <span className="text-xs font-mono text-sr-muted uppercase tracking-wider">State</span>
               </div>
               <ContractRow id="KDX-2406-0042" item="Refined Aluminum Plate"  qty={20} reward="480 KL"  state="queued"           />
               <ContractRow id="KDX-2406-0038" item="Composite Hull Segment"  qty={5}  reward="1,200 KL" state="in-fabrication" claimer="Vex_Morrow" />
@@ -248,7 +248,7 @@ export default function SystemPage() {
               <ContractRow id="KDX-2406-0024" item="Thermal Regulator Mk.II" qty={3}  reward="3,400 KL" state="fulfilled"      claimer="Cass_Vyne" />
               <ContractRow id="KDX-2406-0019" item="Dark Matter Capacitor"   qty={1}  reward="8,000 KL" state="flagged"        claimer="unknown_node" />
             </Panel>
-            <p className="text-[9px] font-mono text-slate-700 mt-2">
+            <p className="text-xs font-mono text-sr-subtle mt-2">
               Contract IDs follow format: KDX-[YYMM]-[SEQUENCE]. Currency unit: KL (Klaatu).
             </p>
           </Section>
@@ -263,12 +263,12 @@ export default function SystemPage() {
                 { variant: 'elevated' as const, label: 'elevated', note: 'sr-panel. Raised above surface.' },
               ]).map(({ variant, label, note }) => (
                 <Panel key={variant} variant={variant} className="p-4 space-y-2">
-                  <p className="text-[9px] font-mono text-slate-400 uppercase tracking-wider">{label}</p>
-                  <p className="text-[9px] font-mono text-slate-600">{note}</p>
+                  <p className="text-xs font-mono text-slate-400 uppercase tracking-wider">{label}</p>
+                  <p className="text-xs font-mono text-sr-muted">{note}</p>
                 </Panel>
               ))}
             </div>
-            <p className="text-[9px] font-mono text-slate-700 mt-2">
+            <p className="text-xs font-mono text-sr-subtle mt-2">
               No border-radius on panels. Hard edges only. Rounded corners are SaaS UI language — not ours.
             </p>
           </Section>
@@ -299,11 +299,11 @@ export default function SystemPage() {
                 </button>
               </div>
               <div className="mt-4 pt-4 border-t border-sr-border/40 space-y-1">
-                <p className="text-[9px] font-mono text-slate-600">Primary (cyan) — the one action the user should take on this screen</p>
-                <p className="text-[9px] font-mono text-slate-600">Secondary (surface) — edit, amend, or navigate to related record</p>
-                <p className="text-[9px] font-mono text-slate-600">Ghost — low-priority navigation, view-only actions</p>
-                <p className="text-[9px] font-mono text-slate-600">Confirm (emerald) — fulfillment, verification, completion</p>
-                <p className="text-[9px] font-mono text-slate-600">Destructive (red) — irreversible actions; require confirmation modal</p>
+                <p className="text-xs font-mono text-sr-muted">Primary (cyan) — the one action the user should take on this screen</p>
+                <p className="text-xs font-mono text-sr-muted">Secondary (surface) — edit, amend, or navigate to related record</p>
+                <p className="text-xs font-mono text-sr-muted">Ghost — low-priority navigation, view-only actions</p>
+                <p className="text-xs font-mono text-sr-muted">Confirm (emerald) — fulfillment, verification, completion</p>
+                <p className="text-xs font-mono text-sr-muted">Destructive (red) — irreversible actions; require confirmation modal</p>
               </div>
             </Panel>
           </Section>
@@ -313,11 +313,11 @@ export default function SystemPage() {
             <Panel variant="elevated" className="p-5 space-y-5">
               {/* Text input */}
               <div className="space-y-1.5 max-w-sm">
-                <label className="text-[8px] font-mono uppercase tracking-[0.25em] text-slate-600">
+                <label className="text-xs font-mono uppercase tracking-[0.25em] text-sr-muted">
                   ITEM DESIGNATION
                 </label>
                 <div className="flex items-center border border-sr-border bg-sr-bg focus-within:border-cyan-700 focus-within:ring-1 focus-within:ring-cyan-700/30 transition-all">
-                  <span className="px-3 text-[10px] font-mono text-slate-700 border-r border-sr-border py-2 shrink-0">›</span>
+                  <span className="px-3 text-xs font-mono text-sr-subtle border-r border-sr-border py-2 shrink-0">›</span>
                   <input
                     readOnly
                     defaultValue="Refined Aluminum Plate"
@@ -327,11 +327,11 @@ export default function SystemPage() {
               </div>
               {/* Search input */}
               <div className="space-y-1.5 max-w-sm">
-                <label className="text-[8px] font-mono uppercase tracking-[0.25em] text-slate-600">
+                <label className="text-xs font-mono uppercase tracking-[0.25em] text-sr-muted">
                   QUERY ARCHIVE
                 </label>
                 <div className="flex items-center border border-sr-border bg-sr-bg focus-within:border-cyan-700 transition-all">
-                  <span className="px-3 text-[10px] font-mono text-slate-700 border-r border-sr-border py-2 shrink-0">⌕</span>
+                  <span className="px-3 text-xs font-mono text-sr-subtle border-r border-sr-border py-2 shrink-0">⌕</span>
                   <input
                     readOnly
                     placeholder="Search schematics, items, operatives…"
@@ -341,7 +341,7 @@ export default function SystemPage() {
               </div>
               {/* Select */}
               <div className="space-y-1.5 max-w-sm">
-                <label className="text-[8px] font-mono uppercase tracking-[0.25em] text-slate-600">
+                <label className="text-xs font-mono uppercase tracking-[0.25em] text-sr-muted">
                   OPERATIONAL SECTOR
                 </label>
                 <select className="w-full px-3 py-2 text-xs font-mono text-slate-300 bg-sr-bg border border-sr-border focus:border-cyan-700 focus:outline-none transition-all appearance-none">
@@ -350,7 +350,7 @@ export default function SystemPage() {
                   <option>Frontier</option>
                 </select>
               </div>
-              <p className="text-[9px] font-mono text-slate-700 border-t border-sr-border/40 pt-3">
+              <p className="text-xs font-mono text-sr-subtle border-t border-sr-border/40 pt-3">
                 Rule: labels are always above inputs, always mono, always uppercase with wide tracking.
                 The › prompt glyph signals user-editable fields. ⌕ signals search/query fields.
               </p>
@@ -363,7 +363,7 @@ export default function SystemPage() {
               {/* Table header */}
               <div className="grid grid-cols-[1fr_6rem_6rem_8rem] gap-4 px-4 py-2 bg-sr-panel border-b border-sr-border">
                 {['Schematic', 'Station', 'Yield', 'Status'].map((h) => (
-                  <span key={h} className="text-[8px] font-mono text-slate-600 uppercase tracking-wider">{h}</span>
+                  <span key={h} className="text-xs font-mono text-sr-muted uppercase tracking-wider">{h}</span>
                 ))}
               </div>
               {/* Data rows */}
@@ -375,8 +375,8 @@ export default function SystemPage() {
               ].map((row) => (
                 <div key={row.name} className="grid grid-cols-[1fr_6rem_6rem_8rem] gap-4 px-4 py-2.5 border-b border-sr-border/40 hover:bg-sr-surface/60 transition-colors">
                   <span className="text-xs font-mono text-slate-300">{row.name}</span>
-                  <span className="text-[10px] font-mono text-slate-500">{row.station}</span>
-                  <span className="text-[10px] font-mono text-slate-500 tabular-nums">{row.yield}</span>
+                  <span className="text-xs font-mono text-slate-500">{row.station}</span>
+                  <span className="text-xs font-mono text-slate-500 tabular-nums">{row.yield}</span>
                   <Badge variant={row.status} />
                 </div>
               ))}
@@ -388,7 +388,7 @@ export default function SystemPage() {
             <Panel variant="surface" className="overflow-hidden">
               <div className="grid grid-cols-[1fr_1fr_1.5fr] gap-4 px-4 py-2 bg-sr-panel border-b border-sr-border">
                 {['Generic (never use)', 'Kodaxa In-World', 'Context / Page'].map((h) => (
-                  <span key={h} className="text-[8px] font-mono text-slate-600 uppercase tracking-wider">{h}</span>
+                  <span key={h} className="text-xs font-mono text-sr-muted uppercase tracking-wider">{h}</span>
                 ))}
               </div>
               <VocabRow generic="Login / Sign In"        inWorld="Establish Uplink"            context="Auth page CTA, nav" />

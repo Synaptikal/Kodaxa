@@ -134,14 +134,14 @@ export function ItemsBrowser({ items }: ItemsBrowserProps) {
             placeholder="Search items…"
             className="flex-1 max-w-xs"
           />
-          <span className="text-xs text-slate-600 font-mono shrink-0">
+          <span className="text-xs text-sr-muted font-mono shrink-0">
             {filtered.length} / {items.length}
           </span>
         </div>
 
         {/* Category filter */}
         <div className="space-y-1.5">
-          <p className="text-[10px] text-slate-600 uppercase tracking-wider">Category</p>
+          <p className="text-xs text-sr-muted uppercase tracking-wider">Category</p>
           <FilterPillGroup
             options={categoryOptions}
             selected={selectedCategories}
@@ -155,7 +155,7 @@ export function ItemsBrowser({ items }: ItemsBrowserProps) {
       {/* Item grid */}
       <div className="flex-1 overflow-y-auto p-4">
         {filtered.length === 0 ? (
-          <div className="flex items-center justify-center h-32 text-slate-600 text-sm">
+          <div className="flex items-center justify-center h-32 text-sr-muted text-sm">
             No items match your filters.
           </div>
         ) : (
@@ -183,7 +183,7 @@ function ItemCard({ item }: { item: Item }) {
         <p className="text-xs font-semibold text-slate-100 leading-tight flex-1 min-w-0">
           {item.name}
         </p>
-        <span className="shrink-0 text-[9px] px-1.5 py-0.5 rounded bg-slate-700/80 text-slate-400 uppercase tracking-wide whitespace-nowrap">
+        <span className="shrink-0 text-xs px-1.5 py-0.5 rounded bg-slate-700/80 text-slate-400 uppercase tracking-wide whitespace-nowrap">
           {CATEGORY_LABELS[item.category]}
         </span>
       </div>
@@ -192,12 +192,12 @@ function ItemCard({ item }: { item: Item }) {
       {(item.tier !== undefined || item.rarity) && (
         <div className="flex items-center gap-1.5">
           {item.tier !== undefined && (
-            <span className="text-[9px] px-1.5 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">
+            <span className="text-xs px-1.5 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">
               Tier {item.tier}
             </span>
           )}
           {item.rarity && (
-            <span className={`text-[9px] font-medium ${RARITY_COLORS[item.rarity]}`}>
+            <span className={`text-xs font-medium ${RARITY_COLORS[item.rarity]}`}>
               {RARITY_LABELS[item.rarity]}
             </span>
           )}
@@ -205,7 +205,7 @@ function ItemCard({ item }: { item: Item }) {
       )}
 
       {/* Description */}
-      <p className="text-[10px] text-slate-400 leading-relaxed line-clamp-3">
+      <p className="text-xs text-slate-400 leading-relaxed line-clamp-3">
         {item.description}
       </p>
 
@@ -213,18 +213,18 @@ function ItemCard({ item }: { item: Item }) {
       <div className="mt-auto pt-1.5 border-t border-slate-700/40 flex items-center justify-between gap-2">
         <div className="flex flex-wrap gap-1">
           {item.sources.slice(0, 2).map((src) => (
-            <span key={src} className="text-[8px] px-1 py-0.5 rounded bg-slate-800 text-slate-500 uppercase tracking-wide">
+            <span key={src} className="text-xs px-1 py-0.5 rounded bg-slate-800 text-slate-500 uppercase tracking-wide">
               {SOURCE_LABELS[src] ?? src}
             </span>
           ))}
         </div>
         {item.station && (
-          <span className={`text-[9px] font-mono shrink-0 ${STATION_COLORS[item.station] ?? 'text-slate-500'}`}>
+          <span className={`text-xs font-mono shrink-0 ${STATION_COLORS[item.station] ?? 'text-slate-500'}`}>
             {STATION_LABELS[item.station] ?? item.station}
           </span>
         )}
         {!item.confirmed && (
-          <span className="text-[8px] px-1 py-0.5 rounded bg-amber-900/40 text-amber-500 border border-amber-800/30 shrink-0">
+          <span className="text-xs px-1 py-0.5 rounded bg-amber-900/40 text-amber-500 border border-amber-800/30 shrink-0">
             unconfirmed
           </span>
         )}

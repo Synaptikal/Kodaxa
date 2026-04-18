@@ -29,7 +29,7 @@ export default function DispatchIndexPage() {
 
       <header className="border-b border-slate-800 bg-slate-900/40">
         <div className="max-w-4xl mx-auto px-4 py-6 space-y-1">
-          <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-cyan-500">
+          <p className="text-xs font-mono uppercase tracking-[0.2em] text-cyan-500">
             Dispatch Division // Newsroom
           </p>
           <h1 className="text-2xl font-bold text-slate-100">Dispatch</h1>
@@ -57,21 +57,21 @@ export default function DispatchIndexPage() {
                   <div className="flex items-start justify-between gap-3 mb-1">
                     <div className="flex items-center gap-2 flex-wrap">
                       <span
-                        className={`text-[9px] font-mono uppercase tracking-wider px-1.5 py-0.5 rounded border ${CATEGORY_COLORS[post.category]}`}
+                        className={`text-xs font-mono uppercase tracking-wider px-1.5 py-0.5 rounded border ${CATEGORY_COLORS[post.category]}`}
                       >
                         {CATEGORY_LABELS[post.category]}
                       </span>
-                      <span className="text-[10px] font-mono text-slate-500">
+                      <span className="text-xs font-mono text-slate-500">
                         {post.published_at}
                       </span>
-                      <span className="text-[10px] font-mono text-slate-600">
+                      <span className="text-xs font-mono text-sr-muted">
                         · {post.author}
                       </span>
                     </div>
                   </div>
 
                   {post.eyebrow && (
-                    <p className="text-[10px] font-mono uppercase tracking-[0.18em] text-slate-500 mb-1">
+                    <p className="text-xs font-mono uppercase tracking-[0.18em] text-slate-500 mb-1">
                       {post.eyebrow}
                     </p>
                   )}
@@ -89,7 +89,7 @@ export default function DispatchIndexPage() {
                       {post.tags.map((t) => (
                         <span
                           key={t}
-                          className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-slate-800 text-slate-400"
+                          className="text-xs font-mono px-1.5 py-0.5 rounded bg-slate-800 text-slate-400"
                         >
                           #{t}
                         </span>

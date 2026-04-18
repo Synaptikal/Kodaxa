@@ -51,7 +51,7 @@ export default async function MakerDetailPage({ params }: PageProps) {
       {/* Hero header */}
       <header className="border-b border-slate-800 bg-slate-900/40">
         <div className="max-w-4xl mx-auto px-4 py-8 space-y-3">
-          <div className="flex items-center gap-2 text-[10px] font-mono text-slate-500">
+          <div className="flex items-center gap-2 text-xs font-mono text-slate-500">
             <Link href="/makers" className="hover:text-amber-400 transition-colors">
               Maker&apos;s Mark Registry
             </Link>
@@ -67,7 +67,7 @@ export default async function MakerDetailPage({ params }: PageProps) {
               <h1 className="text-3xl font-bold text-slate-100 tracking-tight">
                 {maker.display_name}
                 {maker.is_kodaxa_member && (
-                  <span className="ml-3 text-[10px] font-mono text-amber-400 bg-amber-900/40 border border-amber-700/50 px-1.5 py-0.5 rounded align-middle">
+                  <span className="ml-3 text-xs font-mono text-amber-400 bg-amber-900/40 border border-amber-700/50 px-1.5 py-0.5 rounded align-middle">
                     KODAXA
                   </span>
                 )}
@@ -81,14 +81,14 @@ export default async function MakerDetailPage({ params }: PageProps) {
 
             <div className="flex flex-col items-end gap-1 shrink-0">
               <span
-                className={`text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded border ${COMMISSION_COLORS[maker.commission_status]}`}
+                className={`text-xs font-mono uppercase tracking-wider px-2 py-0.5 rounded border ${COMMISSION_COLORS[maker.commission_status]}`}
               >
                 {COMMISSION_LABELS[maker.commission_status]}
               </span>
               {maker.total_reviews > 0 && (
                 <span className="text-xs font-mono text-amber-400">
                   ★ {maker.average_rating.toFixed(1)}{' '}
-                  <span className="text-slate-600">({maker.total_reviews})</span>
+                  <span className="text-sr-muted">({maker.total_reviews})</span>
                 </span>
               )}
             </div>
@@ -101,8 +101,8 @@ export default async function MakerDetailPage({ params }: PageProps) {
           )}
 
           {maker.contact_method && (
-            <p className="text-[11px] text-slate-500">
-              <span className="text-slate-600 font-mono uppercase tracking-wider">Contact:</span>{' '}
+            <p className="text-xs text-slate-500">
+              <span className="text-sr-muted font-mono uppercase tracking-wider">Contact:</span>{' '}
               <span className="text-slate-300 font-mono">{maker.contact_method}</span>
             </p>
           )}
@@ -151,11 +151,11 @@ function PortfolioSection({
   return (
     <section className="space-y-3">
       <h2
-        className={`text-[11px] font-mono uppercase tracking-[0.2em] ${
+        className={`text-xs font-mono uppercase tracking-[0.2em] ${
           featured ? 'text-amber-400' : 'text-slate-400'
         }`}
       >
-        {title} <span className="text-slate-600">· {items.length}</span>
+        {title} <span className="text-sr-muted">· {items.length}</span>
       </h2>
       <div className="grid sm:grid-cols-2 gap-3">
         {items.map((item) => (
@@ -182,13 +182,13 @@ function PortfolioItemCard({ item }: { item: MakerPortfolioItem }) {
         <div className="flex items-start justify-between gap-2">
           <h3 className="text-sm font-bold text-slate-100">{item.title}</h3>
           {item.is_featured && (
-            <span className="text-[9px] font-mono text-amber-400 bg-amber-900/40 border border-amber-700/50 px-1 py-0.5 rounded shrink-0">
+            <span className="text-xs font-mono text-amber-400 bg-amber-900/40 border border-amber-700/50 px-1 py-0.5 rounded shrink-0">
               ★ FEATURED
             </span>
           )}
         </div>
         {item.item_type && (
-          <p className="text-[10px] font-mono uppercase tracking-wider text-slate-500">
+          <p className="text-xs font-mono uppercase tracking-wider text-slate-500">
             {item.item_type}
           </p>
         )}
@@ -196,7 +196,7 @@ function PortfolioItemCard({ item }: { item: MakerPortfolioItem }) {
           <p className="text-xs text-slate-400 leading-relaxed">{item.description}</p>
         )}
         {item.commission_hint && (
-          <p className="text-[11px] text-amber-400 font-mono pt-1 border-t border-slate-800/60">
+          <p className="text-xs text-amber-400 font-mono pt-1 border-t border-slate-800/60">
             {item.commission_hint}
           </p>
         )}

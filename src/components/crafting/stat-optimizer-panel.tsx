@@ -87,7 +87,7 @@ export function StatOptimizerPanel({ recipe, resourceMap }: StatOptimizerPanelPr
     <div className="flex flex-col gap-4">
       {/* Suggestion banner */}
       <div className="p-2 rounded-md bg-cyan-950/30 border border-cyan-800/30">
-        <p className="text-[11px] text-cyan-300">
+        <p className="text-xs text-cyan-300">
           <span className="font-semibold">Tip:</span> {suggestion.reason}{' '}
           Prioritize{' '}
           <span className={STAT_COLORS[suggestion.primary]}>
@@ -142,12 +142,12 @@ function IngredientStatInput({
     <div className="rounded-md border border-slate-700 p-2.5 bg-slate-800/30">
       <div className="flex justify-between items-center mb-2">
         <span className="text-xs font-medium text-slate-200">{resourceName}</span>
-        <span className="text-[10px] text-slate-500">&times;{quantity}</span>
+        <span className="text-xs text-slate-500">&times;{quantity}</span>
       </div>
       <div className="grid grid-cols-4 gap-2">
         {STAT_KEYS.map((key) => (
           <div key={key} className="flex flex-col items-center gap-1">
-            <label className={`text-[10px] font-mono font-bold ${STAT_COLORS[key]}`}>
+            <label className={`text-xs font-mono font-bold ${STAT_COLORS[key]}`}>
               {STAT_LABELS[key]}
             </label>
             <input
@@ -190,7 +190,7 @@ function ResultDisplay({
           const value = result.finalStats[key];
           return (
             <div key={key} className="flex items-center gap-2">
-              <span className={`w-4 text-[10px] font-mono font-bold ${STAT_COLORS[key]}`}>
+              <span className={`w-4 text-xs font-mono font-bold ${STAT_COLORS[key]}`}>
                 {STAT_LABELS[key]}
               </span>
               <div className="flex-1 h-2 rounded-full bg-slate-700 overflow-hidden">
@@ -199,7 +199,7 @@ function ResultDisplay({
                   style={{ width: `${Math.min(value, 100)}%` }}
                 />
               </div>
-              <span className="w-8 text-right text-[10px] font-mono tabular-nums text-slate-300">
+              <span className="w-8 text-right text-xs font-mono tabular-nums text-slate-300">
                 {value}
               </span>
             </div>
@@ -208,7 +208,7 @@ function ResultDisplay({
       </div>
 
       {/* Drop mechanic note */}
-      <p className="mt-2 text-[10px] text-slate-500">
+      <p className="mt-2 text-xs text-slate-500">
         {result.droppedCount === 2
           ? '2 lowest values per stat dropped (5-slot recipe).'
           : '1 lowest value per stat dropped.'}{' '}

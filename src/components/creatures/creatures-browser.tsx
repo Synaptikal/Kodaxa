@@ -97,7 +97,7 @@ export function CreaturesBrowser({ creatures }: CreaturesBrowserProps) {
         <span className="text-slate-500">
           {filtered.length} of {creatures.length} creature{creatures.length === 1 ? '' : 's'}
         </span>
-        <span className="text-[10px] text-slate-600 font-mono">
+        <span className="text-xs text-sr-muted font-mono">
           Data sourced from Twilight + Brave New Worlds patch notes
         </span>
       </div>
@@ -131,13 +131,13 @@ function CreatureCard({ creature }: { creature: Creature }) {
         <div className="flex-1 min-w-0">
           <h3 className="text-sm font-bold text-slate-100">{creature.name}</h3>
           {creature.aliases && creature.aliases.length > 0 && (
-            <p className="text-[10px] text-slate-600 font-mono">
+            <p className="text-xs text-sr-muted font-mono">
               aka {creature.aliases.join(', ')}
             </p>
           )}
         </div>
         {!creature.confirmed && (
-          <span className="text-[8px] font-mono text-amber-500 bg-amber-900/30 border border-amber-800/40 px-1.5 py-0.5 rounded uppercase tracking-wider">
+          <span className="text-xs font-mono text-amber-500 bg-amber-900/30 border border-amber-800/40 px-1.5 py-0.5 rounded uppercase tracking-wider">
             Unconfirmed
           </span>
         )}
@@ -145,13 +145,13 @@ function CreatureCard({ creature }: { creature: Creature }) {
 
       {/* Tags */}
       <div className="flex flex-wrap gap-1.5 items-center">
-        <span className={`text-[9px] font-mono uppercase tracking-wider px-1.5 py-0.5 rounded border ${behaviorClass}`}>
+        <span className={`text-xs font-mono uppercase tracking-wider px-1.5 py-0.5 rounded border ${behaviorClass}`}>
           {BEHAVIOR_LABELS[creature.behavior]}
         </span>
-        <span className={`text-[9px] font-mono uppercase tracking-wider ${threatClass}`}>
+        <span className={`text-xs font-mono uppercase tracking-wider ${threatClass}`}>
           {THREAT_LABELS[creature.threatTier]}
         </span>
-        <span className="text-[9px] font-mono uppercase tracking-wider text-slate-500">
+        <span className="text-xs font-mono uppercase tracking-wider text-slate-500">
           {SIZE_LABELS[creature.size]} · {CLASS_LABELS[creature.classification]}
         </span>
       </div>
@@ -162,9 +162,9 @@ function CreatureCard({ creature }: { creature: Creature }) {
       {/* Drops */}
       {creature.drops.length > 0 && (
         <div className="flex flex-wrap gap-1">
-          <span className="text-[9px] font-mono text-slate-600 uppercase tracking-wider">Drops:</span>
+          <span className="text-xs font-mono text-sr-muted uppercase tracking-wider">Drops:</span>
           {creature.drops.map((d) => (
-            <span key={d} className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-slate-800 text-slate-400">
+            <span key={d} className="text-xs font-mono px-1.5 py-0.5 rounded bg-slate-800 text-slate-400">
               {d.replace(/_/g, ' ')}
             </span>
           ))}
@@ -174,9 +174,9 @@ function CreatureCard({ creature }: { creature: Creature }) {
       {/* Abilities */}
       {creature.abilities && creature.abilities.length > 0 && (
         <div className="flex flex-wrap gap-1">
-          <span className="text-[9px] font-mono text-orange-600 uppercase tracking-wider">Abilities:</span>
+          <span className="text-xs font-mono text-orange-600 uppercase tracking-wider">Abilities:</span>
           {creature.abilities.map((a) => (
-            <span key={a} className="text-[9px] px-1.5 py-0.5 rounded bg-orange-900/20 text-orange-400 border border-orange-800/30">
+            <span key={a} className="text-xs px-1.5 py-0.5 rounded bg-orange-900/20 text-orange-400 border border-orange-800/30">
               {a}
             </span>
           ))}
@@ -185,8 +185,8 @@ function CreatureCard({ creature }: { creature: Creature }) {
 
       {/* Biomes */}
       {creature.biomes.length > 0 && (
-        <p className="text-[10px] text-slate-600 font-mono">
-          <span className="text-slate-700">Biomes:</span>{' '}
+        <p className="text-xs text-sr-muted font-mono">
+          <span className="text-sr-subtle">Biomes:</span>{' '}
           {creature.biomes.map((b) => b.replace(/_/g, ' ')).join(' · ')}
         </p>
       )}

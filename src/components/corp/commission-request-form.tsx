@@ -66,7 +66,7 @@ export function CommissionRequestForm({
         {/* Header */}
         <div className="flex items-center justify-between px-5 py-3 border-b border-sr-border bg-sr-surface/60">
           <div>
-            <p className="text-[8px] font-mono text-slate-600 uppercase tracking-[0.3em]">Commission Request</p>
+            <p className="text-xs font-mono text-sr-muted uppercase tracking-[0.3em]">Commission Request</p>
             <p className="text-sm font-bold font-mono text-slate-200">
               → <span className="text-cyan-400">{assigneeName}</span>
             </p>
@@ -80,14 +80,14 @@ export function CommissionRequestForm({
             <p className="text-xs text-slate-400">
               Your commission request has been filed. <span className="text-cyan-400">{assigneeName}</span> will review it and respond shortly.
             </p>
-            <button onClick={onClose} className="mt-4 px-4 py-2 text-[9px] font-mono font-bold uppercase tracking-wider border border-cyan-700/50 text-cyan-400 hover:bg-cyan-900/20 transition-colors">
+            <button onClick={onClose} className="mt-4 px-4 py-2 text-xs font-mono font-bold uppercase tracking-wider border border-cyan-700/50 text-cyan-400 hover:bg-cyan-900/20 transition-colors">
               Close
             </button>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="px-5 py-5 space-y-4">
             {error && (
-              <p className="text-[10px] font-mono text-red-400 border border-red-800/40 bg-red-900/10 px-3 py-2">{error}</p>
+              <p className="text-xs font-mono text-red-400 border border-red-800/40 bg-red-900/10 px-3 py-2">{error}</p>
             )}
 
             <Field label="Commission Title *" hint="Brief description of what you need">
@@ -147,13 +147,13 @@ export function CommissionRequestForm({
             </Field>
 
             <div className="flex items-center justify-between pt-2 border-t border-sr-border">
-              <button type="button" onClick={onClose} className="text-[9px] font-mono text-slate-600 hover:text-slate-400 transition-colors">
+              <button type="button" onClick={onClose} className="text-xs font-mono text-sr-muted hover:text-slate-400 transition-colors">
                 Cancel
               </button>
               <button
                 type="submit"
                 disabled={isPending}
-                className="px-5 py-2 text-[9px] font-mono font-bold uppercase tracking-wider bg-cyan-900/30 border border-cyan-700/60 text-cyan-300 hover:bg-cyan-900/50 transition-colors disabled:opacity-40"
+                className="px-5 py-2 text-xs font-mono font-bold uppercase tracking-wider bg-cyan-900/30 border border-cyan-700/60 text-cyan-300 hover:bg-cyan-900/50 transition-colors disabled:opacity-40"
               >
                 {isPending ? 'Submitting...' : 'Submit Commission'}
               </button>
@@ -170,8 +170,8 @@ const INPUT_CLS = 'w-full bg-sr-bg border border-sr-border px-2 py-1.5 text-xs f
 function Field({ label, hint, children }: { label: string; hint?: string; children: React.ReactNode }) {
   return (
     <div className="space-y-1">
-      <label className="text-[8px] font-mono uppercase tracking-widest text-slate-500">
-        {label}{hint && <span className="text-slate-700 normal-case tracking-normal ml-1">— {hint}</span>}
+      <label className="text-xs font-mono uppercase tracking-widest text-slate-500">
+        {label}{hint && <span className="text-sr-subtle normal-case tracking-normal ml-1">— {hint}</span>}
       </label>
       {children}
     </div>

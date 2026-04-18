@@ -36,15 +36,15 @@ export function ProfileHeader({ profile, isOwn }: ProfileHeaderProps) {
       {/* Dossier header bar */}
       <div className="border-b border-sr-border/60 px-5 py-2.5 bg-sr-surface/50 flex items-center justify-between gap-4 flex-wrap">
         <div className="flex items-center gap-2">
-          <span className="text-[9px] font-mono uppercase tracking-[0.3em] text-slate-600">
+          <span className="text-xs font-mono uppercase tracking-[0.3em] text-sr-muted">
             Operative Dossier
           </span>
-          <span className="text-[9px] font-mono text-slate-800">·</span>
-          <span className="text-[9px] font-mono uppercase tracking-[0.2em] text-slate-700">
+          <span className="text-xs font-mono text-sr-subtle">·</span>
+          <span className="text-xs font-mono uppercase tracking-[0.2em] text-sr-subtle">
             Commerce Registry
           </span>
-          <span className="text-[9px] font-mono text-slate-800">·</span>
-          <span className="text-[9px] font-mono uppercase tracking-[0.15em] text-slate-700">
+          <span className="text-xs font-mono text-sr-subtle">·</span>
+          <span className="text-xs font-mono uppercase tracking-[0.15em] text-sr-subtle">
             Classification: Public
           </span>
         </div>
@@ -74,7 +74,7 @@ export function ProfileHeader({ profile, isOwn }: ProfileHeaderProps) {
       {/* Identity block */}
       <div className="px-5 py-5 flex items-start justify-between gap-4 flex-wrap">
         <div className="space-y-1">
-          <p className="text-[9px] font-mono uppercase tracking-[0.3em] text-slate-600">
+          <p className="text-xs font-mono uppercase tracking-[0.3em] text-sr-muted">
             Callsign · Operative
           </p>
           <h1 className="text-2xl font-black font-mono text-slate-100 tracking-wide">
@@ -83,7 +83,7 @@ export function ProfileHeader({ profile, isOwn }: ProfileHeaderProps) {
           <p className="text-[10px] font-mono text-slate-500 tracking-[0.15em]">
             @{profile.in_game_name}
             {profile.species && (
-              <span className="ml-2 text-slate-600">
+              <span className="ml-2 text-sr-muted">
                 · {SPECIES_LABELS[profile.species]}
               </span>
             )}
@@ -97,7 +97,7 @@ export function ProfileHeader({ profile, isOwn }: ProfileHeaderProps) {
       {/* Operative brief */}
       {profile.bio && (
         <div className="border-t border-sr-border/40 px-5 py-4">
-          <p className="text-[9px] font-mono uppercase tracking-[0.25em] text-slate-600 mb-2">
+          <p className="text-xs font-mono uppercase tracking-[0.25em] text-sr-muted mb-2">
             Operative Brief
           </p>
           <p className="text-sm font-mono text-slate-300 leading-relaxed">{profile.bio}</p>
@@ -119,7 +119,7 @@ export function ProfileHeader({ profile, isOwn }: ProfileHeaderProps) {
       {/* Active professions */}
       {profile.specializations.length > 0 && (
         <div className="border-t border-sr-border/40 px-5 py-4">
-          <p className="text-[9px] font-mono uppercase tracking-[0.25em] text-slate-600 mb-3">
+          <p className="text-xs font-mono uppercase tracking-[0.25em] text-sr-muted mb-3">
             Active Professions · {profile.specializations.length} registered
           </p>
           <div className="flex flex-wrap gap-2">
@@ -148,7 +148,7 @@ function DossierField({ label, value, accent = 'text-slate-300' }: {
 }) {
   return (
     <div>
-      <p className="text-[8px] font-mono uppercase tracking-[0.2em] text-slate-600">{label}</p>
+      <p className="text-xs font-mono uppercase tracking-[0.2em] text-sr-muted">{label}</p>
       <p className={`text-xs font-mono mt-0.5 ${accent}`}>{value}</p>
     </div>
   );

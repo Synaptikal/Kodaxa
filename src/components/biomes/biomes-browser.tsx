@@ -114,7 +114,7 @@ export function BiomesBrowser({ biomes }: BiomesBrowserProps) {
         <span className="text-slate-500">
           {filtered.length} of {biomes.length} biome{biomes.length === 1 ? '' : 's'}
         </span>
-        <span className="text-[10px] text-slate-600 font-mono">
+        <span className="text-xs text-sr-muted font-mono">
           Grid biomes confirmed · overlay biomes vary by planet geology
         </span>
       </div>
@@ -149,7 +149,7 @@ function BiomeCard({ biome }: { biome: Biome }) {
         <div className="flex-1 min-w-0">
           <h3 className="text-sm font-bold text-slate-100">{biome.name}</h3>
           {biome.aliases && biome.aliases.length > 0 && (
-            <p className="text-[10px] text-slate-600 font-mono">
+            <p className="text-xs text-sr-muted font-mono">
               aka {biome.aliases.join(', ')}
             </p>
           )}
@@ -241,7 +241,7 @@ function BiomeCard({ biome }: { biome: Biome }) {
 
       {/* Preparation */}
       {biome.preparation && biome.preparation.length > 0 && (
-        <p className="text-[10px] text-slate-600 font-mono leading-relaxed">
+        <p className="text-xs text-sr-muted font-mono leading-relaxed">
           <span className="text-slate-700">Prep:</span>{' '}
           {biome.preparation.join(' · ')}
         </p>

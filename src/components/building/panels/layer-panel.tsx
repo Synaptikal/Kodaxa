@@ -50,10 +50,10 @@ export function LayerPanel({
   return (
     <div className="flex flex-col flex-1 overflow-y-auto">
       <div className="px-3 py-2 border-b border-sr-border">
-        <p className="text-[8px] font-mono uppercase tracking-[0.3em] text-slate-600 mb-0.5">
+        <p className="text-xs font-mono uppercase tracking-[0.3em] text-sr-muted mb-0.5">
           Layers
         </p>
-        <p className="text-[10px] font-mono text-slate-500">
+        <p className="text-xs font-mono text-slate-500">
           {cells.length} cells placed
         </p>
       </div>
@@ -79,7 +79,7 @@ export function LayerPanel({
               <div className={`w-3 h-3 shrink-0 border border-black/30 ${layer.color}`} />
 
               {/* Index */}
-              <span className={`text-[8px] font-mono w-5 shrink-0 ${isActive ? 'text-cyan-400' : 'text-slate-600'}`}>
+              <span className={`text-xs font-mono w-5 shrink-0 ${isActive ? 'text-cyan-400' : 'text-sr-muted'}`}>
                 {layer.index >= 0 ? `+${layer.index}` : layer.index}
               </span>
 
@@ -96,7 +96,7 @@ export function LayerPanel({
                       value={editValue}
                       onChange={(e) => setEditValue(e.target.value)}
                       onBlur={() => handleSaveEdit(layer.index)}
-                      className="flex-1 min-w-0 bg-sr-bg border border-sr-border px-1.5 py-0.5 text-[10px] font-mono text-slate-200 focus:border-cyan-700 focus:outline-none"
+                      className="flex-1 min-w-0 bg-sr-bg border border-sr-border px-1.5 py-0.5 text-xs font-mono text-slate-200 focus:border-cyan-700 focus:outline-none"
                     />
                     <button
                       type="button"
@@ -107,8 +107,8 @@ export function LayerPanel({
                     </button>
                   </form>
                 ) : (
-                  <span className={`text-[10px] font-mono truncate block ${
-                    isActive ? 'text-slate-200 font-semibold' : isHidden ? 'text-slate-600' : 'text-slate-400'
+                  <span className={`text-xs font-mono truncate block ${
+                    isActive ? 'text-slate-200 font-semibold' : isHidden ? 'text-sr-muted' : 'text-slate-400'
                   }`}>
                     {layer.label}
                   </span>
@@ -117,7 +117,7 @@ export function LayerPanel({
 
               {/* Cell count */}
               {cellCount > 0 && (
-                <span className="text-[8px] font-mono text-slate-700 shrink-0 tabular-nums">
+                <span className="text-xs font-mono text-slate-700 shrink-0 tabular-nums">
                   {cellCount}
                 </span>
               )}

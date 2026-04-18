@@ -50,7 +50,7 @@ export default async function DispatchPostPage({ params }: PageProps) {
 
       <main className="flex-1 max-w-3xl mx-auto w-full px-4 py-8 space-y-6">
         {/* Breadcrumb */}
-        <div className="flex items-center gap-2 text-[10px] font-mono text-slate-500">
+        <div className="flex items-center gap-2 text-xs font-mono text-slate-500">
           <Link href="/dispatch" className="hover:text-cyan-400 transition-colors">
             Dispatch
           </Link>
@@ -62,20 +62,20 @@ export default async function DispatchPostPage({ params }: PageProps) {
         <header className="space-y-3 pb-4 border-b border-slate-800">
           <div className="flex items-center gap-2 flex-wrap">
             <span
-              className={`text-[9px] font-mono uppercase tracking-wider px-1.5 py-0.5 rounded border ${CATEGORY_COLORS[post.category]}`}
+              className={`text-xs font-mono uppercase tracking-wider px-1.5 py-0.5 rounded border ${CATEGORY_COLORS[post.category]}`}
             >
               {CATEGORY_LABELS[post.category]}
             </span>
-            <span className="text-[10px] font-mono text-slate-500">
+            <span className="text-xs font-mono text-slate-500">
               {post.published_at}
             </span>
-            <span className="text-[10px] font-mono text-slate-600">
+            <span className="text-xs font-mono text-sr-muted">
               · {post.author}
             </span>
           </div>
 
           {post.eyebrow && (
-            <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-slate-500">
+            <p className="text-xs font-mono uppercase tracking-[0.2em] text-slate-500">
               {post.eyebrow}
             </p>
           )}
@@ -96,7 +96,7 @@ export default async function DispatchPostPage({ params }: PageProps) {
             {post.tags.map((t) => (
               <span
                 key={t}
-                className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-slate-800 text-slate-400"
+                className="text-xs font-mono px-1.5 py-0.5 rounded bg-slate-800 text-slate-400"
               >
                 #{t}
               </span>
@@ -111,7 +111,7 @@ export default async function DispatchPostPage({ params }: PageProps) {
               href={`/dispatch/${prev.slug}`}
               className="flex-1 rounded-lg border border-slate-800 bg-slate-900/40 p-3 hover:border-cyan-800/50 transition-colors"
             >
-              <p className="text-[10px] font-mono uppercase tracking-wider text-slate-500">
+              <p className="text-xs font-mono uppercase tracking-wider text-slate-500">
                 ← Previous
               </p>
               <p className="text-xs text-slate-200 mt-0.5">{prev.title}</p>
@@ -124,7 +124,7 @@ export default async function DispatchPostPage({ params }: PageProps) {
               href={`/dispatch/${next.slug}`}
               className="flex-1 rounded-lg border border-slate-800 bg-slate-900/40 p-3 hover:border-cyan-800/50 transition-colors text-right"
             >
-              <p className="text-[10px] font-mono uppercase tracking-wider text-slate-500">
+              <p className="text-xs font-mono uppercase tracking-wider text-slate-500">
                 Next →
               </p>
               <p className="text-xs text-slate-200 mt-0.5">{next.title}</p>

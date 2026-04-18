@@ -79,12 +79,12 @@ export function SavedBuildsPanel({
           onClick={() => setExpanded((v) => !v)}
           className="flex items-center gap-1.5 text-xs font-semibold text-slate-300 uppercase tracking-wider hover:text-slate-100 transition-colors"
         >
-          <span className={`text-[10px] transition-transform duration-150 ${expanded ? 'rotate-90' : ''}`}>
+          <span className={`text-xs transition-transform duration-150 ${expanded ? 'rotate-90' : ''}`}>
             ▶
           </span>
           Saved Builds
           {savedBuilds.length > 0 && (
-            <span className="ml-0.5 text-[10px] font-mono text-slate-500">
+            <span className="ml-0.5 text-xs font-mono text-slate-500">
               ({savedBuilds.length})
             </span>
           )}
@@ -92,7 +92,7 @@ export function SavedBuildsPanel({
 
         <button
           onClick={handleSave}
-          className={`text-[10px] px-2 py-1 rounded transition-colors ${
+          className={`text-xs px-2 py-1 rounded transition-colors ${
             justSaved
               ? 'bg-teal-700/50 text-teal-300'
               : 'bg-cyan-800/40 text-cyan-300 hover:bg-cyan-800/60'
@@ -107,7 +107,7 @@ export function SavedBuildsPanel({
       {expanded && (
         <div className="border-t border-slate-700">
           {savedBuilds.length === 0 ? (
-            <p className="px-3 py-4 text-xs text-slate-600 text-center">
+            <p className="px-3 py-4 text-xs text-sr-muted text-center">
               No saved builds yet. Click Save above.
             </p>
           ) : (
@@ -120,13 +120,13 @@ export function SavedBuildsPanel({
                       <div className="flex gap-1.5">
                         <button
                           onClick={handleDeleteConfirm}
-                          className="text-[10px] px-2 py-0.5 rounded bg-red-900/50 text-red-300 hover:bg-red-900 transition-colors"
+                          className="text-xs px-2 py-0.5 rounded bg-red-900/50 text-red-300 hover:bg-red-900 transition-colors"
                         >
                           Yes
                         </button>
                         <button
                           onClick={() => setConfirmDeleteId(null)}
-                          className="text-[10px] px-2 py-0.5 rounded bg-slate-700 text-slate-400 hover:bg-slate-600 transition-colors"
+                          className="text-xs px-2 py-0.5 rounded bg-slate-700 text-slate-400 hover:bg-slate-600 transition-colors"
                         >
                           No
                         </button>
@@ -141,10 +141,10 @@ export function SavedBuildsPanel({
                         <p className="text-xs font-medium text-slate-200 group-hover:text-cyan-300 transition-colors truncate">
                           {save.name}
                         </p>
-                        <p className="text-[10px] text-slate-500 mt-0.5">
+                        <p className="text-xs text-slate-500 mt-0.5">
                           {save.summary.activeSkillCount} skills · {save.summary.professionIds.length} professions
                         </p>
-                        <p className="text-[9px] text-slate-600">
+                        <p className="text-xs text-sr-muted">
                           {formatDate(save.savedAt)}
                         </p>
                       </button>

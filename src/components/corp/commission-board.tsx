@@ -28,7 +28,7 @@ export function CommissionBoard({ commissions, currentUserId, userRole }: Commis
   return (
     <div className="p-6 space-y-6 max-w-4xl">
       <div className="space-y-1">
-        <p className="text-[9px] font-mono text-slate-600 uppercase tracking-[0.3em]">Corp HQ // Commission Board</p>
+        <p className="text-xs font-mono text-sr-muted uppercase tracking-[0.3em]">Corp HQ // Commission Board</p>
         <h1 className="text-xl font-bold font-mono text-slate-100">Commission Board</h1>
         <p className="text-xs text-slate-500">{commissions.length} total request{commissions.length !== 1 ? 's' : ''} on file</p>
       </div>
@@ -41,7 +41,7 @@ export function CommissionBoard({ commissions, currentUserId, userRole }: Commis
             <button
               key={tab.value}
               onClick={() => setFilter(tab.value)}
-              className={`px-3 py-1.5 text-[9px] font-mono font-semibold uppercase tracking-wider transition-colors border-b-2 -mb-px ${
+              className={`px-3 py-1.5 text-xs font-mono font-semibold uppercase tracking-wider transition-colors border-b-2 -mb-px ${
                 filter === tab.value
                   ? 'border-cyan-500 text-cyan-300'
                   : 'border-transparent text-slate-500 hover:text-slate-300'
@@ -55,7 +55,7 @@ export function CommissionBoard({ commissions, currentUserId, userRole }: Commis
 
       {/* Commission list */}
       {filtered.length === 0 ? (
-        <p className="text-xs text-slate-600 font-mono text-center py-8 border border-sr-border">
+        <p className="text-xs text-sr-muted font-mono text-center py-8 border border-sr-border">
           No commissions in this category
         </p>
       ) : (
@@ -109,20 +109,20 @@ function CommissionRow({
         onClick={onToggle}
         className="w-full flex items-center gap-3 px-3 py-2.5 hover:bg-slate-800/30 transition-colors text-left"
       >
-        <span className={`text-[8px] font-mono font-bold px-1.5 py-0.5 border shrink-0 ${COMMISSION_STATUS_COLORS[c.status]}`}>
+        <span className={`text-xs font-mono font-bold px-1.5 py-0.5 border shrink-0 ${COMMISSION_STATUS_COLORS[c.status]}`}>
           {COMMISSION_STATUS_LABELS[c.status]}
         </span>
         <span className="text-xs font-mono text-slate-200 flex-1 truncate">{c.title}</span>
         {c.item_type && (
-          <span className="text-[9px] font-mono text-slate-600 shrink-0 hidden sm:inline">{c.item_type}</span>
+          <span className="text-xs font-mono text-sr-muted shrink-0 hidden sm:inline">{c.item_type}</span>
         )}
-        <span className="text-[9px] font-mono text-slate-500 shrink-0">
+        <span className="text-xs font-mono text-slate-500 shrink-0">
           {c.assignee?.in_game_name ?? '—'}
         </span>
-        <span className="text-[8px] font-mono text-slate-700 shrink-0">
+        <span className="text-xs font-mono text-sr-subtle shrink-0">
           {new Date(c.created_at).toLocaleDateString()}
         </span>
-        <span className={`text-[9px] text-slate-600 shrink-0 transition-transform ${isExpanded ? 'rotate-180' : ''}`}>▾</span>
+        <span className={`text-xs text-sr-muted shrink-0 transition-transform ${isExpanded ? 'rotate-180' : ''}`}>▾</span>
       </button>
 
       {/* Expanded detail */}
@@ -141,14 +141,14 @@ function CommissionRow({
 
           {c.description && (
             <div>
-              <p className="text-[9px] font-mono text-slate-600 uppercase tracking-widest mb-1">Description</p>
+              <p className="text-xs font-mono text-sr-muted uppercase tracking-widest mb-1">Description</p>
               <p className="text-xs text-slate-300 leading-relaxed">{c.description}</p>
             </div>
           )}
 
           {c.client_notes && (
             <div>
-              <p className="text-[9px] font-mono text-slate-600 uppercase tracking-widest mb-1">Client Notes</p>
+              <p className="text-xs font-mono text-sr-muted uppercase tracking-widest mb-1">Client Notes</p>
               <p className="text-xs text-slate-400">{c.client_notes}</p>
             </div>
           )}
@@ -156,7 +156,7 @@ function CommissionRow({
           {/* Assignee response */}
           {canAct && c.status === 'pending' && (
             <div className="space-y-2 border-t border-sr-border pt-4">
-              <p className="text-[9px] font-mono text-slate-500 uppercase tracking-widest">Response / Counter-offer</p>
+              <p className="text-xs font-mono text-slate-500 uppercase tracking-widest">Response / Counter-offer</p>
               <textarea
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
@@ -184,7 +184,7 @@ function CommissionRow({
 
           {c.assignee_notes && (
             <div>
-              <p className="text-[9px] font-mono text-slate-600 uppercase tracking-widest mb-1">Operative Notes</p>
+              <p className="text-xs font-mono text-sr-muted uppercase tracking-widest mb-1">Operative Notes</p>
               <p className="text-xs text-slate-400">{c.assignee_notes}</p>
             </div>
           )}
@@ -197,7 +197,7 @@ function CommissionRow({
 function Field({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <p className="text-[8px] font-mono text-slate-600 uppercase tracking-widest">{label}</p>
+      <p className="text-xs font-mono text-sr-muted uppercase tracking-widest">{label}</p>
       <p className="text-xs text-slate-300 mt-0.5">{value}</p>
     </div>
   );
@@ -215,7 +215,7 @@ function ActionButton({ label, onClick, color, disabled }: {
     <button
       onClick={onClick}
       disabled={disabled}
-      className={`px-3 py-1.5 text-[9px] font-mono font-bold uppercase tracking-wider border transition-colors disabled:opacity-40 ${colors[color]}`}
+      className={`px-3 py-1.5 text-xs font-mono font-bold uppercase tracking-wider border transition-colors disabled:opacity-40 ${colors[color]}`}
     >
       {label}
     </button>

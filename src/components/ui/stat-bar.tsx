@@ -38,11 +38,11 @@ export function StatBar({
       {/* Label */}
       <div className="flex items-center gap-1 w-16 shrink-0">
         {symbol && (
-          <span className="text-[9px] font-mono font-bold text-slate-500 uppercase">
+          <span className="text-[11px] font-mono font-bold text-sr-muted uppercase">
             {symbol}
           </span>
         )}
-        <span className="text-[10px] text-slate-400 truncate">{label}</span>
+        <span className="text-xs text-sr-muted truncate">{label}</span>
       </div>
 
       {/* Bar */}
@@ -55,7 +55,7 @@ export function StatBar({
 
       {/* Value */}
       {showValue && (
-        <span className="text-[10px] font-mono text-slate-400 w-8 text-right shrink-0">
+        <span className="text-xs font-mono text-sr-muted w-8 text-right shrink-0">
           {displayValue}
         </span>
       )}

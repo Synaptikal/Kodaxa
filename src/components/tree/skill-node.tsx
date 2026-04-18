@@ -96,7 +96,7 @@ function SkillNodeComponent({ data, id }: NodeProps<SkillFlowNode>) {
       {/* State indicator dot */}
       <div className="flex items-center gap-1.5 mb-1">
         <span className={`inline-block w-2 h-2 rounded-full ${indicatorClass}`} />
-        <span className={`text-[10px] font-mono uppercase ${tierColor}`}>
+        <span className={`text-xs font-mono uppercase ${tierColor}`}>
           T{tier}
         </span>
       </div>
@@ -106,7 +106,7 @@ function SkillNodeComponent({ data, id }: NodeProps<SkillFlowNode>) {
 
       {/* Cost row */}
       {costs && (
-        <p className="text-[9px] font-mono text-slate-500 mt-0.5 tabular-nums">
+        <p className="text-xs font-mono text-slate-500 mt-0.5 tabular-nums">
           {costs.exp.toLocaleString()} EXP · {costs.klaatu.toLocaleString()} KL
         </p>
       )}
@@ -116,7 +116,7 @@ function SkillNodeComponent({ data, id }: NodeProps<SkillFlowNode>) {
         {/* Special badge */}
         {special && (
           <span
-            className="inline-flex items-center gap-0.5 rounded-full bg-amber-800/60 px-1.5 py-0.5 text-[9px] font-medium text-amber-200"
+            className="inline-flex items-center gap-0.5 rounded-full bg-amber-800/60 px-1.5 py-0.5 text-xs font-medium text-amber-200"
             title={`Special: ${special.name} — ${special.description}`}
           >
             S
@@ -126,7 +126,7 @@ function SkillNodeComponent({ data, id }: NodeProps<SkillFlowNode>) {
         {/* Tree unlock badge */}
         {unlocksTree && (
           <span
-            className="inline-flex items-center gap-0.5 rounded-full bg-cyan-800/60 px-1.5 py-0.5 text-[9px] font-medium text-cyan-200"
+            className="inline-flex items-center gap-0.5 rounded-full bg-cyan-800/60 px-1.5 py-0.5 text-xs font-medium text-cyan-200"
             title={`Unlocks: ${unlocksTree}`}
           >
             &rarr;
@@ -135,7 +135,7 @@ function SkillNodeComponent({ data, id }: NodeProps<SkillFlowNode>) {
 
         {/* WIP badge */}
         {!implemented && (
-          <span className="inline-flex items-center rounded-full bg-purple-800/60 px-1.5 py-0.5 text-[9px] font-medium text-purple-200">
+          <span className="inline-flex items-center rounded-full bg-purple-800/60 px-1.5 py-0.5 text-xs font-medium text-purple-200">
             WIP
           </span>
         )}

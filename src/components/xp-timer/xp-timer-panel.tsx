@@ -105,13 +105,13 @@ export function XpTimerPanel() {
         <div className="flex items-center justify-between gap-4 mb-3">
           <div>
             <h1 className="text-sm font-bold text-slate-200">XP &amp; Atrophy Timer</h1>
-            <p className="text-[11px] text-slate-500 mt-0.5">
+            <p className="text-xs text-slate-500 mt-0.5">
               Track when you last earned XP per profession. Skills atrophy after 7 days.
             </p>
           </div>
           <button
             onClick={() => setFilterExpired((v) => !v)}
-            className={`text-[10px] px-2.5 py-1 rounded border transition-colors ${
+            className={`text-xs px-2.5 py-1 rounded border transition-colors ${
               filterExpired
                 ? 'bg-red-900/40 text-red-300 border-red-800/50'
                 : 'bg-slate-800 text-slate-400 border-slate-700 hover:border-slate-600'
@@ -157,12 +157,12 @@ export function XpTimerPanel() {
         {entries.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-48 gap-3 text-center">
             <p className="text-slate-500 text-sm">No XP sessions tracked yet.</p>
-            <p className="text-slate-600 text-xs max-w-xs">
+            <p className="text-sr-muted text-xs max-w-xs">
               Select a profession above and click "Log XP Now" after each play session to track your atrophy timers.
             </p>
           </div>
         ) : displayEntries.length === 0 ? (
-          <div className="flex items-center justify-center h-32 text-slate-600 text-sm">
+          <div className="flex items-center justify-center h-32 text-sr-muted text-sm">
             No expired timers right now.
           </div>
         ) : (
@@ -188,9 +188,9 @@ export function XpTimerPanel() {
                   <div className="flex-1 min-w-0">
                     <p className="text-xs font-semibold text-slate-200">{entry.professionName}</p>
                     {entry.note && (
-                      <p className="text-[10px] text-slate-600 truncate">{entry.note}</p>
+                      <p className="text-xs text-sr-muted truncate">{entry.note}</p>
                     )}
-                    <p className="text-[10px] text-slate-600 mt-0.5">
+                    <p className="text-xs text-sr-muted mt-0.5">
                       Last XP: {new Date(entry.lastXpAt).toLocaleString(undefined, {
                         month: 'short', day: 'numeric',
                         hour: '2-digit', minute: '2-digit',
@@ -200,7 +200,7 @@ export function XpTimerPanel() {
 
                   {/* Countdown */}
                   <div className="text-right shrink-0">
-                    <p className="text-[9px] text-slate-600 uppercase tracking-wider mb-0.5">
+                    <p className="text-xs text-sr-muted uppercase tracking-wider mb-0.5">
                       {isExpired ? 'Atrophied' : 'Atrophies in'}
                     </p>
                     <CountdownTimer
@@ -213,14 +213,14 @@ export function XpTimerPanel() {
                   <div className="flex flex-col gap-1 shrink-0">
                     <button
                       onClick={() => logXp(entry.professionId, entry.note)}
-                      className="text-[10px] px-2 py-1 rounded bg-teal-800/40 text-teal-300 hover:bg-teal-800/60 transition-colors"
+                      className="text-xs px-2 py-1 rounded bg-teal-800/40 text-teal-300 hover:bg-teal-800/60 transition-colors"
                       title="Reset timer — log XP now"
                     >
                       ↺ Log XP
                     </button>
                     <button
                       onClick={() => removeEntry(entry.professionId)}
-                      className="text-[10px] px-2 py-1 rounded bg-slate-700/40 text-slate-500 hover:text-red-400 transition-colors"
+                      className="text-xs px-2 py-1 rounded bg-slate-700/40 text-slate-500 hover:text-red-400 transition-colors"
                     >
                       Remove
                     </button>
@@ -235,7 +235,7 @@ export function XpTimerPanel() {
       {/* Footer hint */}
       {entries.length > 0 && (
         <div className="px-5 py-2 border-t border-slate-800 shrink-0">
-          <p className="text-[10px] text-slate-700 text-center">
+          <p className="text-xs text-slate-700 text-center">
             Timers stored locally in your browser. {entries.length} profession{entries.length !== 1 ? 's' : ''} tracked.
           </p>
         </div>

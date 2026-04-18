@@ -17,7 +17,7 @@ export function HQDashboard({ stats, recentCommissions, userRole, displayName }:
 
       {/* Welcome */}
       <div className="space-y-1">
-        <p className="text-[9px] font-mono text-slate-600 uppercase tracking-[0.3em]">
+        <p className="text-xs font-mono text-sr-muted uppercase tracking-[0.3em]">
           Corp HQ // Command Center
         </p>
         <h1 className="text-xl font-bold font-mono text-slate-100">
@@ -64,7 +64,7 @@ export function HQDashboard({ stats, recentCommissions, userRole, displayName }:
 
       {/* Quick actions */}
       <div className="space-y-2">
-        <p className="text-[9px] font-mono text-slate-600 uppercase tracking-widest">Quick Access</p>
+        <p className="text-xs font-mono text-sr-muted uppercase tracking-widest">Quick Access</p>
         <div className="flex flex-wrap gap-2">
           <QuickLink href="/corp/hq/commissions" label="Commission Board" />
           {canManageRoster(userRole) && <QuickLink href="/corp/hq/roster" label="Roster Manifest" />}
@@ -77,29 +77,29 @@ export function HQDashboard({ stats, recentCommissions, userRole, displayName }:
       {/* Recent commissions */}
       <div className="space-y-3">
         <div className="flex items-center gap-3">
-          <p className="text-[9px] font-mono text-slate-600 uppercase tracking-widest shrink-0">Recent Commissions</p>
+          <p className="text-xs font-mono text-sr-muted uppercase tracking-widest shrink-0">Recent Commissions</p>
           <div className="h-px flex-1 bg-sr-border" />
-          <Link href="/corp/hq/commissions" className="text-[9px] font-mono text-cyan-700 hover:text-cyan-500 transition-colors">
+          <Link href="/corp/hq/commissions" className="text-xs font-mono text-cyan-700 hover:text-cyan-500 transition-colors">
             View all →
           </Link>
         </div>
 
         {recentCommissions.length === 0 ? (
-          <p className="text-xs text-slate-600 font-mono py-4 text-center border border-sr-border">
+          <p className="text-xs text-sr-muted font-mono py-4 text-center border border-sr-border">
             No commissions on file
           </p>
         ) : (
           <div className="space-y-1.5">
             {recentCommissions.map((c) => (
               <div key={c.id} className="flex items-center gap-3 px-3 py-2 border border-sr-border bg-sr-surface/40 hover:bg-sr-surface/80 transition-colors">
-                <span className={`text-[8px] font-mono font-bold px-1.5 py-0.5 border shrink-0 ${COMMISSION_STATUS_COLORS[c.status]}`}>
+                <span className={`text-xs font-mono font-bold px-1.5 py-0.5 border shrink-0 ${COMMISSION_STATUS_COLORS[c.status]}`}>
                   {COMMISSION_STATUS_LABELS[c.status]}
                 </span>
                 <span className="text-xs text-slate-300 font-mono flex-1 truncate">{c.title}</span>
-                <span className="text-[9px] font-mono text-slate-600 shrink-0">
+                <span className="text-xs font-mono text-sr-muted shrink-0">
                   {c.assignee?.in_game_name ?? '—'}
                 </span>
-                <span className="text-[9px] font-mono text-slate-700 shrink-0">
+                <span className="text-xs font-mono text-sr-subtle shrink-0">
                   {new Date(c.created_at).toLocaleDateString()}
                 </span>
               </div>
@@ -119,15 +119,15 @@ function StatCard({
   const inner = (
     <div className="border border-sr-border bg-sr-surface/60 p-4 space-y-1 hover:border-slate-600 transition-colors">
       <p className={`text-2xl font-bold font-mono ${color}`}>{value}</p>
-      <p className="text-[9px] font-mono text-slate-300 uppercase tracking-wider">{label}</p>
-      <p className="text-[8px] font-mono text-slate-600">{sub}</p>
+      <p className="text-xs font-mono text-slate-300 uppercase tracking-wider">{label}</p>
+      <p className="text-xs font-mono text-sr-muted">{sub}</p>
     </div>
   );
   return href ? <Link href={href}>{inner}</Link> : <div>{inner}</div>;
 }
 
 function QuickLink({ href, label, external }: { href: string; label: string; external?: boolean }) {
-  const cls = 'px-3 py-1.5 text-[9px] font-mono font-semibold uppercase tracking-wider border border-sr-border text-slate-400 hover:text-cyan-300 hover:border-cyan-800 bg-sr-surface/40 hover:bg-cyan-900/10 transition-colors';
+  const cls = 'px-3 py-1.5 text-xs font-mono font-semibold uppercase tracking-wider border border-sr-border text-slate-400 hover:text-cyan-300 hover:border-cyan-800 bg-sr-surface/40 hover:bg-cyan-900/10 transition-colors';
   return external
     ? <a href={href} className={cls}>{label}</a>
     : <Link href={href} className={cls}>{label}</Link>;

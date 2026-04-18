@@ -75,7 +75,7 @@ export function SkillCounter({ build, allNodes }: SkillCounterProps) {
         <h3 className="text-xs font-semibold text-slate-300 uppercase tracking-wider flex items-center gap-1">
           Skill Budget
           <Tooltip content="You can have up to 80 active skills across all professions. Atrophied skills don't count against the cap.">
-            <span className="text-slate-500 hover:text-slate-300 cursor-help text-[10px]">?</span>
+            <span className="text-slate-500 hover:text-slate-300 cursor-help text-xs">?</span>
           </Tooltip>
         </h3>
         <span className={`text-sm font-mono font-bold ${textColor}`}>
@@ -93,7 +93,7 @@ export function SkillCounter({ build, allNodes }: SkillCounterProps) {
       </div>
 
       {/* Stats row */}
-      <div className="flex justify-between text-[10px] text-slate-500">
+      <div className="flex justify-between text-xs text-slate-500">
         <span>{remaining} remaining</span>
         {atrophiedCount > 0 && (
           <span className="text-amber-500/70">
@@ -108,7 +108,7 @@ export function SkillCounter({ build, allNodes }: SkillCounterProps) {
           {profBreakdown.map(([profId, count]) => (
             <div
               key={profId}
-              className="flex justify-between text-[10px] text-slate-400"
+              className="flex justify-between text-xs text-slate-400"
             >
               <span className="truncate">{profId}</span>
               <span className="tabular-nums">{count}</span>
@@ -120,14 +120,14 @@ export function SkillCounter({ build, allNodes }: SkillCounterProps) {
       {/* Cost totals — only shown when at least one costed skill is active */}
       {totalCosts.covered > 0 && (
         <div className="mt-2 pt-2 border-t border-slate-700/60 space-y-1">
-          <p className="text-[9px] font-mono uppercase tracking-[0.1em] text-slate-600">
+          <p className="text-xs font-mono uppercase tracking-[0.1em] text-sr-muted">
             Build Cost ({totalCosts.covered} costed)
           </p>
-          <div className="flex justify-between text-[10px] font-mono text-slate-400">
+          <div className="flex justify-between text-xs font-mono text-slate-400">
             <span>EXP</span>
             <span className="tabular-nums">{totalCosts.exp.toLocaleString()}</span>
           </div>
-          <div className="flex justify-between text-[10px] font-mono text-slate-400">
+          <div className="flex justify-between text-xs font-mono text-slate-400">
             <span>Klaatu</span>
             <span className="tabular-nums">{totalCosts.klaatu.toLocaleString()}</span>
           </div>

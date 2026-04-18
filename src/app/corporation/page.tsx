@@ -26,7 +26,7 @@ export default function CorporationPage() {
 
         {/* ── Corp identity ──────────────────────────────────────────── */}
         <div className="space-y-3">
-          <p className="text-[9px] font-mono uppercase tracking-[0.3em] text-cyan-700">
+          <p className="text-xs font-mono uppercase tracking-[0.3em] text-cyan-700">
             Corporation Registry — Public Record
           </p>
           <h1 className="text-3xl font-black font-mono text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-teal-400">
@@ -88,7 +88,7 @@ export default function CorporationPage() {
                 <PresenceItem label="Vendor Kiosk" value="Active — refined materials, tools, consumables" />
                 <PresenceItem label="Public Access" value="Open during business hours" />
               </div>
-              <p className="text-xs text-slate-600 font-mono pt-1">
+              <p className="text-xs text-sr-muted font-mono pt-1">
                 Find us on Discord for real-time location and inventory updates.
               </p>
             </div>
@@ -115,7 +115,7 @@ export default function CorporationPage() {
                     {track.division}
                   </p>
                   <h3 className="text-sm font-semibold text-slate-200">{track.title}</h3>
-                  <p className="text-[11px] text-slate-500 leading-relaxed">{track.description}</p>
+                  <p className="text-xs text-slate-500 leading-relaxed">{track.description}</p>
                 </div>
               ))}
             </div>
@@ -151,7 +151,7 @@ export default function CorporationPage() {
       </main>
 
       <footer className="border-t border-sr-border bg-sr-surface/30 px-4 py-4">
-        <p className="text-[10px] text-slate-700 font-mono text-center">
+        <p className="text-xs text-sr-subtle font-mono text-center">
           Kodaxa Studios is an unofficial Stars Reach fan organization. Not affiliated with Playable Worlds.
         </p>
       </footer>
@@ -251,7 +251,7 @@ function Section({ label, children }: { label: string; children: React.ReactNode
   return (
     <section className="space-y-4">
       <div className="flex items-center gap-3">
-        <p className="text-[9px] font-mono uppercase tracking-[0.3em] text-slate-600 shrink-0">{label}</p>
+        <p className="text-xs font-mono uppercase tracking-[0.3em] text-sr-muted shrink-0">{label}</p>
         <div className="h-px flex-1 bg-sr-border" />
       </div>
       {children}
@@ -270,7 +270,7 @@ function DivisionCard({
       <p className="text-xs text-sr-muted leading-relaxed">{description}</p>
       <div className="flex flex-wrap gap-1">
         {tools.map((t) => (
-          <span key={t} className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 text-slate-500">
+          <span key={t} className="text-xs font-mono px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 text-slate-500">
             {t}
           </span>
         ))}
@@ -282,7 +282,7 @@ function DivisionCard({
 function PresenceItem({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <p className="text-[9px] font-mono uppercase tracking-wider text-slate-600">{label}</p>
+      <p className="text-xs font-mono uppercase tracking-wider text-sr-muted">{label}</p>
       <p className="text-xs text-slate-300 mt-0.5">{value}</p>
     </div>
   );

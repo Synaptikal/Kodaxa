@@ -24,18 +24,18 @@ export function MakerCard({ maker }: MakerCardProps) {
             href={`/makers/${markSlug}`}
             className="block group"
           >
-            <p className="text-[10px] font-mono uppercase tracking-[0.18em] text-amber-500">
+            <p className="text-xs font-mono uppercase tracking-[0.18em] text-amber-500">
               {maker.maker_mark}
             </p>
             <h3 className="text-sm font-bold text-slate-100 group-hover:text-amber-300 transition-colors truncate">
               {maker.display_name}
               {maker.is_kodaxa_member && (
-                <span className="ml-1.5 text-[9px] font-mono text-amber-400 bg-amber-900/40 border border-amber-700/50 px-1 py-0.5 rounded align-middle">
+                <span className="ml-1.5 text-xs font-mono text-amber-400 bg-amber-900/40 border border-amber-700/50 px-1 py-0.5 rounded align-middle">
                   KODAXA
                 </span>
               )}
             </h3>
-            <p className="text-[10px] text-slate-500 font-mono truncate">
+            <p className="text-xs text-slate-500 font-mono truncate">
               @{maker.in_game_name}
               {maker.home_planet && <> · {maker.home_planet}</>}
             </p>
@@ -44,14 +44,14 @@ export function MakerCard({ maker }: MakerCardProps) {
 
         <div className="flex flex-col items-end gap-1 shrink-0">
           <span
-            className={`text-[9px] font-mono uppercase tracking-wider px-1.5 py-0.5 rounded border ${COMMISSION_COLORS[maker.commission_status]}`}
+            className={`text-xs font-mono uppercase tracking-wider px-1.5 py-0.5 rounded border ${COMMISSION_COLORS[maker.commission_status]}`}
           >
             {COMMISSION_LABELS[maker.commission_status]}
           </span>
           {maker.total_reviews > 0 && (
-            <span className="text-[10px] font-mono text-amber-400">
+            <span className="text-xs font-mono text-amber-400">
               ★ {maker.average_rating.toFixed(1)}{' '}
-              <span className="text-slate-600">({maker.total_reviews})</span>
+              <span className="text-sr-muted">({maker.total_reviews})</span>
             </span>
           )}
         </div>
@@ -70,13 +70,13 @@ export function MakerCard({ maker }: MakerCardProps) {
           {maker.specializations.slice(0, 4).map((s) => (
             <span
               key={s.profession_id}
-              className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-slate-800 text-slate-300"
+              className="text-xs font-mono px-1.5 py-0.5 rounded bg-slate-800 text-slate-300"
             >
               {s.profession_name}
             </span>
           ))}
           {maker.specializations.length > 4 && (
-            <span className="text-[9px] font-mono text-slate-600">
+            <span className="text-xs font-mono text-sr-muted">
               +{maker.specializations.length - 4}
             </span>
           )}
@@ -86,20 +86,20 @@ export function MakerCard({ maker }: MakerCardProps) {
       {/* Featured portfolio strip */}
       {maker.featured_items.length > 0 ? (
         <div className="pt-2 mt-auto border-t border-slate-800/60">
-          <p className="text-[9px] font-mono uppercase tracking-wider text-slate-600 mb-1.5">
+          <p className="text-xs font-mono uppercase tracking-wider text-sr-muted mb-1.5">
             Featured Work ({maker.item_count})
           </p>
           <ul className="space-y-1">
             {maker.featured_items.map((item) => (
               <li
                 key={item.id}
-                className="flex items-baseline justify-between gap-2 text-[11px]"
+                className="flex items-baseline justify-between gap-2 text-xs"
               >
                 <span className="text-slate-300 truncate">
                   {item.title}
                 </span>
                 {item.item_type && (
-                  <span className="text-[9px] font-mono text-slate-600 shrink-0">
+                  <span className="text-xs font-mono text-sr-muted shrink-0">
                     {item.item_type}
                   </span>
                 )}
@@ -108,14 +108,14 @@ export function MakerCard({ maker }: MakerCardProps) {
           </ul>
         </div>
       ) : (
-        <p className="text-[10px] text-slate-600 italic mt-auto pt-2 border-t border-slate-800/60">
+        <p className="text-xs text-sr-muted italic mt-auto pt-2 border-t border-slate-800/60">
           No portfolio yet — maker-mark registered, works coming soon.
         </p>
       )}
 
       <Link
         href={`/makers/${markSlug}`}
-        className="text-[10px] font-mono uppercase tracking-wider text-amber-400 hover:text-amber-300 transition-colors"
+        className="text-xs font-mono uppercase tracking-wider text-amber-400 hover:text-amber-300 transition-colors"
       >
         View Maker’s Mark →
       </Link>

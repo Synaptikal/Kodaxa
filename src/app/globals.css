@@ -20,7 +20,8 @@
   --color-sr-panel: #1a2030;
   --color-sr-border: #1e2d40;
   --color-sr-text: #e8edf5;
-  --color-sr-muted: #6b7a90;
+  --color-sr-muted: #8393a8;
+  --color-sr-subtle: #5a6880;
 
   /* Skill state accent colors */
   --color-state-locked: #475569;

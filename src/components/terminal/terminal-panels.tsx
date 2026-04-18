@@ -31,9 +31,9 @@ export function StatCard({ label, value, hint, href, accent }: StatCardProps) {
   return (
     <Link href={href}
       className="border border-sr-border bg-sr-surface/30 p-4 hover:border-slate-600 hover:bg-sr-surface/60 transition-colors group">
-      <p className="text-[9px] font-mono uppercase tracking-[0.2em] text-slate-600">{label}</p>
+      <p className="text-xs font-mono uppercase tracking-[0.2em] text-sr-muted">{label}</p>
       <p className={`text-2xl font-black font-mono mt-1 ${tone[accent]}`}>{value}</p>
-      <p className="text-[9px] font-mono text-slate-700 mt-1">{hint}</p>
+      <p className="text-xs font-mono text-sr-subtle mt-1">{hint}</p>
     </Link>
   );
 }
@@ -70,8 +70,8 @@ export function ProfilePanel({ profile, email }: ProfilePanelProps) {
       {/* Header bar */}
       <div className="border-b border-sr-border/50 px-4 py-2.5 flex items-center justify-between">
         <div>
-          <p className="text-[9px] font-mono uppercase tracking-[0.2em] text-slate-600">Operative Profile</p>
-          <p className="text-[10px] font-mono text-slate-500 mt-0.5">@{profile.in_game_name}</p>
+          <p className="text-xs font-mono uppercase tracking-[0.2em] text-sr-muted">Operative Profile</p>
+          <p className="text-xs font-mono text-slate-500 mt-0.5">@{profile.in_game_name}</p>
         </div>
         <span className={`text-[9px] font-mono uppercase tracking-[0.15em] px-2 py-0.5 border ${COMMISSION_COLORS[profile.commission_status]}`}>
           {COMMISSION_LABELS[profile.commission_status]}
@@ -81,13 +81,13 @@ export function ProfilePanel({ profile, email }: ProfilePanelProps) {
       <div className="px-4 py-4 space-y-3">
         {profile.maker_mark && (
           <div>
-            <p className="text-[8px] font-mono uppercase tracking-[0.2em] text-slate-600">Maker's Mark</p>
+            <p className="text-xs font-mono uppercase tracking-[0.2em] text-sr-muted">Maker's Mark</p>
             <p className="text-xs font-mono text-amber-400 mt-0.5">{profile.maker_mark}</p>
           </div>
         )}
         {profile.home_planet && (
           <div>
-            <p className="text-[8px] font-mono uppercase tracking-[0.2em] text-slate-600">Home Planet</p>
+            <p className="text-xs font-mono uppercase tracking-[0.2em] text-sr-muted">Home Planet</p>
             <p className="text-xs font-mono text-slate-300 mt-0.5">
               {profile.home_planet}{profile.home_sector && ` · ${profile.home_sector}`}
             </p>
@@ -107,7 +107,7 @@ export function ProfilePanel({ profile, email }: ProfilePanelProps) {
               </span>
             ))}
             {profile.specializations.length > 8 && (
-              <span className="text-[9px] font-mono text-slate-600">
+              <span className="text-xs font-mono text-sr-muted">
                 +{profile.specializations.length - 8} more
               </span>
             )}
@@ -148,7 +148,7 @@ export function ContributionsPanel({
       <p className={`text-[9px] font-mono uppercase tracking-[0.2em] ${accent}`}>{title}</p>
       {items.length === 0 ? (
         <div className="space-y-1">
-          <p className="text-[10px] font-mono text-slate-600">{emptyLabel}</p>
+          <p className="text-xs font-mono text-sr-muted">{emptyLabel}</p>
           <Link href={emptyHref} className="text-[10px] font-mono text-cyan-500 hover:text-cyan-300 transition-colors">
             {emptyHrefLabel}
           </Link>
@@ -159,9 +159,9 @@ export function ContributionsPanel({
             <li key={item.id} className="flex items-baseline justify-between gap-2">
               <div className="min-w-0 flex-1">
                 <p className="text-xs font-mono text-slate-300 truncate">{item.primary}</p>
-                <p className="text-[9px] font-mono text-slate-600 mt-0.5">{item.secondary}</p>
+                <p className="text-xs font-mono text-sr-muted mt-0.5">{item.secondary}</p>
               </div>
-              <span className="text-[9px] font-mono text-slate-700 shrink-0">
+              <span className="text-xs font-mono text-sr-subtle shrink-0">
                 {item.timestamp.slice(0, 10)}
               </span>
             </li>
@@ -177,7 +177,7 @@ export function ContributionsPanel({
 export function QuickActions({ hasProfile }: { hasProfile: boolean }) {
   return (
     <aside className="border border-sr-border bg-sr-surface/30 p-4 space-y-2">
-      <p className="text-[9px] font-mono uppercase tracking-[0.2em] text-slate-600 border-b border-sr-border/40 pb-2 mb-3">
+      <p className="text-xs font-mono uppercase tracking-[0.2em] text-sr-muted border-b border-sr-border/40 pb-2 mb-3">
         Quick Actions
       </p>
       <ActionLink href="/atlas"        label="File Atlas reading"     tone="amber"   />
@@ -203,7 +203,7 @@ function ActionLink({ href, label, tone }: { href: string; label: string; tone: 
   };
   return (
     <Link href={href}
-      className={`block text-[10px] font-mono px-2.5 py-1.5 transition-colors ${cls[tone]}`}>
+      className={`block text-xs font-mono px-2.5 py-1.5 transition-colors ${cls[tone]}`}>
       → {label}
     </Link>
   );

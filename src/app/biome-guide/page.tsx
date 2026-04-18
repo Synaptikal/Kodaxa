@@ -51,7 +51,7 @@ export default function BiomeGuidePage() {
       <header className="border-b border-slate-800 bg-slate-900/40">
         <div className="max-w-6xl mx-auto px-4 py-5 flex flex-wrap items-end justify-between gap-3">
           <div className="space-y-1">
-            <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-emerald-500">
+            <p className="text-xs font-mono uppercase tracking-[0.2em] text-emerald-500">
               Intelligence Division // Terrain Survey
             </p>
             <h1 className="text-2xl font-bold text-slate-100">Biome Field Guide</h1>
@@ -64,7 +64,7 @@ export default function BiomeGuidePage() {
             </p>
           </div>
 
-          <div className="flex items-center gap-4 text-[11px] font-mono text-slate-500">
+          <div className="flex items-center gap-4 text-xs font-mono text-slate-500">
             <span>
               <span className="text-slate-300">{stats.total}</span> biomes
             </span>
@@ -82,7 +82,7 @@ export default function BiomeGuidePage() {
       {/* Grid matrix */}
       <section className="border-b border-slate-800 bg-slate-900/20">
         <div className="max-w-6xl mx-auto px-4 py-6">
-          <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-slate-500 mb-3">
+          <p className="text-xs font-mono uppercase tracking-[0.2em] text-slate-500 mb-3">
             Temperature × Moisture Matrix
           </p>
 
@@ -90,13 +90,13 @@ export default function BiomeGuidePage() {
             <table className="w-full text-xs border-collapse">
               <thead>
                 <tr>
-                  <th className="w-24 py-2 text-left font-mono text-[10px] uppercase tracking-wider text-slate-600">
+                  <th className="w-24 py-2 text-left font-mono text-xs uppercase tracking-wider text-sr-muted">
                     Temp ↓ / Moist →
                   </th>
                   {MOISTURES.map((m) => (
                     <th
                       key={m}
-                      className={`py-2 px-3 text-left font-mono text-[10px] uppercase tracking-wider border-b border-slate-800 ${MOISTURE_COLORS[m]}`}
+                      className={`py-2 px-3 text-left font-mono text-xs uppercase tracking-wider border-b border-slate-800 ${MOISTURE_COLORS[m]}`}
                     >
                       {m}
                     </th>
@@ -107,7 +107,7 @@ export default function BiomeGuidePage() {
                 {TEMPS.map((t) => (
                   <tr key={t}>
                     <td
-                      className={`py-3 pr-2 align-top font-mono text-[10px] uppercase tracking-wider border-b border-slate-800 ${TEMPERATURE_COLORS[t]}`}
+                      className={`py-3 pr-2 align-top font-mono text-xs uppercase tracking-wider border-b border-slate-800 ${TEMPERATURE_COLORS[t]}`}
                     >
                       {t}
                     </td>
@@ -117,7 +117,7 @@ export default function BiomeGuidePage() {
                         return (
                           <td
                             key={m}
-                            className="py-3 px-3 align-top border-b border-slate-800 text-slate-700 text-[10px]"
+                            className="py-3 px-3 align-top border-b border-slate-800 text-sr-subtle text-xs"
                           >
                             —
                           </td>
@@ -136,11 +136,11 @@ export default function BiomeGuidePage() {
                               <span className="text-xs font-bold text-slate-200 group-hover:text-cyan-400 transition-colors">
                                 {biome.name}
                               </span>
-                              <span className={`text-[9px] font-mono ${HAZARD_COLORS[biome.hazard]}`}>
+                              <span className={`text-xs font-mono ${HAZARD_COLORS[biome.hazard]}`}>
                                 {HAZARD_LABELS[biome.hazard]}
                               </span>
                             </div>
-                            <p className="text-[10px] text-slate-500 leading-snug line-clamp-2 mt-0.5">
+                            <p className="text-xs text-slate-500 leading-snug line-clamp-2 mt-0.5">
                               {biome.description}
                             </p>
                           </Link>
