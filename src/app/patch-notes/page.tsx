@@ -7,8 +7,11 @@
  */
 
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import { NavHeader } from '@/components/ui/nav-header';
 import { PATCH_NOTES } from '@/data/patch-notes/index';
+
+const SPACE = 'https://i0.wp.com/starsreach.com/wp-content/uploads/2025/01/SR_Heroic_Space_Steam.jpg';
 
 export const metadata: Metadata = {
   title: 'Patch Notes — Kodaxa Studios',
@@ -20,9 +23,11 @@ export default function PatchNotesPage() {
     <div className="flex flex-col h-dvh overflow-hidden">
       <NavHeader />
       <main className="flex-1 overflow-y-auto px-4 py-6 max-w-3xl mx-auto w-full">
-        <div className="mb-6">
-          <h1 className="text-2xl font-bold text-slate-100">Patch Notes</h1>
-          <p className="text-sm text-slate-500 mt-1">
+        <div className="relative overflow-hidden border border-sr-border bg-sr-surface/30 px-5 py-4 mb-6 space-y-1">
+          <Image src={SPACE} alt="" fill className="object-cover opacity-[0.12] pointer-events-none" aria-hidden="true" />
+          <p className="relative z-10 text-[9px] font-mono uppercase tracking-[0.3em] text-violet-600">Dispatch Division // Patch Analysis</p>
+          <h1 className="relative z-10 text-2xl font-bold text-slate-100">Patch Notes</h1>
+          <p className="relative z-10 text-sm text-slate-500">
             Curated from official Stars Reach dev blogs and patch notes. Not affiliated with Playable Worlds.
           </p>
         </div>

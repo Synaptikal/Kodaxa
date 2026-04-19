@@ -6,6 +6,7 @@
 
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { NavHeader } from '@/components/ui/nav-header';
 import { PostRenderer } from '@/components/dispatch/post-renderer';
@@ -72,7 +73,12 @@ export default async function DispatchPostPage({ params }: PageProps) {
         </div>
 
         {/* Hero */}
-        <header className="space-y-3 pb-4 border-b border-slate-800">
+        <header className="relative overflow-hidden border border-slate-800 bg-slate-900/30 px-4 pt-4 pb-5 space-y-3">
+          <Image
+            src="https://i0.wp.com/starsreach.com/wp-content/uploads/2025/01/SR_Surveying-Space_V2.jpg"
+            alt="" fill className="object-cover opacity-[0.1] pointer-events-none" aria-hidden="true"
+          />
+          <div className="relative z-10 space-y-3">
           <div className="flex items-center gap-2 flex-wrap">
             <span
               className={`text-xs font-mono uppercase tracking-wider px-1.5 py-0.5 rounded border ${CATEGORY_COLORS[post.category]}`}
@@ -96,6 +102,7 @@ export default async function DispatchPostPage({ params }: PageProps) {
             {post.title}
           </h1>
           <p className="text-sm text-slate-400 leading-relaxed">{post.summary}</p>
+          </div>
         </header>
 
         {/* Body */}

@@ -6,6 +6,7 @@
 
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { NavHeader } from '@/components/ui/nav-header';
 import { getAllPostsMerged, getMergedDispatchStats } from '@/data/dispatch/merged';
 import {
@@ -31,8 +32,12 @@ export default async function DispatchIndexPage() {
     <div className="flex flex-col min-h-dvh">
       <NavHeader />
 
-      <header className="border-b border-slate-800 bg-slate-900/40">
-        <div className="max-w-4xl mx-auto px-4 py-6 space-y-1">
+      <header className="relative overflow-hidden border-b border-slate-800 bg-slate-900/40">
+        <Image
+          src="https://i0.wp.com/starsreach.com/wp-content/uploads/2025/02/SR_Through-the-Portal-1.jpg"
+          alt="" fill className="object-cover opacity-[0.1] pointer-events-none" aria-hidden="true"
+        />
+        <div className="relative z-10 max-w-4xl mx-auto px-4 py-6 space-y-1">
           <p className="text-xs font-mono uppercase tracking-[0.2em] text-cyan-500">
             Dispatch Division // Newsroom
           </p>
