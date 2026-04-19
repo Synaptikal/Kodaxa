@@ -76,7 +76,7 @@ export function buildTools(params: {
       href: '/directory',
       codexName: 'Commerce Registry',
       realName: 'Crafter Directory',
-      description: 'Locate registered artisans by profession, sector, and availability. Issue your listing so contract issuers can find you.',
+      description: 'Browse the operative profile registry. Claim your artisan listing now — directory infrastructure is live ahead of beta commerce expansion.',
       stats: [{ label: 'Live Data', value: '✓' }, { label: 'Open Access', value: '✓' }],
       accent: 'border-l-2 border-l-amber-700 hover:border-l-amber-500',
       cta: 'text-amber-400',

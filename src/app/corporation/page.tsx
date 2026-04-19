@@ -24,7 +24,7 @@ const IMG = {
 export const metadata: Metadata = {
   title: 'Corporation Registry — Kodaxa Studios',
   description:
-    'Kodaxa Studios is a multi-planetary data infrastructure company operating in Stars Reach. Learn about our divisions, in-game presence, and how to join.',
+    'Kodaxa Studios is a pre-alpha Stars Reach data infrastructure project — solo-built, preparing for guild and commerce operations at early access. Learn about our divisions and how to join.',
 };
 
 export default function CorporationPage() {
@@ -61,17 +61,22 @@ export default function CorporationPage() {
         <Section label="Founding Charter">
           <div className="space-y-4 text-sm text-sr-muted leading-relaxed">
             <p>
-              Kodaxa Studios was established at Stars Reach early access with a single mandate:
+              Kodaxa Studios was established during Stars Reach pre-alpha with a single mandate:
               <em className="text-slate-300 not-italic"> build the tools the community needs before the community has to ask for them.</em>
             </p>
             <p>
               The galaxy is new. The patch notes are incomplete. The skill trees are changing weekly.
               Every crafter is flying blind, doing math in a notepad, asking strangers in Discord what
-              the refining ratio is. We saw that gap and built a company around closing it.
+              the refining ratio is. We saw that gap and started building.
             </p>
             <p>
-              Our public tools are free. Our data is sourced from community contributions, official
-              dev communications, and our own in-game testing. We publish everything we learn.
+              Kodaxa is currently a solo-built command terminal — one systems architect laying
+              infrastructure before the frontier fills in. The tools are live. The data is indexed.
+              The operative roster expands at early access.
+            </p>
+            <p>
+              Our public tools are free. Our data is sourced from in-game testing, official dev
+              communications, and direct OCR extraction from the pre-alpha client.
               Kodaxa doesn&apos;t hoard information — we index it and give it back.
             </p>
           </div>
@@ -90,26 +95,26 @@ export default function CorporationPage() {
         <Section label="In-Game Presence">
           <div className="space-y-4 text-sm text-sr-muted leading-relaxed">
             <p>
-              Kodaxa Studios operates a physical homestead in Stars Reach — a fully built-out
-              headquarters structure serving as our base of operations, meeting location, and
-              vendor hub.
+              Kodaxa Studios is planning a physical homestead in Stars Reach — a headquarters
+              structure to serve as our base of operations, meeting location, and vendor hub.
+              The design is underway. Deployment activates at early access.
             </p>
             <div className="relative overflow-hidden border border-slate-800 bg-slate-900/40 p-4 space-y-3">
               <Image src={IMG.beach} alt="" fill className="object-cover opacity-[0.08] pointer-events-none" aria-hidden="true" />
               <div className="relative z-10 grid sm:grid-cols-2 gap-4">
                 <PresenceItem label="Homestead Type" value="Corporate HQ + Vendor Hub" />
-                <PresenceItem label="Location" value="Coordinates published at launch" />
-                <PresenceItem label="Vendor Kiosk" value="Active — refined materials, tools, consumables" />
-                <PresenceItem label="Public Access" value="Open during business hours" />
+                <PresenceItem label="Location" value="Coordinates published at early access" />
+                <PresenceItem label="Vendor Kiosk" value="Planned — refined materials, tools, consumables" />
+                <PresenceItem label="Public Access" value="Activating at early access" />
               </div>
               <p className="relative z-10 text-xs text-sr-muted font-mono pt-1">
-                Find us on Discord for real-time location and inventory updates.
+                Watch Discord for location and launch date when early access opens.
               </p>
             </div>
             <p>
-              Our vendor kiosk stocks items produced by Kodaxa associates — smelted ingots,
-              refined alloys, crafted tools, and consumables from our cooking division.
-              All items are produced to specification, not spec-crafted and listed hoping for luck.
+              The vendor kiosk will stock items produced by Kodaxa operatives — smelted ingots,
+              refined alloys, crafted tools, and consumables.
+              All items produced to specification, not spec-crafted and listed hoping for luck.
             </p>
           </div>
         </Section>
@@ -118,9 +123,10 @@ export default function CorporationPage() {
         <Section label="Membership & Recruitment">
           <div className="space-y-4 text-sm text-sr-muted leading-relaxed">
             <p>
-              Kodaxa is a crafting and data corporation. We recruit players who want to specialize,
-              produce consistently, and contribute to shared infrastructure — not players looking for
-              a social hub or combat guild.
+              Kodaxa is a crafting and data corporation currently in foundation phase. We are
+              building the operative roster ahead of early access — recruiting players who want
+              to specialize, produce consistently, and contribute to shared infrastructure.
+              Not a social hub. Not a combat guild. A data and production operation.
             </p>
             <div className="grid sm:grid-cols-3 gap-3">
               {RECRUITMENT_TRACKS.map((track) => (

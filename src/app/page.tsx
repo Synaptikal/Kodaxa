@@ -202,7 +202,7 @@ export default async function LandingPage() {
                   </h1>
                   <p className="text-xs font-mono text-sr-muted leading-relaxed">
                     Galaxy-scale data. Crafter-scale precision. Plan builds, model fabrication
-                    chains, and register operatives for Stars Reach.
+                    chains, and prepare your operative profile for Stars Reach.
                   </p>
                 </div>
                 <div className="flex flex-wrap gap-3">
@@ -221,13 +221,24 @@ export default async function LandingPage() {
           </section>
 
           {/* ── System announcement band ─────────────────────── */}
-          <div className="border-y border-sr-border/40 bg-sr-surface/20 px-4 py-2 flex items-center gap-3 flex-wrap">
-            <span className="text-xs font-mono text-teal-600 tracking-[0.15em] uppercase shrink-0">SYSTEM NOTE</span>
-            <span className="text-sr-border" aria-hidden="true">·</span>
-            <p className="text-xs font-mono text-sr-muted leading-relaxed">
-              Kodaxa is an in-universe ops console for Stars Reach roleplayers and crafters —
-              plan builds, log your operatives, and coordinate your fabrication network.
-            </p>
+          <div className="border-y border-sr-border/40 bg-sr-surface/20 divide-y divide-sr-border/30">
+            <div className="px-4 py-2 flex items-center gap-3 flex-wrap">
+              <span className="text-xs font-mono text-teal-600 tracking-[0.15em] uppercase shrink-0">SYSTEM NOTE</span>
+              <span className="text-sr-border" aria-hidden="true">·</span>
+              <p className="text-xs font-mono text-sr-muted leading-relaxed">
+                Kodaxa is an in-universe ops console for Stars Reach roleplayers and crafters —
+                plan builds, prepare your operative profile, and coordinate your fabrication network.
+              </p>
+            </div>
+            <div className="px-4 py-2 flex items-center gap-3 flex-wrap">
+              <span className="text-xs font-mono text-amber-700 tracking-[0.15em] uppercase shrink-0">FOUNDATION PHASE</span>
+              <span className="text-sr-border" aria-hidden="true">·</span>
+              <p className="text-xs font-mono text-sr-muted leading-relaxed">
+                Kodaxa is currently a solo-built command terminal — maintained by a single systems architect
+                to map game data, prototype guild infrastructure, and prepare for expanded operations at beta.
+                Network scaffold is live. Operative roster forms at early access.
+              </p>
+            </div>
           </div>
 
           {/* ── Divisions Grid ────────────────────────────────── */}

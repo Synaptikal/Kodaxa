@@ -95,9 +95,9 @@ export default async function DirectoryPage({ searchParams }: { searchParams: Se
               <p className="text-[8px] font-mono uppercase tracking-[0.3em] text-slate-600 mb-1">
                 Commerce Registry · Register Operative
               </p>
-              <p className="text-sm font-mono text-slate-300">Are you a registered artisan in Stars Reach?</p>
+              <p className="text-sm font-mono text-slate-300">Claim your operative profile ahead of beta.</p>
               <p className="text-xs text-slate-500 mt-0.5">
-                Issue your listing so contract issuers can locate you by operative capability, sector, and commission status.
+                Directory infrastructure is live now. Register your artisan listing and be visible when the commerce network expands at early access.
               </p>
             </div>
             <a
