@@ -31,7 +31,7 @@ export async function getCrafterDirectory(
       id, display_name, in_game_name, bio, home_planet,
       commission_status, average_rating, total_reviews,
       is_kodaxa_member, species, role,
-      crafter_specializations (
+      specializations:crafter_specializations (
         profession_id, profession_name, category, skill_level
       )
     `,
