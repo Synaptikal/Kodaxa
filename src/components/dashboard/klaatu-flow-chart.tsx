@@ -18,27 +18,31 @@ export function KlaatuFlowChart({ sessions }: Props) {
   // Take last 14 sessions, reversed to chronological order
   const recent = sessions.slice(0, 14).reverse();
 
+  let dataToRender = recent;
+  let isDemo = false;
+
   if (recent.length === 0) {
-    return (
-      <div className="flex items-center justify-center h-32 text-slate-600 text-xs">
-        Log sessions to see your Klaatu flow chart
-      </div>
-    );
+    isDemo = true;
+    dataToRender = Array.from({ length: 14 }).map((_, i) => ({
+      id: `demo-${i}`,
+      klaatu_earned: Math.floor(Math.random() * 2000) + 500,
+      klaatu_spent: Math.floor(Math.random() * 1500) + 100,
+    } as SessionLog));
   }
 
   const maxVal = Math.max(
-    ...recent.map((s) => Math.max(s.klaatu_earned, s.klaatu_spent)),
+    ...dataToRender.map((s) => Math.max(s.klaatu_earned, s.klaatu_spent)),
     1,
   );
 
-  const barWidth = 100 / recent.length;
+  const barWidth = 100 / dataToRender.length;
 
   return (
     <div className="space-y-2">
       <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Klaatu Flow</h3>
-      <div className="bg-slate-800/30 border border-slate-700 rounded-lg p-3">
-        <svg viewBox="0 0 100 40" className="w-full h-24" preserveAspectRatio="none">
-          {recent.map((session, i) => {
+      <div className="bg-slate-800/30 border border-slate-700 rounded-lg p-3 relative">
+        <svg viewBox="0 0 100 40" className={`w-full h-24 ${isDemo ? 'opacity-30' : ''}`} preserveAspectRatio="none">
+          {dataToRender.map((session, i) => {
             const x = i * barWidth + barWidth * 0.1;
             const w = barWidth * 0.35;
             const earnedH = (session.klaatu_earned / maxVal) * 36;
@@ -72,6 +76,14 @@ export function KlaatuFlowChart({ sessions }: Props) {
           {/* Baseline */}
           <line x1="0" y1="38" x2="100" y2="38" stroke="rgb(51, 65, 85)" strokeWidth="0.3" />
         </svg>
+
+        {isDemo && (
+          <div className="absolute inset-0 flex items-center justify-center bg-slate-900/60 backdrop-blur-[1px] rounded-lg">
+             <div className="px-3 py-1 bg-slate-800/80 border border-slate-700/50 rounded-full text-[10px] font-mono text-slate-400 uppercase tracking-widest shadow-lg">
+               Demo Data
+             </div>
+          </div>
+        )}
 
         {/* Legend */}
         <div className="flex items-center justify-center gap-4 mt-2">

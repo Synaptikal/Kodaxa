@@ -14,22 +14,25 @@ interface Props {
 }
 
 export function SkillProgressGrid({ progress, onReset }: Props) {
+  let dataToRender = progress;
+  let isDemo = false;
+
   if (progress.length === 0) {
-    return (
-      <div className="flex flex-col items-center justify-center h-24 gap-1 text-center">
-        <p className="text-slate-500 text-xs">No skill progress tracked yet.</p>
-        <p className="text-slate-600 text-[10px]">Log XP in session entries to see progress here.</p>
-      </div>
-    );
+    isDemo = true;
+    dataToRender = [
+      { profession_id: 'p1', profession_name: 'Laser Cutter', current_xp: 45000, sessions_logged: 12 },
+      { profession_id: 'p2', profession_name: 'Plasma Weaver', current_xp: 82000, sessions_logged: 24 },
+      { profession_id: 'p3', profession_name: 'Ore Refinery', current_xp: 15000, sessions_logged: 4 },
+    ] as unknown as SkillProgress[];
   }
 
-  const maxXp = Math.max(...progress.map((p) => p.current_xp), 1);
+  const maxXp = Math.max(...dataToRender.map((p) => p.current_xp), 1);
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-3 relative">
       <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Skill Progress</h3>
-      <div className="space-y-2">
-        {progress.map((entry) => {
+      <div className={`space-y-2 ${isDemo ? 'opacity-30' : ''}`}>
+        {dataToRender.map((entry) => {
           const pct = Math.min((entry.current_xp / maxXp) * 100, 100);
           return (
             <div key={entry.profession_id} className="group">
@@ -57,6 +60,14 @@ export function SkillProgressGrid({ progress, onReset }: Props) {
           );
         })}
       </div>
+      
+      {isDemo && (
+        <div className="absolute inset-0 flex items-center justify-center bg-slate-900/60 backdrop-blur-[1px] rounded-lg -m-2">
+           <div className="px-3 py-1 bg-slate-800/80 border border-slate-700/50 rounded-full text-[10px] font-mono text-slate-400 uppercase tracking-widest shadow-lg">
+             Demo Data
+           </div>
+        </div>
+      )}
     </div>
   );
 }

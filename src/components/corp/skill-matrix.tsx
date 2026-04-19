@@ -6,6 +6,9 @@ import { ROLE_COLORS, ROLE_LABELS } from '@/types/corp';
 import { Search, MapPin, Sparkles } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
+import { getProfessionSummaries } from '@/data/professions/index';
+
+const ALL_PROFESSIONS = getProfessionSummaries();
 
 interface CrafterSpecialization {
   profession_id: string;
@@ -33,12 +36,13 @@ export function SkillMatrix({ members }: SkillMatrixProps) {
   const [filterCategory, setFilterCategory] = useState<string>('all');
 
   const categories = useMemo(() => {
+    // Get all unique categories across the entire game taxonomy
     const cats = new Set<string>();
-    members.forEach(m => {
-      m.crafter_specializations?.forEach(s => cats.add(s.category));
+    ALL_PROFESSIONS.forEach(p => {
+      if (p.category) cats.add(p.category);
     });
     return Array.from(cats).sort();
-  }, [members]);
+  }, []);
 
   const filteredMembers = useMemo(() => {
     return members.filter(m => {

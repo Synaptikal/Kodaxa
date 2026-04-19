@@ -4,9 +4,12 @@ import { useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import type { CorpSupplyRequest, CorpRole, CorpSupplyPledge } from '@/types/corp';
 import { ROLE_COLORS, ROLE_LABELS } from '@/types/corp';
-import { PlusCircle, Search, PackageOpen, Tag, MapPin, Calendar, Clock, CheckCircle2 } from 'lucide-react';
+import { PlusCircle, Search, PackageOpen, Tag, MapPin, Calendar, Clock, CheckCircle2, X } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { useRouter } from 'next/navigation';
+import { getAllItems } from '@/data/items/index';
+
+const ALL_ITEMS = getAllItems();
 
 interface SupplyBoardProps {
   requests: CorpSupplyRequest[];
@@ -19,6 +22,10 @@ export function SupplyBoard({ requests, currentUserId, currentUserRole }: Supply
   const [filter, setFilter] = useState<'open' | 'fulfilled' | 'all'>('open');
   const [pledgeQuantity, setPledgeQuantity] = useState('');
   const [activeRequestId, setActiveRequestId] = useState<string | null>(null);
+
+  // New Order Form state
+  const [isCreating, setIsCreating] = useState(false);
+  const [newItemParams, setNewItemParams] = useState({ name: '', quantity: '', planet: '', notes: '' });
 
   const canCreate = currentUserRole === 'ceo' || currentUserRole === 'officer';
 
@@ -58,6 +65,31 @@ export function SupplyBoard({ requests, currentUserId, currentUserRole }: Supply
     }
   }
 
+  async function handleCreateOrder(e: React.FormEvent) {
+    e.preventDefault();
+    if (!newItemParams.name || !newItemParams.quantity) return;
+    const quantity = parseInt(newItemParams.quantity, 10);
+    if (isNaN(quantity) || quantity <= 0) return;
+
+    const supabase = createClient();
+    const { error } = await supabase.from('corp_supply_requests').insert({
+      poster_id: currentUserId,
+      item_name: newItemParams.name,
+      quantity_needed: quantity,
+      planet_pref: newItemParams.planet.trim() || null,
+      notes: newItemParams.notes.trim() || null,
+      status: 'open'
+    });
+
+    if (!error) {
+      setIsCreating(false);
+      setNewItemParams({ name: '', quantity: '', planet: '', notes: '' });
+      router.refresh();
+    } else {
+      console.error(error);
+    }
+  }
+
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-sr-border pb-4">
@@ -92,13 +124,72 @@ export function SupplyBoard({ requests, currentUserId, currentUserRole }: Supply
           </div>
           
           {canCreate && (
-            <button className="flex items-center gap-2 px-3 py-1.5 bg-amber-600 hover:bg-amber-500 text-slate-900 rounded-md font-bold text-xs font-mono uppercase tracking-wider transition-colors">
-              <PlusCircle className="w-4 h-4" />
-              New Order
+            <button 
+              onClick={() => setIsCreating(!isCreating)}
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-md font-bold text-xs font-mono uppercase tracking-wider transition-colors ${
+                isCreating ? 'bg-slate-700 text-slate-300' : 'bg-amber-600 hover:bg-amber-500 text-slate-900'
+              }`}
+            >
+              {isCreating ? <X className="w-4 h-4" /> : <PlusCircle className="w-4 h-4" />}
+              {isCreating ? 'Cancel' : 'New Order'}
             </button>
           )}
         </div>
       </div>
+
+      {isCreating && (
+        <form onSubmit={handleCreateOrder} className="bg-slate-900 border border-amber-900/50 rounded-xl p-5 mb-6 space-y-4 shadow-lg shadow-amber-900/10">
+          <h3 className="text-sm font-bold text-amber-500 uppercase tracking-widest font-mono border-b border-amber-900/30 pb-2">Draft Requisition</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-xs font-medium text-slate-400 mb-1">Material Name *</label>
+              <input
+                type="text" list="supply-item-datalist" required autoFocus
+                value={newItemParams.name} onChange={(e) => setNewItemParams({...newItemParams, name: e.target.value})}
+                placeholder="e.g. Iron Ore"
+                className="w-full bg-slate-800 border border-slate-700 rounded px-3 py-2 text-sm text-slate-200 outline-none focus:border-amber-500"
+              />
+              <datalist id="supply-item-datalist">
+                {ALL_ITEMS.map((item) => (
+                  <option key={item.id} value={item.name} />
+                ))}
+              </datalist>
+            </div>
+            <div>
+              <label className="block text-xs font-medium text-slate-400 mb-1">Target Quantity *</label>
+              <input
+                type="number" min="1" required
+                value={newItemParams.quantity} onChange={(e) => setNewItemParams({...newItemParams, quantity: e.target.value})}
+                placeholder="0"
+                className="w-full bg-slate-800 border border-slate-700 rounded px-3 py-2 text-sm text-slate-200 outline-none focus:border-amber-500"
+              />
+            </div>
+            <div>
+              <label className="block text-xs font-medium text-slate-400 mb-1">Preferred Planet</label>
+              <input
+                type="text"
+                value={newItemParams.planet} onChange={(e) => setNewItemParams({...newItemParams, planet: e.target.value})}
+                placeholder="Optional"
+                className="w-full bg-slate-800 border border-slate-700 rounded px-3 py-2 text-sm text-slate-200 outline-none focus:border-amber-500"
+              />
+            </div>
+            <div>
+              <label className="block text-xs font-medium text-slate-400 mb-1">Logistics Notes</label>
+              <input
+                type="text"
+                value={newItemParams.notes} onChange={(e) => setNewItemParams({...newItemParams, notes: e.target.value})}
+                placeholder="Optional delivery details..."
+                className="w-full bg-slate-800 border border-slate-700 rounded px-3 py-2 text-sm text-slate-200 outline-none focus:border-amber-500"
+              />
+            </div>
+          </div>
+          <div className="flex justify-end pt-2">
+            <button type="submit" className="bg-amber-600 hover:bg-amber-500 text-slate-900 px-6 py-2 rounded-md font-bold text-sm tracking-wide transition-colors">
+              Post Requisition
+            </button>
+          </div>
+        </form>
+      )}
 
       <div className="grid gap-4">
         {filtered.length === 0 ? (
