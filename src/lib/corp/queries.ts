@@ -156,3 +156,54 @@ export async function getApplications(status?: string): Promise<CorpApplication[
   }
   return (data ?? []) as CorpApplication[];
 }
+
+// ── Supply Board ──────────────────────────────────────────────────────
+
+export async function getSupplyRequests() {
+  const supabase = await createClient();
+  
+  const { data, error } = await supabase
+    .from('corp_supply_requests')
+    .select(`
+      *,
+      poster:poster_id (id, display_name, in_game_name),
+      pledges:corp_supply_pledges(
+        *,
+        claimer:claimer_id (id, display_name, in_game_name)
+      )
+    `)
+    .order('created_at', { ascending: false });
+
+  if (error) {
+    console.error('[corp/queries] getSupplyRequests:', error.message);
+    return [];
+  }
+  
+  return data;
+}
+
+// ── Skills Directory ──────────────────────────────────────────────────
+
+export async function getMemberSkills() {
+  const supabase = await createClient();
+  
+  // We join profiles with specializations
+  // Only fetching members (not clients)
+  const { data, error } = await supabase
+    .from('crafter_profiles')
+    .select(`
+      id, display_name, in_game_name, role, home_planet,
+      crafter_specializations(
+        profession_id, profession_name, category, crafting_branch, skill_level
+      )
+    `)
+    .in('role', ['ceo', 'officer', 'associate', 'contractor'])
+    .order('display_name', { ascending: true });
+
+  if (error) {
+    console.error('[corp/queries] getMemberSkills:', error.message);
+    return [];
+  }
+  
+  return data;
+}

@@ -116,3 +116,36 @@ export interface HQStats {
   pendingApplications: number;
   completedThisMonth: number;
 }
+
+// ── Supply Board ──────────────────────────────────────────────────────
+
+export type SupplyRequestStatus = 'open' | 'fulfilled' | 'cancelled';
+export type SupplyPledgeStatus = 'pending' | 'delivered' | 'cancelled';
+
+export interface CorpSupplyRequest {
+  id: string;
+  poster_id: string;
+  item_name: string;
+  quantity_needed: number;
+  planet_pref: string | null;
+  notes: string | null;
+  deadline: string | null;
+  status: SupplyRequestStatus;
+  created_at: string;
+  updated_at: string;
+  poster?: { id: string; display_name: string; in_game_name: string } | null;
+  pledged_total?: number; // Calculated on client
+  pledges?: CorpSupplyPledge[];
+}
+
+export interface CorpSupplyPledge {
+  id: string;
+  request_id: string;
+  claimer_id: string;
+  quantity_pledged: number;
+  status: SupplyPledgeStatus;
+  notes: string | null;
+  created_at: string;
+  updated_at: string;
+  claimer?: { id: string; display_name: string; in_game_name: string } | null;
+}
