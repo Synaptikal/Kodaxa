@@ -43,8 +43,11 @@ export function SkillsPanel({ cells }: SkillsPanelProps) {
     return (
     <div className="p-4 border-b border-white/5 bg-black/20 backdrop-blur-md relative overflow-hidden">
         <h3 className="text-xs uppercase tracking-widest font-bold text-stone-500 mb-1 drop-shadow-sm">Skill Requirements</h3>
-        <p className="text-[10px] text-stone-400 relative z-10">
-          No special skills required. This design can be built with starter knowledge.
+        <p className="text-[9px] font-mono text-stone-600 leading-relaxed">
+          Know what to unlock before construction begins.
+        </p>
+        <p className="text-[9px] font-mono text-stone-700 leading-relaxed">
+          Place skill-gated pieces to see required Architect or Civil Eng. nodes.
         </p>
       </div>
     );

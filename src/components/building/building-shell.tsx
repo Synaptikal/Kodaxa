@@ -1,7 +1,8 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import { useSearchParams } from 'next/navigation';
+import { XIcon } from 'lucide-react';
 import { NavHeader } from '@/components/ui/nav-header';
 import { BuildingCanvas } from './viewport/building-canvas';
 import { BuildingToolbar } from './toolbar/building-toolbar';
@@ -13,12 +14,32 @@ import { SkillsPanel } from './panels/skills-panel';
 import { useBuildingState } from '@/hooks/use-building-state';
 import { decodeBuildingState, generateBuildingShareUrl } from '@/lib/building/building-encoder';
 import { ALL_TILES } from '@/data/building';
+import { DEMO_STATE } from '@/data/building/demo';
 import { BuildingOnboarding } from './onboarding/building-onboarding';
+
+const STRIP_KEY = 'kdx_building_strip_v1';
 
 export function BuildingShell() {
   const searchParams = useSearchParams();
   const hook = useBuildingState();
   const isLoadedRef = useRef(false);
+  const [showStrip, setShowStrip] = useState(false);
+
+  useEffect(() => {
+    try {
+      if (!localStorage.getItem(STRIP_KEY)) setShowStrip(true);
+    } catch {}
+  }, []);
+
+  const dismissStrip = useCallback(() => {
+    try { localStorage.setItem(STRIP_KEY, '1'); } catch {}
+    setShowStrip(false);
+  }, []);
+
+  const loadDemo = useCallback(() => {
+    hook.loadState(DEMO_STATE);
+    dismissStrip();
+  }, [hook, dismissStrip]);
 
   // On mount, load state from URL if present
   useEffect(() => {
@@ -72,6 +93,46 @@ export function BuildingShell() {
     <div className="flex flex-col h-screen overflow-hidden bg-sr-bg text-slate-200">
       <NavHeader />
 
+      {/* ── Value strip — first-visit only, dismissible ─────────────── */}
+      {showStrip && (
+        <div className="shrink-0 border-b border-sr-border bg-sr-surface/60 px-4 py-2.5 flex items-center gap-4 flex-wrap">
+          <div className="flex flex-col min-w-0">
+            <p className="text-[9px] font-mono uppercase tracking-[0.25em] text-sr-muted">
+              Architectural Design Interface
+            </p>
+            <p className="text-xs font-mono text-slate-300 leading-snug">
+              Plan Stars Reach builds in 3D before you place a single block
+            </p>
+          </div>
+          <div className="flex items-center gap-2 flex-wrap">
+            {[
+              'Design inside claim limits',
+              'Auto-generates materials list',
+              'Shows required skills',
+            ].map((chip) => (
+              <span key={chip} className="text-[9px] font-mono text-teal-400 border border-teal-800/60 bg-teal-950/30 px-2 py-0.5 uppercase tracking-wide shrink-0">
+                {chip}
+              </span>
+            ))}
+          </div>
+          <div className="flex items-center gap-2 ml-auto shrink-0">
+            <button
+              onClick={loadDemo}
+              className="text-[9px] font-mono uppercase tracking-widest px-3 py-1.5 border border-cyan-700/60 text-cyan-300 bg-cyan-600/10 hover:bg-cyan-600/20 transition-colors"
+            >
+              Load Demo →
+            </button>
+            <button
+              onClick={dismissStrip}
+              className="text-slate-600 hover:text-slate-400 transition-colors"
+              title="Dismiss"
+            >
+              <XIcon className="w-3.5 h-3.5" />
+            </button>
+          </div>
+        </div>
+      )}
+
       <div className="flex-1 flex overflow-hidden relative">
 
         {/* First-visit orientation tour + persistent ? button */}
@@ -81,9 +142,10 @@ export function BuildingShell() {
         <div className="w-60 border-r border-sr-border bg-sr-surface flex flex-col z-10">
           {/* Claim size configurator */}
           <div className="px-3 py-2 border-b border-sr-border">
-            <p className="text-[8px] font-mono uppercase tracking-[0.3em] text-slate-600 mb-2">
+            <p className="text-[8px] font-mono uppercase tracking-[0.3em] text-slate-600">
               Claim Size
             </p>
+            <p className="text-[7px] font-mono text-slate-700 mb-2">Stay inside your planned footprint</p>
             <div className="flex items-center gap-2">
               <div className="flex-1">
                 <label className="text-[7px] font-mono text-slate-600 uppercase tracking-widest block mb-0.5">W</label>

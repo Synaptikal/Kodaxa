@@ -30,9 +30,14 @@ export function BomPanel({ cells }: BomPanelProps) {
 
   if (cells.length === 0) {
     return (
-      <div className="flex flex-col p-4 border-b border-stone-800">
-        <h3 className="text-xs uppercase tracking-widest font-bold text-stone-500 mb-2">Bill of Materials</h3>
-        <p className="text-sm text-stone-600 italic">No blocks placed.</p>
+      <div className="flex flex-col p-4 border-b border-stone-800 gap-1">
+        <h3 className="text-xs uppercase tracking-widest font-bold text-stone-500">Bill of Materials</h3>
+        <p className="text-[9px] font-mono text-stone-600 leading-relaxed">
+          Build shopping list generated from your design.
+        </p>
+        <p className="text-[9px] font-mono text-stone-700 leading-relaxed">
+          Place blocks to see material totals, cap usage, and a crafting handoff.
+        </p>
       </div>
     );
   }
