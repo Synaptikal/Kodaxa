@@ -3,7 +3,7 @@
 import { useState, useMemo } from 'react';
 import { Canvas } from '@react-three/fiber';
 import * as THREE from 'three';
-import { OrbitControls, Environment, ContactShadows } from '@react-three/drei';
+import { OrbitControls, ContactShadows } from '@react-three/drei';
 import { VoxelGrid } from './voxel-grid';
 import { FloorPlane } from './floor-plane';
 import { PlacementCursor } from './placement-cursor';
@@ -237,8 +237,6 @@ export function BuildingCanvas({
           shadow-bias={-0.0001}
           shadow-mapSize={[1024, 1024]}
         />
-        <Environment preset="city" />
-
         <OrbitControls
           target={[state.claimX / 2, 0, state.claimZ / 2]}
           makeDefault
