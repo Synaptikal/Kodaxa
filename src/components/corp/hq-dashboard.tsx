@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import type { HQStats, Commission, CorpRole } from '@/types/corp';
 import { COMMISSION_STATUS_LABELS, COMMISSION_STATUS_COLORS, ROLE_LABELS, canManageRoster, canAdminister } from '@/types/corp';
 
@@ -16,16 +17,22 @@ export function HQDashboard({ stats, recentCommissions, userRole, displayName }:
     <div className="p-6 space-y-8 max-w-4xl">
 
       {/* Welcome */}
-      <div className="space-y-1">
-        <p className="text-xs font-mono text-sr-muted uppercase tracking-[0.3em]">
-          Corp HQ // Command Center
-        </p>
-        <h1 className="text-xl font-bold font-mono text-slate-100">
-          Welcome back, <span className="text-cyan-400">{displayName}</span>
-        </h1>
-        <p className="text-xs text-slate-500">
-          {ROLE_LABELS[userRole]} — Kodaxa Studios Internal Systems
-        </p>
+      <div className="relative overflow-hidden border border-sr-border bg-sr-surface/30 px-5 py-4 space-y-1">
+        <Image
+          src="https://i0.wp.com/starsreach.com/wp-content/uploads/2025/01/Rude-Dudes-w-Attitude_WEBSITE.jpg"
+          alt="" fill className="object-cover object-center opacity-[0.12] pointer-events-none" aria-hidden="true"
+        />
+        <div className="relative z-10 space-y-1">
+          <p className="text-xs font-mono text-sr-muted uppercase tracking-[0.3em]">
+            Corp HQ // Command Center
+          </p>
+          <h1 className="text-xl font-bold font-mono text-slate-100">
+            Welcome back, <span className="text-cyan-400">{displayName}</span>
+          </h1>
+          <p className="text-xs text-slate-500">
+            {ROLE_LABELS[userRole]} — Kodaxa Studios Internal Systems
+          </p>
+        </div>
       </div>
 
       {/* Stats grid */}
@@ -117,10 +124,16 @@ function StatCard({
   label: string; value: number; sub: string; color: string; href?: string;
 }) {
   const inner = (
-    <div className="border border-sr-border bg-sr-surface/60 p-4 space-y-1 hover:border-slate-600 transition-colors">
-      <p className={`text-2xl font-bold font-mono ${color}`}>{value}</p>
-      <p className="text-xs font-mono text-slate-300 uppercase tracking-wider">{label}</p>
-      <p className="text-xs font-mono text-sr-muted">{sub}</p>
+    <div className="relative overflow-hidden border border-sr-border bg-sr-surface/60 p-4 space-y-1 hover:border-slate-600 transition-colors">
+      <Image
+        src="https://i0.wp.com/starsreach.com/wp-content/uploads/2025/01/SR_Heroic_Space_Steam.jpg"
+        alt="" fill className="object-cover opacity-[0.06] pointer-events-none" aria-hidden="true"
+      />
+      <div className="relative z-10 space-y-1">
+        <p className={`text-2xl font-bold font-mono ${color}`}>{value}</p>
+        <p className="text-xs font-mono text-slate-300 uppercase tracking-wider">{label}</p>
+        <p className="text-xs font-mono text-sr-muted">{sub}</p>
+      </div>
     </div>
   );
   return href ? <Link href={href}>{inner}</Link> : <div>{inner}</div>;

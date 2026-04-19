@@ -9,12 +9,15 @@
 
 import { Suspense } from 'react';
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import type { CommissionStatus, DirectoryFilters, DirectoryProfessionCategory } from '@/types/directory';
 import { getCrafterDirectory, getDirectoryPlanets } from '@/lib/directory/queries';
 import { DirectoryFilters as FiltersPanel } from '@/components/directory/directory-filters';
 import { CrafterGrid } from '@/components/directory/crafter-grid';
 import { PaginationControls } from '@/components/directory/pagination-controls';
 import { NavHeader } from '@/components/ui/nav-header';
+
+const BEACH = 'https://i0.wp.com/starsreach.com/wp-content/uploads/2025/01/Beach-Town.jpg';
 
 export const metadata: Metadata = {
   title: 'Commerce Registry – Kodaxa Studios',
@@ -56,14 +59,17 @@ export default async function DirectoryPage({ searchParams }: { searchParams: Se
 
       <main className="mx-auto max-w-7xl px-4 py-8">
         {/* Page header */}
-        <div className="mb-6 border-b border-sr-border pb-4">
-          <p className="text-[8px] font-mono uppercase tracking-[0.35em] text-slate-600 mb-1">
-            Commerce Division · Commerce Registry
-          </p>
-          <h1 className="text-xl font-bold font-mono text-slate-100">Registered Artisans</h1>
-          <p className="text-xs text-slate-500 mt-0.5">
-            Locate registered artisans across the galaxy. Filter by operative capability, sector, or commission status.
-          </p>
+        <div className="relative overflow-hidden border border-sr-border bg-sr-surface/30 px-5 py-4 mb-6">
+          <Image src={BEACH} alt="" fill className="object-cover opacity-[0.1] pointer-events-none" aria-hidden="true" />
+          <div className="relative z-10">
+            <p className="text-[8px] font-mono uppercase tracking-[0.35em] text-amber-700 mb-1">
+              Commerce Division · Commerce Registry
+            </p>
+            <h1 className="text-xl font-bold font-mono text-slate-100">Registered Artisans</h1>
+            <p className="text-xs text-slate-500 mt-0.5">
+              Locate registered artisans across the galaxy. Filter by operative capability, sector, or commission status.
+            </p>
+          </div>
         </div>
 
         {/* Filters — client component, needs Suspense */}
@@ -82,8 +88,9 @@ export default async function DirectoryPage({ searchParams }: { searchParams: Se
         </Suspense>
 
         {/* CTA for unregistered artisans */}
-        <div className="mt-10 border border-sr-border bg-sr-surface/40 p-5">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="relative overflow-hidden mt-10 border border-sr-border bg-sr-surface/40 p-5">
+          <Image src={BEACH} alt="" fill className="object-cover opacity-[0.07] pointer-events-none" aria-hidden="true" />
+          <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
               <p className="text-[8px] font-mono uppercase tracking-[0.3em] text-slate-600 mb-1">
                 Commerce Registry · Register Operative
