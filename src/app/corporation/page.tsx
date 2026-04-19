@@ -9,7 +9,17 @@
 
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { NavHeader } from '@/components/ui/nav-header';
+
+const IMG = {
+  crew:       'https://i0.wp.com/starsreach.com/wp-content/uploads/2025/01/Rude-Dudes-w-Attitude_WEBSITE.jpg',
+  lathe:      'https://i0.wp.com/starsreach.com/wp-content/uploads/2025/02/SR_Lathe-Spin-16x9-1.jpg',
+  pyromycis:  'https://i0.wp.com/starsreach.com/wp-content/uploads/2025/01/Died-On-Pyromycis.jpg',
+  beach:      'https://i0.wp.com/starsreach.com/wp-content/uploads/2025/01/Beach-Town.jpg',
+  combat:     'https://i0.wp.com/starsreach.com/wp-content/uploads/2025/01/Pre-Alpha_Combat_01-1.jpg',
+  portal:     'https://i0.wp.com/starsreach.com/wp-content/uploads/2025/02/SR_Through-the-Portal-1.jpg',
+} as const;
 
 export const metadata: Metadata = {
   title: 'Corporation Registry — Kodaxa Studios',
@@ -25,23 +35,26 @@ export default function CorporationPage() {
       <main className="flex-1 max-w-4xl mx-auto w-full px-4 py-10 space-y-10">
 
         {/* ── Corp identity ──────────────────────────────────────────── */}
-        <div className="space-y-3">
-          <p className="text-xs font-mono uppercase tracking-[0.3em] text-cyan-700">
-            Corporation Registry — Public Record
-          </p>
-          <h1 className="text-3xl font-black font-mono text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-teal-400">
-            KODAXA STUDIOS
-          </h1>
-          <p className="text-sm text-sr-muted leading-relaxed max-w-2xl">
-            Kodaxa Studios is a multi-planetary data science and software firm incorporated under
-            Stars Reach galactic business law. We design, build, and operate the data infrastructure
-            that crafters, builders, miners, and merchants rely on to operate efficiently across the galaxy.
-          </p>
-          <p className="text-sm text-sr-muted leading-relaxed max-w-2xl">
-            We don&apos;t mine. We don&apos;t fight. We build the systems that help everyone else do those
-            things better — and we run a vendor network that keeps the best refined materials and tools
-            in circulation.
-          </p>
+        <div className="relative overflow-hidden border border-sr-border bg-sr-surface/30">
+          <Image src={IMG.crew} alt="" fill priority className="object-cover object-center opacity-[0.14] pointer-events-none" aria-hidden="true" />
+          <div className="relative z-10 p-6 space-y-3">
+            <p className="text-xs font-mono uppercase tracking-[0.3em] text-cyan-700">
+              Corporation Registry — Public Record
+            </p>
+            <h1 className="text-3xl font-black font-mono text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-teal-400">
+              KODAXA STUDIOS
+            </h1>
+            <p className="text-sm text-sr-muted leading-relaxed max-w-2xl">
+              Kodaxa Studios is a multi-planetary data science and software firm incorporated under
+              Stars Reach galactic business law. We design, build, and operate the data infrastructure
+              that crafters, builders, miners, and merchants rely on to operate efficiently across the galaxy.
+            </p>
+            <p className="text-sm text-sr-muted leading-relaxed max-w-2xl">
+              We don&apos;t mine. We don&apos;t fight. We build the systems that help everyone else do those
+              things better — and we run a vendor network that keeps the best refined materials and tools
+              in circulation.
+            </p>
+          </div>
         </div>
 
         {/* ── Founding charter ───────────────────────────────────────── */}
@@ -81,14 +94,15 @@ export default function CorporationPage() {
               headquarters structure serving as our base of operations, meeting location, and
               vendor hub.
             </p>
-            <div className="border border-slate-800 bg-slate-900/40 p-4 space-y-3">
-              <div className="grid sm:grid-cols-2 gap-4">
+            <div className="relative overflow-hidden border border-slate-800 bg-slate-900/40 p-4 space-y-3">
+              <Image src={IMG.beach} alt="" fill className="object-cover opacity-[0.08] pointer-events-none" aria-hidden="true" />
+              <div className="relative z-10 grid sm:grid-cols-2 gap-4">
                 <PresenceItem label="Homestead Type" value="Corporate HQ + Vendor Hub" />
                 <PresenceItem label="Location" value="Coordinates published at launch" />
                 <PresenceItem label="Vendor Kiosk" value="Active — refined materials, tools, consumables" />
                 <PresenceItem label="Public Access" value="Open during business hours" />
               </div>
-              <p className="text-xs text-sr-muted font-mono pt-1">
+              <p className="relative z-10 text-xs text-sr-muted font-mono pt-1">
                 Find us on Discord for real-time location and inventory updates.
               </p>
             </div>
@@ -169,6 +183,7 @@ const DIVISIONS = [
     bg: 'bg-teal-900/10',
     description: 'Manages the active tool suite — Skill Planner, Building Planner, and utility trackers. Responsible for build optimization consulting and homestead construction services.',
     tools: ['Skill Planner', 'Building Planner', 'XP Timer'],
+    imgSrc: IMG.lathe,
   },
   {
     name: 'Intelligence Division',
@@ -177,6 +192,7 @@ const DIVISIONS = [
     bg: 'bg-cyan-900/10',
     description: 'Collects, verifies, and publishes game data. Responsible for the Item Database, Recipe Database, and future data-collection tools including the Resource Atlas.',
     tools: ['Item Database', 'Recipe Database', 'Resource Atlas'],
+    imgSrc: IMG.pyromycis,
   },
   {
     name: 'Commerce Division',
@@ -185,6 +201,7 @@ const DIVISIONS = [
     bg: 'bg-amber-900/10',
     description: 'Operates the Commerce Registry, vendor network, and market intelligence systems. Manages crafter listings, vendor kiosk inventory, and inter-planetary trade coordination.',
     tools: ['Commerce Registry', 'Crafting Calculator', 'Market Prices'],
+    imgSrc: IMG.beach,
   },
   {
     name: 'Engineering Division',
@@ -193,6 +210,7 @@ const DIVISIONS = [
     bg: 'bg-green-900/10',
     description: 'Constructs and maintains Kodaxa homestead infrastructure. Handles building projects for associates, manages the architectural design tool, and consults on structure planning.',
     tools: ['Building Planner', 'ADI'],
+    imgSrc: IMG.combat,
   },
   {
     name: 'Dispatch Division',
@@ -201,6 +219,7 @@ const DIVISIONS = [
     bg: 'bg-violet-900/10',
     description: 'Manages communications, patch analysis, and public-facing content. Publishes the Kodaxa Dispatch newsletter and maintains relationships with the broader community.',
     tools: ['Patch Notes', 'Kodaxa Dispatch'],
+    imgSrc: IMG.portal,
   },
   {
     name: 'Workforce Division',
@@ -209,6 +228,7 @@ const DIVISIONS = [
     bg: 'bg-slate-800/10',
     description: 'Handles personnel records, skill build consulting, and associate onboarding. Manages the My Terminal member portal and internal workforce intelligence data.',
     tools: ['My Terminal', 'Skill Planner'],
+    imgSrc: IMG.crew,
   },
 ];
 
@@ -260,20 +280,23 @@ function Section({ label, children }: { label: string; children: React.ReactNode
 }
 
 function DivisionCard({
-  name, color, border, bg, description, tools,
+  name, color, border, bg, description, tools, imgSrc,
 }: {
-  name: string; color: string; border: string; bg: string; description: string; tools: string[];
+  name: string; color: string; border: string; bg: string; description: string; tools: string[]; imgSrc: string;
 }) {
   return (
-    <div className={`border p-4 space-y-2.5 ${border} ${bg}`}>
-      <h3 className={`text-xs font-mono font-bold uppercase tracking-wider ${color}`}>{name}</h3>
-      <p className="text-xs text-sr-muted leading-relaxed">{description}</p>
-      <div className="flex flex-wrap gap-1">
-        {tools.map((t) => (
-          <span key={t} className="text-xs font-mono px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 text-slate-500">
-            {t}
-          </span>
-        ))}
+    <div className={`relative overflow-hidden border p-4 space-y-2.5 ${border} ${bg}`}>
+      <Image src={imgSrc} alt="" fill className="object-cover opacity-[0.07] hover:opacity-[0.12] transition-opacity pointer-events-none" aria-hidden="true" />
+      <div className="relative z-10 space-y-2.5">
+        <h3 className={`text-xs font-mono font-bold uppercase tracking-wider ${color}`}>{name}</h3>
+        <p className="text-xs text-sr-muted leading-relaxed">{description}</p>
+        <div className="flex flex-wrap gap-1">
+          {tools.map((t) => (
+            <span key={t} className="text-xs font-mono px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 text-slate-500">
+              {t}
+            </span>
+          ))}
+        </div>
       </div>
     </div>
   );
