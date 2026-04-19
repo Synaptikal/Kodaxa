@@ -160,6 +160,8 @@ export interface Recipe {
   dependsOn?: string[];
   /** Relative complexity (affects XP reward) */
   complexity: number;
+  /** Confirmed XP awarded on craft — omit until official data surfaces */
+  xp?: number;
   /** Whether this recipe is confirmed from game data vs. speculated */
   confirmed: boolean;
 }

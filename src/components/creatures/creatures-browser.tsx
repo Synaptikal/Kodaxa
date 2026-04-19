@@ -57,7 +57,8 @@ export function CreaturesBrowser({ creatures }: CreaturesBrowserProps) {
           c.name.toLowerCase().includes(q) ||
           c.aliases?.some((a) => a.toLowerCase().includes(q)) ||
           c.description.toLowerCase().includes(q) ||
-          c.drops.some((d) => d.toLowerCase().includes(q)),
+          c.drops.some((d) => d.item.toLowerCase().includes(q)) ||
+          c.huntingTips?.some((t) => t.toLowerCase().includes(q)),
       );
     }
     if (behaviorFilters.length > 0) {
@@ -162,14 +163,34 @@ function CreatureCard({ creature }: { creature: Creature }) {
 
       {/* Drops */}
       {creature.drops.length > 0 && (
-        <div className="flex flex-wrap gap-1">
+        <div className="flex flex-wrap gap-1 items-center">
           <span className="text-xs font-mono text-sr-muted uppercase tracking-wider">Drops:</span>
           {creature.drops.map((d) => (
-            <span key={d} className="text-xs font-mono px-1.5 py-0.5 rounded bg-slate-800 text-slate-400">
-              {d.replace(/_/g, ' ')}
+            <span
+              key={d.item}
+              className={`text-xs font-mono px-1.5 py-0.5 rounded bg-slate-800 ${d.confirmed ? 'text-slate-400' : 'text-slate-500 italic'}`}
+              title={d.confirmed ? undefined : 'Unconfirmed drop — community observation'}
+            >
+              {d.item.replace(/_/g, ' ')}{!d.confirmed && ' ?'}
             </span>
           ))}
         </div>
+      )}
+
+      {/* Hunting Tips */}
+      {creature.huntingTips && creature.huntingTips.length > 0 && (
+        <details className="group">
+          <summary className="text-xs font-mono text-amber-600 uppercase tracking-wider cursor-pointer select-none hover:text-amber-500 transition-colors">
+            Field Notes ({creature.huntingTips.length})
+          </summary>
+          <ul className="mt-1.5 space-y-1 pl-0">
+            {creature.huntingTips.map((tip, i) => (
+              <li key={i} className="text-xs text-sr-muted leading-relaxed pl-3 border-l border-amber-900/40">
+                {tip}
+              </li>
+            ))}
+          </ul>
+        </details>
       )}
 
       {/* Abilities */}

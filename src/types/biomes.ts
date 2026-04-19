@@ -73,6 +73,9 @@ export interface Biome {
   /** Recommended equipment / preparation notes */
   preparation?: string[];
 
+  /** Path to biome art in /public/biomes/ — null until art is sourced */
+  image: string | null;
+
   /** Whether the entry is confirmed from official sources */
   confirmed: boolean;
   /** Source IDs or URLs */

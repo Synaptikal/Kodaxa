@@ -91,10 +91,14 @@ export interface Item {
   rarity?: ItemRarity;
   /** Human-readable description */
   description: string;
+  /** Additional context for crafters — how this item feeds into recipes */
+  craftingContext?: string;
   /** How this item is obtained */
   sources: ItemSource[];
   /** Which crafting station produces this item (crafted items only) */
   station?: 'toolmaker' | 'refinery' | 'lathe' | 'stove';
+  /** Path to item icon in /public/items/ — null until icons are sourced */
+  icon?: string | null;
   /** Whether this data is confirmed from game sources vs. inferred */
   confirmed: boolean;
 }

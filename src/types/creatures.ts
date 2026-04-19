@@ -43,6 +43,15 @@ export type TamingStatus =
   | 'untameable'
   | 'unknown';
 
+// ── Loot ─────────────────────────────────────────────────────────────
+
+export interface LootDrop {
+  /** Item ID (matches items DB slug) */
+  item: string;
+  /** Whether this drop is confirmed from patch notes vs. community observation */
+  confirmed: boolean;
+}
+
 // ── Core type ────────────────────────────────────────────────────────
 
 export interface Creature {
@@ -61,13 +70,16 @@ export interface Creature {
   /** One-paragraph description / flavor */
   description: string;
 
+  /** Path to creature art in /public/creatures/ — null until art is sourced */
+  image: string | null;
+
   /** Biome IDs where this creature is known to spawn */
   biomes: string[];
   /** Planet IDs where confirmed (empty = unknown / any) */
   planets?: string[];
 
-  /** Known drops (item IDs from items DB) */
-  drops: string[];
+  /** Known drops with confirmation status */
+  drops: LootDrop[];
 
   /** Taming data */
   taming: {
@@ -80,6 +92,9 @@ export interface Creature {
 
   /** Special abilities / attacks (e.g., "flocking charge", "cold breath") */
   abilities?: string[];
+
+  /** Field-sourced hunting advice — patch-note or community verified */
+  huntingTips?: string[];
 
   /** Whether this entry is confirmed from official sources */
   confirmed: boolean;
