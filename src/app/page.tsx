@@ -15,7 +15,7 @@ import { SKILL_CAP, TOOL_CAP } from '@/lib/skill-engine';
 import { getProfessionSummaries, getNodeMap } from '@/data/professions/index';
 import { getCraftingStats } from '@/data/crafting/index';
 import { getAllItems } from '@/data/items/index';
-import { getLatestPosts } from '@/data/dispatch/index';
+import { getAllPostsMerged } from '@/data/dispatch/merged';
 import { CATEGORY_LABELS, CATEGORY_COLORS } from '@/types/dispatch';
 import type { DispatchPost } from '@/types/dispatch';
 import { NavHeader } from '@/components/ui/nav-header';
@@ -23,6 +23,8 @@ import { Badge } from '@/components/ui/badge';
 import { SectionLabel } from '@/components/ui/section-label';
 import { RelayTicker } from '@/components/ui/relay-ticker';
 import { NAV_LINKS, SOON, buildTools, type ToolCardProps } from './landing-config';
+
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: 'Kodaxa Studios — Stars Reach Data & Tools',
@@ -35,10 +37,6 @@ const totalProf  = getProfessionSummaries().length;
 const liveNodes  = Array.from(getNodeMap().values()).filter((n) => n.implemented).length;
 const craftStats = getCraftingStats();
 const totalItems = getAllItems().length;
-const latestPosts  = getLatestPosts(4);
-const featuredPost = latestPosts[0];
-const recentPosts  = latestPosts.slice(1, 3);
-
 const TOOLS = buildTools({
   skillCap: SKILL_CAP, toolCap: TOOL_CAP, totalProf, liveNodes,
   totalRecipes:   craftStats.totalRecipes,
@@ -105,7 +103,11 @@ const PHASE_COLORS: Record<string, string> = {
 };
 
 // ── Page ───────────────────────────────────────────────────────────────
-export default function LandingPage() {
+export default async function LandingPage() {
+  const allPosts    = await getAllPostsMerged();
+  const featuredPost = allPosts[0] ?? null;
+  const recentPosts  = allPosts.slice(1, 3);
+
   return (
     <div className="min-h-dvh flex flex-col bg-sr-bg text-sr-text">
       <NavHeader />
