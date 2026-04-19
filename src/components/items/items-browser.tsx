@@ -12,7 +12,6 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { VirtuosoGrid } from 'react-virtuoso';
 import type { Item, ItemCategory } from '@/types/items';
 import { CATEGORY_LABELS, RARITY_LABELS, RARITY_COLORS } from '@/types/items';
 import { SearchInput } from '@/components/ui/search-input';
@@ -153,19 +152,20 @@ export function ItemsBrowser({ items }: ItemsBrowserProps) {
         </div>
       </div>
 
-      {/* Item grid — virtualized past 305 items */}
+      {/* Item grid */}
       {filtered.length === 0 ? (
         <div className="flex-1 p-4 flex flex-col items-center justify-center gap-1">
           <p className="text-sm font-mono text-sr-muted">No materials match the current filter parameters.</p>
           <p className="text-xs font-mono text-sr-subtle">Adjust filters or clear selection to broaden the query.</p>
         </div>
       ) : (
-        <VirtuosoGrid
-          style={{ flex: 1 }}
-          data={filtered}
-          listClassName="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 p-4"
-          itemContent={(_index, item) => <ItemCard item={item} />}
-        />
+        <div className="flex-1 overflow-y-auto p-4">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+            {filtered.map((item) => (
+              <ItemCard key={item.id} item={item} />
+            ))}
+          </div>
+        </div>
       )}
     </div>
   );

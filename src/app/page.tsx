@@ -45,6 +45,9 @@ const TOOLS = buildTools({
   totalItems,
 });
 
+// Derived from TOOLS array — stays accurate as tools are added or removed.
+const ONLINE_COUNT = TOOLS.length;
+
 const TICKER_MESSAGES = [
   'RELAY UPLINK STABLE',
   `${totalProf} PROFESSIONS INDEXED`,
@@ -66,7 +69,7 @@ const DIVISIONS = [
     hoverStyle: 'hover:bg-teal-950/30 hover:border-teal-800/60',
     labelColor: 'text-teal-400',
     Icon: Crosshair,
-    imgSrc: 'https://i0.wp.com/starsreach.com/wp-content/uploads/2025/02/SR_Lathe-Spin-16x9-1.jpg',
+    imgSrc: '/divisions/ops-lathe.jpg',
   },
   {
     label: 'Intelligence', name: 'Data Terminal',
@@ -76,7 +79,7 @@ const DIVISIONS = [
     hoverStyle: 'hover:bg-cyan-950/30 hover:border-cyan-800/60',
     labelColor: 'text-cyan-400',
     Icon: Database,
-    imgSrc: 'https://i0.wp.com/starsreach.com/wp-content/uploads/2025/01/Died-On-Pyromycis.jpg',
+    imgSrc: '/divisions/intel-pyromycis.jpg',
   },
   {
     label: 'Commerce',     name: 'Market & Registry',
@@ -86,7 +89,7 @@ const DIVISIONS = [
     hoverStyle: 'hover:bg-amber-950/30 hover:border-amber-800/60',
     labelColor: 'text-amber-400',
     Icon: Scale,
-    imgSrc: 'https://i0.wp.com/starsreach.com/wp-content/uploads/2025/01/Beach-Town.jpg',
+    imgSrc: '/divisions/commerce-beach.jpg',
   },
   {
     label: 'Dispatch',     name: 'Field Reports',
@@ -96,7 +99,7 @@ const DIVISIONS = [
     hoverStyle: 'hover:bg-violet-950/30 hover:border-violet-800/60',
     labelColor: 'text-violet-400',
     Icon: Radio,
-    imgSrc: 'https://i0.wp.com/starsreach.com/wp-content/uploads/2025/02/SR_Through-the-Portal-1.jpg',
+    imgSrc: '/divisions/dispatch-portal.jpg',
   },
 ];
 
@@ -122,7 +125,7 @@ export default async function LandingPage() {
           {/* ── Hero: Operations Grid Console ─────────────────── */}
           <section className="relative overflow-hidden border border-sr-border bg-sr-surface/30">
             <Image
-              src="https://i0.wp.com/starsreach.com/wp-content/uploads/2025/01/SR_Heroic_Space_Steam.jpg"
+              src="/divisions/hero-space.jpg"
               alt="" fill priority
               className="object-cover opacity-20 pointer-events-none"
               aria-hidden="true"
@@ -137,7 +140,7 @@ export default async function LandingPage() {
                     Operations Grid
                   </p>
                   <span className="flex items-center gap-1.5 text-xs font-mono text-teal-600 tracking-[0.15em] uppercase">
-                    <span className="status-dot-live text-teal-500">●</span>6 Systems Online
+                    <span className="status-dot-live text-teal-500">●</span>{ONLINE_COUNT} Systems Online
                   </span>
                 </div>
 
@@ -152,7 +155,7 @@ export default async function LandingPage() {
                   </div>
                   <div>
                     <p className="text-xs font-mono uppercase tracking-wide text-sr-muted">Operative Systems</p>
-                    <p className="mt-1 text-2xl font-black font-mono text-teal-300 tabular-nums">6</p>
+                    <p className="mt-1 text-2xl font-black font-mono text-teal-300 tabular-nums">{ONLINE_COUNT}</p>
                   </div>
                 </div>
 
@@ -292,9 +295,9 @@ export default async function LandingPage() {
           {/* ── Active Tool Suite ─────────────────────────────── */}
           <section className="space-y-4">
             <div className="flex items-baseline justify-between">
-              <SectionLabel text="Active Tool Suite" sub="6 systems online" />
+              <SectionLabel text="Active Tool Suite" sub={`${ONLINE_COUNT} systems online`} />
               <span className="text-xs font-mono text-teal-500 tracking-[0.15em] uppercase flex items-center gap-1.5">
-                <span className="status-dot-live">●</span> 6 ONLINE
+                <span className="status-dot-live">●</span> {ONLINE_COUNT} ONLINE
               </span>
             </div>
             <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
