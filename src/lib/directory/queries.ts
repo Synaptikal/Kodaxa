@@ -73,9 +73,11 @@ export async function getCrafterDirectory(
     return { crafters: [], total: 0 };
   }
 
-  // Post-filter by category/profession if specified (can't do in Supabase
-  // filter when the field is on a joined table without a view)
-  let crafters = (data ?? []) as unknown as CrafterSummary[];
+  // Normalize: Supabase returns null for empty joined tables; ensure array
+  let crafters = (data ?? []).map((c) => ({
+    ...c,
+    specializations: c.specializations ?? [],
+  })) as unknown as CrafterSummary[];
 
   if (filters.category) {
     crafters = crafters.filter((c) =>
