@@ -5,6 +5,9 @@ const BASE = 'https://kodaxa.dev';
 
 const STATIC_ROUTES: MetadataRoute.Sitemap = [
   { url: BASE,                          changeFrequency: 'weekly',  priority: 1.0 },
+  { url: `${BASE}/dashboard`,           changeFrequency: 'daily',   priority: 0.9 },
+  { url: `${BASE}/inventory`,           changeFrequency: 'daily',   priority: 0.9 },
+  { url: `${BASE}/trade`,               changeFrequency: 'daily',   priority: 0.9 },
   { url: `${BASE}/corporation`,         changeFrequency: 'monthly', priority: 0.7 },
   { url: `${BASE}/planner`,             changeFrequency: 'weekly',  priority: 0.9 },
   { url: `${BASE}/building`,            changeFrequency: 'weekly',  priority: 0.9 },

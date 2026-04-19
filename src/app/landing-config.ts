@@ -62,6 +62,17 @@ export function buildTools(params: {
       division: 'operations',
     },
     {
+      href: '/inventory',
+      codexName: 'Logistical Management Suite',
+      realName: 'Inventory & Materials',
+      description: 'Track your personal stockpile, register tool loadouts, and manage homestead crate access configurations natively.',
+      stats: [{ label: 'Local Data', value: '✓' }, { label: 'Fast Add', value: '✓' }],
+      accent: 'border-l-2 border-l-teal-700 hover:border-l-teal-500',
+      cta: 'text-teal-400',
+      deployStatus: 'new',
+      division: 'operations',
+    },
+    {
       href: '/crafting',
       codexName: 'Material Analytics Suite',
       realName: 'Crafting Calculator',
@@ -81,6 +92,17 @@ export function buildTools(params: {
       accent: 'border-l-2 border-l-amber-700 hover:border-l-amber-500',
       cta: 'text-amber-400',
       deployStatus: 'live',
+      division: 'commerce',
+    },
+    {
+      href: '/trade',
+      codexName: 'Commercial Operations Tracker',
+      realName: 'Trade System',
+      description: 'Maintain your vendor kiosk limits, log P2P direct trades, and track market prices manually to map optimal trade routes.',
+      stats: [{ label: 'Fee Calc', value: '✓' }, { label: 'Kiosk Cap', value: '100' }],
+      accent: 'border-l-2 border-l-amber-700 hover:border-l-amber-500',
+      cta: 'text-amber-400',
+      deployStatus: 'new',
       division: 'commerce',
     },
     {
@@ -115,6 +137,17 @@ export function buildTools(params: {
       cta: 'text-cyan-400',
       deployStatus: 'new',
       division: 'intelligence',
+    },
+    {
+      href: '/dashboard',
+      codexName: 'Personal Analytics Dashboard',
+      realName: 'My Terminal',
+      description: 'Log and review your daily Stars Reach sessions. Chart your Klaatu flow and visualize your skill progression over time.',
+      stats: [{ label: 'Local DB', value: '✓' }, { label: 'Activity Log', value: '✓' }],
+      accent: 'border-l-2 border-l-slate-600 hover:border-l-slate-400',
+      cta: 'text-slate-300',
+      deployStatus: 'new',
+      division: 'personnel',
     },
   ];
 }

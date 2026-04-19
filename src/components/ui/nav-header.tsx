@@ -45,6 +45,7 @@ const DIVISION_CTX = [
   { prefix: '/planner',     division: 'OPERATIONS',   tool: 'WORKFORCE INTELLIGENCE SYSTEM',  color: 'text-teal-700' },
   { prefix: '/building',    division: 'OPERATIONS',   tool: 'ARCHITECTURAL DESIGN INTERFACE', color: 'text-teal-700' },
   { prefix: '/xp-timer',    division: 'OPERATIONS',   tool: 'XP & ATROPHY TRACKER',           color: 'text-teal-700' },
+  { prefix: '/inventory',   division: 'OPERATIONS',   tool: 'LOGISTICAL MANAGEMENT SUITE',    color: 'text-teal-700' },
   { prefix: '/items',       division: 'INTELLIGENCE', tool: 'DATA TERMINAL',                  color: 'text-cyan-700' },
   { prefix: '/recipes',     division: 'INTELLIGENCE', tool: 'RECIPE DATABASE',                color: 'text-cyan-700' },
   { prefix: '/atlas',       division: 'INTELLIGENCE', tool: 'RESOURCE ATLAS',                 color: 'text-cyan-700' },
@@ -52,6 +53,7 @@ const DIVISION_CTX = [
   { prefix: '/creatures',   division: 'INTELLIGENCE', tool: 'CREATURE DATABASE',              color: 'text-cyan-700' },
   { prefix: '/crafting',    division: 'COMMERCE',     tool: 'MATERIAL ANALYTICS SUITE',       color: 'text-amber-700' },
   { prefix: '/directory',   division: 'COMMERCE',     tool: 'COMMERCE REGISTRY',              color: 'text-amber-700' },
+  { prefix: '/trade',       division: 'COMMERCE',     tool: 'COMMERCIAL OPERATIONS TRACKER',  color: 'text-amber-700' },
   { prefix: '/makers',      division: 'COMMERCE',     tool: "MAKER'S MARK",                   color: 'text-amber-700' },
   { prefix: '/market',      division: 'COMMERCE',     tool: 'MARKET PRICES',                  color: 'text-amber-700' },
   { prefix: '/patch-notes', division: 'DISPATCH',     tool: 'KODAXA DISPATCH',                color: 'text-violet-700' },
@@ -59,6 +61,7 @@ const DIVISION_CTX = [
   { prefix: '/corp/hq',    division: 'HQ',           tool: 'INTERNAL SYSTEMS',               color: 'text-amber-700' },
   { prefix: '/corp/join',  division: 'PERSONNEL',    tool: 'RECRUITMENT',                    color: 'text-violet-700' },
   { prefix: '/terminal',    division: 'PERSONNEL',    tool: 'MY TERMINAL',                    color: 'text-slate-500' },
+  { prefix: '/dashboard',   division: 'PERSONNEL',    tool: 'PERSONAL ANALYTICS DASHBOARD',   color: 'text-slate-500' },
   { prefix: '/auth',        division: 'PERSONNEL',    tool: 'ACCOUNT SERVICES',               color: 'text-slate-500' },
 ] as const;
 
@@ -74,9 +77,10 @@ const NAV_GROUPS: NavGroup[] = [
   {
     label: 'Operations',
     items: [
-      { href: '/planner',  label: 'Skill Planner',          status: 'live' },
-      { href: '/building', label: 'Building Planner',        status: 'live' },
-      { href: '/xp-timer', label: 'XP & Atrophy Timer',      status: 'new'  },
+      { href: '/planner',   label: 'Skill Planner',          status: 'live' as ItemStatus },
+      { href: '/building',  label: 'Building Planner',       status: 'live' as ItemStatus },
+      { href: '/inventory', label: 'Inventory & Materials',  status: 'new'  as ItemStatus },
+      { href: '/xp-timer',  label: 'XP & Atrophy Timer',     status: 'new'  as ItemStatus },
     ],
   },
   {
@@ -92,10 +96,11 @@ const NAV_GROUPS: NavGroup[] = [
   {
     label: 'Commerce',
     items: [
-      { href: '/directory', label: 'Commerce Registry',      status: 'live' },
-      { href: '/crafting',  label: 'Crafting Calculator',    status: 'live' },
-      { href: '/makers',    label: "Maker's Mark",           status: 'soon' },
-      { href: '/market',    label: 'Market Prices',          status: 'soon' },
+      { href: '/directory', label: 'Commerce Registry',      status: 'live' as ItemStatus },
+      { href: '/crafting',  label: 'Crafting Calculator',    status: 'live' as ItemStatus },
+      { href: '/trade',     label: 'Trade System',           status: 'new'  as ItemStatus },
+      { href: '/makers',    label: "Maker's Mark",           status: 'soon' as ItemStatus },
+      { href: '/market',    label: 'Market Prices',          status: 'soon' as ItemStatus },
     ],
   },
   {
@@ -117,8 +122,11 @@ const NAV_GROUPS: NavGroup[] = [
   {
     label: 'My Terminal',
     items: [
-      { href: '/xp-timer',    label: 'XP & Atrophy Timer', status: 'new' as ItemStatus },
-      { href: '/terminal',    label: 'My Profile' },
+      { href: '/dashboard',   label: 'Analytics Dashboard', status: 'new' as ItemStatus },
+      { href: '/inventory',   label: 'Inventory Manager',   status: 'new' as ItemStatus },
+      { href: '/trade',       label: 'Trade System',        status: 'new' as ItemStatus },
+      { href: '/xp-timer',    label: 'XP & Atrophy Timer',  status: 'new' as ItemStatus },
+      { href: '/terminal',    label: 'My Auth Profile' },
     ],
   },
 ];
