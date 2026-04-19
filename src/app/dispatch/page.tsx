@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     'The Kodaxa Studios newsroom. Field reports, patch recaps, charter announcements, and recruitment dispatches across the Stars Reach corporation.',
 };
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 60;
 
 export default async function DispatchIndexPage() {
   const [posts, stats] = await Promise.all([

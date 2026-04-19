@@ -47,6 +47,7 @@ export const metadata: Metadata = {
     'Playable Worlds',
     'Stars Reach tools',
   ],
+  metadataBase: new URL('https://kodaxa.dev'),
   authors: [{ name: 'Kodaxa Studios' }],
   openGraph: {
     title: 'Kodaxa Studios — Stars Reach Data & Tools',
