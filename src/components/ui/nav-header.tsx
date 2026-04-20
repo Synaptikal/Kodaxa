@@ -267,6 +267,15 @@ export function NavHeader() {
         </nav>
 
         <div className="flex items-center gap-2">
+          <Link
+            href="/feedback"
+            className="shrink-0 px-3 py-1 text-[10px] font-mono font-semibold bg-slate-700/20 border border-slate-600/30 text-slate-100 hover:bg-slate-700/40 hover:border-slate-500 transition-all tracking-wide uppercase hidden sm:inline-flex items-center"
+            title="Submit feedback"
+          >
+            <span className="sr-only">Community Feedback</span>
+            Feedback
+          </Link>
+
           <a
             href="https://discord.gg/kodaxa"
             target="_blank"
