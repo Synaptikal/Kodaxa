@@ -1,0 +1,167 @@
+[
+  {
+    "file": "C:\\Users\\Justi\\Downloads\\Alpha\\Artisan\\skill-planner\\middleware.ts",
+    "unused": [
+      {
+        "name": "type NextRequest",
+        "importText": "import { type NextRequest } from 'next/server';",
+        "line": 10
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Justi\\Downloads\\Alpha\\Artisan\\skill-planner\\src\\app\\loading.tsx",
+    "unused": [
+      {
+        "name": "React",
+        "importText": "import React from 'react';",
+        "line": 1
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Justi\\Downloads\\Alpha\\Artisan\\skill-planner\\src\\components\\atlas\\atlas-browser.tsx",
+    "unused": [
+      {
+        "name": "type ResourceCategory",
+        "importText": "import {\n  RESOURCE_CATEGORIES,\n  RESOURCE_CATEGORY_LABELS,\n  RESOURCE_CATEGORY_COLORS,\n  PQRV_TIER_COLORS,\n  pqrvTier,\n  type ResourceCategory,\n  type ResourceStat,\n} from '@/types/atlas';",
+        "line": 12
+      },
+      {
+        "name": "type ResourceStat",
+        "importText": "import {\n  RESOURCE_CATEGORIES,\n  RESOURCE_CATEGORY_LABELS,\n  RESOURCE_CATEGORY_COLORS,\n  PQRV_TIER_COLORS,\n  pqrvTier,\n  type ResourceCategory,\n  type ResourceStat,\n} from '@/types/atlas';",
+        "line": 12
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Justi\\Downloads\\Alpha\\Artisan\\skill-planner\\src\\components\\atlas\\reading-form.tsx",
+    "unused": [
+      {
+        "name": "type ResourceCategory",
+        "importText": "import {\n  RESOURCE_CATEGORIES,\n  RESOURCE_CATEGORY_LABELS,\n  clampPQRV,\n  type ResourceCategory,\n} from '@/types/atlas';",
+        "line": 14
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Justi\\Downloads\\Alpha\\Artisan\\skill-planner\\src\\components\\building\\viewport\\floor-plane.tsx",
+    "unused": [
+      {
+        "name": "/* useMemo */",
+        "importText": "import { /* useMemo */ } from 'react';",
+        "line": 3
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Justi\\Downloads\\Alpha\\Artisan\\skill-planner\\src\\components\\market\\market-browser.tsx",
+    "unused": [
+      {
+        "name": "type MarketCategory",
+        "importText": "import {\n  MARKET_CATEGORIES,\n  MARKET_CATEGORY_LABELS,\n  MARKET_SIDE_COLORS,\n  MARKET_SIDE_LABELS,\n  formatCredits,\n  type MarketCategory,\n  type MarketPriceStat,\n  type MarketSide,\n} from '@/types/market';",
+        "line": 14
+      },
+      {
+        "name": "type MarketPriceStat",
+        "importText": "import {\n  MARKET_CATEGORIES,\n  MARKET_CATEGORY_LABELS,\n  MARKET_SIDE_COLORS,\n  MARKET_SIDE_LABELS,\n  formatCredits,\n  type MarketCategory,\n  type MarketPriceStat,\n  type MarketSide,\n} from '@/types/market';",
+        "line": 14
+      },
+      {
+        "name": "type MarketSide",
+        "importText": "import {\n  MARKET_CATEGORIES,\n  MARKET_CATEGORY_LABELS,\n  MARKET_SIDE_COLORS,\n  MARKET_SIDE_LABELS,\n  formatCredits,\n  type MarketCategory,\n  type MarketPriceStat,\n  type MarketSide,\n} from '@/types/market';",
+        "line": 14
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Justi\\Downloads\\Alpha\\Artisan\\skill-planner\\src\\components\\market\\price-report-form.tsx",
+    "unused": [
+      {
+        "name": "type MarketCategory",
+        "importText": "import {\n  MARKET_CATEGORIES,\n  MARKET_CATEGORY_LABELS,\n  type MarketCategory,\n  type MarketSide,\n} from '@/types/market';",
+        "line": 12
+      },
+      {
+        "name": "type MarketSide",
+        "importText": "import {\n  MARKET_CATEGORIES,\n  MARKET_CATEGORY_LABELS,\n  type MarketCategory,\n  type MarketSide,\n} from '@/types/market';",
+        "line": 12
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Justi\\Downloads\\Alpha\\Artisan\\skill-planner\\src\\components\\ui\\badge.tsx",
+    "unused": [
+      {
+        "name": "type HTMLAttributes",
+        "importText": "import { type HTMLAttributes } from 'react';",
+        "line": 10
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Justi\\Downloads\\Alpha\\Artisan\\skill-planner\\src\\components\\ui\\panel.tsx",
+    "unused": [
+      {
+        "name": "type HTMLAttributes",
+        "importText": "import { type HTMLAttributes } from 'react';",
+        "line": 10
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Justi\\Downloads\\Alpha\\Artisan\\skill-planner\\src\\components\\ui\\planet-select.tsx",
+    "unused": [
+      {
+        "name": "type Planet",
+        "importText": "import { getConfirmedPlanets, BIOME_COLORS, type Planet } from '@/data/shared/planets';",
+        "line": 9
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Justi\\Downloads\\Alpha\\Artisan\\skill-planner\\src\\data\\dispatch\\index.ts",
+    "unused": [
+      {
+        "name": "post",
+        "importText": "import { post as preAlphaStatusQ1 } from './posts/pre-alpha-status-q1';",
+        "line": 18
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Justi\\Downloads\\Alpha\\Artisan\\skill-planner\\src\\data\\dispatch\\merged.ts",
+    "unused": [
+      {
+        "name": "getAllPosts",
+        "importText": "import { getAllPosts as getStaticPosts, getPostBySlug as getStaticPostBySlug } from './index';",
+        "line": 11
+      },
+      {
+        "name": "getPostBySlug",
+        "importText": "import { getAllPosts as getStaticPosts, getPostBySlug as getStaticPostBySlug } from './index';",
+        "line": 11
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Justi\\Downloads\\Alpha\\Artisan\\skill-planner\\src\\lib\\atlas\\actions.ts",
+    "unused": [
+      {
+        "name": "type SubmitReadingInput",
+        "importText": "import { clampPQRV, type SubmitReadingInput } from '@/types/atlas';",
+        "line": 14
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Justi\\Downloads\\Alpha\\Artisan\\skill-planner\\src\\lib\\supabase\\proxy.ts",
+    "unused": [
+      {
+        "name": "type NextRequest",
+        "importText": "import { NextResponse, type NextRequest } from 'next/server';",
+        "line": 14
+      }
+    ]
+  }
+]

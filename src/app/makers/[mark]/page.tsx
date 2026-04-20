@@ -47,6 +47,23 @@ export default async function MakerDetailPage({ params }: PageProps) {
   return (
     <div className="flex flex-col min-h-dvh">
       <NavHeader />
+      {/* Structured data for maker profile */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Person',
+            name: maker.display_name,
+            url: `https://kodaxa.dev/makers/${encodeURIComponent(maker.maker_mark ?? maker.in_game_name)}`,
+            description: maker.bio ?? undefined,
+            affiliation: maker.maker_mark ? { '@type': 'Organization', name: maker.maker_mark } : undefined,
+            aggregateRating: maker.total_reviews
+              ? { '@type': 'AggregateRating', ratingValue: Number(maker.average_rating.toFixed(1)), reviewCount: maker.total_reviews }
+              : undefined,
+          }),
+        }}
+      />
 
       {/* Hero header */}
       <header className="border-b border-slate-800 bg-slate-900/40">

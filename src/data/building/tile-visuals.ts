@@ -1,8 +1,4 @@
-import { getBlockMap } from './blocks';
-import { getFabricatorMap } from './tiles';
-import { getRoofingMap } from './tiles-roofing';
-import { getAccessMap } from './tiles-access';
-import { getPaverMap } from './paver';
+// no-op imports removed — visual profile is computed heuristically from tileId
 
 export type GeometryType =
   | 'cube'

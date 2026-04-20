@@ -61,7 +61,6 @@ export function BuildingToolbar({
   onRotate,
   tileCount = 0,
 }: BuildingToolbarProps) {
-  const capPct     = tileCount / TILE_CAP;
   const atWarning  = tileCount >= TILE_CAP_WARNING;
   const atCap      = tileCount >= TILE_CAP;
 

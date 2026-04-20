@@ -8,7 +8,26 @@
  */
 
 import { Suspense } from 'react';
+import type { Metadata } from 'next';
 import { PlannerShell } from '@/components/planner/planner-shell';
+
+export const metadata: Metadata = {
+  title: 'Stars Reach skill planner — Kodaxa Studios',
+  description:
+    'Skill planner for Stars Reach. Workforce Intelligence System for planning multi-profession skill builds and progression.',
+  keywords: [
+    'Stars Reach skill planner',
+    'skill planner',
+    'Workforce Intelligence System',
+    'kodaxa',
+    'build planner',
+  ],
+  openGraph: {
+    title: 'Stars Reach skill planner — Kodaxa Studios',
+    description:
+      'Plan multi-profession skill builds for Stars Reach with Kodaxa Studios — Workforce Intelligence System.',
+  },
+};
 
 /** Skeleton fallback — mirrors PlannerShell layout while search params resolve */
 function PlannerFallback() {

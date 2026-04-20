@@ -25,7 +25,7 @@ import { SkillDetailPanel } from '@/components/planner/skill-detail-panel';
 import { ToolSelectModal } from '@/components/planner/tool-select-modal';
 import { SavedBuildsPanel } from '@/components/planner/saved-builds-panel';
 import { OnboardingHints } from '@/components/planner/onboarding-hints';
-import { Tooltip } from '@/components/ui/tooltip';
+// Tooltip available if needed; currently unused
 import { useBuildState } from '@/hooks/use-build-state';
 import { useSavedBuilds } from '@/hooks/use-saved-builds';
 import { encodeBuild, decodeBuild } from '@/lib/build-encoder';

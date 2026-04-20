@@ -57,17 +57,17 @@ function processFile(filePath) {
 
   if (changed > 0) {
     writeFileSync(filePath, JSON.stringify(data, null, 2) + '\n', 'utf8');
-    console.log(`  ${data.id}: ${changed} node(s) updated`);
+    // progress: node(s) updated
   } else {
-    console.log(`  ${data.id}: no OCR patterns found`);
+    // no OCR patterns found for this file
   }
 }
 
 const files = readdirSync(PROFESSIONS_DIR).filter((f) => f.endsWith('.json'));
-console.log(`Processing ${files.length} profession files...\n`);
+// Processing <files.length> profession files
 
 for (const file of files) {
   processFile(join(PROFESSIONS_DIR, file));
 }
 
-console.log('\nDone. Verify the description fields look correct before committing.');
+// Done. Verify the description fields look correct before committing.

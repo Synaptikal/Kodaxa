@@ -2,9 +2,8 @@
 
 import { useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
-import type { CorpSupplyRequest, CorpRole, CorpSupplyPledge } from '@/types/corp';
-import { ROLE_COLORS, ROLE_LABELS } from '@/types/corp';
-import { PlusCircle, Search, PackageOpen, Tag, MapPin, Calendar, Clock, CheckCircle2, X } from 'lucide-react';
+import type { CorpSupplyRequest, CorpRole } from '@/types/corp';
+import { PlusCircle, PackageOpen, Tag, MapPin, Clock, CheckCircle2, X } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { useRouter } from 'next/navigation';
 import { getAllItems } from '@/data/items/index';

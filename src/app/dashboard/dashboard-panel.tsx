@@ -18,11 +18,11 @@ import { KlaatuFlowChart } from '@/components/dashboard/klaatu-flow-chart';
 export default function DashboardPanel() {
   const { 
     sessions, hydrated: sessionsHydrated, addSession, deleteSession, 
-    totalDuration, totalKlaatuEarned, totalKlaatuSpent 
+    totalDuration
   } = useSessionLogs();
   
   const { 
-    entries: klaatuEntries, hydrated: klaatuHydrated, addEntry: addKlaatu, 
+    hydrated: klaatuHydrated, addEntry: addKlaatu, 
     balance, income, expenses 
   } = useKlaatuLedger();
   

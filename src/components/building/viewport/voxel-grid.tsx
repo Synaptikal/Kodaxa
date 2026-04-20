@@ -2,7 +2,6 @@
 
 import { useMemo, useRef, useEffect } from 'react';
 import * as THREE from 'three';
-import { useThree } from '@react-three/fiber';
 import type { PlacedCell } from '@/types/building';
 import { getTileMap } from '@/data/building';
 import { getTileVisualProfile, GeometryType, MaterialCategory } from '@/data/building/tile-visuals';

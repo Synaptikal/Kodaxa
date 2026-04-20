@@ -10,7 +10,7 @@
 import type { Metadata } from 'next';
 import { NavHeader } from '@/components/ui/nav-header';
 import { RecipesBrowser } from '@/components/recipes/recipes-browser';
-import { getAllRecipes, getAllStations, getRecipeMap } from '@/data/crafting/index';
+import { getAllRecipes, getAllStations } from '@/data/crafting/index';
 
 export const metadata: Metadata = {
   title: 'Recipe Database — Kodaxa Studios',

@@ -33,7 +33,7 @@ export async function updateSession(request: NextRequest) {
           supabaseResponse = NextResponse.next({ request });
           // 3. Set on the response so the browser stores the new cookies
           cookiesToSet.forEach(({ name, value, options }) =>
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+             
             supabaseResponse.cookies.set(name, value, options as any),
           );
         },

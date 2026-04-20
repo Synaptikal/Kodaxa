@@ -9,7 +9,7 @@
 
 'use client';
 
-import { useEffect, useCallback } from 'react';
+import { useEffect } from 'react';
 import type { SkillNode } from '@/types/skill-tree';
 import type { SkillNodeState } from '@/types/skill-tree';
 import type { Build } from '@/types/build';

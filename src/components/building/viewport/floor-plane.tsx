@@ -1,8 +1,5 @@
 'use client';
 
-import * as THREE from 'three';
-import { useMemo } from 'react';
-import type { BuildingState } from '@/types/building';
 
 interface FloorPlaneProps {
   claimX: number;

@@ -79,7 +79,7 @@ export function BootSequence() {
       window.removeEventListener('keydown', skip);
       window.removeEventListener('click',   skip);
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+   
   }, []);
 
   if (done || !visible) return null;

@@ -4,12 +4,11 @@
  * One concern: single import point for all tile/block data.
  */
 
-import { INSTAFORMER_BLOCKS, getBlockMap } from './blocks';
-import { FABRICATOR_TILES, getFabricatorMap } from './tiles';
-import { ROOFING_TILES, getRoofingMap } from './tiles-roofing';
-import { ACCESS_TILES, getAccessMap } from './tiles-access';
-import { PAVER_TILES, getPaverMap } from './paver';
-import { BUILDING_RESOURCES, getResourceMap } from './materials';
+import { INSTAFORMER_BLOCKS } from './blocks';
+import { FABRICATOR_TILES } from './tiles';
+import { ROOFING_TILES } from './tiles-roofing';
+import { ACCESS_TILES } from './tiles-access';
+import { PAVER_TILES } from './paver';
 import type { TileDef } from '@/types/building';
 
 export { TILE_CAP, TILE_CAP_WARNING, LIGHT_CAP, LIGHT_CAP_WARNING } from './blocks';

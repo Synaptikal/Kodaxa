@@ -47,11 +47,60 @@ export default async function CrafterProfilePage({ params }: PageProps) {
   const canReview    = !!user && !isOwn && !hasReviewed;
   const canCommission = !!user && !isOwn && profile.commission_status !== 'closed';
 
+  const ld = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: profile.display_name,
+    url: `https://kodaxa.dev/directory/${encodeURIComponent(profile.in_game_name)}`,
+    description: profile.bio ?? undefined,
+    jobTitle: profile.role ?? undefined,
+    affiliation: profile.maker_mark ? { '@type': 'Organization', name: profile.maker_mark } : undefined,
+    address: profile.home_planet ? { '@type': 'PostalAddress', addressLocality: profile.home_planet } : undefined,
+    aggregateRating:
+      profile.total_reviews > 0
+        ? {
+            '@type': 'AggregateRating',
+            ratingValue: Number(profile.average_rating.toFixed(1)),
+            reviewCount: profile.total_reviews,
+          }
+        : undefined,
+  } as const;
+
+  const breadcrumbLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://kodaxa.dev' },
+      { '@type': 'ListItem', position: 2, name: 'Commerce Registry', item: 'https://kodaxa.dev/directory' },
+      { '@type': 'ListItem', position: 3, name: profile.in_game_name, item: `https://kodaxa.dev/directory/${encodeURIComponent(profile.in_game_name)}` },
+    ],
+  } as const;
+
+  const reviewsLd = profile.reviews && profile.reviews.length > 0
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        itemListElement: profile.reviews.map((r, i) => ({
+          '@type': 'Review',
+          author: { '@type': 'Person', name: r.reviewer.display_name },
+          reviewBody: r.comment ?? undefined,
+          reviewRating: { '@type': 'Rating', ratingValue: r.rating },
+          datePublished: r.created_at,
+        })),
+      }
+    : null;
+
   return (
     <div className="min-h-screen bg-sr-bg text-slate-100">
       <NavHeader />
 
       <main className="mx-auto max-w-4xl px-4 py-8 space-y-4">
+
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
+        {reviewsLd && (
+          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewsLd) }} />
+        )}
 
         {/* Breadcrumb nav */}
         <div className="flex items-center justify-between">

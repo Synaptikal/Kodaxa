@@ -58,11 +58,36 @@ export default async function DispatchPostPage({ params }: PageProps) {
 
   const { prev, next } = await getAdjacentPostsMerged(slug);
 
+  const ld = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.title,
+    description: post.summary,
+    author: { '@type': 'Person', name: post.author },
+    datePublished: post.published_at,
+    dateModified: post.updated_at ?? post.published_at,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `https://kodaxa.dev/dispatch/${post.slug}` },
+    // No dedicated social image field on DispatchPost type; omit if none
+    keywords: post.tags?.join(', '),
+  } as const;
+
+  const breadcrumbLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://kodaxa.dev' },
+      { '@type': 'ListItem', position: 2, name: 'Dispatch', item: 'https://kodaxa.dev/dispatch' },
+      { '@type': 'ListItem', position: 3, name: post.title, item: `https://kodaxa.dev/dispatch/${post.slug}` },
+    ],
+  } as const;
+
   return (
     <div className="flex flex-col min-h-dvh">
       <NavHeader />
 
       <main className="flex-1 max-w-3xl mx-auto w-full px-4 py-8 space-y-6">
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
         {/* Breadcrumb */}
         <div className="flex items-center gap-2 text-xs font-mono text-slate-500">
           <Link href="/dispatch" className="hover:text-cyan-400 transition-colors">

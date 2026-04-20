@@ -1,0 +1,214 @@
+{
+  "errors": 14,
+  "warnings": 3,
+  "problems": 17,
+  "files": [
+    {
+      "file": "C:\\Users\\Justi\\Downloads\\Alpha\\Artisan\\skill-planner\\src\\components\\building\\building-shell.tsx",
+      "errors": 0,
+      "warnings": 2,
+      "messages": [
+        {
+          "ruleId": "react-hooks/exhaustive-deps",
+          "message": "React Hook useEffect has a missing dependency: 'hook'. Either include it or remove the dependency array.",
+          "line": 51,
+          "column": 6
+        },
+        {
+          "ruleId": "react-hooks/exhaustive-deps",
+          "message": "React Hook useEffect has missing dependencies: 'hook.state' and 'searchParams.size'. Either include them or remove the dependency array.",
+          "line": 60,
+          "column": 6
+        }
+      ]
+    },
+    {
+      "file": "C:\\Users\\Justi\\Downloads\\Alpha\\Artisan\\skill-planner\\src\\components\\crafting\\chain-view.tsx",
+      "errors": 1,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "@typescript-eslint/no-unused-vars",
+          "message": "'resourceMap' is defined but never used. Allowed unused args must match /^_/u.",
+          "line": 109,
+          "column": 3
+        }
+      ]
+    },
+    {
+      "file": "C:\\Users\\Justi\\Downloads\\Alpha\\Artisan\\skill-planner\\src\\components\\crafting\\stat-optimizer-panel.tsx",
+      "errors": 1,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "@typescript-eslint/no-unused-vars",
+          "message": "'setPlanetNames' is assigned a value but never used.",
+          "line": 49,
+          "column": 23
+        }
+      ]
+    },
+    {
+      "file": "C:\\Users\\Justi\\Downloads\\Alpha\\Artisan\\skill-planner\\src\\components\\planner\\planner-shell.tsx",
+      "errors": 0,
+      "warnings": 1,
+      "messages": [
+        {
+          "ruleId": "react-hooks/exhaustive-deps",
+          "message": "React Hook useMemo has a missing dependency: 'searchParams'. Either include it or remove the dependency array.",
+          "line": 80,
+          "column": 6
+        }
+      ]
+    },
+    {
+      "file": "C:\\Users\\Justi\\Downloads\\Alpha\\Artisan\\skill-planner\\src\\components\\sidebar\\stat-allocator.tsx",
+      "errors": 1,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "@typescript-eslint/no-unused-vars",
+          "message": "'k' is defined but never used. Allowed unused args must match /^_/u.",
+          "line": 64,
+          "column": 23
+        }
+      ]
+    },
+    {
+      "file": "C:\\Users\\Justi\\Downloads\\Alpha\\Artisan\\skill-planner\\src\\components\\tree\\skill-node.tsx",
+      "errors": 1,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "@typescript-eslint/no-unused-vars",
+          "message": "'id' is defined but never used. Allowed unused args must match /^_/u.",
+          "line": 56,
+          "column": 37
+        }
+      ]
+    },
+    {
+      "file": "C:\\Users\\Justi\\Downloads\\Alpha\\Artisan\\skill-planner\\src\\components\\ui\\command-console.tsx",
+      "errors": 1,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "@typescript-eslint/no-unused-vars",
+          "message": "'historyIdx' is assigned a value but never used.",
+          "line": 76,
+          "column": 10
+        }
+      ]
+    },
+    {
+      "file": "C:\\Users\\Justi\\Downloads\\Alpha\\Artisan\\skill-planner\\src\\data\\building\\tile-visuals.ts",
+      "errors": 1,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "@typescript-eslint/no-unused-vars",
+          "message": "'isWood' is assigned a value but never used.",
+          "line": 72,
+          "column": 11
+        }
+      ]
+    },
+    {
+      "file": "C:\\Users\\Justi\\Downloads\\Alpha\\Artisan\\skill-planner\\src\\hooks\\use-build-state.ts",
+      "errors": 1,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "@typescript-eslint/no-unused-vars",
+          "message": "'ToolSlot' is defined but never used.",
+          "line": 13,
+          "column": 22
+        }
+      ]
+    },
+    {
+      "file": "C:\\Users\\Justi\\Downloads\\Alpha\\Artisan\\skill-planner\\src\\hooks\\use-dashboard.ts",
+      "errors": 1,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "@typescript-eslint/no-unused-vars",
+          "message": "'ActivityEntry' is defined but never used.",
+          "line": 19,
+          "column": 3
+        }
+      ]
+    },
+    {
+      "file": "C:\\Users\\Justi\\Downloads\\Alpha\\Artisan\\skill-planner\\src\\hooks\\use-trade.ts",
+      "errors": 1,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "@typescript-eslint/no-unused-vars",
+          "message": "'TradeType' is defined but never used.",
+          "line": 17,
+          "column": 3
+        }
+      ]
+    },
+    {
+      "file": "C:\\Users\\Justi\\Downloads\\Alpha\\Artisan\\skill-planner\\src\\lib\\building\\building-encoder.ts",
+      "errors": 1,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "@typescript-eslint/no-unused-vars",
+          "message": "'PlacedCell' is defined but never used.",
+          "line": 7,
+          "column": 30
+        }
+      ]
+    },
+    {
+      "file": "C:\\Users\\Justi\\Downloads\\Alpha\\Artisan\\skill-planner\\src\\lib\\crafting\\chain-resolver.ts",
+      "errors": 1,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "@typescript-eslint/no-unused-vars",
+          "message": "'RecipeIngredient' is defined but never used.",
+          "line": 14,
+          "column": 23
+        }
+      ]
+    },
+    {
+      "file": "C:\\Users\\Justi\\Downloads\\Alpha\\Artisan\\skill-planner\\src\\lib\\dispatch\\actions.ts",
+      "errors": 1,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "@typescript-eslint/no-unused-vars",
+          "message": "'DispatchPost' is defined but never used.",
+          "line": 13,
+          "column": 15
+        }
+      ]
+    },
+    {
+      "file": "C:\\Users\\Justi\\Downloads\\Alpha\\Artisan\\skill-planner\\src\\lib\\flow-converter.ts",
+      "errors": 2,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "@typescript-eslint/no-unused-vars",
+          "message": "'SkillEdge' is defined but never used.",
+          "line": 9,
+          "column": 38
+        },
+        {
+          "ruleId": "@typescript-eslint/no-unused-vars",
+          "message": "'allNodes' is defined but never used. Allowed unused args must match /^_/u.",
+          "line": 17,
+          "column": 3
+        }
+      ]
+    }
+  ]
+}

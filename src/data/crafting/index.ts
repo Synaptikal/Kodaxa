@@ -7,8 +7,8 @@
  */
 
 import type { Recipe, Resource, CraftingStation } from '@/types/crafting';
-import { CRAFTING_STATIONS, getStationMap } from './stations';
-import { RESOURCES, getResourceMap } from './resources';
+import { CRAFTING_STATIONS } from './stations';
+import { RESOURCES } from './resources';
 import { BLOCK_RECIPES } from './recipes-blocks';
 import { DECOR_RECIPES } from './recipes-decor';
 import { REFINING_RECIPES } from './recipes-refining';
