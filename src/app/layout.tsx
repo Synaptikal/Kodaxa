@@ -27,6 +27,7 @@ import { CommandConsole } from '@/components/ui/command-console';
 import { DeviceProvider } from '@/components/providers/device-provider';
 import { getDeviceType } from '@/lib/device';
 import { SkipNav } from '@/components/ui/skip-nav';
+import { Analytics } from '@vercel/analytics/next';
 
 export const metadata: Metadata = {
   title: {
@@ -83,6 +84,7 @@ export default async function RootLayout({
           <main id="main-content">
             {children}
           </main>
+          <Analytics />
         </DeviceProvider>
       </body>
     </html>
