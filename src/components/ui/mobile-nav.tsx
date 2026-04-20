@@ -84,6 +84,7 @@ const NAV_GROUPS: NavGroup[] = [
     items: [
       { href: '/corp/hq',             label: 'Command Center',   status: 'new' },
       { href: '/corp/hq/dispatch',    label: 'Dispatch Editor',  status: 'new' },
+      { href: '/admin/feedback',      label: 'Feedback Review',  status: 'new' },
       { href: '/corp/hq/commissions', label: 'Commission Board', status: 'new' },
       { href: '/corp/join',           label: 'Apply to Kodaxa'               },
     ],

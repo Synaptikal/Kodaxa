@@ -120,6 +120,7 @@ const NAV_GROUPS: NavGroup[] = [
       { href: '/corp/hq/skills',      label: 'Skill Directory',   status: 'new' as ItemStatus },
       { href: '/corp/hq/dispatch',    label: 'Dispatch Editor',   status: 'new' as ItemStatus },
       { href: '/corp/hq/commissions', label: 'Commission Board',  status: 'new' as ItemStatus },
+          { href: '/admin/feedback',      label: 'Feedback Review',   status: 'new' as ItemStatus },
       { href: '/corp/join',           label: 'Apply to Kodaxa'                },
     ],
   },
