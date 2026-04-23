@@ -6,8 +6,30 @@
  * Custom theme tokens are defined via @theme to extend Tailwind's defaults.
  * All brand colors and spacing are set here so components stay free of magic values.
  *
- * Kodaxa design system: dark corporate sci-fi — terminal UI meets enterprise dashboard.
- * Primary accent: cyan (#00d4ff-adjacent). Success/live: teal. Warning/beta: amber.
+ * ── Kodaxa design system: dark corporate sci-fi ───────────────────────
+ * In-universe identity: Kodaxa Studios is a multi-planetary data science
+ * and software firm operating in the Stars Reach galaxy (TransPlanetary
+ * League framework). The terminal aesthetic is intentional — this is what
+ * actual corporate software looks like inside the universe.
+ *
+ * ── Two-color accent rule ─────────────────────────────────────────────
+ * TWO distinct accent colors are in use. This is intentional and semantic:
+ *
+ *   --color-accent (#00d4c8, teal)
+ *     = Kodaxa corporate identity. The firm's own UI chrome.
+ *       Use for: nav borders, section dividers, button outlines, FUI brackets,
+ *       footer wordmark, section label dashes. "This is a Kodaxa interface."
+ *
+ *   --color-state-available (#22d3ee, cyan)
+ *     = Live data / active signal. Information in motion.
+ *       Use for: available skill nodes, LIVE badges, active form focus rings,
+ *       data feed indicators. "This resource/skill/system is currently live."
+ *
+ *   --color-brand-amber (#f59e0b)
+ *     = Status only — IN BUILD, WARNING, ADVISORY badges. Never decorative.
+ *
+ * Do NOT merge these two accents. Do NOT use either for decorative purposes
+ * outside their semantic domain. See CLAUDE.md for full token contract.
  */
 
 @import "tailwindcss";

@@ -3,22 +3,14 @@
  * T1-06 — Two-color headline system.
  * One concern: white title + teal italic subhead pattern for page headers.
  *
- * Inspired by No Man's Sky (white title + orange italic subhead).
- * Apply to all major page headers and section openers.
- *
- * Mixed-weight rule: in longer titles, 1-2 key words may use teal italic.
- * Use the `accentWords` prop to highlight specific words in the title.
- *
- * Usage:
- *   <TwoColorHeading title="DATA TERMINAL" sub="266 items indexed" />
- *   <TwoColorHeading title="KODAXA STUDIOS" sub="Multi-planetary data science" size="xl" />
+ * Subhead uses accent (teal) = Kodaxa corporate identity color.
+ * Applies to all major page headers and division openers.
  */
 
 interface TwoColorHeadingProps {
   title: string;
   sub?: string;
   size?: 'sm' | 'md' | 'lg' | 'xl';
-  /** Tag to render (default h1 for page headers, h2 for sections) */
   as?: 'h1' | 'h2' | 'h3';
   className?: string;
 }
@@ -45,7 +37,7 @@ export function TwoColorHeading({
         {title}
       </Tag>
       {sub && (
-        <p className="font-mono text-sm italic text-[#00d4c8]">{sub}</p>
+        <p className="font-mono text-sm italic text-accent">{sub}</p>
       )}
     </div>
   );

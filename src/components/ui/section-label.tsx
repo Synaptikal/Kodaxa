@@ -41,14 +41,14 @@ export function FlankedLabel({ text, sub, className = '' }: FlankedLabelProps) {
   return (
     <div className={`flex flex-col items-center text-center mb-8 ${className}`}>
       <div className="flex items-center gap-4 w-full">
-        <div className="flex-1 h-px bg-[#00d4c8]/25" />
-        <span className="font-mono text-xs tracking-[0.25em] uppercase text-[#00d4c8]/70 whitespace-nowrap">
+        <div className="flex-1 h-px bg-accent/25" />
+        <span className="font-mono text-xs tracking-[0.25em] uppercase text-accent/70 whitespace-nowrap">
           {text}
         </span>
-        <div className="flex-1 h-px bg-[#00d4c8]/25" />
+        <div className="flex-1 h-px bg-accent/25" />
       </div>
       {sub && (
-        <p className="font-mono text-xs text-[#64748b] tracking-[0.15em] mt-1 italic">{sub}</p>
+        <p className="font-mono text-xs text-sr-muted tracking-[0.15em] mt-1 italic">{sub}</p>
       )}
     </div>
   );

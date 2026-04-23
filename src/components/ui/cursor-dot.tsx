@@ -3,11 +3,8 @@
  * T2-04 — Custom teal cursor dot with smooth lag follow.
  * One concern: ambient cursor enhancement for desktop users only.
  *
- * Inspired by Destiny 2 / No Man's Sky (small colored circle following cursor).
- * Only renders on non-touch devices (md+ with no touch points).
- * mix-blend-screen prevents the dot from obscuring text.
- *
- * Placement: layout.tsx, rendered once at root level.
+ * Uses accent (teal) = Kodaxa corporate identity color on cursor.
+ * Only renders on non-touch devices.
  */
 
 'use client';
@@ -21,7 +18,6 @@ export function CursorDot() {
   const [enabled, setEnabled] = useState(false);
 
   useEffect(() => {
-    // Disable on touch devices
     if (navigator.maxTouchPoints > 0) return;
     setEnabled(true);
 
@@ -32,7 +28,6 @@ export function CursorDot() {
 
     let animId: number;
     const animate = () => {
-      // Smooth lag follow — lerp at 12% each frame
       actual.current.x += (pos.current.x - actual.current.x) * 0.12;
       actual.current.y += (pos.current.y - actual.current.y) * 0.12;
       if (dotRef.current) {
@@ -53,7 +48,7 @@ export function CursorDot() {
   return (
     <div
       ref={dotRef}
-      className="fixed top-0 left-0 w-2 h-2 rounded-full bg-[#00d4c8]/60 pointer-events-none z-[9999] mix-blend-screen"
+      className="fixed top-0 left-0 w-2 h-2 rounded-full bg-accent/60 pointer-events-none z-[9999] mix-blend-screen"
       aria-hidden="true"
     />
   );

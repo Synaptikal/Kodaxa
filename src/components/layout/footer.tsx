@@ -3,11 +3,10 @@
  * T1-10 — Upgraded site footer.
  * One concern: single-row minimal footer with star-glow base.
  *
- * Inspired by No Man's Sky (single-row minimal) + Lando Norris (star-glow base).
- * Replaces the previous 2-column footer.
- *
- * Radial gradient creates a subtle teal ambient glow rising from the base —
- * connects visually to the star field above it.
+ * Radial gradient creates a subtle teal ambient glow rising from the base.
+ * Border and wordmark use accent (teal) = Kodaxa corporate chrome.
+ * Body text uses sr-muted token (WCAG AA compliant).
+ * Background uses sr-bg token for full consistency.
  */
 
 import Link from 'next/link';
@@ -22,7 +21,7 @@ const NAV_LINKS: { label: string; href: string }[] = [
 export function Footer() {
   return (
     <footer
-      className="border-t border-[#00d4c8]/20 mt-16 bg-[#0a0d12]"
+      className="relative z-10 border-t border-accent/20 mt-16 bg-sr-bg"
       style={{
         backgroundImage:
           'radial-gradient(ellipse at 50% 100%, rgba(0,212,200,0.04) 0%, transparent 60%)',
@@ -36,7 +35,7 @@ export function Footer() {
             <Link
               key={label}
               href={href}
-              className="font-mono text-xs tracking-[0.2em] uppercase text-[#64748b] hover:text-[#00d4c8] transition-colors duration-200"
+              className="font-mono text-xs tracking-[0.2em] uppercase text-sr-muted hover:text-accent transition-colors duration-200"
             >
               {label}
             </Link>
@@ -44,19 +43,19 @@ export function Footer() {
         </nav>
 
         {/* Center — wordmark */}
-        <span className="font-mono text-xs tracking-[0.3em] uppercase text-[#00d4c8]/50 select-none">
+        <span className="font-mono text-xs tracking-[0.3em] uppercase text-accent/50 select-none">
           KODAXA STUDIOS
         </span>
 
         {/* Right — attribution */}
-        <p className="font-mono text-xs text-[#64748b]/50 tracking-[0.1em] text-center sm:text-right">
+        <p className="font-mono text-xs text-sr-muted/50 tracking-[0.1em] text-center sm:text-right">
           Unofficial fan project · Not affiliated with Playable Worlds
         </p>
       </div>
 
       {/* Legal row */}
-      <div className="border-t border-[#1a2535] py-3 text-center">
-        <span className="font-mono text-[10px] text-[#64748b]/40 tracking-[0.15em]">
+      <div className="border-t border-sr-border py-3 text-center">
+        <span className="font-mono text-[10px] text-sr-muted/40 tracking-[0.15em]">
           © KODAXA STUDIOS · ALPHA BUILD · {new Date().getFullYear()}
         </span>
       </div>
