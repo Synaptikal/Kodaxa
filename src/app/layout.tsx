@@ -27,6 +27,11 @@ import { CommandConsole } from '@/components/ui/command-console';
 import { DeviceProvider } from '@/components/providers/device-provider';
 import { getDeviceType } from '@/lib/device';
 import { SkipNav } from '@/components/ui/skip-nav';
+import { StarField } from '@/components/ui/star-field';
+import { CursorDot } from '@/components/ui/cursor-dot';
+import { PlaytestStatusWidget } from '@/components/ui/playtest-status-widget';
+import { FloatingCTA } from '@/components/ui/floating-cta';
+import { Footer } from '@/components/layout/footer';
 import { Analytics } from '@vercel/analytics/next';
 
 const CRAWLABLE_LINKS = [
@@ -110,13 +115,23 @@ export default async function RootLayout({
   return (
     <html lang="en" className={`dark ${inter.variable} ${jetbrainsMono.variable}`}>
       <body className="min-h-dvh bg-sr-bg text-sr-text antialiased">
+        {/* z-0: ambient star particle field — fixed, never scrolls */}
+        <StarField count={80} />
+        {/* z-[9999]: custom cursor dot — desktop only, touch-disabled internally */}
+        <CursorDot />
+        {/* Fixed overlay widgets — outside scroll container */}
+        <PlaytestStatusWidget />
+        <FloatingCTA />
+
         <DeviceProvider initialDevice={deviceType}>
           <SkipNav />
           <BootSequence />
           <CommandConsole />
-          <main id="main-content">
+          {/* relative z-10 ensures content renders above the star canvas */}
+          <main id="main-content" className="relative z-10">
             {children}
           </main>
+          <Footer />
           {/* WebApplication JSON-LD for overall site (server-rendered for crawlers) */}
           <script
             type="application/ld+json"

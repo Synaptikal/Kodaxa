@@ -27,10 +27,14 @@
   --color-sr-subtle:  #334155;   /* decorative/disabled only — not for readable copy */
 
   /* Brand accent tokens — singular values, no shade mixing */
-  --color-brand-amber:   #f59e0b;  /* league gold — primary accent */
-  --color-brand-cyan:    #22d3ee;  /* scanner blue — data accent */
+  --color-brand-amber:   #f59e0b;  /* status only — badges, warnings, IN BUILD */
+  --color-brand-cyan:    #00d4c8;  /* PRIMARY accent — the only design accent color */
   --color-brand-emerald: #34d399;  /* live systems — status online */
   --color-brand-fuchsia: #e879f9;  /* dispatch / comms accent */
+
+  /* Semantic shorthand aliases for new design system */
+  --color-accent:     #00d4c8;              /* = brand-cyan */
+  --color-accent-dim: rgba(0,212,200,0.15); /* teal at 15% for bg fills */
 
   /* Skill state accent colors */
   --color-state-locked: #475569;
@@ -51,6 +55,11 @@
   /* Font stack */
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* Tracking scale — codified for design consistency */
+  --tracking-label:   0.20em;  /* category labels, eyebrows, nav items */
+  --tracking-section: 0.15em;  /* section headers */
+  --tracking-stat:    0.05em;  /* number displays */
 }
 
 /* ── Base layer overrides ─────────────────────────────────────────── */
@@ -196,6 +205,12 @@ body::before {
   );
   pointer-events: none;
   z-index: 9999;
+}
+
+/* ── Cursor blink — dispatch category trailing underscore cursor ──── */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
 }
 
 /* ── Status dot pulse — for ● LIVE / ● ONLINE badges ─────────────── */

@@ -246,7 +246,7 @@ export function NavHeader() {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 flex flex-col bg-sr-surface border-b border-sr-border shrink-0">
+    <header className="sticky top-0 z-50 flex flex-col bg-sr-surface border-b border-[#00d4c8]/20 shrink-0">
       {/* Main nav row */}
       <div className="flex items-center justify-between px-4 py-2">
         <Link href="/" className="flex items-center gap-2 shrink-0">
