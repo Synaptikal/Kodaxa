@@ -80,7 +80,7 @@ export default async function CrafterProfilePage({ params }: PageProps) {
     ? {
         '@context': 'https://schema.org',
         '@type': 'ItemList',
-        itemListElement: profile.reviews.map((r, i) => ({
+        itemListElement: profile.reviews.map((r, _i) => ({
           '@type': 'Review',
           author: { '@type': 'Person', name: r.reviewer.display_name },
           reviewBody: r.comment ?? undefined,

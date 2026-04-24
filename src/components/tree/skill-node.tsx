@@ -53,7 +53,7 @@ const TIER_COLORS: Record<number, string> = {
   3: 'text-violet-400',
 };
 
-function SkillNodeComponent({ data, id }: NodeProps<SkillFlowNode>) {
+function SkillNodeComponent({ data }: NodeProps<SkillFlowNode>) {
   const {
     label,
     description,

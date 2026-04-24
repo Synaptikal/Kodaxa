@@ -10,7 +10,7 @@
 'use client';
 
 import { useState, useCallback, useMemo } from 'react';
-import type { Build, ToolSlot, StatAllocation } from '@/types/build';
+import type { Build, StatAllocation } from '@/types/build';
 import type { Profession, SkillNode, ProfessionSummary } from '@/types/skill-tree';
 import type { SkillFlowNode, SkillFlowEdge } from '@/types/flow-nodes';
 import { emptyBuild } from '@/lib/build-encoder';

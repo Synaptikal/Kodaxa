@@ -69,7 +69,6 @@ export function getTileVisualProfile(tileId: string): VisualProfile {
 
   // -- 4. Roofing
   if (tileId.startsWith('roof_')) {
-    const isWood   = tileId.includes('wood');
     const isMetal  = tileId.includes('metal');
     const material: MaterialCategory = isMetal ? 'metal' : 'matte';
     if (tileId.includes('_slope'))   return { geometry: 'roof_slope', material };

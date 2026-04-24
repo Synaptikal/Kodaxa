@@ -10,7 +10,7 @@
 
 import { revalidatePath } from 'next/cache';
 import { createClient } from '@/lib/supabase/server';
-import type { DispatchPost, Block, DispatchCategory } from '@/types/dispatch';
+import type { Block, DispatchCategory } from '@/types/dispatch';
 
 interface ActionResult<T = void> {
   success: boolean;

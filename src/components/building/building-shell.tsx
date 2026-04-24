@@ -41,22 +41,28 @@ export function BuildingShell() {
     dismissStrip();
   }, [hook, dismissStrip]);
 
-  // On mount, load state from URL if present
+  // On mount, load state from URL if present.
+  // hook is intentionally excluded — it's a new reference each render and the
+  // isLoadedRef guard already prevents re-execution after the first run.
   useEffect(() => {
     if (!isLoadedRef.current && searchParams && searchParams.size > 0) {
       const decoded = decodeBuildingState(searchParams);
       hook.loadState(decoded);
       isLoadedRef.current = true;
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams]);
 
-  // Sync state back to URL when layout changes
+  // Sync state back to URL when layout changes.
+  // Deps are the specific state slices that affect the URL; hook.state and
+  // searchParams.size are read for guards only and excluded intentionally.
   useEffect(() => {
     if (!isLoadedRef.current && searchParams.size > 0) return;
     const newUrl = generateBuildingShareUrl(hook.state, window.location.origin);
     if (window.location.href !== newUrl) {
       window.history.replaceState(null, '', newUrl);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hook.state.cells, hook.state.name, hook.state.activeLayer, hook.state.claimX, hook.state.claimZ]);
 
   // Global hotkeys

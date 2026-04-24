@@ -77,7 +77,8 @@ export function PlannerShell() {
       return decoded;
     }
     return undefined;
-  }, []); // Only decode once on mount — intentional empty deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // Only decode once on mount — searchParams intentionally excluded
 
   const state = useBuildState({
     professions: ALL_PROFESSIONS,

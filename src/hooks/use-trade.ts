@@ -14,7 +14,6 @@ import type {
   TradeTransaction,
   PriceHistoryEntry,
   ListingStatus,
-  TradeType,
   PriceSource,
 } from '@/types/trade';
 import { calculateListingFee, KIOSK_MAX_LISTINGS, netProfitLoss } from '@/types/trade';

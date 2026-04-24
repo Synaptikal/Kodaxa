@@ -11,7 +11,7 @@
  * This is pure logic — no React, no side effects.
  */
 
-import type { Recipe, RecipeIngredient } from '@/types/crafting';
+import type { Recipe } from '@/types/crafting';
 
 /** A node in the crafting dependency tree */
 export interface ChainNode {

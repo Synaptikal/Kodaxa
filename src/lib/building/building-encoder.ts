@@ -4,7 +4,7 @@
  * One concern: enabling shareable URLs without a backend.
  */
 
-import type { BuildingState, PlacedCell, ClaimLayer } from '@/types/building';
+import type { BuildingState, ClaimLayer } from '@/types/building';
 
 const DEFAULT_LAYERS: ClaimLayer[] = [
   { index: -2, label: 'Basement 2', color: 'bg-stone-900' },

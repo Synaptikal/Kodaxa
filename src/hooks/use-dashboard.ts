@@ -16,7 +16,6 @@ import type {
   KlaatuEntry,
   KlaatuCategory,
   SkillProgress,
-  ActivityEntry,
 } from '@/types/dashboard';
 
 // ── Storage keys ────────────────────────────────────────────────────

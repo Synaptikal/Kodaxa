@@ -6,7 +6,7 @@
  * This is a pure function module — no React, no side effects.
  */
 
-import type { Profession, SkillNode, SkillEdge } from '@/types/skill-tree';
+import type { Profession, SkillNode } from '@/types/skill-tree';
 import type { SkillFlowNode, SkillFlowEdge, SkillNodeData } from '@/types/flow-nodes';
 import type { Build } from '@/types/build';
 
@@ -14,7 +14,7 @@ import type { Build } from '@/types/build';
 function resolveNodeState(
   node: SkillNode,
   build: Build,
-  allNodes: Map<string, SkillNode>,
+  _allNodes: Map<string, SkillNode>,
 ): SkillNodeData['state'] {
   // WIP nodes are always shown as WIP regardless of build
   if (!node.implemented) return 'wip';
