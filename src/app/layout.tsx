@@ -99,6 +99,14 @@ export const metadata: Metadata = {
     description:
       'Galaxy-scale data. Crafter-scale precision. Skill planner, crafting calc, and more for Stars Reach.',
     type: 'website',
+    images: [{ url: '/opengraph-image', width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Kodaxa Studios — Stars Reach Data & Tools',
+    description:
+      'Galaxy-scale data. Crafter-scale precision. Skill planner, crafting calc, and more for Stars Reach.',
+    images: ['/opengraph-image'],
   },
   icons: {
     icon: '/favicon.svg',
