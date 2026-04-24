@@ -105,6 +105,29 @@ export function useSavedBuilds(): SavedBuildsHook {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // Re-sync when the user logs in after the component is already mounted
+  useEffect(() => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      (event, session) => {
+        if (event === 'SIGNED_IN' && session?.user) {
+          userIdRef.current = session.user.id;
+          pullBuilds(supabase, session.user.id).then((remote) => {
+            if (remote.length === 0) return;
+            setSavedBuilds((current) => {
+              const merged = mergeBuilds(remote, current);
+              writeToStorage(merged);
+              return merged;
+            });
+          });
+        } else if (event === 'SIGNED_OUT') {
+          userIdRef.current = null;
+        }
+      },
+    );
+    return () => subscription.unsubscribe();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const saveBuild = useCallback((build: Build) => {
     setSavedBuilds((prev) => {
       // Replace existing save with same name, or prepend new
