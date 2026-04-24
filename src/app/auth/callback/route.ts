@@ -19,7 +19,9 @@ export async function GET(request: NextRequest) {
   const code       = searchParams.get('code');
   const token_hash = searchParams.get('token_hash');
   const type       = searchParams.get('type') as EmailOtpType | null;
-  const next       = searchParams.get('next') ?? '/directory/me';
+  const rawNext    = searchParams.get('next') ?? '';
+  // Only allow relative paths — block open-redirect via //evil.com or https://...
+  const next = rawNext.startsWith('/') && !rawNext.startsWith('//') ? rawNext : '/directory/me';
 
   const supabase = await createClient();
 

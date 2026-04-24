@@ -17,9 +17,11 @@ interface AuthResult {
 export async function signIn(formData: FormData): Promise<AuthResult> {
   const supabase = await createClient();
 
-  const email = String(formData.get('email') ?? '').trim();
+  const email    = String(formData.get('email')    ?? '').trim();
   const password = String(formData.get('password') ?? '');
-  const next = String(formData.get('next') ?? '/directory/me');
+  const rawNext  = String(formData.get('next')     ?? '');
+  // Only allow relative paths — block open-redirect via //evil.com or https://...
+  const next = rawNext.startsWith('/') && !rawNext.startsWith('//') ? rawNext : '/directory/me';
 
   if (!email || !password) {
     return { error: 'Email and password are required.' };
@@ -32,7 +34,7 @@ export async function signIn(formData: FormData): Promise<AuthResult> {
     if (error.message.toLowerCase().includes('invalid')) {
       return { error: 'Invalid email or password.' };
     }
-    return { error: error.message };
+    return { error: 'Sign in failed. Please try again.' };
   }
 
   revalidatePath('/', 'layout');
@@ -66,7 +68,7 @@ export async function signUp(formData: FormData): Promise<AuthResult> {
     if (error.message.toLowerCase().includes('already registered')) {
       return { error: 'An account with this email already exists. Try signing in.' };
     }
-    return { error: error.message };
+    return { error: 'Sign up failed. Please try again.' };
   }
 
   // Returns without error — UI shows "check your email" message

@@ -46,7 +46,7 @@ export async function submitCommission(formData: {
     .select('id')
     .single();
 
-  if (error) return { success: false, error: error.message };
+  if (error) return { success: false, error: 'Failed to submit commission.' };
 
   revalidatePath('/corp/hq/commissions');
   return { success: true, id: data.id };
@@ -58,6 +58,8 @@ export async function updateCommissionStatus(
   assigneeNotes?: string,
 ): Promise<{ success: boolean; error?: string }> {
   const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return { success: false, error: 'Not authenticated' };
 
   const update: Record<string, unknown> = { status };
   if (assigneeNotes !== undefined) update.assignee_notes = assigneeNotes;
@@ -67,7 +69,7 @@ export async function updateCommissionStatus(
     .update(update)
     .eq('id', id);
 
-  if (error) return { success: false, error: error.message };
+  if (error) return { success: false, error: 'Failed to update commission.' };
 
   revalidatePath('/corp/hq/commissions');
   return { success: true };
@@ -87,7 +89,7 @@ export async function cancelCommission(
     .eq('client_id', user.id)
     .eq('status', 'pending');
 
-  if (error) return { success: false, error: error.message };
+  if (error) return { success: false, error: 'Failed to cancel commission.' };
   revalidatePath('/corp/hq/commissions');
   return { success: true };
 }
@@ -104,11 +106,12 @@ export async function submitApplication(formData: {
 }): Promise<{ success: boolean; error?: string }> {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return { success: false, error: 'Not authenticated' };
 
   const { error } = await supabase
     .from('corp_applications')
     .insert({
-      applicant_id:   user?.id ?? null,
+      applicant_id:   user.id,
       in_game_name:   formData.inGameName,
       discord_handle: formData.discordHandle || null,
       track:          formData.track,
@@ -117,7 +120,7 @@ export async function submitApplication(formData: {
       availability:   formData.availability || null,
     });
 
-  if (error) return { success: false, error: error.message };
+  if (error) return { success: false, error: 'Failed to submit application.' };
   return { success: true };
 }
 
@@ -130,12 +133,23 @@ export async function reviewApplication(
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return { success: false, error: 'Not authenticated' };
 
+  // Verify reviewer is CEO or officer
+  const { data: me } = await supabase
+    .from('crafter_profiles')
+    .select('role')
+    .eq('id', user.id)
+    .single();
+
+  if (!me || !['ceo', 'officer'].includes(me.role)) {
+    return { success: false, error: 'Insufficient clearance' };
+  }
+
   const { error } = await supabase
     .from('corp_applications')
     .update({ status, review_notes: reviewNotes || null, reviewed_by: user.id })
     .eq('id', id);
 
-  if (error) return { success: false, error: error.message };
+  if (error) return { success: false, error: 'Failed to update application.' };
 
   revalidatePath('/corp/hq/admin');
   return { success: true };
@@ -170,7 +184,7 @@ export async function setMemberRole(
     .update({ role })
     .eq('id', profileId);
 
-  if (error) return { success: false, error: error.message };
+  if (error) return { success: false, error: 'Failed to update role.' };
 
   revalidatePath('/corp/hq/roster');
   revalidatePath('/corp/hq/admin');

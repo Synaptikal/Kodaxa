@@ -64,7 +64,7 @@ export async function upsertPortfolioItem(
     : supabase.from('maker_portfolio_items').insert(row).select('id').single();
 
   const { data, error } = await query;
-  if (error) return { success: false, error: error.message };
+  if (error) return { success: false, error: 'Failed to save portfolio item.' };
 
   revalidatePath('/makers');
   revalidatePath('/directory/me');
@@ -84,7 +84,7 @@ export async function deletePortfolioItem(
     .eq('id', id)
     .eq('crafter_id', user.id);
 
-  if (error) return { success: false, error: error.message };
+  if (error) return { success: false, error: 'Failed to delete portfolio item.' };
 
   revalidatePath('/makers');
   revalidatePath('/directory/me');

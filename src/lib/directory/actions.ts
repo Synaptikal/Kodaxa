@@ -53,7 +53,7 @@ export async function upsertCrafterProfile(
     if (error.code === '23505') {
       return { success: false, error: 'That in-game name is already taken.' };
     }
-    return { success: false, error: error.message };
+    return { success: false, error: 'Failed to save profile.' };
   }
 
   revalidatePath('/directory');
@@ -80,7 +80,7 @@ export async function addSpecialization(
     if (error.code === '23505') {
       return { success: false, error: 'You already have this profession listed.' };
     }
-    return { success: false, error: error.message };
+    return { success: false, error: 'Failed to add specialization.' };
   }
 
   revalidatePath('/directory');
@@ -102,7 +102,7 @@ export async function removeSpecialization(
     .eq('id', specializationId)
     .eq('crafter_id', user.id); // RLS + app-level guard
 
-  if (error) return { success: false, error: error.message };
+  if (error) return { success: false, error: 'Failed to remove specialization.' };
 
   revalidatePath('/directory');
   revalidatePath('/directory/me');
@@ -138,7 +138,7 @@ export async function submitReview(
     if (error.code === '23505') {
       return { success: false, error: 'You have already reviewed this crafter.' };
     }
-    return { success: false, error: error.message };
+    return { success: false, error: 'Failed to submit review.' };
   }
 
   revalidatePath(`/directory/${input.reviewee_id}`);
@@ -160,7 +160,7 @@ export async function setProfileVisibility(
     .update({ is_visible: visible, updated_at: new Date().toISOString() })
     .eq('id', user.id);
 
-  if (error) return { success: false, error: error.message };
+  if (error) return { success: false, error: 'Failed to update visibility.' };
 
   revalidatePath('/directory');
   return { success: true };

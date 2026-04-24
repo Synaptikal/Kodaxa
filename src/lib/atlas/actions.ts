@@ -75,7 +75,7 @@ export async function submitResourceReading(
     .select('id')
     .single();
 
-  if (error) return { success: false, error: error.message };
+  if (error) return { success: false, error: 'Failed to submit reading.' };
 
   revalidatePath('/atlas');
   revalidatePath('/terminal');
@@ -99,7 +99,7 @@ export async function deleteResourceReading(
     .eq('id', id)
     .eq('submitter_id', user.id);
 
-  if (error) return { success: false, error: error.message };
+  if (error) return { success: false, error: 'Failed to delete reading.' };
 
   revalidatePath('/atlas');
   revalidatePath('/terminal');

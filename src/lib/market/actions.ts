@@ -21,6 +21,7 @@ const MAX_PLANET = 60;
 const MAX_VENDOR = 120;
 const MAX_NOTES = 500;
 const MAX_PRICE = 10_000_000_000; // 10B cr — plenty of headroom
+const MAX_BACKDATE_DAYS = 90;     // observations older than this are unreliable
 
 export async function submitPriceReport(
   input: SubmitPriceReportInput,
@@ -53,6 +54,21 @@ export async function submitPriceReport(
     return { success: false, error: 'Price must be a non-negative integer within bounds.' };
   }
 
+  if (input.observed_at) {
+    const observed = new Date(input.observed_at);
+    const now = new Date();
+    const earliestAllowed = new Date(now.getTime() - MAX_BACKDATE_DAYS * 86_400_000);
+    if (isNaN(observed.getTime())) {
+      return { success: false, error: 'Invalid observation date.' };
+    }
+    if (observed > now) {
+      return { success: false, error: 'Observation date cannot be in the future.' };
+    }
+    if (observed < earliestAllowed) {
+      return { success: false, error: `Observation date cannot be more than ${MAX_BACKDATE_DAYS} days in the past.` };
+    }
+  }
+
   const row = {
     submitter_id:  user.id,
     item_name:     item,
@@ -74,7 +90,7 @@ export async function submitPriceReport(
     .select('id')
     .single();
 
-  if (error) return { success: false, error: error.message };
+  if (error) return { success: false, error: 'Failed to submit price report.' };
 
   revalidatePath('/market');
   revalidatePath('/terminal');
@@ -94,7 +110,7 @@ export async function deletePriceReport(
     .eq('id', id)
     .eq('submitter_id', user.id);
 
-  if (error) return { success: false, error: error.message };
+  if (error) return { success: false, error: 'Failed to delete price report.' };
 
   revalidatePath('/market');
   revalidatePath('/terminal');

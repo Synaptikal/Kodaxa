@@ -31,7 +31,10 @@ export interface SavePostInput {
   content: Block[];
 }
 
-async function assertEditor(supabase: Awaited<ReturnType<typeof createClient>>) {
+async function assertEditor(
+  supabase: Awaited<ReturnType<typeof createClient>>,
+  requiredRole: 'editor' | 'ceo' = 'editor',
+) {
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return 'Not authenticated.';
 
@@ -41,8 +44,12 @@ async function assertEditor(supabase: Awaited<ReturnType<typeof createClient>>) 
     .eq('id', user.id)
     .single();
 
-  if (!data || !['ceo', 'officer'].includes(data.role)) {
-    return 'Insufficient clearance — CEO or Officer required.';
+  if (requiredRole === 'ceo') {
+    if (data?.role !== 'ceo') return 'Insufficient clearance — CEO required.';
+  } else {
+    if (!data || !['ceo', 'officer'].includes(data.role)) {
+      return 'Insufficient clearance — CEO or Officer required.';
+    }
   }
   return null;
 }
@@ -63,7 +70,7 @@ export async function savePost(input: SavePostInput): Promise<ActionResult<{ slu
     .single();
 
   if (error) {
-    return { success: false, error: error.message };
+    return { success: false, error: 'Failed to save post.' };
   }
 
   revalidatePath('/corp/hq/dispatch');
@@ -90,7 +97,7 @@ export async function publishPost(slug: string): Promise<ActionResult> {
       .from('dispatch_posts')
       .update({ status: 'published' })
       .eq('slug', slug);
-    if (e2) return { success: false, error: e2.message };
+    if (e2) return { success: false, error: 'Failed to publish post.' };
   }
 
   revalidatePath('/dispatch');
@@ -111,7 +118,7 @@ export async function unpublishPost(slug: string): Promise<ActionResult> {
     .update({ status: 'draft' })
     .eq('slug', slug);
 
-  if (error) return { success: false, error: error.message };
+  if (error) return { success: false, error: 'Failed to retract post.' };
 
   revalidatePath('/dispatch');
   revalidatePath(`/dispatch/${slug}`);
@@ -120,10 +127,10 @@ export async function unpublishPost(slug: string): Promise<ActionResult> {
   return { success: true };
 }
 
-/** Hard delete — CEO only enforced by RLS */
+/** Hard delete — CEO only, enforced at both app and RLS layers */
 export async function deletePost(slug: string): Promise<ActionResult> {
   const supabase = await createClient();
-  const authError = await assertEditor(supabase);
+  const authError = await assertEditor(supabase, 'ceo');
   if (authError) return { success: false, error: authError };
 
   const { error } = await supabase
@@ -131,7 +138,7 @@ export async function deletePost(slug: string): Promise<ActionResult> {
     .delete()
     .eq('slug', slug);
 
-  if (error) return { success: false, error: error.message };
+  if (error) return { success: false, error: 'Failed to delete post.' };
 
   revalidatePath('/dispatch');
   revalidatePath('/corp/hq/dispatch');
