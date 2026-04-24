@@ -6,6 +6,10 @@
       <stop offset="100%" stop-color="#b96e18"/>
     </radialGradient>
   </defs>
+
+  <!-- Dark background -->
+  <rect width="100" height="100" fill="#080c16"/>
+
   <g transform="translate(50,50)">
     <path transform="rotate(0)"   d="M 0,-43 L -5.5,-23 L -4,-11 L 4,-11 L 5.5,-23 Z" fill="url(#f-fill)"/>
     <path transform="rotate(90)"  d="M 0,-43 L -5.5,-23 L -4,-11 L 4,-11 L 5.5,-23 Z" fill="url(#f-fill)"/>
