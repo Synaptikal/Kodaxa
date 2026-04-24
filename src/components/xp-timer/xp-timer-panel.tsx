@@ -14,6 +14,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { getProfessionSummaries } from '@/data/professions/index';
 import { CountdownTimer } from '@/components/ui/countdown-timer';
+import { appendXpTimerLog } from '@/hooks/use-dashboard';
 
 const STORAGE_KEY = 'sr_xp_timers';
 const ATROPHY_MS = 7 * 24 * 60 * 60 * 1000; // 7 days
@@ -69,6 +70,8 @@ export function XpTimerPanel() {
       saveEntries(updated);
       return updated;
     });
+
+    appendXpTimerLog(professionId, prof.name, note?.trim());
   }, []);
 
   const removeEntry = useCallback((professionId: string) => {

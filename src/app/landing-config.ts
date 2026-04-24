@@ -1,12 +1,14 @@
 /**
  * landing-config.ts
  * Static configuration data for the Kodaxa Studios homepage.
- * One concern: nav links, quick links, tool card definitions, soon cards.
+ * One concern: nav links, quick links, tool card definitions, soon cards,
+ *   division panel configs, phase color map, and relay ticker messages.
  *
  * Imported by page.tsx (server component). All values are build-time constants
  * except ToolCardProps which accepts runtime stats injected from page.tsx.
  */
 
+import { Crosshair, Database, Scale, Radio, type LucideIcon } from 'lucide-react';
 import type { BadgeVariant, DivisionName } from '@/components/ui/badge';
 
 export type ToolCardProps = {
@@ -35,6 +37,87 @@ export const SOON = [
   { href: '/makers',    label: "Maker's Mark Registry", sub: 'Artisan reputation and portfolio system',          phase: 'IN DESIGN' },
   { href: '/creatures', label: 'Fauna Database',        sub: 'Drop tables and biome distribution mapping',       phase: 'IN DESIGN' },
 ] as const;
+
+// ── Division panel configuration ───────────────────────────────────────
+export type DivisionConfig = {
+  label: string;
+  name: string;
+  href: string;
+  div: DivisionName;
+  tools: string[];
+  borderColor: string;
+  hoverStyle: string;
+  labelColor: string;
+  Icon: LucideIcon;
+  imgSrc: string;
+};
+
+export const DIVISIONS: DivisionConfig[] = [
+  {
+    label: 'Operations',   name: 'Workforce Intelligence',
+    href: '/planner',      div: 'operations',
+    tools: ['Skill Planner', 'Building Planner', 'XP Timer'],
+    borderColor: 'border-l-teal-600',
+    hoverStyle: 'hover:bg-teal-950/30 hover:border-teal-800/60',
+    labelColor: 'text-teal-400',
+    Icon: Crosshair,
+    imgSrc: '/divisions/ops-lathe.jpg',
+  },
+  {
+    label: 'Intelligence', name: 'Data Terminal',
+    href: '/items',        div: 'intelligence',
+    tools: ['Material Registry', 'Schematics Archive', 'Resource Atlas'],
+    borderColor: 'border-l-cyan-600',
+    hoverStyle: 'hover:bg-cyan-950/30 hover:border-cyan-800/60',
+    labelColor: 'text-cyan-400',
+    Icon: Database,
+    imgSrc: '/divisions/intel-pyromycis.jpg',
+  },
+  {
+    label: 'Commerce',     name: 'Market & Registry',
+    href: '/directory',    div: 'commerce',
+    tools: ['Commerce Registry', 'Material Analytics', "Maker's Mark"],
+    borderColor: 'border-l-amber-600',
+    hoverStyle: 'hover:bg-amber-950/30 hover:border-amber-800/60',
+    labelColor: 'text-amber-400',
+    Icon: Scale,
+    imgSrc: '/divisions/commerce-beach.jpg',
+  },
+  {
+    label: 'Dispatch',     name: 'Field Reports',
+    href: '/patch-notes',  div: 'dispatch',
+    tools: ['Patch Notes', 'Division Briefs', 'Recruitment Calls'],
+    borderColor: 'border-l-violet-600',
+    hoverStyle: 'hover:bg-violet-950/30 hover:border-violet-800/60',
+    labelColor: 'text-violet-400',
+    Icon: Radio,
+    imgSrc: '/divisions/dispatch-portal.jpg',
+  },
+];
+
+// ── Phase color map for pending-deployment cards ────────────────────────
+export const PHASE_COLORS: Record<string, string> = {
+  'IN BUILD':  'text-amber-400 border-amber-700/60',
+  'IN DESIGN': 'text-violet-400 border-violet-700/60',
+  'IN TEST':   'text-cyan-400 border-cyan-700/60',
+};
+
+// ── Relay ticker messages ───────────────────────────────────────────────
+// Note: dynamic values (totalProf, SKILL_CAP) are injected from page.tsx
+// via buildTickerMessages() to keep this file free of runtime imports.
+export function buildTickerMessages(totalProf: number, skillCap: number): string[] {
+  return [
+    'RELAY UPLINK STABLE',
+    `${totalProf} PROFESSIONS INDEXED`,
+    'CRAFTER DIRECTORY OPEN',
+    'SCHEMATICS ARCHIVE CURRENT',
+    `${skillCap}-SKILL CAP CONFIRMED`,
+    'OCR PIPELINE ACTIVE',
+    'PRE-ALPHA · DATA SUBJECT TO CHANGE',
+    'BUILDING PLANNER DEPLOYED',
+    'SECTOR DATA NOMINAL',
+  ];
+}
 
 /** Build tool card definitions with runtime stats injected from page.tsx */
 export function buildTools(params: {

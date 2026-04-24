@@ -1,16 +1,28 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import Link from 'next/link';
-import { ExternalLinkIcon } from 'lucide-react';
+import { ExternalLinkIcon, CheckCircleIcon, CircleIcon } from 'lucide-react';
 import type { PlacedCell, RequiredSkillEntry, RequiredTree } from '@/types/building';
 import { ALL_TILES } from '@/data/building';
+import { getLatestSave } from '@/hooks/use-saved-builds';
 
 interface SkillsPanelProps {
   cells: PlacedCell[];
 }
 
 export function SkillsPanel({ cells }: SkillsPanelProps) {
+  const [activeSkills, setActiveSkills] = useState<Set<string>>(new Set());
+  const [buildName, setBuildName] = useState<string | null>(null);
+
+  useEffect(() => {
+    const save = getLatestSave();
+    if (save) {
+      setActiveSkills(new Set(save.build.activeSkills));
+      setBuildName(save.name);
+    }
+  }, []);
+
   const reqs = useMemo(() => {
     const skillMap = new Map<string, RequiredSkillEntry>();
 
@@ -68,15 +80,27 @@ export function SkillsPanel({ cells }: SkillsPanelProps) {
               {treeLabel}
             </h4>
             <ul className="flex flex-col gap-1">
-              {skills.map(skill => (
-                <li key={skill.skillId} className="text-xs text-stone-300 flex items-center gap-2 group">
-                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-400/80 shadow-[0_0_8px_rgba(34,211,238,0.6)] group-hover:scale-125 transition-transform" />
-                  <span className="capitalize group-hover:text-white transition-colors">{skill.skillLabel}</span>
-                </li>
-              ))}
+              {skills.map(skill => {
+                const hasBuild = activeSkills.size > 0;
+                const unlocked = activeSkills.has(skill.skillId);
+                return (
+                  <li key={skill.skillId} className="text-xs flex items-center gap-2 group">
+                    {hasBuild ? (
+                      unlocked
+                        ? <CheckCircleIcon className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                        : <CircleIcon className="w-3.5 h-3.5 text-red-500/70 shrink-0" />
+                    ) : (
+                      <span className="w-1.5 h-1.5 rounded-full bg-cyan-400/80 shadow-[0_0_8px_rgba(34,211,238,0.6)] group-hover:scale-125 transition-transform shrink-0" />
+                    )}
+                    <span className={`capitalize transition-colors ${hasBuild ? (unlocked ? 'text-emerald-300 group-hover:text-emerald-200' : 'text-red-400/80 group-hover:text-red-300') : 'text-stone-300 group-hover:text-white'}`}>
+                      {skill.skillLabel}
+                    </span>
+                  </li>
+                );
+              })}
             </ul>
-            
-            <Link 
+
+            <Link
               href={`/planner?tree=${tree}`}
               className="mt-2 flex items-center justify-center gap-2 w-full py-2 bg-white/5 hover:bg-white/10 text-cyan-200 hover:text-white rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all duration-300 border border-cyan-500/20 hover:border-cyan-400/50 shadow-sm group overflow-hidden relative"
             >
@@ -87,6 +111,12 @@ export function SkillsPanel({ cells }: SkillsPanelProps) {
           </div>
         );
       })}
+
+      {buildName && (
+        <p className="text-[9px] text-stone-700 relative z-10">
+          Checking vs. saved build: <span className="text-stone-500">{buildName}</span>
+        </p>
+      )}
     </div>
   );
 }

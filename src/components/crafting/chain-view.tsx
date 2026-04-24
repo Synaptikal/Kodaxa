@@ -106,7 +106,7 @@ function ShoppingList({
 /** Ordered crafting steps */
 function CraftingSteps({
   chain,
-  resourceMap,
+  resourceMap: _resourceMap,
 }: {
   chain: ResolvedChain;
   resourceMap: Map<string, Resource>;

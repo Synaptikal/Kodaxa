@@ -86,8 +86,10 @@ export default async function DispatchPostPage({ params }: PageProps) {
       <NavHeader />
 
       <main className="flex-1 max-w-3xl mx-auto w-full px-4 py-8 space-y-6">
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
+        {/* JSON.stringify alone does not escape </script> sequences — replace < with \u003c
+            per Next.js JSON-LD guidance: https://nextjs.org/docs/app/guides/json-ld */}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld).replace(/</g, '\\u003c') }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd).replace(/</g, '\\u003c') }} />
         {/* Breadcrumb */}
         <div className="flex items-center gap-2 text-xs font-mono text-slate-500">
           <Link href="/dispatch" className="hover:text-cyan-400 transition-colors">

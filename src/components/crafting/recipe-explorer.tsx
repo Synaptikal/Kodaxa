@@ -16,6 +16,8 @@ export interface RecipeExplorerProps {
   resourceMap: Map<string, Resource>;
   onSelectRecipe: (recipeId: string) => void;
   selectedRecipeId?: string;
+  /** When set, restricts the list to only these recipe IDs (BOM handoff mode) */
+  bomRecipeIds?: Set<string>;
 }
 
 /** Output categories for filtering */
@@ -36,6 +38,7 @@ export function RecipeExplorer({
   resourceMap,
   onSelectRecipe,
   selectedRecipeId,
+  bomRecipeIds,
 }: RecipeExplorerProps) {
   const [searchQuery, setSearchQuery] = useState('');
   const [stationFilter, setStationFilter] = useState('all');
@@ -43,6 +46,11 @@ export function RecipeExplorer({
 
   const filtered = useMemo(() => {
     let results = recipes;
+
+    // BOM handoff mode — restrict to matched recipes only
+    if (bomRecipeIds) {
+      results = results.filter((r) => bomRecipeIds.has(r.id));
+    }
 
     if (searchQuery) {
       const q = searchQuery.toLowerCase();
@@ -66,7 +74,7 @@ export function RecipeExplorer({
     }
 
     return results;
-  }, [recipes, searchQuery, stationFilter, categoryFilter, resourceMap]);
+  }, [recipes, searchQuery, stationFilter, categoryFilter, resourceMap, bomRecipeIds]);
 
   const chipClass = useCallback(
     (value: string, current: string) =>
@@ -124,6 +132,7 @@ export function RecipeExplorer({
       {/* Result count */}
       <p className="text-[10px] text-slate-500">
         {filtered.length} recipe{filtered.length !== 1 ? 's' : ''} found
+        {bomRecipeIds && <span className="ml-1 text-cyan-600">· building import active</span>}
       </p>
 
       {/* Recipe list */}

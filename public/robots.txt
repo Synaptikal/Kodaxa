@@ -1,6 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /auth/
-Disallow: /corp/hq/admin/
 
 Sitemap: https://kodaxa.dev/sitemap.xml

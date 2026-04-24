@@ -73,6 +73,9 @@ export function CommandConsole() {
     { type: 'system', text: 'KODAXA RELAY CONSOLE · Type `help` for commands · Press ~ or Esc to close' },
   ]);
   const [cmdHistory, setCmdHistory]   = useState<string[]>([]);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // historyIdx is read inside setHistoryIdx functional updaters (ArrowUp/Down handlers).
+  // ESLint cannot trace state values used only inside setState callbacks, so it false-flags this.
   const [historyIdx, setHistoryIdx]   = useState(-1);
   const inputRef  = useRef<HTMLInputElement>(null);
   const outputRef = useRef<HTMLDivElement>(null);

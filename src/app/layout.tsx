@@ -28,7 +28,6 @@ import { DeviceProvider } from '@/components/providers/device-provider';
 import { getDeviceType } from '@/lib/device';
 import { SkipNav } from '@/components/ui/skip-nav';
 import { StarField } from '@/components/ui/star-field';
-import { CursorDot } from '@/components/ui/cursor-dot';
 import { PlaytestStatusWidget } from '@/components/ui/playtest-status-widget';
 import { FloatingCTA } from '@/components/ui/floating-cta';
 import { Footer } from '@/components/layout/footer';
@@ -100,7 +99,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#0b0f19',
+  themeColor: '#080c16',
   width: 'device-width',
   initialScale: 1,
 };
@@ -117,8 +116,6 @@ export default async function RootLayout({
       <body className="min-h-dvh bg-sr-bg text-sr-text antialiased">
         {/* z-0: ambient star particle field — fixed, never scrolls */}
         <StarField count={80} />
-        {/* z-[9999]: custom cursor dot — desktop only, touch-disabled internally */}
-        <CursorDot />
         {/* Fixed overlay widgets — outside scroll container */}
         <PlaytestStatusWidget />
         <FloatingCTA />
@@ -132,10 +129,12 @@ export default async function RootLayout({
             {children}
           </main>
           <Footer />
-          {/* WebApplication JSON-LD for overall site (server-rendered for crawlers) */}
+          {/* WebApplication JSON-LD for overall site (server-rendered for crawlers).
+              JSON.stringify alone does not escape </script> sequences — replace < with \u003c
+              per Next.js JSON-LD guidance: https://nextjs.org/docs/app/guides/json-ld */}
           <script
             type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBAPP_LD) }}
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBAPP_LD).replace(/</g, '\\u003c') }}
           />
 
           {/* Off-screen, server-rendered crawlable links so bots see explicit <a> anchors

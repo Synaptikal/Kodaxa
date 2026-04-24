@@ -5,7 +5,6 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/auth/', '/corp/hq/admin/'],
     },
     sitemap: 'https://kodaxa.dev/sitemap.xml',
   };

@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
+import { XIcon } from 'lucide-react';
 import { NavHeader } from '@/components/ui/nav-header';
 import { RecipeExplorer } from '@/components/crafting/recipe-explorer';
 import { RecipeDetail } from '@/components/crafting/recipe-detail';
@@ -21,17 +22,67 @@ const RECIPE_MAP = getRecipeMap();
 const RECIPE_BY_OUTPUT = getRecipeByOutputMap();
 const STATS = getCraftingStats();
 
-export default function CraftingClient() {
+interface BomEntry {
+  resourceId: string;
+  quantity: number;
+}
+
+interface CraftingClientProps {
+  bomHandoff?: BomEntry[];
+}
+
+export default function CraftingClient({ bomHandoff }: CraftingClientProps) {
   const [selectedRecipeId, setSelectedRecipeId] = useState<string | undefined>();
+  const [bomDismissed, setBomDismissed] = useState(false);
+
+  const bomRecipeIds = useMemo(() => {
+    if (!bomHandoff?.length) return undefined;
+    const ids = new Set<string>();
+    for (const { resourceId } of bomHandoff) {
+      const recipe = RECIPE_BY_OUTPUT.get(resourceId);
+      if (recipe) ids.add(recipe.id);
+    }
+    return ids.size > 0 ? ids : undefined;
+  }, [bomHandoff]);
+
+  // Auto-select first matching recipe on initial BOM handoff
+  useEffect(() => {
+    if (bomRecipeIds && !selectedRecipeId) {
+      const firstId = bomRecipeIds.values().next().value;
+      if (firstId) setSelectedRecipeId(firstId);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [bomRecipeIds]);
 
   const selectedRecipe = useMemo(
     () => (selectedRecipeId ? RECIPE_MAP.get(selectedRecipeId) : undefined),
     [selectedRecipeId],
   );
 
+  const activeBomFilter = bomHandoff?.length && !bomDismissed ? bomRecipeIds : undefined;
+
   return (
     <div className="flex flex-col h-dvh overflow-hidden">
       <NavHeader />
+
+      {/* BOM import banner */}
+      {bomHandoff?.length && !bomDismissed && (
+        <div className="flex items-center justify-between px-4 py-2 bg-cyan-950/60 border-b border-cyan-700/40 text-xs">
+          <span className="text-cyan-300 font-medium">
+            Building Import — {bomHandoff.length} craftable material{bomHandoff.length !== 1 ? 's' : ''} from your building plan
+            {activeBomFilter
+              ? ` · ${activeBomFilter.size} recipe${activeBomFilter.size !== 1 ? 's' : ''} matched`
+              : ' · no recipes matched'}
+          </span>
+          <button
+            onClick={() => setBomDismissed(true)}
+            className="ml-4 text-cyan-500 hover:text-cyan-300 transition-colors"
+            aria-label="Dismiss building import"
+          >
+            <XIcon className="w-3.5 h-3.5" />
+          </button>
+        </div>
+      )}
 
       <div className="flex flex-1 overflow-hidden">
         {/* ── Left: Recipe Explorer ───────────────────────── */}
@@ -49,6 +100,7 @@ export default function CraftingClient() {
             resourceMap={RESOURCE_MAP}
             onSelectRecipe={setSelectedRecipeId}
             selectedRecipeId={selectedRecipeId}
+            bomRecipeIds={activeBomFilter}
           />
         </aside>
 

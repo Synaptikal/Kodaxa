@@ -11,7 +11,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Crosshair, Database, Scale, Radio } from 'lucide-react';
 import { SKILL_CAP, TOOL_CAP } from '@/lib/skill-engine';
 import { getProfessionSummaries, getNodeMap } from '@/data/professions/index';
 import { getCraftingStats } from '@/data/crafting/index';
@@ -22,7 +21,7 @@ import { Badge } from '@/components/ui/badge';
 import { SectionLabel } from '@/components/ui/section-label';
 import { RelayTicker } from '@/components/ui/relay-ticker';
 import { FeaturedTransmission, DispatchCard, ToolCard } from '@/components/landing/cards';
-import { NAV_LINKS, SOON, buildTools } from './landing-config';
+import { NAV_LINKS, SOON, buildTools, DIVISIONS, PHASE_COLORS, buildTickerMessages } from './landing-config';
 
 export const revalidate = 60;
 
@@ -47,67 +46,7 @@ const TOOLS = buildTools({
 
 // Derived from TOOLS array — stays accurate as tools are added or removed.
 const ONLINE_COUNT = TOOLS.length;
-
-const TICKER_MESSAGES = [
-  'RELAY UPLINK STABLE',
-  `${totalProf} PROFESSIONS INDEXED`,
-  'CRAFTER DIRECTORY OPEN',
-  'SCHEMATICS ARCHIVE CURRENT',
-  `${SKILL_CAP}-SKILL CAP CONFIRMED`,
-  'OCR PIPELINE ACTIVE',
-  'PRE-ALPHA · DATA SUBJECT TO CHANGE',
-  'BUILDING PLANNER DEPLOYED',
-  'SECTOR DATA NOMINAL',
-];
-
-const DIVISIONS = [
-  {
-    label: 'Operations',   name: 'Workforce Intelligence',
-    href: '/planner',      div: 'operations'   as const,
-    tools: ['Skill Planner', 'Building Planner', 'XP Timer'],
-    borderColor: 'border-l-teal-600',
-    hoverStyle: 'hover:bg-teal-950/30 hover:border-teal-800/60',
-    labelColor: 'text-teal-400',
-    Icon: Crosshair,
-    imgSrc: '/divisions/ops-lathe.jpg',
-  },
-  {
-    label: 'Intelligence', name: 'Data Terminal',
-    href: '/items',        div: 'intelligence' as const,
-    tools: ['Material Registry', 'Schematics Archive', 'Resource Atlas'],
-    borderColor: 'border-l-cyan-600',
-    hoverStyle: 'hover:bg-cyan-950/30 hover:border-cyan-800/60',
-    labelColor: 'text-cyan-400',
-    Icon: Database,
-    imgSrc: '/divisions/intel-pyromycis.jpg',
-  },
-  {
-    label: 'Commerce',     name: 'Market & Registry',
-    href: '/directory',    div: 'commerce'     as const,
-    tools: ['Commerce Registry', 'Material Analytics', "Maker's Mark"],
-    borderColor: 'border-l-amber-600',
-    hoverStyle: 'hover:bg-amber-950/30 hover:border-amber-800/60',
-    labelColor: 'text-amber-400',
-    Icon: Scale,
-    imgSrc: '/divisions/commerce-beach.jpg',
-  },
-  {
-    label: 'Dispatch',     name: 'Field Reports',
-    href: '/patch-notes',  div: 'dispatch'     as const,
-    tools: ['Patch Notes', 'Division Briefs', 'Recruitment Calls'],
-    borderColor: 'border-l-violet-600',
-    hoverStyle: 'hover:bg-violet-950/30 hover:border-violet-800/60',
-    labelColor: 'text-violet-400',
-    Icon: Radio,
-    imgSrc: '/divisions/dispatch-portal.jpg',
-  },
-];
-
-const PHASE_COLORS: Record<string, string> = {
-  'IN BUILD':  'text-amber-400 border-amber-700/60',
-  'IN DESIGN': 'text-violet-400 border-violet-700/60',
-  'IN TEST':   'text-cyan-400 border-cyan-700/60',
-};
+const TICKER_MESSAGES = buildTickerMessages(totalProf, SKILL_CAP);
 
 // ── Page ───────────────────────────────────────────────────────────────
 export default async function LandingPage() {
@@ -122,102 +61,50 @@ export default async function LandingPage() {
       <main className="flex-1 max-w-6xl mx-auto w-full border-x border-sr-border/40">
         <div className="px-6 py-8 space-y-8">
 
-          {/* ── Hero: Operations Grid Console ─────────────────── */}
-          <section className="relative overflow-hidden border border-sr-border bg-sr-surface/30">
+          {/* ── Hero ─────────────────────────────────────────────── */}
+          <section className="relative overflow-hidden border border-sr-border">
             <Image
               src="/divisions/hero-space.jpg"
               alt="" fill priority
-              className="object-cover opacity-20 pointer-events-none"
+              className="object-cover opacity-35 pointer-events-none"
               aria-hidden="true"
             />
-            <div className="starfield absolute inset-0 opacity-20" aria-hidden="true" />
-            <div className="relative z-10 grid lg:grid-cols-[2fr,1.2fr] divide-y lg:divide-y-0 lg:divide-x divide-sr-border/60">
-
-              {/* Left panel: console metrics + search */}
-              <div className="px-6 py-6 space-y-5">
-                <div className="flex items-center justify-between">
-                  <p className="text-xs font-mono uppercase tracking-[0.3em] text-sr-muted">
-                    Operations Grid
-                  </p>
-                  <span className="flex items-center gap-1.5 text-xs font-mono text-teal-600 tracking-[0.15em] uppercase">
-                    <span className="status-dot-live text-teal-500">●</span>{ONLINE_COUNT} Systems Online
-                  </span>
-                </div>
-
-                <div className="grid grid-cols-3 gap-4">
-                  <div>
-                    <p className="text-xs font-mono uppercase tracking-wide text-sr-muted">Professions Indexed</p>
-                    <p className="mt-1 text-2xl font-black font-mono text-amber-300 tabular-nums">{totalProf}</p>
-                  </div>
-                  <div>
-                    <p className="text-xs font-mono uppercase tracking-wide text-sr-muted">Skills Mapped</p>
-                    <p className="mt-1 text-2xl font-black font-mono text-cyan-300 tabular-nums">{liveNodes}+</p>
-                  </div>
-                  <div>
-                    <p className="text-xs font-mono uppercase tracking-wide text-sr-muted">Operative Systems</p>
-                    <p className="mt-1 text-2xl font-black font-mono text-teal-300 tabular-nums">{ONLINE_COUNT}</p>
-                  </div>
-                </div>
-
-                <div className="space-y-1.5">
-                  <p className="text-xs font-mono uppercase tracking-[0.2em] text-sr-muted">Query Registry</p>
-                  <form action="/recipes" method="GET" className="flex items-center">
-                    <span className="px-3 py-2 text-xs font-mono text-sr-subtle border border-r-0 border-sr-border bg-sr-surface shrink-0 tracking-[0.15em]">
-                      QUERY
-                    </span>
-                    <input
-                      type="search" name="q"
-                      placeholder="Search schematics, materials, operatives…"
-                      className="flex-1 px-3 py-2 bg-sr-surface border border-sr-border text-xs font-mono text-sr-text placeholder-slate-700 focus:outline-none focus:border-cyan-700 transition-colors"
-                    />
-                    <button type="submit" className="px-4 py-2 bg-cyan-600/20 border border-l-0 border-cyan-700/60 text-cyan-400 text-xs font-mono font-semibold hover:bg-cyan-600/30 transition-all shrink-0 tracking-[0.15em]">
-                      SEARCH
-                    </button>
-                  </form>
-                </div>
-
-                <div className="flex flex-wrap gap-2">
-                  {[
-                    { label: 'Workforce Intelligence', href: '/planner' },
-                    { label: 'Material Analytics',     href: '/crafting' },
-                    { label: 'Data Terminal',           href: '/items'   },
-                  ].map(({ label, href }) => (
-                    <Link key={href} href={href}
-                      className="text-xs font-mono text-slate-500 border border-sr-border px-3 py-1 hover:text-slate-300 hover:border-slate-600 transition-colors tracking-[0.1em]">
-                      {label}
-                    </Link>
-                  ))}
-                </div>
+            <div className="starfield absolute inset-0 opacity-25" aria-hidden="true" />
+            <div className="relative z-10 px-8 py-14 flex flex-col gap-6 max-w-2xl">
+              <div className="space-y-2">
+                <p className="text-xs font-mono uppercase tracking-[0.3em] text-accent/80">
+                  Stars Reach · Community Tools
+                </p>
+                <h1 className="text-3xl sm:text-4xl font-black font-mono leading-tight">
+                  KODAXA STUDIOS
+                </h1>
+                <p className="text-sm font-mono text-sr-muted leading-relaxed max-w-lg">
+                  Skill planner, crafting calculator, crafter directory, and more — built for Stars Reach players.
+                </p>
               </div>
-
-              {/* Right panel: identity + CTAs */}
-              <div className="px-6 py-6 flex flex-col justify-between gap-6 bg-sr-surface/40">
-                <div className="space-y-3">
-                  <p className="text-xs font-mono uppercase tracking-[0.3em] text-sr-muted">
-                    TransPlanetary League · Alpha Build
-                  </p>
-                  <h1 className="text-2xl font-black font-mono leading-tight tracking-wide">
-                    KODAXA{' '}
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-400">
-                      OPERATIONS
-                    </span>
-                    {' '}CONSOLE
-                  </h1>
-                  <p className="text-xs font-mono text-sr-muted leading-relaxed">
-                    Galaxy-scale data. Crafter-scale precision. Plan builds, model fabrication
-                    chains, and prepare your operative profile for Stars Reach.
-                  </p>
-                </div>
-                <div className="flex flex-wrap gap-3">
-                  <Link href="/planner"
-                    className="inline-flex items-center gap-2 px-4 py-2 text-xs font-mono font-semibold text-cyan-300 border border-cyan-700/60 bg-cyan-600/10 hover:bg-cyan-600/20 transition-all tracking-[0.15em] uppercase">
-                    Access Skill Planner →
-                  </Link>
-                  <Link href="/directory"
-                    className="inline-flex items-center gap-2 px-4 py-2 text-xs font-mono text-slate-400 border border-sr-border hover:border-slate-600 hover:text-slate-200 transition-all tracking-[0.15em] uppercase">
-                    Crafter Registry →
-                  </Link>
-                </div>
+              <form action="/recipes" method="GET" className="flex items-center w-full max-w-md">
+                <input
+                  type="search" name="q"
+                  placeholder="Search recipes, items, crafters…"
+                  className="flex-1 px-4 py-2.5 bg-sr-bg/80 border border-sr-border text-sm font-mono text-sr-text placeholder-sr-subtle focus:outline-none focus:border-accent/60 transition-colors"
+                />
+                <button type="submit" className="px-5 py-2.5 bg-accent/20 border border-l-0 border-accent/40 text-accent text-xs font-mono font-semibold hover:bg-accent/30 transition-all tracking-[0.1em] shrink-0">
+                  SEARCH
+                </button>
+              </form>
+              <div className="flex flex-wrap gap-3">
+                <Link href="/planner"
+                  className="inline-flex items-center gap-2 px-4 py-2 text-xs font-mono font-semibold text-accent border border-accent/40 bg-accent/10 hover:bg-accent/20 transition-all tracking-[0.12em] uppercase">
+                  Skill Planner →
+                </Link>
+                <Link href="/crafting"
+                  className="inline-flex items-center gap-2 px-4 py-2 text-xs font-mono text-sr-muted border border-sr-border hover:border-sr-muted hover:text-sr-text transition-all tracking-[0.12em] uppercase">
+                  Crafting →
+                </Link>
+                <Link href="/directory"
+                  className="inline-flex items-center gap-2 px-4 py-2 text-xs font-mono text-sr-muted border border-sr-border hover:border-sr-muted hover:text-sr-text transition-all tracking-[0.12em] uppercase">
+                  Crafter Directory →
+                </Link>
               </div>
             </div>
             <RelayTicker messages={TICKER_MESSAGES} />

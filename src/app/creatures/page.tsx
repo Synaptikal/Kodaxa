@@ -19,7 +19,12 @@ export const metadata: Metadata = {
     'Stars Reach creature reference: behaviors, threat tiers, biomes, drops, and abilities. Compiled from Twilight Update and Brave New Worlds patch notes.',
 };
 
-export default function CreaturesPage() {
+interface CreaturesPageProps {
+  searchParams: Promise<{ q?: string }>;
+}
+
+export default async function CreaturesPage({ searchParams }: CreaturesPageProps) {
+  const { q } = await searchParams;
   const creatures = getAllCreatures();
   const stats = getCreatureStats();
 
@@ -53,7 +58,7 @@ export default function CreaturesPage() {
         </div>
       </header>
 
-      <CreaturesBrowser creatures={creatures} />
+      <CreaturesBrowser creatures={creatures} initialQuery={q} />
     </div>
   );
 }

@@ -47,7 +47,9 @@ export default async function MakerDetailPage({ params }: PageProps) {
   return (
     <div className="flex flex-col min-h-dvh">
       <NavHeader />
-      {/* Structured data for maker profile */}
+      {/* Structured data for maker profile.
+          JSON.stringify alone does not escape </script> sequences — replace < with \u003c
+          per Next.js JSON-LD guidance: https://nextjs.org/docs/app/guides/json-ld */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -61,7 +63,7 @@ export default async function MakerDetailPage({ params }: PageProps) {
             aggregateRating: maker.total_reviews
               ? { '@type': 'AggregateRating', ratingValue: Number(maker.average_rating.toFixed(1)), reviewCount: maker.total_reviews }
               : undefined,
-          }),
+          }).replace(/</g, '\\u003c'),
         }}
       />
 

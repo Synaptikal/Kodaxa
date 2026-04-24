@@ -50,31 +50,33 @@ export function KlaatuFlowChart({ sessions }: Props) {
 
             return (
               <g key={session.id}>
-                {/* Earned bar (green) */}
+                {/* Earned bar — brand-emerald (#34d399).
+                    SVG presentation attributes cannot consume CSS custom properties;
+                    style prop is required for var() to resolve. */}
                 <rect
                   x={x}
                   y={38 - earnedH}
                   width={w}
                   height={earnedH}
                   rx={0.5}
-                  fill="rgb(52, 211, 153)"
+                  style={{ fill: 'var(--color-brand-emerald)' }}
                   opacity={0.7}
                 />
-                {/* Spent bar (red) */}
+                {/* Spent bar — cat-combat (#f87171 ≈ red-400). */}
                 <rect
                   x={x + w + barWidth * 0.05}
                   y={38 - spentH}
                   width={w}
                   height={spentH}
                   rx={0.5}
-                  fill="rgb(248, 113, 113)"
+                  style={{ fill: 'var(--color-cat-combat)' }}
                   opacity={0.7}
                 />
               </g>
             );
           })}
-          {/* Baseline */}
-          <line x1="0" y1="38" x2="100" y2="38" stroke="rgb(51, 65, 85)" strokeWidth="0.3" />
+          {/* Baseline — sr-subtle (#334155) */}
+          <line x1="0" y1="38" x2="100" y2="38" style={{ stroke: 'var(--color-sr-subtle)' }} strokeWidth="0.3" />
         </svg>
 
         {isDemo && (

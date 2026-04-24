@@ -21,8 +21,8 @@ export function BomPanel({ cells }: BomPanelProps) {
   const hasCraftingHandoff = bom.byResource.some(r => r.source === 'crafted' || r.source === 'refined');
   const handoffUrl = useMemo(() => {
     if (!hasCraftingHandoff) return '#';
-    // Format for crafting chain resolver: ?resources=id1:10,id2:5
     const resourceStr = bom.byResource
+      .filter(r => r.source === 'crafted' || r.source === 'refined')
       .map(r => `${r.resourceId}:${r.total}`)
       .join(',');
     return `/crafting?resources=${resourceStr}`;

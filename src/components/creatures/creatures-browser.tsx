@@ -12,6 +12,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import Link from 'next/link';
 import type { Creature, CreatureBehavior } from '@/types/creatures';
 import {
   BEHAVIOR_LABELS,
@@ -26,6 +27,7 @@ import { FilterPillGroup } from '@/components/ui/filter-pill';
 
 export interface CreaturesBrowserProps {
   creatures: Creature[];
+  initialQuery?: string;
 }
 
 const BEHAVIOR_OPTIONS: { id: CreatureBehavior; label: string }[] = [
@@ -37,8 +39,8 @@ const BEHAVIOR_OPTIONS: { id: CreatureBehavior; label: string }[] = [
   { id: 'flocking',    label: 'Flocking' },
 ];
 
-export function CreaturesBrowser({ creatures }: CreaturesBrowserProps) {
-  const [query, setQuery] = useState('');
+export function CreaturesBrowser({ creatures, initialQuery }: CreaturesBrowserProps) {
+  const [query, setQuery] = useState(initialQuery ?? '');
   const [behaviorFilters, setBehaviorFilters] = useState<CreatureBehavior[]>([]);
 
   // Behavior counts
@@ -161,18 +163,19 @@ function CreatureCard({ creature }: { creature: Creature }) {
       {/* Description */}
       <p className="text-xs text-sr-muted leading-relaxed">{creature.description}</p>
 
-      {/* Drops */}
+      {/* Drops — link to Items browser filtered by item name */}
       {creature.drops.length > 0 && (
         <div className="flex flex-wrap gap-1 items-center">
           <span className="text-xs font-mono text-sr-muted uppercase tracking-wider">Drops:</span>
           {creature.drops.map((d) => (
-            <span
+            <Link
               key={d.item}
-              className={`text-xs font-mono px-1.5 py-0.5 rounded bg-slate-800 ${d.confirmed ? 'text-slate-400' : 'text-slate-500 italic'}`}
-              title={d.confirmed ? undefined : 'Unconfirmed drop — community observation'}
+              href={`/items?q=${encodeURIComponent(d.item.replace(/_/g, ' '))}`}
+              className={`text-xs font-mono px-1.5 py-0.5 rounded bg-slate-800 transition-colors hover:bg-slate-700 ${d.confirmed ? 'text-slate-400 hover:text-slate-200' : 'text-slate-500 italic hover:text-slate-400'}`}
+              title={d.confirmed ? `Search items: ${d.item.replace(/_/g, ' ')}` : 'Unconfirmed drop — community observation'}
             >
               {d.item.replace(/_/g, ' ')}{!d.confirmed && ' ?'}
-            </span>
+            </Link>
           ))}
         </div>
       )}
@@ -205,12 +208,20 @@ function CreatureCard({ creature }: { creature: Creature }) {
         </div>
       )}
 
-      {/* Biomes */}
+      {/* Biomes — link to Biome Field Guide filtered by biome name */}
       {creature.biomes.length > 0 && (
-        <p className="text-xs text-sr-muted font-mono">
-          <span className="text-sr-subtle">Biomes:</span>{' '}
-          {creature.biomes.map((b) => b.replace(/_/g, ' ')).join(' · ')}
-        </p>
+        <div className="flex flex-wrap gap-1 items-center">
+          <span className="text-[9px] font-mono text-sr-subtle uppercase tracking-wider">Biomes:</span>
+          {creature.biomes.map((b) => (
+            <Link
+              key={b}
+              href={`/biome-guide?q=${encodeURIComponent(b.replace(/_/g, ' '))}`}
+              className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-emerald-900/20 text-emerald-500 border border-emerald-800/30 hover:bg-emerald-900/40 hover:text-emerald-300 transition-colors"
+            >
+              {b.replace(/_/g, ' ')}
+            </Link>
+          ))}
+        </div>
       )}
     </article>
   );

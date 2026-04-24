@@ -23,6 +23,21 @@ export const metadata: Metadata = {
   },
 };
 
-export default function CraftingPage() {
-  return <CraftingClient />;
+interface CraftingPageProps {
+  searchParams: Promise<{ resources?: string }>;
+}
+
+export default async function CraftingPage({ searchParams }: CraftingPageProps) {
+  const params = await searchParams;
+  const bomHandoff = params.resources
+    ? params.resources.split(',').flatMap((part) => {
+        const [resourceId, rawQty] = part.split(':');
+        const quantity = Number(rawQty);
+        return resourceId && !isNaN(quantity) && quantity > 0
+          ? [{ resourceId, quantity }]
+          : [];
+      })
+    : undefined;
+
+  return <CraftingClient bomHandoff={bomHandoff?.length ? bomHandoff : undefined} />;
 }

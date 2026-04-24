@@ -15,17 +15,17 @@
  * ── Two-color accent rule ─────────────────────────────────────────────
  * TWO distinct accent colors are in use. This is intentional and semantic:
  *
- *   --color-accent (#00d4c8, teal)
- *     = Kodaxa corporate identity. The firm's own UI chrome.
- *       Use for: nav borders, section dividers, button outlines, FUI brackets,
+ *   --color-accent (#e8a44a, amber-gold)
+ *     = Stars Reach warm identity. Planet warmth, adventure, exploration.
+ *       Use for: nav borders, section dividers, button outlines,
  *       footer wordmark, section label dashes. "This is a Kodaxa interface."
  *
- *   --color-state-available (#22d3ee, cyan)
+ *   --color-state-available (#a67fd8, nebula purple)
  *     = Live data / active signal. Information in motion.
  *       Use for: available skill nodes, LIVE badges, active form focus rings,
  *       data feed indicators. "This resource/skill/system is currently live."
  *
- *   --color-brand-amber (#f59e0b)
+ *   --color-brand-amber (#e07b35)
  *     = Status only — IN BUILD, WARNING, ADVISORY badges. Never decorative.
  *
  * Do NOT merge these two accents. Do NOT use either for decorative purposes
@@ -39,49 +39,80 @@
 
 /* ── Custom theme tokens ──────────────────────────────────────────── */
 @theme {
-  /* Kodaxa brand palette — canonical values from design token spec */
-  --color-sr-bg:      #0a0e1a;   /* deep space — primary background */
-  --color-sr-surface: #111827;   /* slate-900 — card surfaces */
-  --color-sr-panel:   #1a2030;   /* mid-elevation — between surface and bg */
-  --color-sr-border:  #1e2d3d;   /* subtle panel borders */
-  --color-sr-text:    #e8edf5;   /* primary readable text */
-  --color-sr-muted:   #8393a8;   /* deviation from #64748b — WCAG AA requires ≥4.5:1 */
-  --color-sr-subtle:  #334155;   /* decorative/disabled only — not for readable copy */
+  /* Stars Reach palette — warm space, sci-fantasy */
+  --color-sr-bg:      #080c16;   /* deep space navy — primary background */
+  --color-sr-surface: #0f1526;   /* warm dark surface */
+  --color-sr-panel:   #162035;   /* mid-elevation */
+  --color-sr-border:  #1e2840;   /* panel borders */
+  --color-sr-text:    #f0ece8;   /* warm off-white — starlight */
+  --color-sr-muted:   #8a8fa8;   /* WCAG AA muted text */
+  --color-sr-subtle:  #2d3655;   /* decorative/disabled only */
 
-  /* Brand accent tokens — singular values, no shade mixing */
-  --color-brand-amber:   #f59e0b;  /* status only — badges, warnings, IN BUILD */
-  --color-brand-cyan:    #00d4c8;  /* PRIMARY accent — the only design accent color */
+  /* Brand accent tokens — Stars Reach warm palette */
+  --color-brand-amber:   #e07b35;  /* status/warning — orange */
+  --color-brand-cyan:    #e8a44a;  /* PRIMARY accent — amber-gold */
   --color-brand-emerald: #34d399;  /* live systems — status online */
-  --color-brand-fuchsia: #e879f9;  /* dispatch / comms accent */
+  --color-brand-fuchsia: #3ddc84;  /* dispatch / comms accent — Stars Reach green */
 
-  /* Semantic shorthand aliases for new design system */
-  --color-accent:     #00d4c8;              /* = brand-cyan */
-  --color-accent-dim: rgba(0,212,200,0.15); /* teal at 15% for bg fills */
+  /* Semantic shorthand aliases */
+  --color-accent:     #e8a44a;               /* warm amber-gold */
+  --color-accent-dim: rgba(232,164,74,0.15);
 
   /* Skill state accent colors */
-  --color-state-locked: #475569;
-  --color-state-available: #22d3ee;
-  --color-state-active: #2dd4bf;
-  --color-state-atrophied: #f59e0b;
-  --color-state-wip: #a855f7;
+  --color-state-locked:    #475569;
+  --color-state-available: #3ddc84;  /* Stars Reach lime-green */
+  --color-state-active:    #c49a3c;  /* warm active gold */
+  --color-state-atrophied: #e07b35;  /* orange-amber */
+  --color-state-wip:       #a855f7;
 
   /* Category accent colors */
-  --color-cat-scouting: #34d399;
-  --color-cat-combat: #f87171;
-  --color-cat-crafting: #fb923c;
-  --color-cat-harvesting: #a3e635;
-  --color-cat-social: #38bdf8;
-  --color-cat-science: #a78bfa;
+  --color-cat-scouting:       #34d399;
+  --color-cat-combat:         #f87171;
+  --color-cat-crafting:       #fb923c;
+  --color-cat-harvesting:     #a3e635;
+  --color-cat-social:         #38bdf8;
+  --color-cat-science:        #a78bfa;
   --color-cat-infrastructure: #fbbf24;
 
   /* Font stack */
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
-  /* Tracking scale — codified for design consistency */
-  --tracking-label:   0.20em;  /* category labels, eyebrows, nav items */
-  --tracking-section: 0.15em;  /* section headers */
-  --tracking-stat:    0.05em;  /* number displays */
+  /* Tracking scale */
+  --tracking-label:   0.20em;
+  --tracking-section: 0.15em;
+  --tracking-stat:    0.05em;
+
+  /* ── Tailwind built-in color remaps ──────────────────────────────────
+   * Remap teal → warm amber-gold so all existing text-teal-* classes
+   * throughout the app automatically use the new palette without touching
+   * individual component files.
+   * Remap cyan → nebula purple for the same reason.
+   * ------------------------------------------------------------------ */
+
+  --color-teal-50:  #fef9ee;
+  --color-teal-100: #fef0d0;
+  --color-teal-200: #fde4a8;
+  --color-teal-300: #fbd070;
+  --color-teal-400: #e8a44a;
+  --color-teal-500: #d4903c;
+  --color-teal-600: #b07830;
+  --color-teal-700: #8a5a20;
+  --color-teal-800: #6b4518;
+  --color-teal-900: #4a2e10;
+  --color-teal-950: #2d1a08;
+
+  --color-cyan-50:  #f0fff6;
+  --color-cyan-100: #dcffe9;
+  --color-cyan-200: #b8ffd4;
+  --color-cyan-300: #7dfdb2;
+  --color-cyan-400: #3ddc84;
+  --color-cyan-500: #22c55e;
+  --color-cyan-600: #16a34a;
+  --color-cyan-700: #15803d;
+  --color-cyan-800: #166534;
+  --color-cyan-900: #14532d;
+  --color-cyan-950: #052e16;
 }
 
 /* ── Base layer overrides ─────────────────────────────────────────── */
@@ -135,11 +166,6 @@
   to   { transform: translateY(-50%); }
 }
 
-@keyframes star-twinkle {
-  0%, 100% { opacity: 0.2; }
-  50%       { opacity: 0.8; }
-}
-
 .starfield {
   position: absolute;
   inset: 0;
@@ -156,33 +182,33 @@
   width: 100%;
   height: 200%;
   background-image:
-    radial-gradient(1px 1px at  7%  12%, rgba(148,214,255,0.5) 0%, transparent 100%),
-    radial-gradient(1px 1px at 23%   4%, rgba(148,214,255,0.4) 0%, transparent 100%),
-    radial-gradient(1px 1px at 38%  28%, rgba(148,214,255,0.6) 0%, transparent 100%),
-    radial-gradient(1px 1px at 52%   8%, rgba(148,214,255,0.3) 0%, transparent 100%),
-    radial-gradient(1px 1px at 67%  19%, rgba(148,214,255,0.5) 0%, transparent 100%),
-    radial-gradient(1px 1px at 81%   3%, rgba(148,214,255,0.4) 0%, transparent 100%),
-    radial-gradient(1px 1px at 91%  15%, rgba(148,214,255,0.6) 0%, transparent 100%),
-    radial-gradient(1px 1px at 14%  35%, rgba(200,230,255,0.3) 0%, transparent 100%),
-    radial-gradient(1px 1px at 29%  47%, rgba(200,230,255,0.5) 0%, transparent 100%),
-    radial-gradient(1px 1px at 44%  42%, rgba(200,230,255,0.4) 0%, transparent 100%),
-    radial-gradient(1px 1px at 58%  38%, rgba(200,230,255,0.3) 0%, transparent 100%),
-    radial-gradient(1px 1px at 73%  50%, rgba(200,230,255,0.5) 0%, transparent 100%),
-    radial-gradient(1px 1px at 87%  33%, rgba(200,230,255,0.6) 0%, transparent 100%),
-    radial-gradient(2px 2px at  5%  60%, rgba(100,200,255,0.4) 0%, transparent 100%),
-    radial-gradient(2px 2px at 19%  72%, rgba(100,200,255,0.3) 0%, transparent 100%),
-    radial-gradient(2px 2px at 34%  65%, rgba(100,200,255,0.5) 0%, transparent 100%),
-    radial-gradient(2px 2px at 48%  78%, rgba(100,200,255,0.2) 0%, transparent 100%),
-    radial-gradient(2px 2px at 63%  61%, rgba(100,200,255,0.4) 0%, transparent 100%),
-    radial-gradient(2px 2px at 77%  74%, rgba(100,200,255,0.3) 0%, transparent 100%),
-    radial-gradient(2px 2px at 92%  68%, rgba(100,200,255,0.5) 0%, transparent 100%),
-    radial-gradient(1px 1px at 11%  88%, rgba(148,214,255,0.3) 0%, transparent 100%),
-    radial-gradient(1px 1px at 25%  82%, rgba(148,214,255,0.5) 0%, transparent 100%),
-    radial-gradient(1px 1px at 40%  95%, rgba(148,214,255,0.4) 0%, transparent 100%),
-    radial-gradient(1px 1px at 55%  84%, rgba(148,214,255,0.6) 0%, transparent 100%),
-    radial-gradient(1px 1px at 70%  91%, rgba(148,214,255,0.3) 0%, transparent 100%),
-    radial-gradient(1px 1px at 84%  86%, rgba(148,214,255,0.5) 0%, transparent 100%),
-    radial-gradient(1px 1px at 96%  93%, rgba(148,214,255,0.4) 0%, transparent 100%);
+    radial-gradient(1px 1px at  7%  12%, rgba(255,200,120,0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 23%   4%, rgba(255,200,120,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 38%  28%, rgba(255,200,120,0.6) 0%, transparent 100%),
+    radial-gradient(1px 1px at 52%   8%, rgba(255,200,120,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 67%  19%, rgba(255,200,120,0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 81%   3%, rgba(255,200,120,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 91%  15%, rgba(255,200,120,0.6) 0%, transparent 100%),
+    radial-gradient(1px 1px at 14%  35%, rgba(220,210,255,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 29%  47%, rgba(220,210,255,0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 44%  42%, rgba(220,210,255,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 58%  38%, rgba(220,210,255,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 73%  50%, rgba(220,210,255,0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 87%  33%, rgba(220,210,255,0.6) 0%, transparent 100%),
+    radial-gradient(2px 2px at  5%  60%, rgba(180,150,255,0.4) 0%, transparent 100%),
+    radial-gradient(2px 2px at 19%  72%, rgba(180,150,255,0.3) 0%, transparent 100%),
+    radial-gradient(2px 2px at 34%  65%, rgba(180,150,255,0.5) 0%, transparent 100%),
+    radial-gradient(2px 2px at 48%  78%, rgba(180,150,255,0.2) 0%, transparent 100%),
+    radial-gradient(2px 2px at 63%  61%, rgba(180,150,255,0.4) 0%, transparent 100%),
+    radial-gradient(2px 2px at 77%  74%, rgba(180,150,255,0.3) 0%, transparent 100%),
+    radial-gradient(2px 2px at 92%  68%, rgba(180,150,255,0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 11%  88%, rgba(255,200,120,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 25%  82%, rgba(255,200,120,0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 40%  95%, rgba(255,200,120,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 55%  84%, rgba(255,200,120,0.6) 0%, transparent 100%),
+    radial-gradient(1px 1px at 70%  91%, rgba(255,200,120,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 84%  86%, rgba(255,200,120,0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 96%  93%, rgba(255,200,120,0.4) 0%, transparent 100%);
   animation: star-drift 120s linear infinite;
 }
 
@@ -190,44 +216,29 @@
   top: -100%;
   animation-delay: -60s;
   background-image:
-    radial-gradient(1px 1px at  3%  22%, rgba(148,214,255,0.4) 0%, transparent 100%),
-    radial-gradient(1px 1px at 17%  11%, rgba(148,214,255,0.6) 0%, transparent 100%),
-    radial-gradient(1px 1px at 31%  37%, rgba(148,214,255,0.3) 0%, transparent 100%),
-    radial-gradient(1px 1px at 46%  18%, rgba(148,214,255,0.5) 0%, transparent 100%),
-    radial-gradient(1px 1px at 60%  29%, rgba(148,214,255,0.4) 0%, transparent 100%),
-    radial-gradient(1px 1px at 75%   6%, rgba(148,214,255,0.6) 0%, transparent 100%),
-    radial-gradient(1px 1px at 89%  24%, rgba(148,214,255,0.3) 0%, transparent 100%),
-    radial-gradient(2px 2px at  8%  55%, rgba(100,200,255,0.5) 0%, transparent 100%),
-    radial-gradient(2px 2px at 22%  67%, rgba(100,200,255,0.3) 0%, transparent 100%),
-    radial-gradient(2px 2px at 36%  48%, rgba(100,200,255,0.4) 0%, transparent 100%),
-    radial-gradient(2px 2px at 50%  72%, rgba(100,200,255,0.6) 0%, transparent 100%),
-    radial-gradient(2px 2px at 64%  58%, rgba(100,200,255,0.3) 0%, transparent 100%),
-    radial-gradient(2px 2px at 78%  80%, rgba(100,200,255,0.5) 0%, transparent 100%),
-    radial-gradient(1px 1px at 93%  44%, rgba(148,214,255,0.4) 0%, transparent 100%),
-    radial-gradient(1px 1px at  2%  88%, rgba(200,230,255,0.3) 0%, transparent 100%),
-    radial-gradient(1px 1px at 16%  96%, rgba(200,230,255,0.5) 0%, transparent 100%),
-    radial-gradient(1px 1px at 28%  83%, rgba(200,230,255,0.4) 0%, transparent 100%),
-    radial-gradient(1px 1px at 42%  90%, rgba(200,230,255,0.3) 0%, transparent 100%),
-    radial-gradient(1px 1px at 57%  77%, rgba(200,230,255,0.5) 0%, transparent 100%),
-    radial-gradient(1px 1px at 71%  92%, rgba(200,230,255,0.4) 0%, transparent 100%),
-    radial-gradient(1px 1px at 85%  85%, rgba(200,230,255,0.6) 0%, transparent 100%);
+    radial-gradient(1px 1px at  3%  22%, rgba(255,200,120,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 17%  11%, rgba(255,200,120,0.6) 0%, transparent 100%),
+    radial-gradient(1px 1px at 31%  37%, rgba(255,200,120,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 46%  18%, rgba(255,200,120,0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 60%  29%, rgba(255,200,120,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 75%   6%, rgba(255,200,120,0.6) 0%, transparent 100%),
+    radial-gradient(1px 1px at 89%  24%, rgba(255,200,120,0.3) 0%, transparent 100%),
+    radial-gradient(2px 2px at  8%  55%, rgba(180,150,255,0.5) 0%, transparent 100%),
+    radial-gradient(2px 2px at 22%  67%, rgba(180,150,255,0.3) 0%, transparent 100%),
+    radial-gradient(2px 2px at 36%  48%, rgba(180,150,255,0.4) 0%, transparent 100%),
+    radial-gradient(2px 2px at 50%  72%, rgba(180,150,255,0.6) 0%, transparent 100%),
+    radial-gradient(2px 2px at 64%  58%, rgba(180,150,255,0.3) 0%, transparent 100%),
+    radial-gradient(2px 2px at 78%  80%, rgba(180,150,255,0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 93%  44%, rgba(255,200,120,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at  2%  88%, rgba(220,210,255,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 16%  96%, rgba(220,210,255,0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 28%  83%, rgba(220,210,255,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 42%  90%, rgba(220,210,255,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 57%  77%, rgba(220,210,255,0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 71%  92%, rgba(220,210,255,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 85%  85%, rgba(220,210,255,0.6) 0%, transparent 100%);
 }
 
-/* ── Scanline overlay — body texture (glass-screen feel) ─────────── */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 2px,
-    oklch(1 0 0 / 0.012) 2px,
-    oklch(1 0 0 / 0.012) 4px
-  );
-  pointer-events: none;
-  z-index: 9999;
-}
 
 /* ── Cursor blink — dispatch category trailing underscore cursor ──── */
 @keyframes blink {
@@ -311,4 +322,36 @@ body::before {
   .react-flow__edge-path {
     transition: stroke 0.2s ease;
   }
+}
+
+/* ── Accessibility: respect vestibular / motion sensitivity preferences ── */
+/* Decision: using @media (reduce) override rather than no-motion-first     */
+/* because it requires fewer selector changes to an existing codebase.      */
+/* Both patterns are WCAG 2.1 SC 2.2.2 compliant. Tested against MDN C39.  */
+/* Source: https://www.w3.org/WAI/WCAG21/Techniques/css/C39                 */
+@media (prefers-reduced-motion: reduce) {
+  /* Starfield drift — decorative only; remove entirely at rest */
+  .starfield::before,
+  .starfield::after {
+    animation: none;
+  }
+
+  /* Status dot pulse — collapse to a static visible dot */
+  .status-dot-live {
+    animation: none;
+    opacity: 1;
+  }
+
+  /* Relay ticker — stop scrolling; content remains readable when static */
+  .relay-ticker-track {
+    animation: none;
+  }
+
+  /* Skeleton shimmer — static gradient gives sufficient loading affordance */
+  .skeleton-row {
+    animation: none;
+    background-position: 0 0;
+  }
+
+  /* Cursor blink — safe to keep; low-frequency, non-vestibular. No override. */
 }

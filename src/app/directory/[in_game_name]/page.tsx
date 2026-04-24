@@ -96,10 +96,12 @@ export default async function CrafterProfilePage({ params }: PageProps) {
 
       <main className="mx-auto max-w-4xl px-4 py-8 space-y-4">
 
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
+        {/* JSON.stringify alone does not escape </script> sequences — replace < with \u003c
+            per Next.js JSON-LD guidance: https://nextjs.org/docs/app/guides/json-ld */}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld).replace(/</g, '\\u003c') }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd).replace(/</g, '\\u003c') }} />
         {reviewsLd && (
-          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewsLd) }} />
+          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewsLd).replace(/</g, '\\u003c') }} />
         )}
 
         {/* Breadcrumb nav */}

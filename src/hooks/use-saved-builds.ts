@@ -9,8 +9,10 @@
 
 'use client';
 
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import type { Build } from '@/types/build';
+import { createClient } from '@/lib/supabase/client';
+import { pushBuilds, pullBuilds, mergeBuilds } from '@/lib/player-sync/builds-sync';
 
 const STORAGE_KEY = 'sr_saved_builds';
 const MAX_SAVES = 20;
@@ -25,6 +27,23 @@ export interface SavedBuild {
     activeSkillCount: number;
     professionIds: string[];
   };
+}
+
+/**
+ * Standalone (non-hook) read of the most recently saved build.
+ * Used by the Building Planner's skills panel to validate required skills
+ * against the player's active build without mounting the full hook.
+ */
+export function getLatestSave(): SavedBuild | null {
+  if (typeof window === 'undefined') return null;
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return null;
+    const saves = JSON.parse(raw) as SavedBuild[];
+    return saves[0] ?? null;
+  } catch {
+    return null;
+  }
 }
 
 function loadFromStorage(): SavedBuild[] {
@@ -65,10 +84,25 @@ export interface SavedBuildsHook {
 
 export function useSavedBuilds(): SavedBuildsHook {
   const [savedBuilds, setSavedBuilds] = useState<SavedBuild[]>([]);
+  const supabase = useRef(createClient()).current;
+  const userIdRef = useRef<string | null>(null);
 
-  // Hydrate from localStorage after mount (SSR-safe)
+  // Hydrate from localStorage immediately, then merge from Supabase if authenticated
   useEffect(() => {
-    setSavedBuilds(loadFromStorage());
+    const local = loadFromStorage();
+    setSavedBuilds(local);
+
+    supabase.auth.getUser().then(({ data: { user } }) => {
+      if (!user) return;
+      userIdRef.current = user.id;
+      pullBuilds(supabase, user.id).then((remote) => {
+        if (remote.length === 0) return;
+        const merged = mergeBuilds(remote, local);
+        setSavedBuilds(merged);
+        writeToStorage(merged);
+      });
+    });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const saveBuild = useCallback((build: Build) => {
@@ -86,9 +120,12 @@ export function useSavedBuilds(): SavedBuildsHook {
       };
       const updated = [newSave, ...filtered].slice(0, MAX_SAVES);
       writeToStorage(updated);
+      if (userIdRef.current) {
+        pushBuilds(supabase, userIdRef.current, updated).catch(() => {});
+      }
       return updated;
     });
-  }, []);
+  }, [supabase]);
 
   const loadBuild = useCallback(
     (id: string): Build | null => {
@@ -102,9 +139,12 @@ export function useSavedBuilds(): SavedBuildsHook {
     setSavedBuilds((prev) => {
       const updated = prev.filter((s) => s.id !== id);
       writeToStorage(updated);
+      if (userIdRef.current) {
+        pushBuilds(supabase, userIdRef.current, updated).catch(() => {});
+      }
       return updated;
     });
-  }, []);
+  }, [supabase]);
 
   const hasSave = useCallback(
     (name: string) =>

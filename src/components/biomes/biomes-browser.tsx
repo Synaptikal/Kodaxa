@@ -12,6 +12,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import Link from 'next/link';
 import type { Biome, BiomeTemperature } from '@/types/biomes';
 import {
   TEMPERATURE_LABELS,
@@ -26,6 +27,7 @@ import { FilterPillGroup } from '@/components/ui/filter-pill';
 
 export interface BiomesBrowserProps {
   biomes: Biome[];
+  initialQuery?: string;
 }
 
 type TempOrOverlay = BiomeTemperature | 'overlay';
@@ -37,8 +39,8 @@ const TEMP_OPTIONS: { id: TempOrOverlay; label: string }[] = [
   { id: 'overlay',   label: 'Overlay' },
 ];
 
-export function BiomesBrowser({ biomes }: BiomesBrowserProps) {
-  const [query, setQuery] = useState('');
+export function BiomesBrowser({ biomes, initialQuery }: BiomesBrowserProps) {
+  const [query, setQuery] = useState(initialQuery ?? '');
   const [tempFilters, setTempFilters] = useState<TempOrOverlay[]>([]);
 
   // Counts per temperature bucket (+ overlay = null temperature)
@@ -216,14 +218,18 @@ function BiomeCard({ biome }: { biome: Biome }) {
         </div>
       )}
 
-      {/* Creatures */}
+      {/* Creatures — link to Creature Database filtered by name */}
       {biome.creatures.length > 0 && (
         <div className="flex flex-wrap gap-1">
           <span className="text-[9px] font-mono text-violet-600 uppercase tracking-wider">Creatures:</span>
           {biome.creatures.map((c) => (
-            <span key={c} className="text-[9px] px-1.5 py-0.5 rounded bg-violet-900/20 text-violet-400 border border-violet-800/30">
+            <Link
+              key={c}
+              href={`/creatures?q=${encodeURIComponent(c.replace(/_/g, ' '))}`}
+              className="text-[9px] px-1.5 py-0.5 rounded bg-violet-900/20 text-violet-400 border border-violet-800/30 hover:bg-violet-900/50 hover:text-violet-300 transition-colors"
+            >
               {c.replace(/_/g, ' ')}
-            </span>
+            </Link>
           ))}
         </div>
       )}

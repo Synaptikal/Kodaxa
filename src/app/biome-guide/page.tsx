@@ -35,7 +35,12 @@ export const metadata: Metadata = {
 const TEMPS = ['cold', 'temperate', 'hot'] as const;
 const MOISTURES = ['arid', 'humid'] as const;
 
-export default function BiomeGuidePage() {
+interface BiomeGuidePageProps {
+  searchParams: Promise<{ q?: string }>;
+}
+
+export default async function BiomeGuidePage({ searchParams }: BiomeGuidePageProps) {
+  const { q } = await searchParams;
   const biomes = getAllBiomes();
   const grid = getGridBiomes();
   const stats = getBiomeStats();
@@ -157,7 +162,7 @@ export default function BiomeGuidePage() {
       </section>
 
       {/* Full browser */}
-      <BiomesBrowser biomes={biomes} />
+      <BiomesBrowser biomes={biomes} initialQuery={q} />
 
       {/* Cross-links */}
       <div className="max-w-6xl mx-auto px-4 pb-10 pt-2 flex flex-wrap gap-3">

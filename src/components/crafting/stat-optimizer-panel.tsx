@@ -46,6 +46,9 @@ export function StatOptimizerPanel({ recipe, resourceMap }: StatOptimizerPanelPr
     return map;
   });
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // setPlanetNames is scaffolded for the planned per-ingredient planet selector UI.
+  // The planetName field is wired into ResourceInput[] but the setter has no UI yet.
   const [planetNames, setPlanetNames] = useState<Map<string, string>>(new Map());
 
   // Build ResourceInput array for the optimizer

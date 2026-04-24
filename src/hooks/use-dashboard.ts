@@ -53,6 +53,34 @@ function uid(): string {
   return `${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
 }
 
+// ── XP Timer Integration ─────────────────────────────────────────────
+
+/**
+ * Standalone (non-hook) function called by the XP Atrophy Timer when the user
+ * logs XP for a profession. Creates a zero-duration "Quick Log" session entry
+ * so the dashboard session history reflects timer activity without fabricating
+ * duration or XP amounts that aren't known at log time.
+ */
+export function appendXpTimerLog(
+  professionId: string,
+  professionName: string,
+  note?: string,
+): void {
+  if (typeof window === 'undefined') return;
+  const existing = load<SessionLog>(SESSION_KEY);
+  const entry: SessionLog = {
+    id: uid(),
+    date: new Date().toISOString(),
+    duration_minutes: 0,
+    activities: [{ type: 'other', detail: `XP session — ${professionName}` }],
+    klaatu_earned: 0,
+    klaatu_spent: 0,
+    xp_gained: {},
+    notes: note?.trim() || undefined,
+  };
+  save(SESSION_KEY, [entry, ...existing].slice(0, MAX_SESSIONS));
+}
+
 // ── Session Logs Hook ───────────────────────────────────────────────
 
 export interface SessionLogsHook {

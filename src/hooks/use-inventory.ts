@@ -53,6 +53,33 @@ function uid(): string {
   return `${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
 }
 
+// ── Crafting Integration ─────────────────────────────────────────────
+
+/**
+ * Standalone (non-hook) function called by the Crafting Calculator when the
+ * user clicks "Add to Inventory". Writes directly to sr_stockpile so the
+ * crafting page doesn't need to instantiate useStockpile.
+ */
+export function appendCraftedItem(
+  itemName: string,
+  itemCategory: import('@/types/items').ItemCategory,
+  quantity: number,
+  notes?: string,
+): void {
+  if (typeof window === 'undefined') return;
+  const existing = load<StockpileEntry>(STOCKPILE_KEY);
+  const entry: StockpileEntry = {
+    id: uid(),
+    item_name: itemName,
+    item_category: itemCategory,
+    quantity,
+    storage_location: 'backpack',
+    notes: notes?.trim() || undefined,
+    updated_at: new Date().toISOString(),
+  };
+  save(STOCKPILE_KEY, [entry, ...existing].slice(0, MAX_STOCKPILE));
+}
+
 // ── Stockpile Hook ──────────────────────────────────────────────────
 
 export interface StockpileHook {

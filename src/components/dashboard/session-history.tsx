@@ -43,7 +43,7 @@ export function SessionHistory({ sessions, onDelete }: Props) {
                 })}
               </span>
               <span className="text-xs text-slate-500 font-mono">
-                {formatDuration(session.duration_minutes)}
+                {session.duration_minutes === 0 ? 'Quick Log' : formatDuration(session.duration_minutes)}
               </span>
             </div>
             <div className="flex items-center gap-3">
