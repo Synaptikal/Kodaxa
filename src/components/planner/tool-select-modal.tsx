@@ -112,6 +112,7 @@ export function ToolSelectModal({
           </div>
           <button
             onClick={onClose}
+            aria-label="Close"
             className="text-slate-500 hover:text-slate-200 transition-colors text-xl leading-none"
           >
             ×

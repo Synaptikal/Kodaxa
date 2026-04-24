@@ -79,6 +79,7 @@ export function CrateManager({
                       {member}
                       <button
                         onClick={() => onRemovePermission(crate.id, member)}
+                        aria-label={`Remove ${member}`}
                         className="text-slate-500 hover:text-red-400 ml-1"
                       >
                         ×

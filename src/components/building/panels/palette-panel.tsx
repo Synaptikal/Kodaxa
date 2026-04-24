@@ -149,6 +149,7 @@ export function PalettePanel({ selectedTileId, onSelectTile }: PalettePanelProps
           {search && (
             <button
               onClick={() => setSearch('')}
+              aria-label="Clear search"
               className="absolute right-2 top-1/2 -translate-y-1/2 text-slate-600 hover:text-slate-400"
             >
               <XIcon className="w-3 h-3" />

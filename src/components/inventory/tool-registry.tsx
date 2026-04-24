@@ -40,6 +40,7 @@ export function ToolRegistry({ tools, onDelete }: Props) {
                 </span>
                 <button
                   onClick={() => onDelete(tool.id)}
+                  aria-label="Delete tool"
                   className="text-slate-600 hover:text-red-400 px-1 opacity-0 group-hover:opacity-100 transition-opacity"
                 >
                   ×

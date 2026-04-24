@@ -219,10 +219,11 @@ export function BuildingOnboarding({ onDismiss }: BuildingOnboardingProps) {
             <div className="flex items-center justify-between px-4 pb-3">
               {/* Step dots */}
               <div className="flex gap-1 items-center">
-                {STEPS.map((_, i) => (
+                {STEPS.map((s, i) => (
                   <button
                     key={i}
                     onClick={() => setStep(i)}
+                    aria-label={`Step ${i + 1}: ${s.title}`}
                     className={`transition-all ${
                       i === step
                         ? 'w-3 h-1.5 bg-cyan-500'

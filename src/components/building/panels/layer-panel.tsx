@@ -137,6 +137,7 @@ export function LayerPanel({
                 {!isEditing && (
                   <button
                     onClick={(e) => handleStartEdit(layer.index, layer.label, e)}
+                    aria-label="Rename layer"
                     className="p-0.5 text-slate-600 hover:text-slate-400 transition-colors"
                   >
                     <Edit2Icon className="w-3 h-3" />
