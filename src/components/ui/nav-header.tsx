@@ -21,6 +21,7 @@ import { usePathname } from 'next/navigation';
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { Menu } from 'lucide-react';
 import { MobileNav } from '@/components/ui/mobile-nav';
+import { KodaxaMark } from '@/components/ui/logo';
 
 // ── Types ────────────────────────────────────────────────────────────
 
@@ -246,18 +247,24 @@ export function NavHeader() {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 flex flex-col bg-sr-surface border-b border-[#00d4c8]/20 shrink-0">
+    <header className="sticky top-0 z-50 flex flex-col bg-sr-surface border-b border-accent/15 shrink-0">
       {/* Main nav row */}
       <div className="flex items-center justify-between px-4 py-2">
-        <Link href="/" className="flex items-center gap-2 shrink-0">
-          <span className="text-sm font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-400 font-mono tracking-wide">
-            KODAXA
-          </span>
-          <span className="text-[9px] text-slate-600 font-mono uppercase tracking-wider hidden sm:inline">
-            Studios
-          </span>
-          <span className="text-[9px] text-slate-700 font-mono uppercase tracking-wider">
-            Alpha
+        <Link href="/" className="flex items-center gap-2.5 shrink-0 group" aria-label="Kodaxa Studios — Home">
+          <KodaxaMark size={26} className="shrink-0 transition-opacity group-hover:opacity-80" />
+          <div className="flex items-baseline gap-1.5">
+            <span
+              className="text-[13px] font-black tracking-[0.18em] text-sr-text"
+              style={{ fontFamily: 'var(--font-display, var(--font-sans))' }}
+            >
+              KODAXA
+            </span>
+            <span className="text-[8px] font-mono uppercase tracking-[0.25em] text-sr-muted/50 hidden sm:inline">
+              Studios
+            </span>
+          </div>
+          <span className="text-[7px] font-mono tracking-wider text-sr-muted/30 border border-sr-border/40 px-1 py-px hidden sm:inline leading-none">
+            α
           </span>
         </Link>
 

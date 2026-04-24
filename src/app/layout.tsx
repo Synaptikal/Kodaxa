@@ -8,7 +8,7 @@
  */
 
 import type { Metadata, Viewport } from 'next';
-import { Inter, JetBrains_Mono } from 'next/font/google';
+import { Inter, JetBrains_Mono, Orbitron } from 'next/font/google';
 import './globals.css';
 
 const inter = Inter({
@@ -20,6 +20,13 @@ const inter = Inter({
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
   variable: '--font-mono',
+  display: 'swap',
+});
+
+const orbitron = Orbitron({
+  subsets: ['latin'],
+  weight: ['700', '900'],
+  variable: '--font-display',
   display: 'swap',
 });
 import { BootSequence } from '@/components/ui/boot-sequence';
@@ -112,7 +119,7 @@ export default async function RootLayout({
   const deviceType = await getDeviceType();
 
   return (
-    <html lang="en" className={`dark ${inter.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en" className={`dark ${inter.variable} ${jetbrainsMono.variable} ${orbitron.variable}`}>
       <body className="min-h-dvh bg-sr-bg text-sr-text antialiased">
         {/* z-0: ambient star particle field — fixed, never scrolls */}
         <StarField count={80} />
