@@ -6,7 +6,9 @@ const MAX_NAME    = 80;
 const MAX_EMAIL   = 254;
 const MAX_MESSAGE = 2000;
 
-/** Typed error helper — enforces { error: string, code: string } response shape. */
+const VALID_CATEGORIES = ['bug_report', 'feature_request', 'data_issue', 'tool_feedback', 'general'] as const;
+type Category = typeof VALID_CATEGORIES[number];
+
 function apiError(message: string, code: string, status: number) {
   return NextResponse.json({ error: message, code }, { status });
 }
@@ -18,17 +20,19 @@ export async function POST(req: Request) {
     if (!user) return apiError('Authentication required.', 'UNAUTHENTICATED', 401);
 
     const body = await req.json();
-    const name    = String(body.name    ?? '').trim();
-    const email   = String(body.email   ?? '').trim();
-    const message = String(body.message ?? '').trim();
+    const name     = String(body.name     ?? '').trim();
+    const email    = String(body.email    ?? '').trim();
+    const message  = String(body.message  ?? '').trim();
+    const category = String(body.category ?? 'general').trim() as Category;
 
     if (!message) return apiError('Message is required.', 'MISSING_MESSAGE', 400);
-    if (name.length    > MAX_NAME)    return apiError(`Name must be ${MAX_NAME} chars or fewer.`,    'NAME_TOO_LONG',    400);
-    if (email.length   > MAX_EMAIL)   return apiError(`Email must be ${MAX_EMAIL} chars or fewer.`,  'EMAIL_TOO_LONG',   400);
+    if (name.length    > MAX_NAME)    return apiError(`Name must be ${MAX_NAME} chars or fewer.`,       'NAME_TOO_LONG',    400);
+    if (email.length   > MAX_EMAIL)   return apiError(`Email must be ${MAX_EMAIL} chars or fewer.`,     'EMAIL_TOO_LONG',   400);
     if (message.length > MAX_MESSAGE) return apiError(`Message must be ${MAX_MESSAGE} chars or fewer.`, 'MESSAGE_TOO_LONG', 400);
+    if (!VALID_CATEGORIES.includes(category)) return apiError('Invalid category.', 'INVALID_CATEGORY', 400);
 
     const { data, error } = await supabase.from('feedback').insert([
-      { name, email, message, submitter_id: user.id },
+      { name, email, message, category, submitter_id: user.id },
     ]).select();
 
     if (error) {
