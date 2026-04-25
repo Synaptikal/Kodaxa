@@ -49,9 +49,11 @@ interface MobileNavProps {
   onClose: () => void;
   pathname: string;
   groups: NavGroup[];
+  isAuthed: boolean;
+  authReady: boolean;
 }
 
-export function MobileNav({ open, onClose, pathname, groups }: MobileNavProps) {
+export function MobileNav({ open, onClose, pathname, groups, isAuthed, authReady }: MobileNavProps) {
   const drawerRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -159,8 +161,27 @@ export function MobileNav({ open, onClose, pathname, groups }: MobileNavProps) {
           })}
         </nav>
 
-        {/* Footer CTA */}
-        <div className="px-4 py-4 border-t border-sr-border shrink-0">
+        {/* Footer CTAs */}
+        <div className="px-4 py-4 border-t border-sr-border shrink-0 space-y-2">
+          {/* Auth actions — only when not signed in */}
+          {authReady && !isAuthed && (
+            <div className="flex gap-2">
+              <Link
+                href="/auth/sign-in"
+                onClick={onClose}
+                className="flex items-center justify-center flex-1 min-h-[44px] px-4 py-3 text-[11px] font-mono font-semibold bg-slate-700/20 border border-slate-600/30 text-slate-300 hover:bg-slate-700/40 hover:text-slate-100 transition-all tracking-wide uppercase focus-visible:outline focus-visible:outline-2 focus-visible:outline-state-available"
+              >
+                Sign In
+              </Link>
+              <Link
+                href="/auth/sign-up"
+                onClick={onClose}
+                className="flex items-center justify-center flex-1 min-h-[44px] px-4 py-3 text-[11px] font-mono font-semibold bg-teal-900/30 border border-teal-700/50 text-teal-300 hover:bg-teal-800/40 hover:border-teal-600/60 transition-all tracking-wide uppercase focus-visible:outline focus-visible:outline-2 focus-visible:outline-state-available"
+              >
+                Create Account
+              </Link>
+            </div>
+          )}
           <a
             href="https://discord.gg/kodaxa"
             target="_blank"

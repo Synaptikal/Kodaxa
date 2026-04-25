@@ -309,6 +309,24 @@ export function NavHeader() {
         </nav>
 
         <div className="flex items-center gap-2">
+          {/* Auth buttons — only shown to visitors who are not signed in */}
+          {authReady && !isAuthed && (
+            <>
+              <Link
+                href="/auth/sign-in"
+                className="shrink-0 px-3 py-1 text-[10px] font-mono font-semibold bg-slate-700/20 border border-slate-600/30 text-slate-300 hover:bg-slate-700/40 hover:border-slate-500 hover:text-slate-100 transition-all tracking-wide uppercase hidden sm:inline-flex items-center"
+              >
+                Sign In
+              </Link>
+              <Link
+                href="/auth/sign-up"
+                className="shrink-0 px-3 py-1 text-[10px] font-mono font-semibold bg-teal-900/30 border border-teal-700/50 text-teal-300 hover:bg-teal-800/40 hover:border-teal-600/60 transition-all tracking-wide uppercase hidden sm:inline-flex items-center"
+              >
+                Create Account
+              </Link>
+            </>
+          )}
+
           <Link
             href="/feedback"
             className="shrink-0 px-3 py-1 text-[10px] font-mono font-semibold bg-slate-700/20 border border-slate-600/30 text-slate-100 hover:bg-slate-700/40 hover:border-slate-500 transition-all tracking-wide uppercase hidden sm:inline-flex items-center"
@@ -362,6 +380,8 @@ export function NavHeader() {
         onClose={() => setMobileNavOpen(false)}
         pathname={pathname}
         groups={visibleGroups}
+        isAuthed={isAuthed}
+        authReady={authReady}
       />
     </header>
   );
