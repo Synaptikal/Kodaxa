@@ -35,8 +35,6 @@ import { DeviceProvider } from '@/components/providers/device-provider';
 import { getDeviceType } from '@/lib/device';
 import { SkipNav } from '@/components/ui/skip-nav';
 import { StarField } from '@/components/ui/star-field';
-import { PlaytestStatusWidget } from '@/components/ui/playtest-status-widget';
-import { FloatingCTA } from '@/components/ui/floating-cta';
 import { Footer } from '@/components/layout/footer';
 import { Analytics } from '@vercel/analytics/next';
 
@@ -131,10 +129,6 @@ export default async function RootLayout({
       <body className="min-h-dvh bg-sr-bg text-sr-text antialiased">
         {/* z-0: ambient star particle field — fixed, never scrolls */}
         <StarField count={80} />
-        {/* Fixed overlay widgets — outside scroll container */}
-        <PlaytestStatusWidget />
-        <FloatingCTA />
-
         <DeviceProvider initialDevice={deviceType}>
           <SkipNav />
           <BootSequence />

@@ -21,7 +21,9 @@ import { Badge } from '@/components/ui/badge';
 import { SectionLabel } from '@/components/ui/section-label';
 import { RelayTicker } from '@/components/ui/relay-ticker';
 import { FeaturedTransmission, DispatchCard, ToolCard } from '@/components/landing/cards';
-import { NAV_LINKS, SOON, buildTools, DIVISIONS, PHASE_COLORS, buildTickerMessages } from './landing-config';
+import { PlaytestStatusWidget } from '@/components/ui/playtest-status-widget';
+import { FloatingCTA } from '@/components/ui/floating-cta';
+import { SOON, buildTools, DIVISIONS, PHASE_COLORS, buildTickerMessages } from './landing-config';
 
 export const revalidate = 60;
 
@@ -56,6 +58,10 @@ export default async function LandingPage() {
 
   return (
     <div className="min-h-dvh flex flex-col bg-sr-bg text-sr-text">
+      {/* Fixed overlay widgets — home page only */}
+      <PlaytestStatusWidget />
+      <FloatingCTA />
+
       <NavHeader />
 
       <main className="flex-1 max-w-6xl mx-auto w-full border-x border-sr-border/40">
@@ -214,25 +220,6 @@ export default async function LandingPage() {
         </div>
       </main>
 
-      {/* ── Footer ──────────────────────────────────────────────── */}
-      <footer className="border-t border-sr-border bg-sr-surface/30">
-        <div className="max-w-6xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <div className="space-y-1">
-            <div className="flex items-center gap-2">
-              <span className="text-sm font-bold font-mono text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-400">KODAXA</span>
-              <span className="text-xs font-mono text-sr-subtle uppercase tracking-[0.15em]">Studios · Alpha Build</span>
-            </div>
-            <p className="text-xs font-mono text-sr-subtle leading-relaxed">
-              Unofficial fan project. Not affiliated with Playable Worlds.
-            </p>
-          </div>
-          <nav className="flex flex-wrap gap-x-6 gap-y-2">
-            {NAV_LINKS.map(({ href, label }) => (
-              <Link key={href} href={href} className="text-xs text-sr-subtle hover:text-slate-400 font-mono transition-colors uppercase tracking-[0.12em]">{label}</Link>
-            ))}
-          </nav>
-        </div>
-      </footer>
     </div>
   );
 }
