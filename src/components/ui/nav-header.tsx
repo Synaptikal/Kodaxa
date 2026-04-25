@@ -251,8 +251,11 @@ export function NavHeader() {
   const divCtx = getDivisionCtx(pathname);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
-  // Auth-aware nav filtering — resolve role client-side, show only permitted groups.
-  // While pending, only public groups are shown (no flash of director links).
+  // Auth-aware nav filtering — resolve user + role client-side.
+  // isAuthed: true for any signed-in user (even without a profile row).
+  // role: only set for corp members with a crafter_profiles entry.
+  // While pending, only public groups are shown (no flash of gated links).
+  const [isAuthed, setIsAuthed] = useState(false);
   const [role, setRole] = useState<CorpRole | null>(null);
   const [authReady, setAuthReady] = useState(false);
 
@@ -260,6 +263,7 @@ export function NavHeader() {
     const supabase = createSupabaseClient();
     supabase.auth.getUser().then(async ({ data: { user } }) => {
       if (!user) { setAuthReady(true); return; }
+      setIsAuthed(true);
       const { data } = await supabase
         .from('crafter_profiles')
         .select('role')
@@ -271,8 +275,8 @@ export function NavHeader() {
   }, []);
 
   const visibleGroups = NAV_GROUPS.filter((g) => {
-    if (g.label === 'Corp HQ')    return authReady && canManageRoster(role ?? 'client');
-    if (g.label === 'My Terminal') return authReady && role !== null;
+    if (g.label === 'Corp HQ')     return authReady && canManageRoster(role ?? 'client');
+    if (g.label === 'My Terminal') return authReady && isAuthed;
     return true;
   });
 
