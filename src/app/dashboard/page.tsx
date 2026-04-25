@@ -1,29 +1,43 @@
-import { Metadata } from 'next';
+/**
+ * dashboard/page.tsx
+ * Analytics Dashboard — session tracker, Klaatu flow, skill progression.
+ * One concern: auth-gated personal analytics panel.
+ *
+ * Server component shell — auth guard then hands off to client DashboardPanel.
+ */
+
+import type { Metadata } from 'next';
+import { redirect } from 'next/navigation';
 import { NavHeader } from '@/components/ui/nav-header';
+import { createClient } from '@/lib/supabase/server';
 import DashboardPanel from './dashboard-panel';
 
 export const metadata: Metadata = {
-  title: 'Analytics Dashboard | Kodaxa HQ',
+  title: 'Analytics Dashboard',
   description: 'Log play sessions, track skill progress, and monitor Klaatu flow.',
 };
 
-export default function DashboardPage() {
+export const dynamic = 'force-dynamic';
+
+export default async function DashboardPage() {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) redirect('/auth/sign-in?next=/dashboard');
+
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-300 font-sans selection:bg-cyan-900/50">
+    <div className="flex flex-col min-h-dvh bg-sr-bg text-sr-text">
       <NavHeader />
-        <main className="max-w-5xl mx-auto px-4 py-8">
-          <div className="mb-8">
-            <h1 className="text-3xl font-bold text-slate-100 flex items-center gap-3">
-              Analytics Dashboard
-            </h1>
-            <p className="text-slate-400 mt-2 max-w-2xl">
-              Track your daily Stars Reach sessions, monitor Klaatu income versus expenses, 
-              and map your skill progression over time. All data is securely stored locally 
-              in your browser.
-            </p>
-          </div>
-          
-        {/* Client-side panel wrapper */}
+      <main className="flex-1 max-w-5xl mx-auto w-full px-6 py-8">
+        <div className="mb-8 space-y-1">
+          <p className="text-[9px] font-mono uppercase tracking-[0.3em] text-slate-600">
+            My Terminal · Analytics Dashboard
+          </p>
+          <h1 className="text-2xl font-bold font-mono text-slate-100">Analytics Dashboard</h1>
+          <p className="text-sm text-slate-500 max-w-2xl">
+            Track your daily Stars Reach sessions, monitor Klaatu income versus expenses,
+            and map your skill progression over time.
+          </p>
+        </div>
         <DashboardPanel />
       </main>
     </div>

@@ -51,9 +51,10 @@ interface MobileNavProps {
   groups: NavGroup[];
   isAuthed: boolean;
   authReady: boolean;
+  onSignOut: () => void;
 }
 
-export function MobileNav({ open, onClose, pathname, groups, isAuthed, authReady }: MobileNavProps) {
+export function MobileNav({ open, onClose, pathname, groups, isAuthed, authReady, onSignOut }: MobileNavProps) {
   const drawerRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -181,6 +182,14 @@ export function MobileNav({ open, onClose, pathname, groups, isAuthed, authReady
                 Create Account
               </Link>
             </div>
+          )}
+          {authReady && isAuthed && (
+            <button
+              onClick={() => { onClose(); onSignOut(); }}
+              className="flex items-center justify-center w-full min-h-[44px] px-4 py-3 text-[11px] font-mono font-semibold bg-slate-700/10 border border-slate-700/40 text-slate-500 hover:text-red-400 hover:border-red-900/50 transition-all tracking-wide uppercase focus-visible:outline focus-visible:outline-2 focus-visible:outline-state-available"
+            >
+              Sign Out
+            </button>
           )}
           <a
             href="https://discord.gg/kodaxa"

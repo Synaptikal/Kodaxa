@@ -26,7 +26,7 @@ export default function SignUpPage() {
             </p>
             <h1 className="text-lg font-bold font-mono text-slate-100">Request Access</h1>
             <p className="text-xs text-slate-500 mt-0.5">
-              Register a free personnel file to list your commerce profile and file reviews.
+              Free account — access your terminal, save builds, and contribute data to the network.
             </p>
           </div>
 

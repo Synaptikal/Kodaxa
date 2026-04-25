@@ -21,7 +21,7 @@ export async function signIn(formData: FormData): Promise<AuthResult> {
   const password = String(formData.get('password') ?? '');
   const rawNext  = String(formData.get('next')     ?? '');
   // Only allow relative paths — block open-redirect via //evil.com or https://...
-  const next = rawNext.startsWith('/') && !rawNext.startsWith('//') ? rawNext : '/directory/me';
+  const next = rawNext.startsWith('/') && !rawNext.startsWith('//') ? rawNext : '/terminal';
 
   if (!email || !password) {
     return { error: 'Email and password are required.' };

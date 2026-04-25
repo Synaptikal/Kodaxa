@@ -24,6 +24,7 @@ import { MobileNav } from '@/components/ui/mobile-nav';
 import { KodaxaMark } from '@/components/ui/logo';
 import { createClient as createSupabaseClient } from '@/lib/supabase/client';
 import { canManageRoster, type CorpRole } from '@/types/corp';
+import { signOut } from '@/lib/auth/actions';
 
 // ── Types ────────────────────────────────────────────────────────────
 
@@ -261,17 +262,38 @@ export function NavHeader() {
 
   useEffect(() => {
     const supabase = createSupabaseClient();
-    supabase.auth.getUser().then(async ({ data: { user } }) => {
-      if (!user) { setAuthReady(true); return; }
-      setIsAuthed(true);
+
+    async function resolveRole(userId: string) {
       const { data } = await supabase
         .from('crafter_profiles')
         .select('role')
-        .eq('id', user.id)
+        .eq('id', userId)
         .single();
       setRole((data?.role as CorpRole) ?? null);
+    }
+
+    // Initial load
+    supabase.auth.getUser().then(async ({ data: { user } }) => {
+      if (!user) { setAuthReady(true); return; }
+      setIsAuthed(true);
+      await resolveRole(user.id);
       setAuthReady(true);
     });
+
+    // Reactive — updates nav instantly on sign-in or sign-out
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
+      if (!session?.user) {
+        setIsAuthed(false);
+        setRole(null);
+        setAuthReady(true);
+      } else {
+        setIsAuthed(true);
+        await resolveRole(session.user.id);
+        setAuthReady(true);
+      }
+    });
+
+    return () => subscription.unsubscribe();
   }, []);
 
   const visibleGroups = NAV_GROUPS.filter((g) => {
@@ -309,7 +331,7 @@ export function NavHeader() {
         </nav>
 
         <div className="flex items-center gap-2">
-          {/* Auth buttons — only shown to visitors who are not signed in */}
+          {/* Auth buttons */}
           {authReady && !isAuthed && (
             <>
               <Link
@@ -325,6 +347,16 @@ export function NavHeader() {
                 Create Account
               </Link>
             </>
+          )}
+          {authReady && isAuthed && (
+            <form action={signOut} className="hidden sm:block">
+              <button
+                type="submit"
+                className="shrink-0 px-3 py-1 text-[10px] font-mono font-semibold bg-slate-700/10 border border-slate-700/40 text-slate-500 hover:text-red-400 hover:border-red-900/50 transition-all tracking-wide uppercase"
+              >
+                Sign Out
+              </button>
+            </form>
           )}
 
           <Link
@@ -382,6 +414,7 @@ export function NavHeader() {
         groups={visibleGroups}
         isAuthed={isAuthed}
         authReady={authReady}
+        onSignOut={() => signOut()}
       />
     </header>
   );

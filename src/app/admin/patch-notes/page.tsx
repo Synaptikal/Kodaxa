@@ -44,7 +44,7 @@ export default async function AdminPatchNotesPage({ searchParams }: PageProps) {
   const service = createServiceClient();
   const { data: rows } = await service
     .from('patch_notes_imports')
-    .select('id, title, version_label, category, release_date, status, import_hash, source_url, summary')
+    .select('id, title, version_label, category, release_date, status, import_hash, source_url, summary, updated_at')
     .order('release_date', { ascending: false });
 
   const params = await searchParams;
@@ -53,6 +53,15 @@ export default async function AdminPatchNotesPage({ searchParams }: PageProps) {
 
   const drafts    = (rows ?? []).filter((r) => r.status === 'draft');
   const published = (rows ?? []).filter((r) => r.status === 'published');
+
+  // Most recent upsert timestamp — proxy for last cron/manual import run
+  const lastImportAt = (rows ?? []).reduce<string | null>((latest, r) => {
+    if (!r.updated_at) return latest;
+    return !latest || r.updated_at > latest ? r.updated_at : latest;
+  }, null);
+  const lastImportLabel = lastImportAt
+    ? new Date(lastImportAt).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })
+    : 'No imports yet';
 
   return (
     <div className="flex flex-col h-dvh overflow-hidden">
@@ -77,7 +86,8 @@ export default async function AdminPatchNotesPage({ searchParams }: PageProps) {
           </div>
           <p className="text-xs text-slate-500 mt-1">
             {drafts.length} draft{drafts.length !== 1 ? 's' : ''} ·{' '}
-            {published.length} published
+            {published.length} published ·{' '}
+            <span className="text-slate-600">last import: {lastImportLabel}</span>
           </p>
         </div>
 

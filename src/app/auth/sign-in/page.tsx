@@ -17,7 +17,7 @@ type SearchParams = Promise<Record<string, string | string[] | undefined>>;
 
 export default async function SignInPage({ searchParams }: { searchParams: SearchParams }) {
   const params = await searchParams;
-  const next = typeof params.next === 'string' ? params.next : '/directory/me';
+  const next = typeof params.next === 'string' ? params.next : '/terminal';
 
   return (
     <div className="min-h-screen bg-sr-bg text-slate-100">
@@ -31,7 +31,7 @@ export default async function SignInPage({ searchParams }: { searchParams: Searc
             </p>
             <h1 className="text-lg font-bold font-mono text-slate-100">Establish Uplink</h1>
             <p className="text-xs text-slate-500 mt-0.5">
-              Authenticate to manage your commerce registry listing and file reviews.
+              Access your terminal, analytics, saved builds, and personal data.
             </p>
           </div>
 

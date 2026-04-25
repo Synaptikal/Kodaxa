@@ -9,7 +9,10 @@
  * Background uses sr-bg token for full consistency.
  */
 
+'use client';
+
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const NAV_LINKS: { label: string; href: string }[] = [
   { label: 'Dispatch',    href: '/dispatch' },
@@ -19,6 +22,10 @@ const NAV_LINKS: { label: string; href: string }[] = [
 ];
 
 export function Footer() {
+  const pathname = usePathname();
+  // Auth pages have their own minimal shell — no footer needed
+  if (pathname.startsWith('/auth')) return null;
+
   return (
     <footer
       className="relative z-10 border-t border-accent/20 mt-16 bg-sr-bg"

@@ -1,28 +1,43 @@
-import { Metadata } from 'next';
+/**
+ * trade/page.tsx
+ * Trade System — vendor kiosk tracker and direct sales log.
+ * One concern: auth-gated commerce tracking panel.
+ *
+ * Server component shell — auth guard then hands off to client TradePanel.
+ */
+
+import type { Metadata } from 'next';
+import { redirect } from 'next/navigation';
 import { NavHeader } from '@/components/ui/nav-header';
+import { createClient } from '@/lib/supabase/server';
 import TradePanel from './trade-panel';
 
 export const metadata: Metadata = {
-  title: 'Trade System | Kodaxa HQ',
+  title: 'Trade System',
   description: 'Manage vendor kiosk listings, track direct trades, and log market prices.',
 };
 
-export default function TradePage() {
+export const dynamic = 'force-dynamic';
+
+export default async function TradePage() {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) redirect('/auth/sign-in?next=/trade');
+
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-300 font-sans selection:bg-emerald-900/50">
+    <div className="flex flex-col min-h-dvh bg-sr-bg text-sr-text">
       <NavHeader />
-        <main className="max-w-5xl mx-auto px-4 py-8">
-          <div className="mb-8">
-            <h1 className="text-3xl font-bold text-slate-100 flex items-center gap-3">
-              Trade System
-            </h1>
-            <p className="text-slate-400 mt-2 max-w-2xl">
-              Track your vendor kiosk listings to avoid dropping below the item cap. Log your 
-              direct sales and field observations of market prices to optimize your trade routes.
-            </p>
-          </div>
-          
-        {/* Client-side panel wrapper */}
+      <main className="flex-1 max-w-5xl mx-auto w-full px-6 py-8">
+        <div className="mb-8 space-y-1">
+          <p className="text-[9px] font-mono uppercase tracking-[0.3em] text-slate-600">
+            My Terminal · Commerce Operations
+          </p>
+          <h1 className="text-2xl font-bold font-mono text-slate-100">Trade System</h1>
+          <p className="text-sm text-slate-500 max-w-2xl">
+            Track your vendor kiosk listings, log direct sales, and monitor your
+            trade routes to stay under the item cap.
+          </p>
+        </div>
         <TradePanel />
       </main>
     </div>
