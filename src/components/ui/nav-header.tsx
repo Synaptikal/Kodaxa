@@ -22,6 +22,8 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 import { Menu } from 'lucide-react';
 import { MobileNav } from '@/components/ui/mobile-nav';
 import { KodaxaMark } from '@/components/ui/logo';
+import { createClient as createSupabaseClient } from '@/lib/supabase/client';
+import { canManageRoster, type CorpRole } from '@/types/corp';
 
 // ── Types ────────────────────────────────────────────────────────────
 
@@ -249,6 +251,31 @@ export function NavHeader() {
   const divCtx = getDivisionCtx(pathname);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
+  // Auth-aware nav filtering — resolve role client-side, show only permitted groups.
+  // While pending, only public groups are shown (no flash of director links).
+  const [role, setRole] = useState<CorpRole | null>(null);
+  const [authReady, setAuthReady] = useState(false);
+
+  useEffect(() => {
+    const supabase = createSupabaseClient();
+    supabase.auth.getUser().then(async ({ data: { user } }) => {
+      if (!user) { setAuthReady(true); return; }
+      const { data } = await supabase
+        .from('crafter_profiles')
+        .select('role')
+        .eq('id', user.id)
+        .single();
+      setRole((data?.role as CorpRole) ?? null);
+      setAuthReady(true);
+    });
+  }, []);
+
+  const visibleGroups = NAV_GROUPS.filter((g) => {
+    if (g.label === 'Corp HQ')    return authReady && canManageRoster(role ?? 'client');
+    if (g.label === 'My Terminal') return authReady && role !== null;
+    return true;
+  });
+
   return (
     <header className="sticky top-0 z-50 flex flex-col bg-sr-surface border-b border-accent/15 shrink-0">
       {/* Main nav row */}
@@ -272,7 +299,7 @@ export function NavHeader() {
         </Link>
 
         <nav aria-label="Main navigation" className="hidden md:flex items-center gap-0.5">
-          {NAV_GROUPS.map((group) => (
+          {visibleGroups.map((group) => (
             <DropdownGroup key={group.label} group={group} pathname={pathname} />
           ))}
         </nav>
@@ -330,6 +357,7 @@ export function NavHeader() {
         open={mobileNavOpen}
         onClose={() => setMobileNavOpen(false)}
         pathname={pathname}
+        groups={visibleGroups}
       />
     </header>
   );

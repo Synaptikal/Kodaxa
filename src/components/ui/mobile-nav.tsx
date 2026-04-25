@@ -29,7 +29,7 @@ interface NavGroup {
   items?: NavItem[];
 }
 
-// ── Static nav data (mirrors nav-header.tsx) ──────────────────────
+// ── Status badge helpers ──────────────────────────────────────────
 
 const STATUS_STYLES: Record<ItemStatus, string> = {
   live: 'text-teal-500',
@@ -42,71 +42,16 @@ const STATUS_LABELS: Record<ItemStatus, string> = {
   soon: '○ SOON',
 };
 
-const NAV_GROUPS: NavGroup[] = [
-  { label: 'HQ', href: '/' },
-  { label: 'Corporation', href: '/corporation' },
-  {
-    label: 'Operations',
-    items: [
-      { href: '/planner',  label: 'Skill Planner',      status: 'live' },
-      { href: '/building', label: 'Building Planner',    status: 'live' },
-      { href: '/xp-timer', label: 'XP & Atrophy Timer',  status: 'new'  },
-    ],
-  },
-  {
-    label: 'Intelligence',
-    items: [
-      { href: '/items',       label: 'Item Database',     status: 'live' },
-      { href: '/recipes',     label: 'Recipe Database',   status: 'live' },
-      { href: '/atlas',       label: 'Resource Atlas',    status: 'soon' },
-      { href: '/biome-guide', label: 'Biome Field Guide', status: 'soon' },
-      { href: '/creatures',   label: 'Creature Database', status: 'soon' },
-    ],
-  },
-  {
-    label: 'Commerce',
-    items: [
-      { href: '/directory', label: 'Commerce Registry',   status: 'live' },
-      { href: '/crafting',  label: 'Crafting Calculator', status: 'live' },
-      { href: "/makers",    label: "Maker's Mark",        status: 'soon' },
-      { href: '/market',    label: 'Market Prices',       status: 'soon' },
-    ],
-  },
-  {
-    label: 'Dispatch',
-    items: [
-      { href: '/dispatch',    label: 'Transmissions',  status: 'live' },
-      { href: '/patch-notes', label: 'Patch Notes',    status: 'new'  },
-    ],
-  },
-  {
-    label: 'Corp HQ',
-    items: [
-      { href: '/corp/hq',             label: 'Command Center',   status: 'new' },
-      { href: '/corp/hq/dispatch',    label: 'Dispatch Editor',  status: 'new' },
-      { href: '/admin/feedback',      label: 'Feedback Review',  status: 'new' },
-      { href: '/corp/hq/commissions', label: 'Commission Board', status: 'new' },
-      { href: '/corp/join',           label: 'Apply to Kodaxa'               },
-    ],
-  },
-  {
-    label: 'My Terminal',
-    items: [
-      { href: '/xp-timer', label: 'XP & Atrophy Timer', status: 'new' },
-      { href: '/terminal', label: 'My Profile' },
-    ],
-  },
-];
-
 // ── Component ─────────────────────────────────────────────────────
 
 interface MobileNavProps {
   open: boolean;
   onClose: () => void;
   pathname: string;
+  groups: NavGroup[];
 }
 
-export function MobileNav({ open, onClose, pathname }: MobileNavProps) {
+export function MobileNav({ open, onClose, pathname, groups }: MobileNavProps) {
   const drawerRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -167,7 +112,7 @@ export function MobileNav({ open, onClose, pathname }: MobileNavProps) {
 
         {/* Nav groups */}
         <nav aria-label="Mobile navigation" className="flex-1 px-2 py-3 space-y-1">
-          {NAV_GROUPS.map((group) => {
+          {groups.map((group) => {
             if (group.href) {
               const isActive = pathname === group.href || (group.href !== '/' && pathname.startsWith(group.href));
               return (
