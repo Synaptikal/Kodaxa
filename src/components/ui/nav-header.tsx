@@ -17,14 +17,13 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { Menu } from 'lucide-react';
 import { MobileNav } from '@/components/ui/mobile-nav';
 import { KodaxaMark } from '@/components/ui/logo';
 import { createClient as createSupabaseClient } from '@/lib/supabase/client';
 import { canManageRoster, type CorpRole } from '@/types/corp';
-import { signOut } from '@/lib/auth/actions';
 
 // ── Types ────────────────────────────────────────────────────────────
 
@@ -256,45 +255,63 @@ export function NavHeader() {
   // isAuthed: true for any signed-in user (even without a profile row).
   // role: only set for corp members with a crafter_profiles entry.
   // While pending, only public groups are shown (no flash of gated links).
+  const router = useRouter();
   const [isAuthed, setIsAuthed] = useState(false);
   const [role, setRole] = useState<CorpRole | null>(null);
   const [authReady, setAuthReady] = useState(false);
 
   useEffect(() => {
     const supabase = createSupabaseClient();
+    let mounted = true;
 
-    async function resolveRole(userId: string) {
-      const { data } = await supabase
-        .from('crafter_profiles')
-        .select('role')
-        .eq('id', userId)
-        .single();
-      setRole((data?.role as CorpRole) ?? null);
+    async function resolveUser(userId: string | null) {
+      if (!userId) {
+        if (mounted) { setIsAuthed(false); setRole(null); setAuthReady(true); }
+        return;
+      }
+      try {
+        const { data } = await supabase
+          .from('crafter_profiles')
+          .select('role')
+          .eq('id', userId)
+          .single();
+        if (mounted) {
+          setIsAuthed(true);
+          setRole((data?.role as CorpRole) ?? null);
+          setAuthReady(true);
+        }
+      } catch {
+        // Profile fetch failed — still mark authed, just no corp role
+        if (mounted) { setIsAuthed(true); setRole(null); setAuthReady(true); }
+      }
     }
 
-    // Initial load
-    supabase.auth.getUser().then(async ({ data: { user } }) => {
-      if (!user) { setAuthReady(true); return; }
-      setIsAuthed(true);
-      await resolveRole(user.id);
-      setAuthReady(true);
+    // getUser() is server-verified — most reliable source of truth on mount
+    supabase.auth.getUser().then(({ data: { user } }) => {
+      resolveUser(user?.id ?? null);
     });
 
-    // Reactive — updates nav instantly on sign-in or sign-out
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
-      if (!session?.user) {
-        setIsAuthed(false);
-        setRole(null);
-        setAuthReady(true);
-      } else {
-        setIsAuthed(true);
-        await resolveRole(session.user.id);
-        setAuthReady(true);
+    // onAuthStateChange for SIGNED_IN / SIGNED_OUT events only.
+    // We intentionally skip INITIAL_SESSION to avoid a race with getUser().
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      if (event === 'SIGNED_OUT') {
+        if (mounted) { setIsAuthed(false); setRole(null); }
+      } else if (event === 'SIGNED_IN' && session?.user) {
+        resolveUser(session.user.id);
       }
     });
 
-    return () => subscription.unsubscribe();
+    return () => { mounted = false; subscription.unsubscribe(); };
   }, []);
+
+  // Browser-side sign-out — avoids importing server-only 'use server' files
+  // into this client component (cookies() would throw at bundle time).
+  const handleSignOut = useCallback(async () => {
+    const supabase = createSupabaseClient();
+    await supabase.auth.signOut();
+    router.push('/');
+    router.refresh();
+  }, [router]);
 
   const visibleGroups = NAV_GROUPS.filter((g) => {
     if (g.label === 'Corp HQ')     return authReady && canManageRoster(role ?? 'client');
@@ -349,14 +366,12 @@ export function NavHeader() {
             </>
           )}
           {authReady && isAuthed && (
-            <form action={signOut} className="hidden sm:block">
-              <button
-                type="submit"
-                className="shrink-0 px-3 py-1 text-[10px] font-mono font-semibold bg-slate-700/10 border border-slate-700/40 text-slate-500 hover:text-red-400 hover:border-red-900/50 transition-all tracking-wide uppercase"
-              >
-                Sign Out
-              </button>
-            </form>
+            <button
+              onClick={handleSignOut}
+              className="shrink-0 px-3 py-1 text-[10px] font-mono font-semibold bg-slate-700/10 border border-slate-700/40 text-slate-500 hover:text-red-400 hover:border-red-900/50 transition-all tracking-wide uppercase hidden sm:block"
+            >
+              Sign Out
+            </button>
           )}
 
           <Link
@@ -414,7 +429,7 @@ export function NavHeader() {
         groups={visibleGroups}
         isAuthed={isAuthed}
         authReady={authReady}
-        onSignOut={() => signOut()}
+        onSignOut={handleSignOut}
       />
     </header>
   );
