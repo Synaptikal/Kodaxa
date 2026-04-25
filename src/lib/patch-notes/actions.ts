@@ -16,11 +16,6 @@ import { createServiceClient } from '@/lib/supabase/service';
 import { canManageRoster } from '@/types/corp';
 import { fetchLatestPosts } from '@/lib/patch-notes/scraper';
 
-interface Result {
-  success: boolean;
-  error?: string;
-}
-
 async function assertDirector(): Promise<string | null> {
   const supabase = await createUserClient();
   const { data: { user } } = await supabase.auth.getUser();
@@ -38,52 +33,37 @@ async function assertDirector(): Promise<string | null> {
   return null;
 }
 
-export async function publishPatchNote(id: string): Promise<Result> {
+// Form action signature: (id: string, _: FormData) so .bind(null, id) produces
+// (_: FormData) => Promise<void>, which satisfies the form action type contract.
+
+export async function publishPatchNote(id: string, _: FormData): Promise<void> {
   const err = await assertDirector();
-  if (err) return { success: false, error: err };
+  if (err) { redirect('/admin/patch-notes?error=forbidden'); return; }
 
   const supabase = createServiceClient();
-  const { error } = await supabase
-    .from('patch_notes_imports')
-    .update({ status: 'published' })
-    .eq('id', id);
-
-  if (error) return { success: false, error: 'Failed to publish.' };
+  await supabase.from('patch_notes_imports').update({ status: 'published' }).eq('id', id);
   revalidatePath('/patch-notes');
   revalidatePath('/admin/patch-notes');
-  return { success: true };
 }
 
-export async function unpublishPatchNote(id: string): Promise<Result> {
+export async function unpublishPatchNote(id: string, _: FormData): Promise<void> {
   const err = await assertDirector();
-  if (err) return { success: false, error: err };
+  if (err) { redirect('/admin/patch-notes?error=forbidden'); return; }
 
   const supabase = createServiceClient();
-  const { error } = await supabase
-    .from('patch_notes_imports')
-    .update({ status: 'draft' })
-    .eq('id', id);
-
-  if (error) return { success: false, error: 'Failed to unpublish.' };
+  await supabase.from('patch_notes_imports').update({ status: 'draft' }).eq('id', id);
   revalidatePath('/patch-notes');
   revalidatePath('/admin/patch-notes');
-  return { success: true };
 }
 
-export async function deletePatchNote(id: string): Promise<Result> {
+export async function deletePatchNote(id: string, _: FormData): Promise<void> {
   const err = await assertDirector();
-  if (err) return { success: false, error: err };
+  if (err) { redirect('/admin/patch-notes?error=forbidden'); return; }
 
   const supabase = createServiceClient();
-  const { error } = await supabase
-    .from('patch_notes_imports')
-    .delete()
-    .eq('id', id);
-
-  if (error) return { success: false, error: 'Failed to delete.' };
+  await supabase.from('patch_notes_imports').delete().eq('id', id);
   revalidatePath('/patch-notes');
   revalidatePath('/admin/patch-notes');
-  return { success: true };
 }
 
 /** Fetch latest posts from WP API and upsert as drafts. Redirects with ?imported=N on success. */
